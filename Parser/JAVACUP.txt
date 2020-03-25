@@ -1,0 +1,82 @@
+// CUP specification for a simple expression evaluator (no actions)
+
+import java_cup.runtime.*;
+
+/* Preliminaries to set up and use the scanner.  */
+
+init with {: scanner.init();              :};
+scan with {: return scanner.next_token(); :};
+
+
+/* Terminals (tokens returned by the scanner). */
+
+terminal            SEMI, PLUS, MINUS, DIVIDE, MULT, MOD, COMMA, DOT, LOGOP, MAIN;
+terminal            LPAREN, RPAREN, LANGLE, RANGLE, LCURLY, RCURLY, END, BEGIN;
+terminal			EQUALS, HIGHERTHAN, LOWERTHAN, HIGHEREQ, LOWEREQ, NOTEQ;
+terminal			WHILE, IF, THEN, ELSE, ELSEIF, ID;
+terminal Integer    NUM;
+terminal Vector		VECTOR;
+terminal Matrix		MATRIX;
+
+/* Non terminals */
+non terminal            program, stmts, stmt, dcls, dcl, expr, ctrlstmt, ifstmt, elsestmts;
+non terminal			ifelsstmts, iterstmt, while, assignstmt;
+non terminal			addexpr, multiexpr, primexpr, logstmt, logop, ariop, mulop;
+
+non terminal Integer	num, matrix, vector, id;
+
+
+
+/* Precedences */
+
+precedence left PLUS, MINUS;
+precedence left MULT, DIVIDE, MOD;
+
+
+/* The grammar */
+
+program		::==	MAIN BEGIN dcls stmts END SEMI;									{: System.out.println( :}
+
+stmts		::==	stmt stmts SEMI;													{: :}
+
+stmt		::==	expr SEMI;															{: :}
+				|	ctrlstmt SEMI;														{: :}
+				|	iterstmt SEMI;														{: :}
+				|	assignstmt SEMI;													{: :}
+				
+dcls		::==	dcls dcl SEMI;														{: :}
+
+dcl			::==	id SEMI;															{: :}
+				|	id EQUALS expr SEMI;												{: :}
+				|	id EQUALS expr LANGLE vector RANGLE SEMI;							{: :}
+				|	id EQUALS expr LANGLE matrix RANGLE SEMI;							{: :}
+				
+	
+expr		::==	addexpr 															{: :}
+
+ctrlstmt	::==	ifstmt																{: :}
+
+ifstmt		::==	IF LPAREN logstmt RPAREN THEN stmts elsestmts END SEMI;				{: :}
+
+elsestmts	::==	elseifstmts ELSE stmts SEMI;										{: :}
+				|	elseifstmts SEMI;													{: :}
+				
+ifelsstmts	::==	IFELSE LPAREN logstmt RPAREN THEN stmts END SEMI;					{: :}
+
+iterstmt	::==	whilestmt															{: :}
+
+whilestmt	::==	WHILE LPAREN logstmt RPAREN THEN stmts END							{: :}
+
+assignstmt	::==	id EQUALS expr														{: :}
+
+addexpr		::==	multexpr															{: :}
+				|	addexpr ARIOP multiexpr												{: :}
+
+multiexpr	::== 	primexpr															{: :}
+				|	multiexpr MULOP primexpr											{: :}
+				
+primexpr	::==	id																	{: :}
+				|	num																	{: :}
+				|	LPAREN addexpr RPAREN 												{: :}
+				
+logstmt		::==	addexpr LOGOP addexpr												{: :}	
