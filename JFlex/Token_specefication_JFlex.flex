@@ -28,9 +28,6 @@ MultOp				=	"*" | "/" | "%"
 	/* then */
 	"then"																	{ found("symbol.then"); }
 
-	/* end if */
-	"end" {WhiteSpace} "if"													{ found("symbol.if"); }
-
 	/* if else */
 	"if" {WhiteSpace} "else"								 				{ found("symbol.ifelse"); }
 
@@ -40,8 +37,8 @@ MultOp				=	"*" | "/" | "%"
 	/* while */
 	"while"													 				{ found("symbol.while"); }
 	
-	/* end while */
-	"end" {WhiteSpace} "while"												{ found("symbol.while"); }
+	/* end */
+	"end"																	{ found("symbol.end"); }
 
 	
 	
