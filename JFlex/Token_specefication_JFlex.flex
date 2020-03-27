@@ -13,7 +13,7 @@
    }
 %}
 
-WhiteSpace 			=	[ \n\t]
+WhiteSpace 			=	" " | "\n" | "\t"
 Number 				=	[0-9]+("."[0-9]+)?
 LogOp				=	"==" | "<" | ">" | "<=" | ">=" | "!="
 MultOp				=	"*" | "/" | "%"
@@ -35,6 +35,9 @@ Ival				=	({Number}|{ID})
 																				
 	/* Num */
 	{Number}																	{ found("symbol.Number"); }
+	
+	/* String */
+	"\"".*"\""																	{ found("symbol.String"); }
 
 
 
@@ -69,6 +72,18 @@ Ival				=	({Number}|{ID})
 	/* string new line */
 	"\n"																		{ found("symbol.NewLine"); }
 
+
+
+/* Declaration */
+	/* num */
+	"num"																		{ found("symbol.numDLC"); }
+	
+	/* vector */
+	"vector"																	{ found("symbol.vectorDLC"); }
+	
+	/* matrix */
+	"matrix"																	{ found("symbol.matrixDLC"); }
+	
 
 
 /* ID */
@@ -117,7 +132,7 @@ Ival				=	({Number}|{ID})
 	";"																			{ found("symbol.LineTerminator"); }
 
 /* WhiteSpace */
-	{WhiteSpace}																{ /* Ignore */ }
+	{WhiteSpace}+																{ /* ignore */ }
 
 /* End of program */
 	"$"																			{ found("symbol.EOF"); }
