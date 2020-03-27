@@ -16,7 +16,6 @@
 WhiteSpace 			=	[ \n\t]+
 Number 				=	[0-9]+("."[0-9]+)?
 LogOp				=	"==" | "<" | ">" | "<=" | ">=" | "!="
-AriOp				=	"+" | "-"
 MultOp				=	"*" | "/" | "%"
 
 %%	
@@ -37,9 +36,21 @@ MultOp				=	"*" | "/" | "%"
 	/* while */
 	"while"													 				{ found("symbol.while"); }
 	
+	/* do */
+	"do"																	{ found("symbol.do"); }	
+	
 	/* end */
 	"end"																	{ found("symbol.end"); }
 
+
+
+/* Print statment */
+	/* print */
+	"print"																	{ found("symbol.print"); }
+	
+	/* string new line */
+	"\n"																	{ found("symbol.NewLine"); }
+	
 	
 	
 /* Encapsulations */
@@ -61,8 +72,11 @@ MultOp				=	"*" | "/" | "%"
 	/* MultOp */
 	{MultOp}																{ found("symbol.MultOp"); }
 
-	/* AriOp */
-	{AriOp}																	{ found("symbol.AriOp"); }
+	/* plus */
+	"+"																		{ found("symbol.plus"); }
+	
+	/* minus */
+	"-"																		{ found("symbol.minus"); }
 
 
 
