@@ -18,7 +18,8 @@ Number 				=	[0-9]+("."[0-9]+)?
 LogOp				=	"==" | "<" | ">" | "<=" | ">=" | "!="
 MultOp				=	"*" | "/" | "%"
 ID	 				=	[a-zA-Z0-9]*[a-zA-Z][a-zA-Z0-9]*
-Ival				=	({Number}|{ID})
+Ival				=	{Number} | {ID}
+ReservedSymbols		=	"\"" | "\\"
 
 
 
@@ -37,7 +38,7 @@ Ival				=	({Number}|{ID})
 	{Number}																	{ found("symbol.Number"); }
 	
 	/* String */
-	"\"".*"\""																	{ found("symbol.String"); }
+	"\""(!{ReservedSymbols}|"\\"{ReservedSymbols})*"\""							{ found("symbol.String"); }
 
 
 
