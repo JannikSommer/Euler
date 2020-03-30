@@ -1,0 +1,22 @@
+Notebook[{Cell[
+BoxData[""],"Input",ExpressionUUID -> "6e356fed-1b01-4a6b-bfb8-a7d65bb1fb0a"],Cell[
+BoxData[
+""],"Input",ExpressionUUID -> "56dfe953-d084-43ef-bf03-03d5842706ab"],Cell[
+BoxData[
+""],"Input",ExpressionUUID -> "b5e8a9c2-037a-44ef-894d-7cafc10407b9",CellLabel -> "In[1]:= "],Cell[
+BoxData[
+{RowBox[{RowBox[{"A","=",RowBox[{"{",RowBox[{RowBox[{"{",RowBox[{"0.95",",","0.00"}],"}"}],",",RowBox[
+{"{",RowBox[{"0.00",",","1.00"}],"}"}]}],"}"}]}],";"}],"\n",RowBox[{RowBox[{"B","=",RowBox[
+{"{",RowBox[{RowBox[{"{","1.10","}"}],",",RowBox[{"{","5.00","}"}]}],"}"}]}],";"}],"\n",RowBox[
+{RowBox[{"x","=",RowBox[{"{",RowBox[{"12.00",",","0.00"}],"}"}]}],";"}],"\n",RowBox[
+{RowBox[{"u","=",RowBox[{"{","0","}"}]}],";"}],"\n",RowBox[{RowBox[{"For","[",RowBox[
+{RowBox[{"i","=","0"}],",",RowBox[{"i","<","50"}],",",RowBox[{"i","++"}],",","\n",RowBox[
+{RowBox[{RowBox[{"u","[",RowBox[{"[","1","]"}],"]"}],"=",RowBox[{"If","[",RowBox[
+{RowBox[{RowBox[{"x","[",RowBox[{"[","1","]"}],"]"}],"<","20"}],",","1",",","0"}],"]"}]}],";","\n",RowBox[
+{"x","=",RowBox[{RowBox[{"(",RowBox[{"A",".","x"}],")"}],"+",RowBox[{"(",RowBox[{"B",".","u"}],")"}]}]}],";","\n",RowBox[
+{"Print","[","x","]"}]}]}],"\n","]"}],";"}]}],"Input",ExpressionUUID -> "21d040ce-a0c3-4129-8b6a-d03f72f3f95c"],Cell[
+BoxData[
+""],"Input",ExpressionUUID -> "bb9d0179-b3a7-48ba-ba42-94aaf1977899"],Cell[
+BoxData[
+""],"Input",ExpressionUUID -> "fd3d48a2-4027-4852-891e-067c46af4da2"]},StyleDefinitions -> "Default.nb",
+FrontEndVersion -> "12. for Wolfram Cloud 1.54.0.1 (January 17, 2020)"]

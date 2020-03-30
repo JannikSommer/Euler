@@ -1,0 +1,139 @@
+%% Created by Maple 2019.0, Linux
+%% Source Worksheet: Auto.mw
+%% Generated: Wed Mar 04 10:14:29 CET 2020
+\documentclass{article}
+\usepackage{maplestd2e}
+\def\emptyline{\vspace{12pt}}
+\begin{document}
+\pagestyle{empty}
+\DefineParaStyle{Maple Bullet Item}
+\DefineParaStyle{Maple Heading 1}
+\DefineParaStyle{Maple Warning}
+\DefineParaStyle{Maple Heading 4}
+\DefineParaStyle{Maple Heading 2}
+\DefineParaStyle{Maple Heading 3}
+\DefineParaStyle{Maple Dash Item}
+\DefineParaStyle{Maple Error}
+\DefineParaStyle{Maple Title}
+\DefineParaStyle{Maple Text Output}
+\DefineParaStyle{Maple Normal}
+\DefineCharStyle{Maple 2D Output}
+\DefineCharStyle{Maple 2D Input}
+\DefineCharStyle{Maple Maple Input}
+\DefineCharStyle{Maple 2D Math}
+\DefineCharStyle{Maple Hyperlink}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{restart; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{with(LinearAlgebra); -1}{$\displaystyle $}
+\mapleinline{inert}{2d}{}{$\displaystyle $}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{`Gennemløb` := 500; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{u := 1; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{t__room := 12; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{price := 0; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{A := rtable(1 .. 2, 1 .. 2, [[.95, 0], [0, 1]], subtype = Matrix); -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{x := `<,>`(t__room, price); -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{B := [1.1, 5]; -1}{\[\displaystyle \]}
+\mapleinline{inert}{2d}{}{$\displaystyle $}
+\mapleinline{inert}{2d}{}{$\displaystyle $}
+\mapleinline{inert}{2d}{}{$\displaystyle $}
+\mapleinline{inert}{2d}{}{$\displaystyle $}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{result; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{for i to `Gennemløb` do if x[1] < 20 then u := 1 elif x[1] > 20 then u := 0 end if; Bu := rtable(1 .. 2, [B[1]*u, B[2]*u], subtype = Vector[row]); Ax := Multiply(A, x); x := `<,>`(Ax[1]+Bu[1], Ax[2]+Bu[2]); result[i] := x end do; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{for i to `Gennemløb` do if x[1] < 20 then u := 1 elif x[1] > 20 then u := 0 end if; Bu := rtable(1 .. 2, [B[1]*u, B[2]*u], subtype = Vector[row]); Ax := Multiply(A, x); x := `<,>`(Ax[1]+Bu[1], Ax[2]+Bu[2]); result[i] := x end do; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{for i to `Gennemløb` do if x[1] < 20 then u := 1 elif x[1] > 20 then u := 0 end if; Bu := rtable(1 .. 2, [B[1]*u, B[2]*u], subtype = Vector[row]); Ax := Multiply(A, x); x := `<,>`(Ax[1]+Bu[1], Ax[2]+Bu[2]); result[i] := x end do; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{for i to `Gennemløb` do if x[1] < 20 then u := 1 elif x[1] > 20 then u := 0 end if; Bu := rtable(1 .. 2, [B[1]*u, B[2]*u], subtype = Vector[row]); Ax := Multiply(A, x); x := `<,>`(Ax[1]+Bu[1], Ax[2]+Bu[2]); result[i] := x end do; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{for i to `Gennemløb` do if x[1] < 20 then u := 1 elif x[1] > 20 then u := 0 end if; Bu := rtable(1 .. 2, [B[1]*u, B[2]*u], subtype = Vector[row]); Ax := Multiply(A, x); x := `<,>`(Ax[1]+Bu[1], Ax[2]+Bu[2]); result[i] := x end do; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{for i to `Gennemløb` do if x[1] < 20 then u := 1 elif x[1] > 20 then u := 0 end if; Bu := rtable(1 .. 2, [B[1]*u, B[2]*u], subtype = Vector[row]); Ax := Multiply(A, x); x := `<,>`(Ax[1]+Bu[1], Ax[2]+Bu[2]); result[i] := x end do; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{for i to `Gennemløb` do if x[1] < 20 then u := 1 elif x[1] > 20 then u := 0 end if; Bu := rtable(1 .. 2, [B[1]*u, B[2]*u], subtype = Vector[row]); Ax := Multiply(A, x); x := `<,>`(Ax[1]+Bu[1], Ax[2]+Bu[2]); result[i] := x end do; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{for i to `Gennemløb` do if x[1] < 20 then u := 1 elif x[1] > 20 then u := 0 end if; Bu := rtable(1 .. 2, [B[1]*u, B[2]*u], subtype = Vector[row]); Ax := Multiply(A, x); x := `<,>`(Ax[1]+Bu[1], Ax[2]+Bu[2]); result[i] := x end do; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{for i to `Gennemløb` do if x[1] < 20 then u := 1 elif x[1] > 20 then u := 0 end if; Bu := rtable(1 .. 2, [B[1]*u, B[2]*u], subtype = Vector[row]); Ax := Multiply(A, x); x := `<,>`(Ax[1]+Bu[1], Ax[2]+Bu[2]); result[i] := x end do; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{for i to `Gennemløb` do if x[1] < 20 then u := 1 elif x[1] > 20 then u := 0 end if; Bu := rtable(1 .. 2, [B[1]*u, B[2]*u], subtype = Vector[row]); Ax := Multiply(A, x); x := `<,>`(Ax[1]+Bu[1], Ax[2]+Bu[2]); result[i] := x end do; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{for i to `Gennemløb` do if x[1] < 20 then u := 1 elif x[1] > 20 then u := 0 end if; Bu := rtable(1 .. 2, [B[1]*u, B[2]*u], subtype = Vector[row]); Ax := Multiply(A, x); x := `<,>`(Ax[1]+Bu[1], Ax[2]+Bu[2]); result[i] := x end do; -1}{\[\displaystyle \]}
+\mapleinline{inert}{2d}{}{$\displaystyle $}
+\mapleinline{inert}{2d}{}{$\displaystyle $}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{result2 := [seq([result[i][2], result[i][1]], i = 1 .. `Gennemløb`)]; -1}{\[\displaystyle \]}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{plots:-pointplot(result2); "_noterminate"}{\[\displaystyle \]}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\begin{maplegroup}
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{plots:-pointplot(result2); "_noterminate"}{\[\displaystyle \]}
+}\end{Maple Normal}
+\mapleresult
+\mapleplot{Autoplot2d1.eps}
+\end{maplegroup}
+\begin{Maple Normal}{
+\begin{Maple Normal}{
+\mapleinline{inert}{2d}{}{\[\displaystyle \]}
+}\end{Maple Normal}
+}\end{Maple Normal}
+\end{document}
