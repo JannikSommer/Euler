@@ -2,7 +2,7 @@
 
 %%
 
-/* %debug */
+%debug
 %standalone
 
 %{
@@ -20,6 +20,7 @@ MultOp				=	"*" | "/" | "%"
 ID	 				=	[a-zA-Z0-9]*[a-zA-Z][a-zA-Z0-9]*
 Ival				=	{Number} | {ID}
 ReservedSymbols		=	"\"" | "\\"
+Index				=	("["{Number}(","{Number})?"]")?
 
 
 
@@ -33,7 +34,7 @@ ReservedSymbols		=	"\"" | "\\"
 	/* Matrix */
 	"{"{WhiteSpace}*{Ival}({WhiteSpace}*","{WhiteSpace}*{Ival})+({WhiteSpace}*";"{WhiteSpace}*{Ival}({WhiteSpace}*","{WhiteSpace}*{Ival})+)+{WhiteSpace}*"}"						
 																				{ found("symbol.Matrix"); }
-																				
+
 	/* Num */
 	{Number}																	{ found("symbol.Number"); }
 	
@@ -88,7 +89,7 @@ ReservedSymbols		=	"\"" | "\\"
 
 
 /* ID */
-	{ID}																		{ found("symbol.ID"); }
+	{ID}{Index}																	{ found("symbol.ID"); }
 	
 	
 	
@@ -133,7 +134,7 @@ ReservedSymbols		=	"\"" | "\\"
 	";"																			{ found("symbol.LineTerminator"); }
 
 /* WhiteSpace */
-	{WhiteSpace}+																{ /* ignore */ }
+	{WhiteSpace}+																{ /* Do nothing */ }
 
 /* End of program */
 	"$"																			{ found("symbol.EOF"); }
