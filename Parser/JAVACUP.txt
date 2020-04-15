@@ -2,81 +2,120 @@
 
 import java_cup.runtime.*;
 
-/* Preliminaries to set up and use the scanner.  */
+/* Part 1: Preliminaries to set up and use the scanner.  */
 
 init with {: scanner.init();              :};
 scan with {: return scanner.next_token(); :};
 
 
-/* Terminals (tokens returned by the scanner). */
+
+/* Part 2: Terminals and non-terminals */
+
+/*Terminals (tokens returned by the scanner). */
 
 terminal            SEMI, PLUS, MINUS, DIVIDE, MULT, MOD, COMMA, DOT, LOGOP, MAIN;
-terminal            LPAREN, RPAREN, LANGLE, RANGLE, LCURLY, RCURLY, END, BEGIN;
+terminal            LPAREN, RPAREN, LANGLE, RANGLE, LCURLY, RCURLY, LBRACKET, RBRACKET, END, BEGIN;
 terminal			EQUALS, HIGHERTHAN, LOWERTHAN, HIGHEREQ, LOWEREQ, NOTEQ;
-terminal			WHILE, IF, THEN, ELSE, ELSEIF, ID;
+terminal			WHILE, IF, THEN, ELSE, ELSEIF, ID, EPSILON, PRINT;
 terminal Integer    NUM;
 terminal Vector		VECTOR;
 terminal Matrix		MATRIX;
 
 /* Non terminals */
 non terminal            program, stmts, stmt, dcls, dcl, expr, ctrlstmt, ifstmt, elsestmts;
-non terminal			ifelsstmts, iterstmt, while, assignstmt;
-non terminal			addexpr, multiexpr, primexpr, logstmt, logop, ariop, mulop;
+non terminal			ifelsestmts, printstmt, stringstmt, appendstr, valindex, iterstmt, whilestmt;
+non terminal			assignstmt, addexpr, multexpr, primexpr, logstmt, logop, ariop, mulop, newline;
 
 non terminal Integer	num, matrix, vector, id;
 
 
 
-/* Precedences */
+/* Part 3: Precedences */
 
 precedence left PLUS, MINUS;
 precedence left MULT, DIVIDE, MOD;
 
 
-/* The grammar */
+/* Part 4: The grammar */
 
-program		::==	MAIN BEGIN dcls stmts END SEMI;									{: System.out.println( :}
+program		::=	dcls stmts END;										
 
-stmts		::==	stmt stmts SEMI;													{: :}
+stmts		::=	stmts stmt SEMI;													
 
-stmt		::==	expr SEMI;															{: :}
-				|	ctrlstmt SEMI;														{: :}
-				|	iterstmt SEMI;														{: :}
-				|	assignstmt SEMI;													{: :}
+stmt		::=	expr															
+				|	ctrlstmt														
+				|	iterstmt														
+				|	assignstmt
+				|	printstmt;
 				
-dcls		::==	dcls dcl SEMI;														{: :}
+dcls		::=	dcls dcl;														
 
-dcl			::==	id SEMI;															{: :}
-				|	id EQUALS expr SEMI;												{: :}
-				|	id EQUALS expr LANGLE vector RANGLE SEMI;							{: :}
-				|	id EQUALS expr LANGLE matrix RANGLE SEMI;							{: :}
+dcl			::=	id															
+				|	id EQUALS expr												
+				|	id EQUALS expr LANGLE vector RANGLE							
+				|	id EQUALS expr LANGLE matrix RANGLE;							
 				
 	
-expr		::==	addexpr 															{: :}
+expr		::=	addexpr;															
 
-ctrlstmt	::==	ifstmt																{: :}
+ctrlstmt	::=	ifstmt;															
 
-ifstmt		::==	IF LPAREN logstmt RPAREN THEN stmts elsestmts END SEMI;				{: :}
+ifstmt		::=	IF LPAREN logstmt RPAREN THEN stmts elsestmts END;				
 
-elsestmts	::==	elseifstmts ELSE stmts SEMI;										{: :}
-				|	elseifstmts SEMI;													{: :}
+elsestmts	::=	ifelsestmts ELSE stmts END		
+				|	ifelsestmts END	
+				|	EPSILON;
 				
-ifelsstmts	::==	IFELSE LPAREN logstmt RPAREN THEN stmts END SEMI;					{: :}
+ifelsestmts	::=	ELSEIF LPAREN logstmt RPAREN THEN stmts END
+				|	EPSILON;
 
-iterstmt	::==	whilestmt															{: :}
+printstmt	::=	PRINT stringstmt;
 
-whilestmt	::==	WHILE LPAREN logstmt RPAREN THEN stmts END							{: :}
+stringstmt	::=	stringstmt appendstr
+				|	num appendstr
+				|	id valindex appendstr
+				|	newline appendstr;
 
-assignstmt	::==	id EQUALS expr														{: :}
-
-addexpr		::==	multexpr															{: :}
-				|	addexpr ARIOP multiexpr												{: :}
-
-multiexpr	::== 	primexpr															{: :}
-				|	multiexpr MULOP primexpr											{: :}
+appendstr	::=	PLUS stringstmt appendstr
+				|	PLUS num appendstr
+				|	PLUS id 
+				|	PLUS newline appendstr
+				|	EPSILON;
 				
-primexpr	::==	id																	{: :}
-				|	num																	{: :}
-				|	LPAREN addexpr RPAREN 												{: :}
+valindex	::=	LBRACKET num RBRACKET
+				|	LBRACKET num COMMA num RBRACKET
+				|	EPSILON;
 				
-logstmt		::==	addexpr LOGOP addexpr												{: :}	
+iterstmt	::=	whilestmt;											
+
+whilestmt	::=	WHILE LPAREN logstmt RPAREN THEN stmts END;							
+
+assignstmt	::=	id EQUALS expr SEMI;														
+
+addexpr		::=	multexpr													
+				|	addexpr ariop multexpr SEMI;												
+
+multexpr	::= 	primexpr													
+				|	multexpr mulop primexpr;											
+				
+primexpr	::=	id																	
+				|	num																
+				|	LPAREN addexpr RPAREN;										
+				
+logstmt		::=	addexpr logop addexpr SEMI;
+
+logop		::=			EQUALS
+				|	LOWERTHAN
+				|	HIGHERTHAN
+				|	HIGHEREQ
+				|	LOWEREQ
+				|	NOTEQ;
+				
+ariop		::=	PLUS
+				|	MINUS;
+				
+mulop		::=	MULT
+				|	DIVIDE
+				|	MOD;
+
+
