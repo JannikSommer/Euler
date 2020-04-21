@@ -1,11 +1,8 @@
-grammar EulerGrammer;
+grammar Euler;
 
-// Parser stuff
+// Parser
 
-program     : dcls stmts DOLLAR
-            ;
-
-dcls        : (dcl SEMI)+
+program     : (dcl SEMI)+ (stmt)* DOLLAR
             ;
 
 dcl         :	ID
@@ -14,28 +11,24 @@ dcl         :	ID
             |   ID ASSIGN MATRIX
             ;
 
-stmts       :	(stmt)*
-            ;
-
 stmt        :	expr SEMI
-            |	ctrlstmt
-            |	iterstmt
+            |	ifstmt
+            |	whilestmt
             |	assignstmt SEMI
             |   printstmt SEMI
             ;
 
-expr        :	addexpr ;
-
-ctrlstmt    :	ifstmt ;
-
-ifstmt      :	IF logstmt THEN stmts elsestmts END
+expr        :	addexpr
             ;
 
-elsestmts   :	elseifstmts ELSE THEN stmts
+ifstmt      :	IF logstmt THEN (stmt)+ elsestmts END
+            ;
+
+elsestmts   :	elseifstmts ELSE THEN (stmt)+
             |   elseifstmts
             ;
 
-elseifstmts :   (ELSE IF logstmt THEN stmts)*
+elseifstmts :   (ELSE IF logstmt THEN (stmt)+)*
             ;
 
 printstmt   :   PRINT stringstmt
@@ -57,10 +50,7 @@ valindex    :   LSQBRACK NUM RSQBRACK
             |   LSQBRACK NUM COMMA NUM RSQBRACK
             ;
 
-iterstmt    :	whilestmt
-            ;
-
-whilestmt   :	WHILE logstmt DO stmts END
+whilestmt   :	WHILE logstmt DO (stmt)+ END
             ;
 
 assignstmt  :	ID valindex? ASSIGN expr
@@ -90,13 +80,10 @@ logop       :	EQEQ
             |	NOTEQ
             ;
 
-ariop       :	PLUS
-            |   MINUS
+ariop       :	op=('+'|'-')
             ;
 
-mulop       :	MULT
-            |   DIVID
-            |	MOD
+mulop       :	op=('*' | '/' | '%')
             ;
 
 // TOKENS

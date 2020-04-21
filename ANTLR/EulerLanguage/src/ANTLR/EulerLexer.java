@@ -1,4 +1,5 @@
-// Generated from C:/Users/janni/IdeaProjects/EulerLanguage/Grammar\EulerGrammer.g4 by ANTLR 4.8
+// Generated from C:/Users/janni/IdeaProjects/EulerLanguage/Grammar\Euler.g4 by ANTLR 4.8
+package ANTLR;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -9,7 +10,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class EulerGrammerLexer extends Lexer {
+public class EulerLexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.8", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -93,13 +94,13 @@ public class EulerGrammerLexer extends Lexer {
 	}
 
 
-	public EulerGrammerLexer(CharStream input) {
+	public EulerLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "EulerGrammer.g4"; }
+	public String getGrammarFileName() { return "Euler.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
