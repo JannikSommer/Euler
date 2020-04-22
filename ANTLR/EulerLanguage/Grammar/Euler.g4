@@ -5,10 +5,10 @@ grammar Euler;
 program     : dcl* stmt* DOLLAR
             ;
 
-dcl         :	ID SEMI                                 #idInit
-            |	ID ASSIGN expr SEMI                     #idAssign
-            |	ID ASSIGN VECTOR SEMI                   #vecAssign
-            |   ID ASSIGN MATRIX SEMI                   #mtxAssign
+dcl         :	'num' ID SEMI                                 #idInit
+            |	'num' ID ASSIGN expr SEMI                     #idAssign
+            |	'vec' ID ASSIGN VECTOR SEMI                   #vecAssign
+            |   'mtx' ID ASSIGN MATRIX SEMI                   #mtxAssign
             ;
 
 stmt        :	expr SEMI
@@ -89,7 +89,7 @@ mulop       :	op=('*' | '/' | '%')
 
 // TOKENS
 
-fragment LINE_TERMINATOR : '/r' '\n';
+fragment LINE_TERMINATOR : '/r' '/n';
 
 DOLLAR  : '$' ;
 SEMI    : ';' ;
@@ -124,6 +124,10 @@ RPAREN  :')';
 LSQBRACK:'[';
 RSQBRACK:']';
 COMMA   :',';
+
+NUMB    : 'num';
+VEC     : 'vec';
+MTX     : 'mtx';
 
 NUM     : [0-9]+('.'[0-9]+)? ;
 MATRIX  : '{'(NUM|ID)(','(NUM|ID))+(';'(NUM|ID)(','(NUM|ID))+)+'}';

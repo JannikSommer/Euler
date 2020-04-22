@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dcf840de-b8e9-4031-9931-a873d99acf6e" name="Default Changelist" comment="" />
+    <list default="true" id="dcf840de-b8e9-4031-9931-a873d99acf6e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/Grammar/Euler.g4" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/Grammar/Euler.g4" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,8 +27,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/antlr-4.8-complete.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -56,8 +62,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587473340404</updated>
+      <workItem from="1587569198864" duration="794000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1165" y="562" key="#Notifications" timestamp="1587550659706">
@@ -80,5 +90,9 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="344" key="SettingsEditor/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587542516841" />
+    <state x="668" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1587569224605">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="668" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587569224605" />
   </component>
 </project>
