@@ -3,7 +3,7 @@ package AST;
 import Visitors.*;
 
 public class ValueIndexNode extends ASTNode {
-    public String id
+    public String id;
     public int indexA = -1;
     public int indexB = -1;
 

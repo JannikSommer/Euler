@@ -8,7 +8,7 @@ public class ProgramNode extends ASTNode {
     }
 
     public ProgramNode(ASTNode parentNode, ASTNode declarations, ASTNode statements) {
-        this(parentNode)
+        this(parentNode);
         children.add(declarations);
         children.add(statements);
     }

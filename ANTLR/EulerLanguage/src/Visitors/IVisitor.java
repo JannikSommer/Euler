@@ -20,7 +20,7 @@ public interface IVisitor {
 
     public void visit(IfStatementNode node);
 
-    public void visit(LogicExpressionNode node)
+    public void visit(LogicExpressionNode node);
 
     public void visit(ModuloNode node);
     
@@ -32,7 +32,7 @@ public interface IVisitor {
 
     public void visit(CodeBlockNode node); //Maybe?
 
-    public void visit(StatementNode node);
+    public void visit(StatementBlockNode node);
 
     public void visit(StringStatementNode node);
 
