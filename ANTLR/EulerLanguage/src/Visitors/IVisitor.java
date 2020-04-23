@@ -10,6 +10,8 @@ public interface IVisitor {
 
     public void visit(AssignmentNode node);
 
+    public void visit(CodeBlockNode node);
+
     public void visit(DeclarationNode node);
 
     public void visit(DivisionNode node);
@@ -18,7 +20,11 @@ public interface IVisitor {
 
     public void visit(ElseStatementNode node);
 
+    public void visit(IdentificationNode node);
+
     public void visit(IfStatementNode node);
+
+    public void visit(InitializationNode node);
 
     public void visit(LogicExpressionNode node);
 
@@ -26,13 +32,13 @@ public interface IVisitor {
     
     public void visit(MultiplicationNode node);
 
+    public void visit(NumberLiteral node);
+
+    public void visit(ParenthesesNode node);
+
     public void visit(PrintNode node);
 
     public void visit(ProgramNode node);
-
-    public void visit(CodeBlockNode node); //Maybe?
-
-    public void visit(StatementBlockNode node);
 
     public void visit(StringStatementNode node);
 
