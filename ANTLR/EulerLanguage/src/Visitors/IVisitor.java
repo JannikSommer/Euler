@@ -30,7 +30,7 @@ public interface IVisitor {
 
     public void visit(ProgramNode node);
 
-    public void visit(CodeBlockNode node); //Maybe?
+    // public void visit(CodeBlockNode node); //Maybe?
 
     public void visit(StatementBlockNode node);
 

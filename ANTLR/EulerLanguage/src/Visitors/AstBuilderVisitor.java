@@ -13,9 +13,11 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     @Override
     public ASTNode visitProgram(EulerParser.ProgramContext ctx) {
         ASTNode node = new ProgramNode(null);
-        for (EulerParser.StmtContext stmts : ctx.stmt()) {
-            node.children.add(visitStmt(stmts, node));
-        }
+        StatementBlockNode stmtNode = new StatementBlockNode(node);
+        ctx.stmt().forEach(child -> {
+            stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
+        });
+        node.children.add(stmtNode);
         return node;
     }
 
@@ -85,10 +87,12 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
     public ASTNode visitWhilestmt(EulerParser.WhilestmtContext ctx, ASTNode parent) {
         WhileNode node = new WhileNode(parent);
+        StatementBlockNode stmtNode = new StatementBlockNode(node);
         node.children.add(visitLogstmt(ctx.logstmt(), node));
         ctx.stmt().forEach(child -> {
-            node.children.add(visitStmt((EulerParser.StmtContext) child, node));
+            stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
         });
+        node.children.add(stmtNode);
         return node;
     }
 
@@ -102,25 +106,30 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
     public ASTNode visitIfstmt(EulerParser.IfstmtContext ctx, ASTNode parent) {
         IfStatementNode node = new IfStatementNode(parent);
+        StatementBlockNode stmtNode = new StatementBlockNode(node) ;
         node.children.add(visitLogstmt(ctx.logstmt(), node));
         ctx.stmt().forEach(child -> {
-            node.children.add(visitStmt((EulerParser.StmtContext) child, node));
+            stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
         });
+        node.children.add(stmtNode);
         if (ctx.elsestmts() != null) {
             node.children.add(visitElsestmts(ctx.elsestmts(), node));
         }
         return node;
     }
 
+
+
     public ASTNode visitElsestmts(EulerParser.ElsestmtsContext ctx, ASTNode parent) {
         ElseStatementNode node = new ElseStatementNode(parent);
-        
         ctx.children.forEach(child -> {
             if (child.getClass().getSimpleName().equals("ElseifstmtsContext")) {
                 node.children.add(visitElseifstmts((EulerParser.ElseifstmtsContext) child, node));
             }
             else if (child.getClass().getSimpleName().equals("StmtContext")) {
-                node.children.add(visitStmt((EulerParser.StmtContext) child, node));
+                StatementBlockNode stmtNode = new StatementBlockNode(node);
+                stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
+                node.children.add(stmtNode);
             }
         });
         return node;
@@ -128,10 +137,12 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
     public ASTNode visitElseifstmts(EulerParser.ElseifstmtsContext ctx, ASTNode parent) {
         ElseIfStatementNode node = new ElseIfStatementNode(parent);
+        StatementBlockNode stmtNode = new StatementBlockNode(node);
         node.children.add(visitLogstmt(ctx.logstmt().get(0), node));
         ctx.stmt().forEach(child -> {
-            node.children.add(visitStmt((EulerParser.StmtContext) child, node));
+            stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
         });
+        node.children.add(stmtNode);
         return node;
     }
 

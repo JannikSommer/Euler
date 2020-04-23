@@ -1,20 +1,18 @@
 package AST;
 
-import Visitors.*;
+import Visitors.IVisitor;
 
-import java.util.ArrayList;
+import javax.swing.plaf.nimbus.State;
 
-public class CodeBlockNode extends ASTNode {
-    public CodeBlockNode(ASTNode parentNode) {
-        super(parentNode);
-        
-    }
-    public CodeBlockNode(ASTNode parentNode, ArrayList<ASTNode> statements) {
-        this(parentNode);
-        children = statements;
+public class StatementBlockNode extends ASTNode {
+
+    public StatementBlockNode(ASTNode parent) {
+        super(parent);
     }
 
+
+    @Override
     public void accept(IVisitor visitor) {
-        visitor.visit(this);
-   }
+
+    }
 }
