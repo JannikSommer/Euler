@@ -13,10 +13,10 @@ stmt        :	expr SEMI
             |   printstmt SEMI
             ;
 
-dcl         :	NUM ID                                  #idInit
-            |	NUM ID ASSIGN expr                      #idAssign
-            |	VEC ID ASSIGN VECTOR                    #vecAssign
-            |   MTX ID ASSIGN MATRIX                    #mtxAssign
+dcl         :	ID                                  #idInit
+            |	ID ASSIGN expr                      #idAssign
+            |	ID ASSIGN VECTOR                    #vecAssign
+            |   ID ASSIGN MATRIX                    #mtxAssign
             ;
 
 expr        :	addexpr
@@ -77,8 +77,6 @@ mulop       :	op=('*' | '/' | '%')
 
 // TOKENS
 
-fragment LINE_TERMINATOR : '\r' '\n';
-
 DOLLAR  : '$' ;
 SEMI    : ';' ;
 ASSIGN  : '=' ;
@@ -98,8 +96,6 @@ WHILE   : 'while';
 DO      : 'do';
 
 PRINT   : 'print';
-NEWLINE : LINE_TERMINATOR;
-WHITESPACE : [\n \t]+ -> skip;
 
 PLUS    : '+';
 MINUS   :'-';
@@ -122,3 +118,4 @@ MATRIX  : '{' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID))+ WHITE
 VECTOR  : '<' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID) WHITESPACE* )* WHITESPACE* '>';
 STRING  : '"'[a-zA-Z0-9_ ]*'"';
 ID      : [a-zA-Z0-9]* [a-zA-Z] [a-zA-Z0-9]*;
+WHITESPACE : [\r\n\t ]+ -> skip;
