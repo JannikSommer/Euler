@@ -2,16 +2,17 @@ grammar Euler;
 
 // Parser
 
-program     : (dcl SEMI)+ (stmt)* DOLLAR
+program     : dcl* stmt* DOLLAR
             ;
 
-dcl         :	ID
-            |	ID ASSIGN expr
-            |	ID ASSIGN VECTOR
-            |   ID ASSIGN MATRIX
+dcl         :	'num' ID SEMI                                 #idInit
+            |	'num' ID ASSIGN expr SEMI                     #idAssign
+            |	'vec' ID ASSIGN VECTOR SEMI                   #vecAssign
+            |   'mtx' ID ASSIGN MATRIX SEMI                   #mtxAssign
             ;
 
 stmt        :	expr SEMI
+            |   dcl
             |	ifstmt
             |	whilestmt
             |	assignstmt SEMI
@@ -88,7 +89,7 @@ mulop       :	op=('*' | '/' | '%')
 
 // TOKENS
 
-fragment LINE_TERMINATOR : '/r';
+fragment LINE_TERMINATOR : '/r' '/n';
 
 DOLLAR  : '$' ;
 SEMI    : ';' ;
@@ -123,6 +124,10 @@ RPAREN  :')';
 LSQBRACK:'[';
 RSQBRACK:']';
 COMMA   :',';
+
+NUMB    : 'num';
+VEC     : 'vec';
+MTX     : 'mtx';
 
 NUM     : [0-9]+('.'[0-9]+)? ;
 MATRIX  : '{'(NUM|ID)(','(NUM|ID))+(';'(NUM|ID)(','(NUM|ID))+)+'}';

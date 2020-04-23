@@ -15,6 +15,8 @@ public class AssignmentNode extends ASTNode {
         children.add(val);
     }
 
+
+
     public void accept(IVisitor visitor) {
         visitor.visit(this);
     }
