@@ -32,7 +32,7 @@ public interface IVisitor {
     
     public void visit(MultiplicationNode node);
 
-    public void visit(NumberLiteral node);
+    public void visit(NumberLiteralNode node);
 
     public void visit(ParenthesesNode node);
 

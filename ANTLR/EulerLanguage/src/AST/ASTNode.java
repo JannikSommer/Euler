@@ -1,11 +1,14 @@
 package AST;
 
 import Visitors.*;
+import symbolTable.typeDescriptors.*;
+
 import java.util.*;
 
 public abstract class ASTNode {
     public ASTNode parent;
-    public ArrayList<ASTNode> children; 
+    public ArrayList<ASTNode> children;
+    public TypeDescriptor type;
 
     public ASTNode(ASTNode parentNode) {
         parent = parentNode;

@@ -4,15 +4,15 @@ import Visitors.*;
 import java.util.*;
 import javax.swing.plaf.nimbus.State;
 
-public class StatementBlockNode extends ASTNode {
+public class CodeBlockNode extends ASTNode {
 
-    public StatementBlockNode(ASTNode parent) {
+    public CodeBlockNode(ASTNode parent) {
         super(parent);
     }
 
 
     @Override
     public void accept(IVisitor visitor) {
-
+        visitor.visit(this);
     }
 }

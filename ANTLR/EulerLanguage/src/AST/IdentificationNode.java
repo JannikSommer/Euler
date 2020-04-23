@@ -8,7 +8,6 @@ public class IdentificationNode extends ASTNode {
     public String identification;
     public String index;
     public Attributes attributesRef;
-    public TypeDescriptor type;
 
     public IdentificationNode(ASTNode parent, String id, String index) {
         super(parent);

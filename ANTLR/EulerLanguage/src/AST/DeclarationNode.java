@@ -12,7 +12,7 @@ public class DeclarationNode extends ASTNode {
     public String matrix;
     public String vector;
     public Attributes attributesRef;
-    public TypeDescriptor type;
+    public TypeDescriptor initType;
 
     public DeclarationNode(ASTNode parentNode) {
         super(parentNode);

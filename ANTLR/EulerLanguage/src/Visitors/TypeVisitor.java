@@ -19,7 +19,7 @@ public class TypeVisitor extends TopDeclVisitor {
             node.attributesRef = attr;
         } else {
             // TODO: Add error. Not type name
-            node.type = new ErrorTypeDescriptor();
+            node.type = new ErrorTypeDescriptor("Wrong type name.");
             node.attributesRef = null;
         }
     }
