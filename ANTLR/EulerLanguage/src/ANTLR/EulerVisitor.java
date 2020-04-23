@@ -1,4 +1,4 @@
-// Generated from C:/Users/janni/IdeaProjects/EulerLanguage/Grammar\Euler.g4 by ANTLR 4.8
+// Generated from C:/Users/janni/Documents/GitHub/P4---cEX/ANTLR/EulerLanguage/Grammar\Euler.g4 by ANTLR 4.8
 package ANTLR;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -17,17 +17,39 @@ public interface EulerVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProgram(EulerParser.ProgramContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EulerParser#dcl}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDcl(EulerParser.DclContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link EulerParser#stmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitStmt(EulerParser.StmtContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code idInit}
+	 * labeled alternative in {@link EulerParser#dcl}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIdInit(EulerParser.IdInitContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code idAssign}
+	 * labeled alternative in {@link EulerParser#dcl}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIdAssign(EulerParser.IdAssignContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code vecAssign}
+	 * labeled alternative in {@link EulerParser#dcl}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVecAssign(EulerParser.VecAssignContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code mtxAssign}
+	 * labeled alternative in {@link EulerParser#dcl}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMtxAssign(EulerParser.MtxAssignContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EulerParser#expr}.
 	 * @param ctx the parse tree
@@ -64,12 +86,6 @@ public interface EulerVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitStringstmt(EulerParser.StringstmtContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EulerParser#appendsting}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAppendsting(EulerParser.AppendstingContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EulerParser#valindex}.
 	 * @param ctx the parse tree

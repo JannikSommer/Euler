@@ -1,7 +1,8 @@
 package Visitors;
 import ANTLR.*;
 import AST.*;
-import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.*;
+import org.antlr.*;
 
 import java.util.*;
 import java.lang.*;
@@ -138,7 +139,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     public ASTNode visitElseifstmts(EulerParser.ElseifstmtsContext ctx, ASTNode parent) {
         ElseIfStatementNode node = new ElseIfStatementNode(parent);
         StatementBlockNode stmtNode = new StatementBlockNode(node);
-        node.children.add(visitLogstmt(ctx.logstmt().get(0), node));
+        node.children.add(visitLogstmt(ctx.logstmt().get(0) , node));
         ctx.stmt().forEach(child -> {
             stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
         });
@@ -150,7 +151,6 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     public ASTNode visitDcl(EulerParser.DclContext ctx, ASTNode parent) {
         ASTNode value;
         String id = ctx.ID().getText();
-
         if (ctx.MATRIX() != null) {
             String mtx = ctx.MATRIX().getText();
             value = new DeclarationNode(parent, id, mtx);

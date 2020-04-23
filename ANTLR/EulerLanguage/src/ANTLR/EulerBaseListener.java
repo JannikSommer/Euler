@@ -1,4 +1,5 @@
-package ANTLR;// Generated from C:/Users/janni/IdeaProjects/EulerLanguage/Grammar\Euler.g4 by ANTLR 4.8
+// Generated from C:/Users/janni/Documents/GitHub/P4---cEX/ANTLR/EulerLanguage/Grammar\Euler.g4 by ANTLR 4.8
+package ANTLR;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -27,18 +28,6 @@ public class EulerBaseListener implements EulerListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDcl(EulerParser.DclContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitDcl(EulerParser.DclContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterStmt(EulerParser.StmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -46,6 +35,54 @@ public class EulerBaseListener implements EulerListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitStmt(EulerParser.StmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIdInit(EulerParser.IdInitContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIdInit(EulerParser.IdInitContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIdAssign(EulerParser.IdAssignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIdAssign(EulerParser.IdAssignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVecAssign(EulerParser.VecAssignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVecAssign(EulerParser.VecAssignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMtxAssign(EulerParser.MtxAssignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMtxAssign(EulerParser.MtxAssignContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -118,18 +155,6 @@ public class EulerBaseListener implements EulerListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitStringstmt(EulerParser.StringstmtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterAppendsting(EulerParser.AppendstingContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitAppendsting(EulerParser.AppendstingContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

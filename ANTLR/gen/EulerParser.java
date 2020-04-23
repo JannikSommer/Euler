@@ -20,7 +20,7 @@ public class EulerParser extends Parser {
 		IF=10, THEN=11, ELSE=12, END=13, WHILE=14, DO=15, PRINT=16, PLUS=17, MINUS=18, 
 		MULT=19, DIVID=20, MOD=21, LPAREN=22, RPAREN=23, LSQBRACK=24, RSQBRACK=25, 
 		COMMA=26, NUMB=27, VEC=28, MTX=29, NUM=30, MATRIX=31, VECTOR=32, STRING=33, 
-		ID=34, WHITESPACE=35, NEWLINE=36;
+		ID=34, WHITESPACE=35;
 	public static final int
 		RULE_program = 0, RULE_stmt = 1, RULE_dcl = 2, RULE_expr = 3, RULE_ifstmt = 4, 
 		RULE_elsestmts = 5, RULE_elseifstmts = 6, RULE_printstmt = 7, RULE_stringstmt = 8, 
@@ -51,7 +51,7 @@ public class EulerParser extends Parser {
 			"BTEQ", "IF", "THEN", "ELSE", "END", "WHILE", "DO", "PRINT", "PLUS", 
 			"MINUS", "MULT", "DIVID", "MOD", "LPAREN", "RPAREN", "LSQBRACK", "RSQBRACK", 
 			"COMMA", "NUMB", "VEC", "MTX", "NUM", "MATRIX", "VECTOR", "STRING", "ID", 
-			"WHITESPACE", "NEWLINE"
+			"WHITESPACE"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -106,7 +106,7 @@ public class EulerParser extends Parser {
 	}
 
 	public static class ProgramContext extends ParserRuleContext {
-		public TerminalNode DOLLAR() { return getToken(EulerParser.DOLLAR, 0); }
+		public TerminalNode EOF() { return getToken(EulerParser.EOF, 0); }
 		public List<StmtContext> stmt() {
 			return getRuleContexts(StmtContext.class);
 		}
@@ -154,7 +154,7 @@ public class EulerParser extends Parser {
 				_la = _input.LA(1);
 			}
 			setState(44);
-			match(DOLLAR);
+			match(EOF);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1554,7 +1554,7 @@ public class EulerParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3&\u00c8\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3%\u00c8\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\3\2\7\2*\n\2\f\2\16\2-\13\2\3\2\3\2\3\3\3\3\3\3\3"+
@@ -1574,7 +1574,7 @@ public class EulerParser extends Parser {
 		"\2\22\u0087\3\2\2\2\24\u0091\3\2\2\2\26\u0093\3\2\2\2\30\u009d\3\2\2\2"+
 		"\32\u00a9\3\2\2\2\34\u00b0\3\2\2\2\36\u00bb\3\2\2\2 \u00bd\3\2\2\2\"\u00c1"+
 		"\3\2\2\2$\u00c3\3\2\2\2&\u00c5\3\2\2\2(*\5\4\3\2)(\3\2\2\2*-\3\2\2\2+"+
-		")\3\2\2\2+,\3\2\2\2,.\3\2\2\2-+\3\2\2\2./\7\3\2\2/\3\3\2\2\2\60\61\5\b"+
+		")\3\2\2\2+,\3\2\2\2,.\3\2\2\2-+\3\2\2\2./\7\2\2\3/\3\3\2\2\2\60\61\5\b"+
 		"\5\2\61\62\7\4\2\2\62?\3\2\2\2\63\64\5\6\4\2\64\65\7\4\2\2\65?\3\2\2\2"+
 		"\66?\5\n\6\2\67?\5\26\f\289\5\30\r\29:\7\4\2\2:?\3\2\2\2;<\5\20\t\2<="+
 		"\7\4\2\2=?\3\2\2\2>\60\3\2\2\2>\63\3\2\2\2>\66\3\2\2\2>\67\3\2\2\2>8\3"+

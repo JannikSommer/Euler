@@ -1,4 +1,5 @@
-package ANTLR;// Generated from C:/Users/janni/IdeaProjects/EulerLanguage/Grammar\Euler.g4 by ANTLR 4.8
+// Generated from C:/Users/janni/Documents/GitHub/P4---cEX/ANTLR/EulerLanguage/Grammar\Euler.g4 by ANTLR 4.8
+package ANTLR;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -17,16 +18,6 @@ public interface EulerListener extends ParseTreeListener {
 	 */
 	void exitProgram(EulerParser.ProgramContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EulerParser#dcl}.
-	 * @param ctx the parse tree
-	 */
-	void enterDcl(EulerParser.DclContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EulerParser#dcl}.
-	 * @param ctx the parse tree
-	 */
-	void exitDcl(EulerParser.DclContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link EulerParser#stmt}.
 	 * @param ctx the parse tree
 	 */
@@ -36,6 +27,54 @@ public interface EulerListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitStmt(EulerParser.StmtContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code idInit}
+	 * labeled alternative in {@link EulerParser#dcl}.
+	 * @param ctx the parse tree
+	 */
+	void enterIdInit(EulerParser.IdInitContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code idInit}
+	 * labeled alternative in {@link EulerParser#dcl}.
+	 * @param ctx the parse tree
+	 */
+	void exitIdInit(EulerParser.IdInitContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code idAssign}
+	 * labeled alternative in {@link EulerParser#dcl}.
+	 * @param ctx the parse tree
+	 */
+	void enterIdAssign(EulerParser.IdAssignContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code idAssign}
+	 * labeled alternative in {@link EulerParser#dcl}.
+	 * @param ctx the parse tree
+	 */
+	void exitIdAssign(EulerParser.IdAssignContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code vecAssign}
+	 * labeled alternative in {@link EulerParser#dcl}.
+	 * @param ctx the parse tree
+	 */
+	void enterVecAssign(EulerParser.VecAssignContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code vecAssign}
+	 * labeled alternative in {@link EulerParser#dcl}.
+	 * @param ctx the parse tree
+	 */
+	void exitVecAssign(EulerParser.VecAssignContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code mtxAssign}
+	 * labeled alternative in {@link EulerParser#dcl}.
+	 * @param ctx the parse tree
+	 */
+	void enterMtxAssign(EulerParser.MtxAssignContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code mtxAssign}
+	 * labeled alternative in {@link EulerParser#dcl}.
+	 * @param ctx the parse tree
+	 */
+	void exitMtxAssign(EulerParser.MtxAssignContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EulerParser#expr}.
 	 * @param ctx the parse tree
@@ -96,16 +135,6 @@ public interface EulerListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitStringstmt(EulerParser.StringstmtContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EulerParser#appendsting}.
-	 * @param ctx the parse tree
-	 */
-	void enterAppendsting(EulerParser.AppendstingContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EulerParser#appendsting}.
-	 * @param ctx the parse tree
-	 */
-	void exitAppendsting(EulerParser.AppendstingContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EulerParser#valindex}.
 	 * @param ctx the parse tree

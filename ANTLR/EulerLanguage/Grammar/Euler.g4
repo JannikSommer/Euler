@@ -2,7 +2,7 @@ grammar Euler;
 
 // Parser
 
-program     : stmt*  DOLLAR
+program     : stmt*
             ;
 
 stmt        :	expr SEMI
@@ -108,10 +108,6 @@ RPAREN  :')';
 LSQBRACK:'[';
 RSQBRACK:']';
 COMMA   :',';
-
-NUMB    : 'num';
-VEC     : 'vec';
-MTX     : 'mtx';
 
 NUM     : [0-9]+('.'[0-9]+)? ;
 MATRIX  : '{' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID))+ WHITESPACE* (';' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID))+ WHITESPACE* )+ WHITESPACE*'}';

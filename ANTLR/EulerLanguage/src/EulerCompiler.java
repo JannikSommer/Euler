@@ -24,10 +24,11 @@ public class EulerCompiler {
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         EulerParser parser = new EulerParser(tokens);
         // ParseTree tree = parser.program();
+        System.out.println(parser.program().getText());
 
-        AstBuilderVisitor astBuilder = new AstBuilderVisitor();
-        ASTNode node = astBuilder.visitProgram(parser.program());
+        // AstBuilderVisitor astBuilder = new AstBuilderVisitor();
+        //ASTNode node = astBuilder.visitProgram(parser.program());
 
-        //System.out.println(tree.getChild(1).getText());
+
     }
 }
