@@ -273,89 +273,28 @@ public class EulerParser extends Parser {
 	}
 
 	public static class DclContext extends ParserRuleContext {
-		public DclContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_dcl; }
-	 
-		public DclContext() { }
-		public void copyFrom(DclContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class VecAssignContext extends DclContext {
-		public TerminalNode ID() { return getToken(EulerParser.ID, 0); }
-		public TerminalNode ASSIGN() { return getToken(EulerParser.ASSIGN, 0); }
-		public TerminalNode VECTOR() { return getToken(EulerParser.VECTOR, 0); }
-		public VecAssignContext(DclContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof EulerListener ) ((EulerListener)listener).enterVecAssign(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof EulerListener ) ((EulerListener)listener).exitVecAssign(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof EulerVisitor ) return ((EulerVisitor<? extends T>)visitor).visitVecAssign(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class IdAssignContext extends DclContext {
 		public TerminalNode ID() { return getToken(EulerParser.ID, 0); }
 		public TerminalNode ASSIGN() { return getToken(EulerParser.ASSIGN, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
-		public IdAssignContext(DclContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof EulerListener ) ((EulerListener)listener).enterIdAssign(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof EulerListener ) ((EulerListener)listener).exitIdAssign(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof EulerVisitor ) return ((EulerVisitor<? extends T>)visitor).visitIdAssign(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class IdInitContext extends DclContext {
-		public TerminalNode ID() { return getToken(EulerParser.ID, 0); }
-		public IdInitContext(DclContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof EulerListener ) ((EulerListener)listener).enterIdInit(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof EulerListener ) ((EulerListener)listener).exitIdInit(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof EulerVisitor ) return ((EulerVisitor<? extends T>)visitor).visitIdInit(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class MtxAssignContext extends DclContext {
-		public TerminalNode ID() { return getToken(EulerParser.ID, 0); }
-		public TerminalNode ASSIGN() { return getToken(EulerParser.ASSIGN, 0); }
+		public TerminalNode VECTOR() { return getToken(EulerParser.VECTOR, 0); }
 		public TerminalNode MATRIX() { return getToken(EulerParser.MATRIX, 0); }
-		public MtxAssignContext(DclContext ctx) { copyFrom(ctx); }
+		public DclContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_dcl; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof EulerListener ) ((EulerListener)listener).enterMtxAssign(this);
+			if ( listener instanceof EulerListener ) ((EulerListener)listener).enterDcl(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof EulerListener ) ((EulerListener)listener).exitMtxAssign(this);
+			if ( listener instanceof EulerListener ) ((EulerListener)listener).exitDcl(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof EulerVisitor ) return ((EulerVisitor<? extends T>)visitor).visitMtxAssign(this);
+			if ( visitor instanceof EulerVisitor ) return ((EulerVisitor<? extends T>)visitor).visitDcl(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -368,7 +307,6 @@ public class EulerParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 			case 1:
-				_localctx = new IdInitContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(60);
@@ -376,7 +314,6 @@ public class EulerParser extends Parser {
 				}
 				break;
 			case 2:
-				_localctx = new IdAssignContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(61);
@@ -388,7 +325,6 @@ public class EulerParser extends Parser {
 				}
 				break;
 			case 3:
-				_localctx = new VecAssignContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(64);
@@ -400,7 +336,6 @@ public class EulerParser extends Parser {
 				}
 				break;
 			case 4:
-				_localctx = new MtxAssignContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(67);
@@ -1106,15 +1041,15 @@ public class EulerParser extends Parser {
 	}
 
 	public static class AddexprContext extends ParserRuleContext {
+		public Token op;
 		public MultiexprContext multiexpr() {
 			return getRuleContext(MultiexprContext.class,0);
-		}
-		public AriopContext ariop() {
-			return getRuleContext(AriopContext.class,0);
 		}
 		public AddexprContext addexpr() {
 			return getRuleContext(AddexprContext.class,0);
 		}
+		public TerminalNode PLUS() { return getToken(EulerParser.PLUS, 0); }
+		public TerminalNode MINUS() { return getToken(EulerParser.MINUS, 0); }
 		public AddexprContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1137,6 +1072,7 @@ public class EulerParser extends Parser {
 	public final AddexprContext addexpr() throws RecognitionException {
 		AddexprContext _localctx = new AddexprContext(_ctx, getState());
 		enterRule(_localctx, 24, RULE_addexpr);
+		int _la;
 		try {
 			setState(165);
 			_errHandler.sync(this);
@@ -1154,7 +1090,16 @@ public class EulerParser extends Parser {
 				setState(161);
 				multiexpr();
 				setState(162);
-				ariop();
+				((AddexprContext)_localctx).op = _input.LT(1);
+				_la = _input.LA(1);
+				if ( !(_la==PLUS || _la==MINUS) ) {
+					((AddexprContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+				}
+				else {
+					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+					_errHandler.reportMatch(this);
+					consume();
+				}
 				setState(163);
 				addexpr();
 				}
@@ -1173,15 +1118,16 @@ public class EulerParser extends Parser {
 	}
 
 	public static class MultiexprContext extends ParserRuleContext {
+		public Token op;
 		public PrimeexprContext primeexpr() {
 			return getRuleContext(PrimeexprContext.class,0);
-		}
-		public MulopContext mulop() {
-			return getRuleContext(MulopContext.class,0);
 		}
 		public MultiexprContext multiexpr() {
 			return getRuleContext(MultiexprContext.class,0);
 		}
+		public TerminalNode MULT() { return getToken(EulerParser.MULT, 0); }
+		public TerminalNode DIVID() { return getToken(EulerParser.DIVID, 0); }
+		public TerminalNode MOD() { return getToken(EulerParser.MOD, 0); }
 		public MultiexprContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1204,6 +1150,7 @@ public class EulerParser extends Parser {
 	public final MultiexprContext multiexpr() throws RecognitionException {
 		MultiexprContext _localctx = new MultiexprContext(_ctx, getState());
 		enterRule(_localctx, 26, RULE_multiexpr);
+		int _la;
 		try {
 			setState(172);
 			_errHandler.sync(this);
@@ -1221,7 +1168,16 @@ public class EulerParser extends Parser {
 				setState(168);
 				primeexpr();
 				setState(169);
-				mulop();
+				((MultiexprContext)_localctx).op = _input.LT(1);
+				_la = _input.LA(1);
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MULT) | (1L << DIVID) | (1L << MOD))) != 0)) ) {
+					((MultiexprContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+				}
+				else {
+					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+					_errHandler.reportMatch(this);
+					consume();
+				}
 				setState(170);
 				multiexpr();
 				}
@@ -1564,7 +1520,7 @@ public class EulerParser extends Parser {
 		"\17\3\17\3\17\3\17\5\17\u00af\n\17\3\20\3\20\5\20\u00b3\n\20\3\20\3\20"+
 		"\3\20\3\20\3\20\5\20\u00ba\n\20\3\21\3\21\3\21\3\21\3\22\3\22\3\23\3\23"+
 		"\3\24\3\24\3\24\2\2\25\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&\2\5"+
-		"\3\2\6\13\3\2\23\24\3\2\25\27\2\u00ce\2+\3\2\2\2\4<\3\2\2\2\6H\3\2\2\2"+
+		"\3\2\23\24\3\2\25\27\3\2\6\13\2\u00ce\2+\3\2\2\2\4<\3\2\2\2\6H\3\2\2\2"+
 		"\bJ\3\2\2\2\nL\3\2\2\2\fk\3\2\2\2\16m\3\2\2\2\20v\3\2\2\2\22\u0085\3\2"+
 		"\2\2\24\u008f\3\2\2\2\26\u0091\3\2\2\2\30\u009b\3\2\2\2\32\u00a7\3\2\2"+
 		"\2\34\u00ae\3\2\2\2\36\u00b9\3\2\2\2 \u00bb\3\2\2\2\"\u00bf\3\2\2\2$\u00c1"+
@@ -1596,17 +1552,17 @@ public class EulerParser extends Parser {
 		"\u009a\7\17\2\2\u009a\27\3\2\2\2\u009b\u009d\7!\2\2\u009c\u009e\5\24\13"+
 		"\2\u009d\u009c\3\2\2\2\u009d\u009e\3\2\2\2\u009e\u009f\3\2\2\2\u009f\u00a0"+
 		"\7\5\2\2\u00a0\u00a1\5\b\5\2\u00a1\31\3\2\2\2\u00a2\u00a8\5\34\17\2\u00a3"+
-		"\u00a4\5\34\17\2\u00a4\u00a5\5$\23\2\u00a5\u00a6\5\32\16\2\u00a6\u00a8"+
+		"\u00a4\5\34\17\2\u00a4\u00a5\t\2\2\2\u00a5\u00a6\5\32\16\2\u00a6\u00a8"+
 		"\3\2\2\2\u00a7\u00a2\3\2\2\2\u00a7\u00a3\3\2\2\2\u00a8\33\3\2\2\2\u00a9"+
-		"\u00af\5\36\20\2\u00aa\u00ab\5\36\20\2\u00ab\u00ac\5&\24\2\u00ac\u00ad"+
+		"\u00af\5\36\20\2\u00aa\u00ab\5\36\20\2\u00ab\u00ac\t\3\2\2\u00ac\u00ad"+
 		"\5\34\17\2\u00ad\u00af\3\2\2\2\u00ae\u00a9\3\2\2\2\u00ae\u00aa\3\2\2\2"+
 		"\u00af\35\3\2\2\2\u00b0\u00b2\7!\2\2\u00b1\u00b3\5\24\13\2\u00b2\u00b1"+
 		"\3\2\2\2\u00b2\u00b3\3\2\2\2\u00b3\u00ba\3\2\2\2\u00b4\u00ba\7\35\2\2"+
 		"\u00b5\u00b6\7\30\2\2\u00b6\u00b7\5\32\16\2\u00b7\u00b8\7\31\2\2\u00b8"+
 		"\u00ba\3\2\2\2\u00b9\u00b0\3\2\2\2\u00b9\u00b4\3\2\2\2\u00b9\u00b5\3\2"+
 		"\2\2\u00ba\37\3\2\2\2\u00bb\u00bc\5\32\16\2\u00bc\u00bd\5\"\22\2\u00bd"+
-		"\u00be\5\32\16\2\u00be!\3\2\2\2\u00bf\u00c0\t\2\2\2\u00c0#\3\2\2\2\u00c1"+
-		"\u00c2\t\3\2\2\u00c2%\3\2\2\2\u00c3\u00c4\t\4\2\2\u00c4\'\3\2\2\2\26+"+
+		"\u00be\5\32\16\2\u00be!\3\2\2\2\u00bf\u00c0\t\4\2\2\u00c0#\3\2\2\2\u00c1"+
+		"\u00c2\t\2\2\2\u00c2%\3\2\2\2\u00c3\u00c4\t\3\2\2\u00c4\'\3\2\2\2\26+"+
 		"<HRU\\dikt|\u0083\u0085\u008f\u0097\u009d\u00a7\u00ae\u00b2\u00b9";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
