@@ -2,49 +2,42 @@ grammar Euler;
 
 // Parser
 
-program     : dcl* stmt* DOLLAR
-            ;
-
-dcl         :	'num' ID SEMI                                 #idInit
-            |	'num' ID ASSIGN expr SEMI                     #idAssign
-            |	'vec' ID ASSIGN VECTOR SEMI                   #vecAssign
-            |   'mtx' ID ASSIGN MATRIX SEMI                   #mtxAssign
+program     : stmt*
             ;
 
 stmt        :	expr SEMI
-            |   dcl
+            |   dcl SEMI
             |	ifstmt
             |	whilestmt
             |	assignstmt SEMI
             |   printstmt SEMI
             ;
 
+dcl         :	ID                                  #idInit
+            |	ID ASSIGN expr                      #idAssign
+            |	ID ASSIGN VECTOR                    #vecAssign
+            |   ID ASSIGN MATRIX                    #mtxAssign
+            ;
+
 expr        :	addexpr
             ;
 
-ifstmt      :	IF logstmt THEN (stmt)+ elsestmts END
+ifstmt      :	IF logstmt THEN (stmt)+ elsestmts? END
             ;
 
-elsestmts   :	elseifstmts ELSE THEN (stmt)+
-            |   elseifstmts
+elsestmts   :	elseifstmts* ELSE THEN (stmt)+
+            |   elseifstmts+
             ;
 
-elseifstmts :   (ELSE IF logstmt THEN (stmt)+)*
+elseifstmts :   ELSE IF logstmt THEN (stmt)+
             ;
 
-printstmt   :   PRINT stringstmt
+printstmt   :   PRINT stringstmt (PLUS stringstmt)*
             ;
 
-stringstmt  :   appendsting? STRING
-            |   appendsting? NUM
-            |   appendsting? ID valindex?
-            |   appendsting? NEWLINE
-            ;
-
-appendsting:    STRING PLUS appendsting?
-            |   NUM PLUS appendsting?
-            |   ID valindex? PLUS appendsting?
-            |   NEWLINE PLUS appendsting?
+stringstmt  :   STRING
+            |   NUM
+            |   ID valindex?
             ;
 
 valindex    :   LSQBRACK NUM RSQBRACK
@@ -73,12 +66,7 @@ primeexpr   :	ID valindex?
 logstmt     :   addexpr logop addexpr
             ;
 
-logop       :	EQEQ
-            |	BT
-            |	LT
-            |	BTEQ
-            |	LTEQ
-            |	NOTEQ
+logop       :	op=(EQEQ | BT | LT | BTEQ | LTEQ | NOTEQ)
             ;
 
 ariop       :	op=('+'|'-')
@@ -88,8 +76,6 @@ mulop       :	op=('*' | '/' | '%')
             ;
 
 // TOKENS
-
-fragment LINE_TERMINATOR : '/r' '/n';
 
 DOLLAR  : '$' ;
 SEMI    : ';' ;
@@ -110,8 +96,6 @@ WHILE   : 'while';
 DO      : 'do';
 
 PRINT   : 'print';
-NEWLINE : LINE_TERMINATOR;
-WHITESPACE : [ \t]+ -> skip ;
 
 PLUS    : '+';
 MINUS   :'-';
@@ -125,12 +109,9 @@ LSQBRACK:'[';
 RSQBRACK:']';
 COMMA   :',';
 
-NUMB    : 'num';
-VEC     : 'vec';
-MTX     : 'mtx';
-
 NUM     : [0-9]+('.'[0-9]+)? ;
-MATRIX  : '{'(NUM|ID)(','(NUM|ID))+(';'(NUM|ID)(','(NUM|ID))+)+'}';
-VECTOR  : '<'(NUM|ID)(','(NUM|ID))*'>';
+MATRIX  : '{' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID))+ WHITESPACE* (';' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID))+ WHITESPACE* )+ WHITESPACE*'}';
+VECTOR  : '<' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID) WHITESPACE* )* WHITESPACE* '>';
 STRING  : '"'[a-zA-Z0-9_ ]*'"';
 ID      : [a-zA-Z0-9]* [a-zA-Z] [a-zA-Z0-9]*;
+WHITESPACE : [\r\n\t ]+ -> skip;

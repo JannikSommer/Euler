@@ -1,4 +1,5 @@
 import ANTLR.*;
+import AST.ASTNode;
 import Visitors.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.CharStream;
@@ -14,7 +15,7 @@ public class EulerCompiler {
     public static void main(String[] args) {
         CharStream input = null;
         try {
-            input = CharStreams.fromFileName("kurt.txt");
+            input = CharStreams.fromFileName("C:/Users/janni/Documents/GitHub/P4---cEX/ANTLR/EulerLanguage/src/kurt.txt");
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -22,8 +23,12 @@ public class EulerCompiler {
         EulerLexer lexer = new EulerLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         EulerParser parser = new EulerParser(tokens);
-        ParseTree tree = parser.program();
+        // ParseTree tree = parser.program();
+        System.out.println(parser.program().getText());
 
-        System.out.println(tree.getChild(1).getText());
+        // AstBuilderVisitor astBuilder = new AstBuilderVisitor();
+        //ASTNode node = astBuilder.visitProgram(parser.program());
+
+
     }
 }

@@ -1,6 +1,9 @@
 package Visitors;
 import ANTLR.*;
 import AST.*;
+import org.antlr.v4.runtime.*;
+import org.antlr.*;
+
 import java.util.*;
 import java.lang.*;
 
@@ -11,9 +14,136 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     @Override
     public ASTNode visitProgram(EulerParser.ProgramContext ctx) {
         ASTNode node = new ProgramNode(null);
-        for (EulerParser.DclContext dlcs : ctx.dcl()) {
-            visitDcl(dlcs, node);
+        StatementBlockNode stmtNode = new StatementBlockNode(node);
+        ctx.stmt().forEach(child -> {
+            stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
+        });
+        node.children.add(stmtNode);
+        return node;
+    }
+
+    public ASTNode visitStmt(EulerParser.StmtContext ctx, ASTNode parent) {
+        String name = ctx.children.get(0).getClass().getSimpleName();
+        if (name.equals("ExprContext")) {
+            return visitExpr((EulerParser.ExprContext) ctx.children.get(0), parent);
         }
+        else if (name.equals("DclContext")) {
+            return visitDcl((EulerParser.DclContext) ctx.children.get(0), parent);
+        }
+        else if (name.equals("IfstmtContext")) {
+            return visitIfstmt((EulerParser.IfstmtContext) ctx.children.get(0), parent);
+        }
+        else if (name.equals("WhilestmtContext")) {
+            return visitWhilestmt((EulerParser.WhilestmtContext) ctx.children.get(0), parent);
+        }
+        else if (name.equals("AssignstmtContext")) {
+            return visitAssignstmt((EulerParser.AssignstmtContext) ctx.children.get(0), parent);
+        }
+        else if (name.equals("PrintstmtContext")) {
+            return visitPrintstmt((EulerParser.PrintstmtContext) ctx.children.get(0), parent);
+        }
+        else {
+            // throw shit
+            return null;
+        }
+    }
+
+    public ASTNode visitPrintstmt(EulerParser.PrintstmtContext ctx, ASTNode parent) {
+        PrintNode node = new PrintNode(parent);
+        ctx.children.forEach(child -> {
+            if (child.getClass().getSimpleName().equals("StringstmtContext")) {
+                node.children.add(visitStringstmt((EulerParser.StringstmtContext) child, parent));
+            }
+        });
+        return node;
+    }
+
+    public ASTNode visitStringstmt(EulerParser.StringstmtContext ctx, ASTNode parent) {
+        if (ctx.ID() != null ) {
+            if (ctx.valindex() != null) {
+                return new IdentificationNode(parent, ctx.ID().getText(), ctx.valindex().getText());
+            }
+            return new IdentificationNode(parent, ctx.ID().getText());
+        }
+        else if (ctx.NUM() != null) {
+            return new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
+        } else if (ctx.STRING() != null) {
+            return new StringNode(parent, ctx.STRING().getText());
+        }
+        return null;
+    }
+
+    public ASTNode visitAssignstmt(EulerParser.AssignstmtContext ctx, ASTNode parent) {
+        AssignmentNode node = new AssignmentNode(parent);
+        node.identifier = ctx.ID().getText();
+        ASTNode child = visitExpr(ctx.expr(), node);
+        node.children.add(child);
+        if (ctx.valindex() != null) {
+            node.valIndex = ctx.valindex().getText();
+            return node;
+        } else {
+            return node;
+        }
+    }
+
+    public ASTNode visitWhilestmt(EulerParser.WhilestmtContext ctx, ASTNode parent) {
+        WhileNode node = new WhileNode(parent);
+        StatementBlockNode stmtNode = new StatementBlockNode(node);
+        node.children.add(visitLogstmt(ctx.logstmt(), node));
+        ctx.stmt().forEach(child -> {
+            stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
+        });
+        node.children.add(stmtNode);
+        return node;
+    }
+
+    public ASTNode visitLogstmt(EulerParser.LogstmtContext ctx, ASTNode parent) {
+        LogicExpressionNode node = new LogicExpressionNode(parent);
+        node.operator = ctx.logop().getText();
+        node.children.add(visitAddexpr(ctx.addexpr(0), node));
+        node.children.add(visitAddexpr(ctx.addexpr(1), node));
+        return node;
+    }
+
+    public ASTNode visitIfstmt(EulerParser.IfstmtContext ctx, ASTNode parent) {
+        IfStatementNode node = new IfStatementNode(parent);
+        StatementBlockNode stmtNode = new StatementBlockNode(node) ;
+        node.children.add(visitLogstmt(ctx.logstmt(), node));
+        ctx.stmt().forEach(child -> {
+            stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
+        });
+        node.children.add(stmtNode);
+        if (ctx.elsestmts() != null) {
+            node.children.add(visitElsestmts(ctx.elsestmts(), node));
+        }
+        return node;
+    }
+
+
+
+    public ASTNode visitElsestmts(EulerParser.ElsestmtsContext ctx, ASTNode parent) {
+        ElseStatementNode node = new ElseStatementNode(parent);
+        ctx.children.forEach(child -> {
+            if (child.getClass().getSimpleName().equals("ElseifstmtsContext")) {
+                node.children.add(visitElseifstmts((EulerParser.ElseifstmtsContext) child, node));
+            }
+            else if (child.getClass().getSimpleName().equals("StmtContext")) {
+                StatementBlockNode stmtNode = new StatementBlockNode(node);
+                stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
+                node.children.add(stmtNode);
+            }
+        });
+        return node;
+    }
+
+    public ASTNode visitElseifstmts(EulerParser.ElseifstmtsContext ctx, ASTNode parent) {
+        ElseIfStatementNode node = new ElseIfStatementNode(parent);
+        StatementBlockNode stmtNode = new StatementBlockNode(node);
+        node.children.add(visitLogstmt(ctx.logstmt().get(0) , node));
+        ctx.stmt().forEach(child -> {
+            stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
+        });
+        node.children.add(stmtNode);
         return node;
     }
 
@@ -21,7 +151,6 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     public ASTNode visitDcl(EulerParser.DclContext ctx, ASTNode parent) {
         ASTNode value;
         String id = ctx.ID().getText();
-
         if (ctx.MATRIX() != null) {
             String mtx = ctx.MATRIX().getText();
             value = new DeclarationNode(parent, id, mtx);
@@ -62,6 +191,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             right = visitAddexpr(ctx.addexpr(), parent);
             return new SubtractionNode(parent, left, right);
         }
+        else return null;
     }
 
     public ASTNode visitMultiexpr(EulerParser.MultiexprContext ctx, ASTNode parent) {
@@ -84,6 +214,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             right = visitMultiexpr(ctx.multiexpr(), parent);
             return new ModuloNode(parent, left, right);
         }
+
+        else return null;
     }
 
     public ASTNode visitPrimeexpr(EulerParser.PrimeexprContext ctx, ASTNode parent) {
@@ -97,7 +229,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             return new IdentificationNode(parent, id);
         }
         else if (ctx.NUM().getText() != null) {
-            return new NumberLiteral(parent, Double.parseDouble(ctx.NUM().getText()));
+            return new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
         }
         else if (ctx.LPAREN().getText() != null) {
             return visitAddexpr(ctx.addexpr(), parent);

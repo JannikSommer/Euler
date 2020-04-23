@@ -4,6 +4,7 @@ import Visitors.*;
 
 public class LogicExpressionNode extends ASTNode {
 
+    public String operator;
     public LogicExpressionNode(ASTNode parentNode) {
         super(parentNode);
     }

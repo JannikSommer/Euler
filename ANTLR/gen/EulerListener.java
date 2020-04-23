@@ -17,6 +17,16 @@ public interface EulerListener extends ParseTreeListener {
 	 */
 	void exitProgram(EulerParser.ProgramContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link EulerParser#stmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterStmt(EulerParser.StmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link EulerParser#stmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitStmt(EulerParser.StmtContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code idInit}
 	 * labeled alternative in {@link EulerParser#dcl}.
 	 * @param ctx the parse tree
@@ -64,16 +74,6 @@ public interface EulerListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMtxAssign(EulerParser.MtxAssignContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EulerParser#stmt}.
-	 * @param ctx the parse tree
-	 */
-	void enterStmt(EulerParser.StmtContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EulerParser#stmt}.
-	 * @param ctx the parse tree
-	 */
-	void exitStmt(EulerParser.StmtContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EulerParser#expr}.
 	 * @param ctx the parse tree
@@ -134,16 +134,6 @@ public interface EulerListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitStringstmt(EulerParser.StringstmtContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EulerParser#appendsting}.
-	 * @param ctx the parse tree
-	 */
-	void enterAppendsting(EulerParser.AppendstingContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EulerParser#appendsting}.
-	 * @param ctx the parse tree
-	 */
-	void exitAppendsting(EulerParser.AppendstingContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EulerParser#valindex}.
 	 * @param ctx the parse tree

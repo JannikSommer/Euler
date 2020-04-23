@@ -1,4 +1,4 @@
-// Generated from C:/Users/janni/IdeaProjects/EulerLanguage/Grammar\Euler.g4 by ANTLR 4.8
+// Generated from C:/Users/janni/Documents/GitHub/P4---cEX/ANTLR/EulerLanguage/Grammar\Euler.g4 by ANTLR 4.8
 package ANTLR;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
 
-
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class EulerParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.8", RuntimeMetaData.VERSION); }
@@ -19,21 +18,20 @@ public class EulerParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		DOLLAR=1, SEMI=2, ASSIGN=3, LT=4, BT=5, EQEQ=6, NOTEQ=7, LTEQ=8, BTEQ=9, 
-		IF=10, THEN=11, ELSE=12, END=13, WHILE=14, DO=15, PRINT=16, NEWLINE=17, 
-		WHITESPACE=18, PLUS=19, MINUS=20, MULT=21, DIVID=22, MOD=23, LPAREN=24, 
-		RPAREN=25, LSQBRACK=26, RSQBRACK=27, COMMA=28, NUM=29, MATRIX=30, VECTOR=31, 
-		STRING=32, ID=33;
+		IF=10, THEN=11, ELSE=12, END=13, WHILE=14, DO=15, PRINT=16, PLUS=17, MINUS=18, 
+		MULT=19, DIVID=20, MOD=21, LPAREN=22, RPAREN=23, LSQBRACK=24, RSQBRACK=25, 
+		COMMA=26, NUM=27, MATRIX=28, VECTOR=29, STRING=30, ID=31, WHITESPACE=32;
 	public static final int
-		RULE_program = 0, RULE_dcl = 1, RULE_stmt = 2, RULE_expr = 3, RULE_ifstmt = 4, 
+		RULE_program = 0, RULE_stmt = 1, RULE_dcl = 2, RULE_expr = 3, RULE_ifstmt = 4, 
 		RULE_elsestmts = 5, RULE_elseifstmts = 6, RULE_printstmt = 7, RULE_stringstmt = 8, 
-		RULE_appendsting = 9, RULE_valindex = 10, RULE_whilestmt = 11, RULE_assignstmt = 12, 
-		RULE_addexpr = 13, RULE_multiexpr = 14, RULE_primeexpr = 15, RULE_logstmt = 16, 
-		RULE_logop = 17, RULE_ariop = 18, RULE_mulop = 19;
+		RULE_valindex = 9, RULE_whilestmt = 10, RULE_assignstmt = 11, RULE_addexpr = 12, 
+		RULE_multiexpr = 13, RULE_primeexpr = 14, RULE_logstmt = 15, RULE_logop = 16, 
+		RULE_ariop = 17, RULE_mulop = 18;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"program", "dcl", "stmt", "expr", "ifstmt", "elsestmts", "elseifstmts", 
-			"printstmt", "stringstmt", "appendsting", "valindex", "whilestmt", "assignstmt", 
-			"addexpr", "multiexpr", "primeexpr", "logstmt", "logop", "ariop", "mulop"
+			"program", "stmt", "dcl", "expr", "ifstmt", "elsestmts", "elseifstmts", 
+			"printstmt", "stringstmt", "valindex", "whilestmt", "assignstmt", "addexpr", 
+			"multiexpr", "primeexpr", "logstmt", "logop", "ariop", "mulop"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -41,19 +39,17 @@ public class EulerParser extends Parser {
 	private static String[] makeLiteralNames() {
 		return new String[] {
 			null, "'$'", "';'", "'='", "'<'", "'>'", "'=='", "'!='", "'<='", "'>='", 
-			"'if'", "'then'", "'else'", "'end'", "'while'", "'do'", "'print'", null, 
-			null, "'+'", "'-'", "'*'", "'/'", "'%'", "'('", "')'", "'['", "']'", 
-			"','"
+			"'if'", "'then'", "'else'", "'end'", "'while'", "'do'", "'print'", "'+'", 
+			"'-'", "'*'", "'/'", "'%'", "'('", "')'", "'['", "']'", "','"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, "DOLLAR", "SEMI", "ASSIGN", "LT", "BT", "EQEQ", "NOTEQ", "LTEQ", 
-			"BTEQ", "IF", "THEN", "ELSE", "END", "WHILE", "DO", "PRINT", "NEWLINE", 
-			"WHITESPACE", "PLUS", "MINUS", "MULT", "DIVID", "MOD", "LPAREN", "RPAREN", 
-			"LSQBRACK", "RSQBRACK", "COMMA", "NUM", "MATRIX", "VECTOR", "STRING", 
-			"ID"
+			"BTEQ", "IF", "THEN", "ELSE", "END", "WHILE", "DO", "PRINT", "PLUS", 
+			"MINUS", "MULT", "DIVID", "MOD", "LPAREN", "RPAREN", "LSQBRACK", "RSQBRACK", 
+			"COMMA", "NUM", "MATRIX", "VECTOR", "STRING", "ID", "WHITESPACE"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -108,17 +104,6 @@ public class EulerParser extends Parser {
 	}
 
 	public static class ProgramContext extends ParserRuleContext {
-		public TerminalNode DOLLAR() { return getToken(EulerParser.DOLLAR, 0); }
-		public List<DclContext> dcl() {
-			return getRuleContexts(DclContext.class);
-		}
-		public DclContext dcl(int i) {
-			return getRuleContext(DclContext.class,i);
-		}
-		public List<TerminalNode> SEMI() { return getTokens(EulerParser.SEMI); }
-		public TerminalNode SEMI(int i) {
-			return getToken(EulerParser.SEMI, i);
-		}
 		public List<StmtContext> stmt() {
 			return getRuleContexts(StmtContext.class);
 		}
@@ -149,134 +134,22 @@ public class EulerParser extends Parser {
 		enterRule(_localctx, 0, RULE_program);
 		int _la;
 		try {
-			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(43); 
-			_errHandler.sync(this);
-			_alt = 1;
-			do {
-				switch (_alt) {
-				case 1:
-					{
-					{
-					setState(40);
-					dcl();
-					setState(41);
-					match(SEMI);
-					}
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				setState(45); 
-				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
-			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
-			setState(50);
+			setState(41);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IF) | (1L << WHILE) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0)) {
 				{
 				{
-				setState(47);
+				setState(38);
 				stmt();
 				}
 				}
-				setState(52);
+				setState(43);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(53);
-			match(DOLLAR);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class DclContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(EulerParser.ID, 0); }
-		public TerminalNode ASSIGN() { return getToken(EulerParser.ASSIGN, 0); }
-		public ExprContext expr() {
-			return getRuleContext(ExprContext.class,0);
-		}
-		public TerminalNode VECTOR() { return getToken(EulerParser.VECTOR, 0); }
-		public TerminalNode MATRIX() { return getToken(EulerParser.MATRIX, 0); }
-		public DclContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_dcl; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof EulerListener ) ((EulerListener)listener).enterDcl(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof EulerListener ) ((EulerListener)listener).exitDcl(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof EulerVisitor ) return ((EulerVisitor<? extends T>)visitor).visitDcl(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final DclContext dcl() throws RecognitionException {
-		DclContext _localctx = new DclContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_dcl);
-		try {
-			setState(65);
-			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
-			case 1:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(55);
-				match(ID);
-				}
-				break;
-			case 2:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(56);
-				match(ID);
-				setState(57);
-				match(ASSIGN);
-				setState(58);
-				expr();
-				}
-				break;
-			case 3:
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(59);
-				match(ID);
-				setState(60);
-				match(ASSIGN);
-				setState(61);
-				match(VECTOR);
-				}
-				break;
-			case 4:
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(62);
-				match(ID);
-				setState(63);
-				match(ASSIGN);
-				setState(64);
-				match(MATRIX);
-				}
-				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -295,6 +168,9 @@ public class EulerParser extends Parser {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public TerminalNode SEMI() { return getToken(EulerParser.SEMI, 0); }
+		public DclContext dcl() {
+			return getRuleContext(DclContext.class,0);
+		}
 		public IfstmtContext ifstmt() {
 			return getRuleContext(IfstmtContext.class,0);
 		}
@@ -328,50 +204,211 @@ public class EulerParser extends Parser {
 
 	public final StmtContext stmt() throws RecognitionException {
 		StmtContext _localctx = new StmtContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_stmt);
+		enterRule(_localctx, 2, RULE_stmt);
 		try {
-			setState(78);
+			setState(58);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(67);
+				setState(44);
 				expr();
-				setState(68);
+				setState(45);
 				match(SEMI);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(70);
-				ifstmt();
+				setState(47);
+				dcl();
+				setState(48);
+				match(SEMI);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(71);
-				whilestmt();
+				setState(50);
+				ifstmt();
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(72);
-				assignstmt();
-				setState(73);
-				match(SEMI);
+				setState(51);
+				whilestmt();
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(75);
-				printstmt();
-				setState(76);
+				setState(52);
+				assignstmt();
+				setState(53);
 				match(SEMI);
+				}
+				break;
+			case 6:
+				enterOuterAlt(_localctx, 6);
+				{
+				setState(55);
+				printstmt();
+				setState(56);
+				match(SEMI);
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class DclContext extends ParserRuleContext {
+		public DclContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_dcl; }
+	 
+		public DclContext() { }
+		public void copyFrom(DclContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class VecAssignContext extends DclContext {
+		public TerminalNode ID() { return getToken(EulerParser.ID, 0); }
+		public TerminalNode ASSIGN() { return getToken(EulerParser.ASSIGN, 0); }
+		public TerminalNode VECTOR() { return getToken(EulerParser.VECTOR, 0); }
+		public VecAssignContext(DclContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof EulerListener ) ((EulerListener)listener).enterVecAssign(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof EulerListener ) ((EulerListener)listener).exitVecAssign(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EulerVisitor ) return ((EulerVisitor<? extends T>)visitor).visitVecAssign(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class IdAssignContext extends DclContext {
+		public TerminalNode ID() { return getToken(EulerParser.ID, 0); }
+		public TerminalNode ASSIGN() { return getToken(EulerParser.ASSIGN, 0); }
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public IdAssignContext(DclContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof EulerListener ) ((EulerListener)listener).enterIdAssign(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof EulerListener ) ((EulerListener)listener).exitIdAssign(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EulerVisitor ) return ((EulerVisitor<? extends T>)visitor).visitIdAssign(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class IdInitContext extends DclContext {
+		public TerminalNode ID() { return getToken(EulerParser.ID, 0); }
+		public IdInitContext(DclContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof EulerListener ) ((EulerListener)listener).enterIdInit(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof EulerListener ) ((EulerListener)listener).exitIdInit(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EulerVisitor ) return ((EulerVisitor<? extends T>)visitor).visitIdInit(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class MtxAssignContext extends DclContext {
+		public TerminalNode ID() { return getToken(EulerParser.ID, 0); }
+		public TerminalNode ASSIGN() { return getToken(EulerParser.ASSIGN, 0); }
+		public TerminalNode MATRIX() { return getToken(EulerParser.MATRIX, 0); }
+		public MtxAssignContext(DclContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof EulerListener ) ((EulerListener)listener).enterMtxAssign(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof EulerListener ) ((EulerListener)listener).exitMtxAssign(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EulerVisitor ) return ((EulerVisitor<? extends T>)visitor).visitMtxAssign(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final DclContext dcl() throws RecognitionException {
+		DclContext _localctx = new DclContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_dcl);
+		try {
+			setState(70);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
+			case 1:
+				_localctx = new IdInitContext(_localctx);
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(60);
+				match(ID);
+				}
+				break;
+			case 2:
+				_localctx = new IdAssignContext(_localctx);
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(61);
+				match(ID);
+				setState(62);
+				match(ASSIGN);
+				setState(63);
+				expr();
+				}
+				break;
+			case 3:
+				_localctx = new VecAssignContext(_localctx);
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(64);
+				match(ID);
+				setState(65);
+				match(ASSIGN);
+				setState(66);
+				match(VECTOR);
+				}
+				break;
+			case 4:
+				_localctx = new MtxAssignContext(_localctx);
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(67);
+				match(ID);
+				setState(68);
+				match(ASSIGN);
+				setState(69);
+				match(MATRIX);
 				}
 				break;
 			}
@@ -416,7 +453,7 @@ public class EulerParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(80);
+			setState(72);
 			addexpr();
 			}
 		}
@@ -437,15 +474,15 @@ public class EulerParser extends Parser {
 			return getRuleContext(LogstmtContext.class,0);
 		}
 		public TerminalNode THEN() { return getToken(EulerParser.THEN, 0); }
-		public ElsestmtsContext elsestmts() {
-			return getRuleContext(ElsestmtsContext.class,0);
-		}
 		public TerminalNode END() { return getToken(EulerParser.END, 0); }
 		public List<StmtContext> stmt() {
 			return getRuleContexts(StmtContext.class);
 		}
 		public StmtContext stmt(int i) {
 			return getRuleContext(StmtContext.class,i);
+		}
+		public ElsestmtsContext elsestmts() {
+			return getRuleContext(ElsestmtsContext.class,0);
 		}
 		public IfstmtContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -473,29 +510,37 @@ public class EulerParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(82);
+			setState(74);
 			match(IF);
-			setState(83);
+			setState(75);
 			logstmt();
-			setState(84);
+			setState(76);
 			match(THEN);
-			setState(86); 
+			setState(78); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(85);
+				setState(77);
 				stmt();
 				}
 				}
-				setState(88); 
+				setState(80); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IF) | (1L << WHILE) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0) );
-			setState(90);
-			elsestmts();
-			setState(91);
+			setState(83);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			if (_la==ELSE) {
+				{
+				setState(82);
+				elsestmts();
+				}
+			}
+
+			setState(85);
 			match(END);
 			}
 		}
@@ -511,11 +556,14 @@ public class EulerParser extends Parser {
 	}
 
 	public static class ElsestmtsContext extends ParserRuleContext {
-		public ElseifstmtsContext elseifstmts() {
-			return getRuleContext(ElseifstmtsContext.class,0);
-		}
 		public TerminalNode ELSE() { return getToken(EulerParser.ELSE, 0); }
 		public TerminalNode THEN() { return getToken(EulerParser.THEN, 0); }
+		public List<ElseifstmtsContext> elseifstmts() {
+			return getRuleContexts(ElseifstmtsContext.class);
+		}
+		public ElseifstmtsContext elseifstmts(int i) {
+			return getRuleContext(ElseifstmtsContext.class,i);
+		}
 		public List<StmtContext> stmt() {
 			return getRuleContexts(StmtContext.class);
 		}
@@ -546,29 +594,44 @@ public class EulerParser extends Parser {
 		enterRule(_localctx, 10, RULE_elsestmts);
 		int _la;
 		try {
-			setState(102);
+			int _alt;
+			setState(105);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
+				setState(90);
+				_errHandler.sync(this);
+				_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
+				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+					if ( _alt==1 ) {
+						{
+						{
+						setState(87);
+						elseifstmts();
+						}
+						} 
+					}
+					setState(92);
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
+				}
 				setState(93);
-				elseifstmts();
-				setState(94);
 				match(ELSE);
-				setState(95);
+				setState(94);
 				match(THEN);
-				setState(97); 
+				setState(96); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(96);
+					setState(95);
 					stmt();
 					}
 					}
-					setState(99); 
+					setState(98); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IF) | (1L << WHILE) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0) );
@@ -577,8 +640,20 @@ public class EulerParser extends Parser {
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(101);
-				elseifstmts();
+				setState(101); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(100);
+					elseifstmts();
+					}
+					}
+					setState(103); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( _la==ELSE );
 				}
 				break;
 			}
@@ -595,24 +670,12 @@ public class EulerParser extends Parser {
 	}
 
 	public static class ElseifstmtsContext extends ParserRuleContext {
-		public List<TerminalNode> ELSE() { return getTokens(EulerParser.ELSE); }
-		public TerminalNode ELSE(int i) {
-			return getToken(EulerParser.ELSE, i);
+		public TerminalNode ELSE() { return getToken(EulerParser.ELSE, 0); }
+		public TerminalNode IF() { return getToken(EulerParser.IF, 0); }
+		public LogstmtContext logstmt() {
+			return getRuleContext(LogstmtContext.class,0);
 		}
-		public List<TerminalNode> IF() { return getTokens(EulerParser.IF); }
-		public TerminalNode IF(int i) {
-			return getToken(EulerParser.IF, i);
-		}
-		public List<LogstmtContext> logstmt() {
-			return getRuleContexts(LogstmtContext.class);
-		}
-		public LogstmtContext logstmt(int i) {
-			return getRuleContext(LogstmtContext.class,i);
-		}
-		public List<TerminalNode> THEN() { return getTokens(EulerParser.THEN); }
-		public TerminalNode THEN(int i) {
-			return getToken(EulerParser.THEN, i);
-		}
+		public TerminalNode THEN() { return getToken(EulerParser.THEN, 0); }
 		public List<StmtContext> stmt() {
 			return getRuleContexts(StmtContext.class);
 		}
@@ -643,45 +706,30 @@ public class EulerParser extends Parser {
 		enterRule(_localctx, 12, RULE_elseifstmts);
 		int _la;
 		try {
-			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(115);
+			setState(107);
+			match(ELSE);
+			setState(108);
+			match(IF);
+			setState(109);
+			logstmt();
+			setState(110);
+			match(THEN);
+			setState(112); 
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
-					{
-					{
-					setState(104);
-					match(ELSE);
-					setState(105);
-					match(IF);
-					setState(106);
-					logstmt();
-					setState(107);
-					match(THEN);
-					setState(109); 
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-					do {
-						{
-						{
-						setState(108);
-						stmt();
-						}
-						}
-						setState(111); 
-						_errHandler.sync(this);
-						_la = _input.LA(1);
-					} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IF) | (1L << WHILE) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0) );
-					}
-					} 
+			_la = _input.LA(1);
+			do {
+				{
+				{
+				setState(111);
+				stmt();
 				}
-				setState(117);
+				}
+				setState(114); 
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
-			}
+				_la = _input.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IF) | (1L << WHILE) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -697,8 +745,15 @@ public class EulerParser extends Parser {
 
 	public static class PrintstmtContext extends ParserRuleContext {
 		public TerminalNode PRINT() { return getToken(EulerParser.PRINT, 0); }
-		public StringstmtContext stringstmt() {
-			return getRuleContext(StringstmtContext.class,0);
+		public List<StringstmtContext> stringstmt() {
+			return getRuleContexts(StringstmtContext.class);
+		}
+		public StringstmtContext stringstmt(int i) {
+			return getRuleContext(StringstmtContext.class,i);
+		}
+		public List<TerminalNode> PLUS() { return getTokens(EulerParser.PLUS); }
+		public TerminalNode PLUS(int i) {
+			return getToken(EulerParser.PLUS, i);
 		}
 		public PrintstmtContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -722,13 +777,30 @@ public class EulerParser extends Parser {
 	public final PrintstmtContext printstmt() throws RecognitionException {
 		PrintstmtContext _localctx = new PrintstmtContext(_ctx, getState());
 		enterRule(_localctx, 14, RULE_printstmt);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(118);
+			setState(116);
 			match(PRINT);
-			setState(119);
+			setState(117);
 			stringstmt();
+			setState(122);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while (_la==PLUS) {
+				{
+				{
+				setState(118);
+				match(PLUS);
+				setState(119);
+				stringstmt();
+				}
+				}
+				setState(124);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -744,15 +816,11 @@ public class EulerParser extends Parser {
 
 	public static class StringstmtContext extends ParserRuleContext {
 		public TerminalNode STRING() { return getToken(EulerParser.STRING, 0); }
-		public AppendstingContext appendsting() {
-			return getRuleContext(AppendstingContext.class,0);
-		}
 		public TerminalNode NUM() { return getToken(EulerParser.NUM, 0); }
 		public TerminalNode ID() { return getToken(EulerParser.ID, 0); }
 		public ValindexContext valindex() {
 			return getRuleContext(ValindexContext.class,0);
 		}
-		public TerminalNode NEWLINE() { return getToken(EulerParser.NEWLINE, 0); }
 		public StringstmtContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -777,223 +845,38 @@ public class EulerParser extends Parser {
 		enterRule(_localctx, 16, RULE_stringstmt);
 		int _la;
 		try {
-			setState(140);
-			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,14,_ctx) ) {
-			case 1:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(122);
-				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
-				case 1:
-					{
-					setState(121);
-					appendsting();
-					}
-					break;
-				}
-				setState(124);
-				match(STRING);
-				}
-				break;
-			case 2:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(126);
-				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
-				case 1:
-					{
-					setState(125);
-					appendsting();
-					}
-					break;
-				}
-				setState(128);
-				match(NUM);
-				}
-				break;
-			case 3:
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(130);
-				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,11,_ctx) ) {
-				case 1:
-					{
-					setState(129);
-					appendsting();
-					}
-					break;
-				}
-				setState(132);
-				match(ID);
-				setState(134);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				if (_la==LSQBRACK) {
-					{
-					setState(133);
-					valindex();
-					}
-				}
-
-				}
-				break;
-			case 4:
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(137);
-				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,13,_ctx) ) {
-				case 1:
-					{
-					setState(136);
-					appendsting();
-					}
-					break;
-				}
-				setState(139);
-				match(NEWLINE);
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class AppendstingContext extends ParserRuleContext {
-		public TerminalNode STRING() { return getToken(EulerParser.STRING, 0); }
-		public TerminalNode PLUS() { return getToken(EulerParser.PLUS, 0); }
-		public AppendstingContext appendsting() {
-			return getRuleContext(AppendstingContext.class,0);
-		}
-		public TerminalNode NUM() { return getToken(EulerParser.NUM, 0); }
-		public TerminalNode ID() { return getToken(EulerParser.ID, 0); }
-		public ValindexContext valindex() {
-			return getRuleContext(ValindexContext.class,0);
-		}
-		public TerminalNode NEWLINE() { return getToken(EulerParser.NEWLINE, 0); }
-		public AppendstingContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_appendsting; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof EulerListener ) ((EulerListener)listener).enterAppendsting(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof EulerListener ) ((EulerListener)listener).exitAppendsting(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof EulerVisitor ) return ((EulerVisitor<? extends T>)visitor).visitAppendsting(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final AppendstingContext appendsting() throws RecognitionException {
-		AppendstingContext _localctx = new AppendstingContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_appendsting);
-		int _la;
-		try {
-			setState(165);
+			setState(131);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case STRING:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(142);
+				setState(125);
 				match(STRING);
-				setState(143);
-				match(PLUS);
-				setState(145);
-				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,15,_ctx) ) {
-				case 1:
-					{
-					setState(144);
-					appendsting();
-					}
-					break;
-				}
 				}
 				break;
 			case NUM:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(147);
+				setState(126);
 				match(NUM);
-				setState(148);
-				match(PLUS);
-				setState(150);
-				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,16,_ctx) ) {
-				case 1:
-					{
-					setState(149);
-					appendsting();
-					}
-					break;
-				}
 				}
 				break;
 			case ID:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(152);
+				setState(127);
 				match(ID);
-				setState(154);
+				setState(129);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==LSQBRACK) {
 					{
-					setState(153);
+					setState(128);
 					valindex();
 					}
 				}
 
-				setState(156);
-				match(PLUS);
-				setState(158);
-				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,18,_ctx) ) {
-				case 1:
-					{
-					setState(157);
-					appendsting();
-					}
-					break;
-				}
-				}
-				break;
-			case NEWLINE:
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(160);
-				match(NEWLINE);
-				setState(161);
-				match(PLUS);
-				setState(163);
-				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,19,_ctx) ) {
-				case 1:
-					{
-					setState(162);
-					appendsting();
-					}
-					break;
-				}
 				}
 				break;
 			default:
@@ -1040,34 +923,34 @@ public class EulerParser extends Parser {
 
 	public final ValindexContext valindex() throws RecognitionException {
 		ValindexContext _localctx = new ValindexContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_valindex);
+		enterRule(_localctx, 18, RULE_valindex);
 		try {
-			setState(175);
+			setState(141);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,21,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,13,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(167);
+				setState(133);
 				match(LSQBRACK);
-				setState(168);
+				setState(134);
 				match(NUM);
-				setState(169);
+				setState(135);
 				match(RSQBRACK);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(170);
+				setState(136);
 				match(LSQBRACK);
-				setState(171);
+				setState(137);
 				match(NUM);
-				setState(172);
+				setState(138);
 				match(COMMA);
-				setState(173);
+				setState(139);
 				match(NUM);
-				setState(174);
+				setState(140);
 				match(RSQBRACK);
 				}
 				break;
@@ -1118,32 +1001,32 @@ public class EulerParser extends Parser {
 
 	public final WhilestmtContext whilestmt() throws RecognitionException {
 		WhilestmtContext _localctx = new WhilestmtContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_whilestmt);
+		enterRule(_localctx, 20, RULE_whilestmt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(177);
+			setState(143);
 			match(WHILE);
-			setState(178);
+			setState(144);
 			logstmt();
-			setState(179);
+			setState(145);
 			match(DO);
-			setState(181); 
+			setState(147); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(180);
+				setState(146);
 				stmt();
 				}
 				}
-				setState(183); 
+				setState(149); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IF) | (1L << WHILE) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0) );
-			setState(185);
+			setState(151);
 			match(END);
 			}
 		}
@@ -1188,26 +1071,26 @@ public class EulerParser extends Parser {
 
 	public final AssignstmtContext assignstmt() throws RecognitionException {
 		AssignstmtContext _localctx = new AssignstmtContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_assignstmt);
+		enterRule(_localctx, 22, RULE_assignstmt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(187);
+			setState(153);
 			match(ID);
-			setState(189);
+			setState(155);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==LSQBRACK) {
 				{
-				setState(188);
+				setState(154);
 				valindex();
 				}
 			}
 
-			setState(191);
+			setState(157);
 			match(ASSIGN);
-			setState(192);
+			setState(158);
 			expr();
 			}
 		}
@@ -1223,15 +1106,15 @@ public class EulerParser extends Parser {
 	}
 
 	public static class AddexprContext extends ParserRuleContext {
-		public Token op;
 		public MultiexprContext multiexpr() {
 			return getRuleContext(MultiexprContext.class,0);
+		}
+		public AriopContext ariop() {
+			return getRuleContext(AriopContext.class,0);
 		}
 		public AddexprContext addexpr() {
 			return getRuleContext(AddexprContext.class,0);
 		}
-		public TerminalNode PLUS() { return getToken(EulerParser.PLUS, 0); }
-		public TerminalNode MINUS() { return getToken(EulerParser.MINUS, 0); }
 		public AddexprContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1253,36 +1136,26 @@ public class EulerParser extends Parser {
 
 	public final AddexprContext addexpr() throws RecognitionException {
 		AddexprContext _localctx = new AddexprContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_addexpr);
-		int _la;
+		enterRule(_localctx, 24, RULE_addexpr);
 		try {
-			setState(199);
+			setState(165);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,24,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,16,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(194);
+				setState(160);
 				multiexpr();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(195);
+				setState(161);
 				multiexpr();
-				setState(196);
-				((AddexprContext)_localctx).op = _input.LT(1);
-				_la = _input.LA(1);
-				if ( !(_la==PLUS || _la==MINUS) ) {
-					((AddexprContext)_localctx).op = (Token)_errHandler.recoverInline(this);
-				}
-				else {
-					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-					_errHandler.reportMatch(this);
-					consume();
-				}
-				setState(197);
+				setState(162);
+				ariop();
+				setState(163);
 				addexpr();
 				}
 				break;
@@ -1300,16 +1173,15 @@ public class EulerParser extends Parser {
 	}
 
 	public static class MultiexprContext extends ParserRuleContext {
-		public Token op;
 		public PrimeexprContext primeexpr() {
 			return getRuleContext(PrimeexprContext.class,0);
+		}
+		public MulopContext mulop() {
+			return getRuleContext(MulopContext.class,0);
 		}
 		public MultiexprContext multiexpr() {
 			return getRuleContext(MultiexprContext.class,0);
 		}
-		public TerminalNode MULT() { return getToken(EulerParser.MULT, 0); }
-		public TerminalNode DIVID() { return getToken(EulerParser.DIVID, 0); }
-		public TerminalNode MOD() { return getToken(EulerParser.MOD, 0); }
 		public MultiexprContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1331,36 +1203,26 @@ public class EulerParser extends Parser {
 
 	public final MultiexprContext multiexpr() throws RecognitionException {
 		MultiexprContext _localctx = new MultiexprContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_multiexpr);
-		int _la;
+		enterRule(_localctx, 26, RULE_multiexpr);
 		try {
-			setState(206);
+			setState(172);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,25,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(201);
+				setState(167);
 				primeexpr();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(202);
+				setState(168);
 				primeexpr();
-				setState(203);
-				((MultiexprContext)_localctx).op = _input.LT(1);
-				_la = _input.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MULT) | (1L << DIVID) | (1L << MOD))) != 0)) ) {
-					((MultiexprContext)_localctx).op = (Token)_errHandler.recoverInline(this);
-				}
-				else {
-					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-					_errHandler.reportMatch(this);
-					consume();
-				}
-				setState(204);
+				setState(169);
+				mulop();
+				setState(170);
 				multiexpr();
 				}
 				break;
@@ -1409,23 +1271,23 @@ public class EulerParser extends Parser {
 
 	public final PrimeexprContext primeexpr() throws RecognitionException {
 		PrimeexprContext _localctx = new PrimeexprContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_primeexpr);
+		enterRule(_localctx, 28, RULE_primeexpr);
 		int _la;
 		try {
-			setState(217);
+			setState(183);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ID:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(208);
+				setState(174);
 				match(ID);
-				setState(210);
+				setState(176);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==LSQBRACK) {
 					{
-					setState(209);
+					setState(175);
 					valindex();
 					}
 				}
@@ -1435,18 +1297,18 @@ public class EulerParser extends Parser {
 			case NUM:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(212);
+				setState(178);
 				match(NUM);
 				}
 				break;
 			case LPAREN:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(213);
+				setState(179);
 				match(LPAREN);
-				setState(214);
+				setState(180);
 				addexpr();
-				setState(215);
+				setState(181);
 				match(RPAREN);
 				}
 				break;
@@ -1496,15 +1358,15 @@ public class EulerParser extends Parser {
 
 	public final LogstmtContext logstmt() throws RecognitionException {
 		LogstmtContext _localctx = new LogstmtContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_logstmt);
+		enterRule(_localctx, 30, RULE_logstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(219);
+			setState(185);
 			addexpr();
-			setState(220);
+			setState(186);
 			logop();
-			setState(221);
+			setState(187);
 			addexpr();
 			}
 		}
@@ -1520,6 +1382,7 @@ public class EulerParser extends Parser {
 	}
 
 	public static class LogopContext extends ParserRuleContext {
+		public Token op;
 		public TerminalNode EQEQ() { return getToken(EulerParser.EQEQ, 0); }
 		public TerminalNode BT() { return getToken(EulerParser.BT, 0); }
 		public TerminalNode LT() { return getToken(EulerParser.LT, 0); }
@@ -1547,15 +1410,16 @@ public class EulerParser extends Parser {
 
 	public final LogopContext logop() throws RecognitionException {
 		LogopContext _localctx = new LogopContext(_ctx, getState());
-		enterRule(_localctx, 34, RULE_logop);
+		enterRule(_localctx, 32, RULE_logop);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(223);
+			setState(189);
+			((LogopContext)_localctx).op = _input.LT(1);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LT) | (1L << BT) | (1L << EQEQ) | (1L << NOTEQ) | (1L << LTEQ) | (1L << BTEQ))) != 0)) ) {
-			_errHandler.recoverInline(this);
+				((LogopContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 			}
 			else {
 				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
@@ -1600,12 +1464,12 @@ public class EulerParser extends Parser {
 
 	public final AriopContext ariop() throws RecognitionException {
 		AriopContext _localctx = new AriopContext(_ctx, getState());
-		enterRule(_localctx, 36, RULE_ariop);
+		enterRule(_localctx, 34, RULE_ariop);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(225);
+			setState(191);
 			((AriopContext)_localctx).op = _input.LT(1);
 			_la = _input.LA(1);
 			if ( !(_la==PLUS || _la==MINUS) ) {
@@ -1655,12 +1519,12 @@ public class EulerParser extends Parser {
 
 	public final MulopContext mulop() throws RecognitionException {
 		MulopContext _localctx = new MulopContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_mulop);
+		enterRule(_localctx, 36, RULE_mulop);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(227);
+			setState(193);
 			((MulopContext)_localctx).op = _input.LT(1);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MULT) | (1L << DIVID) | (1L << MOD))) != 0)) ) {
@@ -1685,82 +1549,65 @@ public class EulerParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3#\u00e8\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\"\u00c6\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\4\23\t\23\4\24\t\24\4\25\t\25\3\2\3\2\3\2\6\2.\n\2\r\2\16\2/\3\2\7\2"+
-		"\63\n\2\f\2\16\2\66\13\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
-		"\3\5\3D\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4Q\n\4\3\5\3"+
-		"\5\3\6\3\6\3\6\3\6\6\6Y\n\6\r\6\16\6Z\3\6\3\6\3\6\3\7\3\7\3\7\3\7\6\7"+
-		"d\n\7\r\7\16\7e\3\7\5\7i\n\7\3\b\3\b\3\b\3\b\3\b\6\bp\n\b\r\b\16\bq\7"+
-		"\bt\n\b\f\b\16\bw\13\b\3\t\3\t\3\t\3\n\5\n}\n\n\3\n\3\n\5\n\u0081\n\n"+
-		"\3\n\3\n\5\n\u0085\n\n\3\n\3\n\5\n\u0089\n\n\3\n\5\n\u008c\n\n\3\n\5\n"+
-		"\u008f\n\n\3\13\3\13\3\13\5\13\u0094\n\13\3\13\3\13\3\13\5\13\u0099\n"+
-		"\13\3\13\3\13\5\13\u009d\n\13\3\13\3\13\5\13\u00a1\n\13\3\13\3\13\3\13"+
-		"\5\13\u00a6\n\13\5\13\u00a8\n\13\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\5\f\u00b2"+
-		"\n\f\3\r\3\r\3\r\3\r\6\r\u00b8\n\r\r\r\16\r\u00b9\3\r\3\r\3\16\3\16\5"+
-		"\16\u00c0\n\16\3\16\3\16\3\16\3\17\3\17\3\17\3\17\3\17\5\17\u00ca\n\17"+
-		"\3\20\3\20\3\20\3\20\3\20\5\20\u00d1\n\20\3\21\3\21\5\21\u00d5\n\21\3"+
-		"\21\3\21\3\21\3\21\3\21\5\21\u00dc\n\21\3\22\3\22\3\22\3\22\3\23\3\23"+
-		"\3\24\3\24\3\25\3\25\3\25\2\2\26\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36"+
-		" \"$&(\2\5\3\2\25\26\3\2\27\31\3\2\6\13\2\u00f9\2-\3\2\2\2\4C\3\2\2\2"+
-		"\6P\3\2\2\2\bR\3\2\2\2\nT\3\2\2\2\fh\3\2\2\2\16u\3\2\2\2\20x\3\2\2\2\22"+
-		"\u008e\3\2\2\2\24\u00a7\3\2\2\2\26\u00b1\3\2\2\2\30\u00b3\3\2\2\2\32\u00bd"+
-		"\3\2\2\2\34\u00c9\3\2\2\2\36\u00d0\3\2\2\2 \u00db\3\2\2\2\"\u00dd\3\2"+
-		"\2\2$\u00e1\3\2\2\2&\u00e3\3\2\2\2(\u00e5\3\2\2\2*+\5\4\3\2+,\7\4\2\2"+
-		",.\3\2\2\2-*\3\2\2\2./\3\2\2\2/-\3\2\2\2/\60\3\2\2\2\60\64\3\2\2\2\61"+
-		"\63\5\6\4\2\62\61\3\2\2\2\63\66\3\2\2\2\64\62\3\2\2\2\64\65\3\2\2\2\65"+
-		"\67\3\2\2\2\66\64\3\2\2\2\678\7\3\2\28\3\3\2\2\29D\7#\2\2:;\7#\2\2;<\7"+
-		"\5\2\2<D\5\b\5\2=>\7#\2\2>?\7\5\2\2?D\7!\2\2@A\7#\2\2AB\7\5\2\2BD\7 \2"+
-		"\2C9\3\2\2\2C:\3\2\2\2C=\3\2\2\2C@\3\2\2\2D\5\3\2\2\2EF\5\b\5\2FG\7\4"+
-		"\2\2GQ\3\2\2\2HQ\5\n\6\2IQ\5\30\r\2JK\5\32\16\2KL\7\4\2\2LQ\3\2\2\2MN"+
-		"\5\20\t\2NO\7\4\2\2OQ\3\2\2\2PE\3\2\2\2PH\3\2\2\2PI\3\2\2\2PJ\3\2\2\2"+
-		"PM\3\2\2\2Q\7\3\2\2\2RS\5\34\17\2S\t\3\2\2\2TU\7\f\2\2UV\5\"\22\2VX\7"+
-		"\r\2\2WY\5\6\4\2XW\3\2\2\2YZ\3\2\2\2ZX\3\2\2\2Z[\3\2\2\2[\\\3\2\2\2\\"+
-		"]\5\f\7\2]^\7\17\2\2^\13\3\2\2\2_`\5\16\b\2`a\7\16\2\2ac\7\r\2\2bd\5\6"+
-		"\4\2cb\3\2\2\2de\3\2\2\2ec\3\2\2\2ef\3\2\2\2fi\3\2\2\2gi\5\16\b\2h_\3"+
-		"\2\2\2hg\3\2\2\2i\r\3\2\2\2jk\7\16\2\2kl\7\f\2\2lm\5\"\22\2mo\7\r\2\2"+
-		"np\5\6\4\2on\3\2\2\2pq\3\2\2\2qo\3\2\2\2qr\3\2\2\2rt\3\2\2\2sj\3\2\2\2"+
-		"tw\3\2\2\2us\3\2\2\2uv\3\2\2\2v\17\3\2\2\2wu\3\2\2\2xy\7\22\2\2yz\5\22"+
-		"\n\2z\21\3\2\2\2{}\5\24\13\2|{\3\2\2\2|}\3\2\2\2}~\3\2\2\2~\u008f\7\""+
-		"\2\2\177\u0081\5\24\13\2\u0080\177\3\2\2\2\u0080\u0081\3\2\2\2\u0081\u0082"+
-		"\3\2\2\2\u0082\u008f\7\37\2\2\u0083\u0085\5\24\13\2\u0084\u0083\3\2\2"+
-		"\2\u0084\u0085\3\2\2\2\u0085\u0086\3\2\2\2\u0086\u0088\7#\2\2\u0087\u0089"+
-		"\5\26\f\2\u0088\u0087\3\2\2\2\u0088\u0089\3\2\2\2\u0089\u008f\3\2\2\2"+
-		"\u008a\u008c\5\24\13\2\u008b\u008a\3\2\2\2\u008b\u008c\3\2\2\2\u008c\u008d"+
-		"\3\2\2\2\u008d\u008f\7\23\2\2\u008e|\3\2\2\2\u008e\u0080\3\2\2\2\u008e"+
-		"\u0084\3\2\2\2\u008e\u008b\3\2\2\2\u008f\23\3\2\2\2\u0090\u0091\7\"\2"+
-		"\2\u0091\u0093\7\25\2\2\u0092\u0094\5\24\13\2\u0093\u0092\3\2\2\2\u0093"+
-		"\u0094\3\2\2\2\u0094\u00a8\3\2\2\2\u0095\u0096\7\37\2\2\u0096\u0098\7"+
-		"\25\2\2\u0097\u0099\5\24\13\2\u0098\u0097\3\2\2\2\u0098\u0099\3\2\2\2"+
-		"\u0099\u00a8\3\2\2\2\u009a\u009c\7#\2\2\u009b\u009d\5\26\f\2\u009c\u009b"+
-		"\3\2\2\2\u009c\u009d\3\2\2\2\u009d\u009e\3\2\2\2\u009e\u00a0\7\25\2\2"+
-		"\u009f\u00a1\5\24\13\2\u00a0\u009f\3\2\2\2\u00a0\u00a1\3\2\2\2\u00a1\u00a8"+
-		"\3\2\2\2\u00a2\u00a3\7\23\2\2\u00a3\u00a5\7\25\2\2\u00a4\u00a6\5\24\13"+
-		"\2\u00a5\u00a4\3\2\2\2\u00a5\u00a6\3\2\2\2\u00a6\u00a8\3\2\2\2\u00a7\u0090"+
-		"\3\2\2\2\u00a7\u0095\3\2\2\2\u00a7\u009a\3\2\2\2\u00a7\u00a2\3\2\2\2\u00a8"+
-		"\25\3\2\2\2\u00a9\u00aa\7\34\2\2\u00aa\u00ab\7\37\2\2\u00ab\u00b2\7\35"+
-		"\2\2\u00ac\u00ad\7\34\2\2\u00ad\u00ae\7\37\2\2\u00ae\u00af\7\36\2\2\u00af"+
-		"\u00b0\7\37\2\2\u00b0\u00b2\7\35\2\2\u00b1\u00a9\3\2\2\2\u00b1\u00ac\3"+
-		"\2\2\2\u00b2\27\3\2\2\2\u00b3\u00b4\7\20\2\2\u00b4\u00b5\5\"\22\2\u00b5"+
-		"\u00b7\7\21\2\2\u00b6\u00b8\5\6\4\2\u00b7\u00b6\3\2\2\2\u00b8\u00b9\3"+
-		"\2\2\2\u00b9\u00b7\3\2\2\2\u00b9\u00ba\3\2\2\2\u00ba\u00bb\3\2\2\2\u00bb"+
-		"\u00bc\7\17\2\2\u00bc\31\3\2\2\2\u00bd\u00bf\7#\2\2\u00be\u00c0\5\26\f"+
-		"\2\u00bf\u00be\3\2\2\2\u00bf\u00c0\3\2\2\2\u00c0\u00c1\3\2\2\2\u00c1\u00c2"+
-		"\7\5\2\2\u00c2\u00c3\5\b\5\2\u00c3\33\3\2\2\2\u00c4\u00ca\5\36\20\2\u00c5"+
-		"\u00c6\5\36\20\2\u00c6\u00c7\t\2\2\2\u00c7\u00c8\5\34\17\2\u00c8\u00ca"+
-		"\3\2\2\2\u00c9\u00c4\3\2\2\2\u00c9\u00c5\3\2\2\2\u00ca\35\3\2\2\2\u00cb"+
-		"\u00d1\5 \21\2\u00cc\u00cd\5 \21\2\u00cd\u00ce\t\3\2\2\u00ce\u00cf\5\36"+
-		"\20\2\u00cf\u00d1\3\2\2\2\u00d0\u00cb\3\2\2\2\u00d0\u00cc\3\2\2\2\u00d1"+
-		"\37\3\2\2\2\u00d2\u00d4\7#\2\2\u00d3\u00d5\5\26\f\2\u00d4\u00d3\3\2\2"+
-		"\2\u00d4\u00d5\3\2\2\2\u00d5\u00dc\3\2\2\2\u00d6\u00dc\7\37\2\2\u00d7"+
-		"\u00d8\7\32\2\2\u00d8\u00d9\5\34\17\2\u00d9\u00da\7\33\2\2\u00da\u00dc"+
-		"\3\2\2\2\u00db\u00d2\3\2\2\2\u00db\u00d6\3\2\2\2\u00db\u00d7\3\2\2\2\u00dc"+
-		"!\3\2\2\2\u00dd\u00de\5\34\17\2\u00de\u00df\5$\23\2\u00df\u00e0\5\34\17"+
-		"\2\u00e0#\3\2\2\2\u00e1\u00e2\t\4\2\2\u00e2%\3\2\2\2\u00e3\u00e4\t\2\2"+
-		"\2\u00e4\'\3\2\2\2\u00e5\u00e6\t\3\2\2\u00e6)\3\2\2\2\36/\64CPZehqu|\u0080"+
-		"\u0084\u0088\u008b\u008e\u0093\u0098\u009c\u00a0\u00a5\u00a7\u00b1\u00b9"+
-		"\u00bf\u00c9\u00d0\u00d4\u00db";
+		"\4\23\t\23\4\24\t\24\3\2\7\2*\n\2\f\2\16\2-\13\2\3\3\3\3\3\3\3\3\3\3\3"+
+		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3=\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3"+
+		"\4\3\4\3\4\3\4\5\4I\n\4\3\5\3\5\3\6\3\6\3\6\3\6\6\6Q\n\6\r\6\16\6R\3\6"+
+		"\5\6V\n\6\3\6\3\6\3\7\7\7[\n\7\f\7\16\7^\13\7\3\7\3\7\3\7\6\7c\n\7\r\7"+
+		"\16\7d\3\7\6\7h\n\7\r\7\16\7i\5\7l\n\7\3\b\3\b\3\b\3\b\3\b\6\bs\n\b\r"+
+		"\b\16\bt\3\t\3\t\3\t\3\t\7\t{\n\t\f\t\16\t~\13\t\3\n\3\n\3\n\3\n\5\n\u0084"+
+		"\n\n\5\n\u0086\n\n\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\5\13\u0090"+
+		"\n\13\3\f\3\f\3\f\3\f\6\f\u0096\n\f\r\f\16\f\u0097\3\f\3\f\3\r\3\r\5\r"+
+		"\u009e\n\r\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3\16\5\16\u00a8\n\16\3\17\3"+
+		"\17\3\17\3\17\3\17\5\17\u00af\n\17\3\20\3\20\5\20\u00b3\n\20\3\20\3\20"+
+		"\3\20\3\20\3\20\5\20\u00ba\n\20\3\21\3\21\3\21\3\21\3\22\3\22\3\23\3\23"+
+		"\3\24\3\24\3\24\2\2\25\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&\2\5"+
+		"\3\2\6\13\3\2\23\24\3\2\25\27\2\u00ce\2+\3\2\2\2\4<\3\2\2\2\6H\3\2\2\2"+
+		"\bJ\3\2\2\2\nL\3\2\2\2\fk\3\2\2\2\16m\3\2\2\2\20v\3\2\2\2\22\u0085\3\2"+
+		"\2\2\24\u008f\3\2\2\2\26\u0091\3\2\2\2\30\u009b\3\2\2\2\32\u00a7\3\2\2"+
+		"\2\34\u00ae\3\2\2\2\36\u00b9\3\2\2\2 \u00bb\3\2\2\2\"\u00bf\3\2\2\2$\u00c1"+
+		"\3\2\2\2&\u00c3\3\2\2\2(*\5\4\3\2)(\3\2\2\2*-\3\2\2\2+)\3\2\2\2+,\3\2"+
+		"\2\2,\3\3\2\2\2-+\3\2\2\2./\5\b\5\2/\60\7\4\2\2\60=\3\2\2\2\61\62\5\6"+
+		"\4\2\62\63\7\4\2\2\63=\3\2\2\2\64=\5\n\6\2\65=\5\26\f\2\66\67\5\30\r\2"+
+		"\678\7\4\2\28=\3\2\2\29:\5\20\t\2:;\7\4\2\2;=\3\2\2\2<.\3\2\2\2<\61\3"+
+		"\2\2\2<\64\3\2\2\2<\65\3\2\2\2<\66\3\2\2\2<9\3\2\2\2=\5\3\2\2\2>I\7!\2"+
+		"\2?@\7!\2\2@A\7\5\2\2AI\5\b\5\2BC\7!\2\2CD\7\5\2\2DI\7\37\2\2EF\7!\2\2"+
+		"FG\7\5\2\2GI\7\36\2\2H>\3\2\2\2H?\3\2\2\2HB\3\2\2\2HE\3\2\2\2I\7\3\2\2"+
+		"\2JK\5\32\16\2K\t\3\2\2\2LM\7\f\2\2MN\5 \21\2NP\7\r\2\2OQ\5\4\3\2PO\3"+
+		"\2\2\2QR\3\2\2\2RP\3\2\2\2RS\3\2\2\2SU\3\2\2\2TV\5\f\7\2UT\3\2\2\2UV\3"+
+		"\2\2\2VW\3\2\2\2WX\7\17\2\2X\13\3\2\2\2Y[\5\16\b\2ZY\3\2\2\2[^\3\2\2\2"+
+		"\\Z\3\2\2\2\\]\3\2\2\2]_\3\2\2\2^\\\3\2\2\2_`\7\16\2\2`b\7\r\2\2ac\5\4"+
+		"\3\2ba\3\2\2\2cd\3\2\2\2db\3\2\2\2de\3\2\2\2el\3\2\2\2fh\5\16\b\2gf\3"+
+		"\2\2\2hi\3\2\2\2ig\3\2\2\2ij\3\2\2\2jl\3\2\2\2k\\\3\2\2\2kg\3\2\2\2l\r"+
+		"\3\2\2\2mn\7\16\2\2no\7\f\2\2op\5 \21\2pr\7\r\2\2qs\5\4\3\2rq\3\2\2\2"+
+		"st\3\2\2\2tr\3\2\2\2tu\3\2\2\2u\17\3\2\2\2vw\7\22\2\2w|\5\22\n\2xy\7\23"+
+		"\2\2y{\5\22\n\2zx\3\2\2\2{~\3\2\2\2|z\3\2\2\2|}\3\2\2\2}\21\3\2\2\2~|"+
+		"\3\2\2\2\177\u0086\7 \2\2\u0080\u0086\7\35\2\2\u0081\u0083\7!\2\2\u0082"+
+		"\u0084\5\24\13\2\u0083\u0082\3\2\2\2\u0083\u0084\3\2\2\2\u0084\u0086\3"+
+		"\2\2\2\u0085\177\3\2\2\2\u0085\u0080\3\2\2\2\u0085\u0081\3\2\2\2\u0086"+
+		"\23\3\2\2\2\u0087\u0088\7\32\2\2\u0088\u0089\7\35\2\2\u0089\u0090\7\33"+
+		"\2\2\u008a\u008b\7\32\2\2\u008b\u008c\7\35\2\2\u008c\u008d\7\34\2\2\u008d"+
+		"\u008e\7\35\2\2\u008e\u0090\7\33\2\2\u008f\u0087\3\2\2\2\u008f\u008a\3"+
+		"\2\2\2\u0090\25\3\2\2\2\u0091\u0092\7\20\2\2\u0092\u0093\5 \21\2\u0093"+
+		"\u0095\7\21\2\2\u0094\u0096\5\4\3\2\u0095\u0094\3\2\2\2\u0096\u0097\3"+
+		"\2\2\2\u0097\u0095\3\2\2\2\u0097\u0098\3\2\2\2\u0098\u0099\3\2\2\2\u0099"+
+		"\u009a\7\17\2\2\u009a\27\3\2\2\2\u009b\u009d\7!\2\2\u009c\u009e\5\24\13"+
+		"\2\u009d\u009c\3\2\2\2\u009d\u009e\3\2\2\2\u009e\u009f\3\2\2\2\u009f\u00a0"+
+		"\7\5\2\2\u00a0\u00a1\5\b\5\2\u00a1\31\3\2\2\2\u00a2\u00a8\5\34\17\2\u00a3"+
+		"\u00a4\5\34\17\2\u00a4\u00a5\5$\23\2\u00a5\u00a6\5\32\16\2\u00a6\u00a8"+
+		"\3\2\2\2\u00a7\u00a2\3\2\2\2\u00a7\u00a3\3\2\2\2\u00a8\33\3\2\2\2\u00a9"+
+		"\u00af\5\36\20\2\u00aa\u00ab\5\36\20\2\u00ab\u00ac\5&\24\2\u00ac\u00ad"+
+		"\5\34\17\2\u00ad\u00af\3\2\2\2\u00ae\u00a9\3\2\2\2\u00ae\u00aa\3\2\2\2"+
+		"\u00af\35\3\2\2\2\u00b0\u00b2\7!\2\2\u00b1\u00b3\5\24\13\2\u00b2\u00b1"+
+		"\3\2\2\2\u00b2\u00b3\3\2\2\2\u00b3\u00ba\3\2\2\2\u00b4\u00ba\7\35\2\2"+
+		"\u00b5\u00b6\7\30\2\2\u00b6\u00b7\5\32\16\2\u00b7\u00b8\7\31\2\2\u00b8"+
+		"\u00ba\3\2\2\2\u00b9\u00b0\3\2\2\2\u00b9\u00b4\3\2\2\2\u00b9\u00b5\3\2"+
+		"\2\2\u00ba\37\3\2\2\2\u00bb\u00bc\5\32\16\2\u00bc\u00bd\5\"\22\2\u00bd"+
+		"\u00be\5\32\16\2\u00be!\3\2\2\2\u00bf\u00c0\t\2\2\2\u00c0#\3\2\2\2\u00c1"+
+		"\u00c2\t\3\2\2\u00c2%\3\2\2\2\u00c3\u00c4\t\4\2\2\u00c4\'\3\2\2\2\26+"+
+		"<HRU\\dikt|\u0083\u0085\u008f\u0097\u009d\u00a7\u00ae\u00b2\u00b9";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

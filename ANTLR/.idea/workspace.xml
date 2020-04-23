@@ -32,7 +32,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/antlr-4.8-complete.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/EulerLanguage/src/ANTLR" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -78,14 +78,54 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="760" y="274" key="#Project_Structure/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587542560584" />
-    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser" timestamp="1587552305238">
+    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser" timestamp="1587638376731">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587552305238" />
-    <state x="986" y="441" key="FileChooserDialogImpl" timestamp="1587542557601">
+    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587638376731" />
+    <state x="1063" y="594" width="433" height="218" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587623138723">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="986" y="441" key="FileChooserDialogImpl/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587542557601" />
+    <state x="1063" y="594" width="433" height="218" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587623138723" />
+    <state x="986" y="441" key="FileChooserDialogImpl" timestamp="1587645744451">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="986" y="441" key="FileChooserDialogImpl/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645744451" />
+    <state width="2517" height="430" key="GridCell.Tab.0.bottom" timestamp="1587645912389">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="430" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645912389" />
+    <state width="2517" height="430" key="GridCell.Tab.0.center" timestamp="1587645912383">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="430" key="GridCell.Tab.0.center/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645912383" />
+    <state width="2517" height="430" key="GridCell.Tab.0.left" timestamp="1587645912383">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="430" key="GridCell.Tab.0.left/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645912383" />
+    <state width="2517" height="430" key="GridCell.Tab.0.right" timestamp="1587645912383">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="430" key="GridCell.Tab.0.right/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645912383" />
+    <state width="2517" height="324" key="GridCell.Tab.1.bottom" timestamp="1587645190770">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="324" key="GridCell.Tab.1.bottom/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645190770" />
+    <state width="2517" height="324" key="GridCell.Tab.1.center" timestamp="1587645190770">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="324" key="GridCell.Tab.1.center/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645190770" />
+    <state width="2517" height="324" key="GridCell.Tab.1.left" timestamp="1587645190770">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="324" key="GridCell.Tab.1.left/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645190770" />
+    <state width="2517" height="324" key="GridCell.Tab.1.right" timestamp="1587645190770">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="324" key="GridCell.Tab.1.right/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645190770" />
+    <state x="860" y="434" key="IDE.errors.dialog" timestamp="1587645228630">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="860" y="434" key="IDE.errors.dialog/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645228630" />
     <state x="781" y="344" key="SettingsEditor" timestamp="1587542516841">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -94,5 +134,36 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="668" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587569224605" />
+    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-1" timestamp="1587625551364">
+      <screen x="2560" y="-495" width="1440" height="2520" />
+    </state>
+    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-1/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587625551364" />
+    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-2" timestamp="1587628510189">
+      <screen x="2560" y="-495" width="1440" height="2520" />
+    </state>
+    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-2/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587628510189" />
+    <state x="2585" y="-515" width="1456" height="1388" maximized="true" key="dock-window-3" timestamp="1587629018334">
+      <screen x="2560" y="-495" width="1440" height="2520" />
+    </state>
+    <state x="2585" y="-515" width="1456" height="1388" maximized="true" key="dock-window-3/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587629018334" />
+    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-4" timestamp="1587629940680">
+      <screen x="2560" y="-495" width="1440" height="2520" />
+    </state>
+    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-4/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587629940680" />
+    <state x="2560" y="-495" width="1456" height="1323" maximized="true" key="dock-window-5" timestamp="1587630805607">
+      <screen x="2560" y="-495" width="1440" height="2520" />
+    </state>
+    <state x="2560" y="-495" width="1456" height="1323" maximized="true" key="dock-window-5/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587630805607" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerParser.java</url>
+          <line>529</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
