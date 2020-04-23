@@ -2,38 +2,50 @@ package symbolTable;
 
 import AST.*;
 import symbolTable.attributes.*;
+import symbolTable.typeDescriptors.NumberTypeDescriptor;
+
 import java.util.*;
 
 
 public class SymbolTable {
-    private Hashtable<String, Attributes> symbols = new Hashtable<String, Attributes>();
-    private ArrayList<ArrayList<Attributes>> scopes = new ArrayList<ArrayList<Attributes>>();
+    private final Hashtable<String, Attributes> symbols = new Hashtable<>();
+    private final ArrayList<ArrayList<Attributes>> scopes = new ArrayList<>();
     private int depth = 0;
 
+    public SymbolTable() {
+        // TODO: Find a better solution
+        TypeAttributes attr = new TypeAttributes();
+        attr.thisType = new NumberTypeDescriptor();
+    }
 
+    /*
     public SymbolTable(ASTNode rootNode) {
         processNode(rootNode);
     }
+    */
 
-    public void enterSymbol(String name, String type) {
+    public void enterSymbol(String name, Attributes attr) {
         Attributes oldSym = retrieveSymbol(name);
+        /*
         if(oldSym != null && oldSym.depth == depth) {
             // TODO: Add error. Duplicate declaration
         }
-        Attributes newSym = new Attributes(name);
+        */
+
+        attr.name = name;
 
         // Add to scope display
-        newSym.level = scopes.get(depth);
-        newSym.depth = depth;
-        scopes.get(depth).add(newSym);
+        attr.level = scopes.get(depth);
+        attr.depth = depth;
+        scopes.get(depth).add(attr);
 
         // Add to hashtable
         if(oldSym == null) {
-            symbols.put(newSym.name, newSym);;
+            symbols.put(attr.name, attr);;
         } else {
             symbols.remove(oldSym.name);
-            symbols.put(newSym.name, newSym);
-            newSym.var = oldSym;
+            symbols.put(attr.name, attr);
+            attr.var = oldSym;
         }
     }
 
@@ -46,14 +58,14 @@ public class SymbolTable {
         return sym != null && sym.depth == depth;
     }
 
-    private void openScope() {
+    public void openScope() {
         depth++;
         if (scopes.size() - 1 < depth) {
             scopes.add(new ArrayList<Attributes>());
         }
     }
 
-    private void closeScope() {
+    public void closeScope() {
         Attributes prevSym = null;
         for (int i = 0; i < scopes.get(depth).size(); i++) {
             prevSym = scopes.get(depth).get(i).var;
@@ -65,6 +77,7 @@ public class SymbolTable {
         depth--;
     }
 
+    /*
     private void processNode(ASTNode node) {
         switch (node.getType()) {
             case "CodeBlockNode":
@@ -72,7 +85,7 @@ public class SymbolTable {
             case "DeclarationNode":
                 enterSymbol(((DeclarationNode)node).identifier, node.getType());
             case "ReferenceNode":
-                if(retrieveSymbol(/* What node to use? */) == null) {
+                if(retrieveSymbol( What node to use? ) == null) {
                     // TODO: Add error. Undeclared variable
                 }
         }
@@ -86,5 +99,6 @@ public class SymbolTable {
             closeScope();
         }
     }
+    */
 
 }

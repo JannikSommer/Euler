@@ -1,4 +1,4 @@
 package symbolTable.typeDescriptors;
 
-public class ErrorTypeDescriptor {
+public class ErrorTypeDescriptor extends TypeDescriptor {
 }
