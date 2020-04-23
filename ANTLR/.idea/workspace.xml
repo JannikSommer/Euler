@@ -78,14 +78,18 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="760" y="274" key="#Project_Structure/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587542560584" />
-    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser" timestamp="1587552305238">
+    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser" timestamp="1587629318369">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587552305238" />
-    <state x="986" y="441" key="FileChooserDialogImpl" timestamp="1587542557601">
+    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587629318369" />
+    <state x="1063" y="594" width="433" height="218" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587623138723">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="986" y="441" key="FileChooserDialogImpl/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587542557601" />
+    <state x="1063" y="594" width="433" height="218" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587623138723" />
+    <state x="986" y="441" key="FileChooserDialogImpl" timestamp="1587631376951">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="986" y="441" key="FileChooserDialogImpl/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587631376951" />
     <state x="781" y="344" key="SettingsEditor" timestamp="1587542516841">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -94,5 +98,36 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="668" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587569224605" />
+    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-1" timestamp="1587625551364">
+      <screen x="2560" y="-495" width="1440" height="2520" />
+    </state>
+    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-1/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587625551364" />
+    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-2" timestamp="1587628510189">
+      <screen x="2560" y="-495" width="1440" height="2520" />
+    </state>
+    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-2/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587628510189" />
+    <state x="2585" y="-515" width="1456" height="1388" maximized="true" key="dock-window-3" timestamp="1587629018334">
+      <screen x="2560" y="-495" width="1440" height="2520" />
+    </state>
+    <state x="2585" y="-515" width="1456" height="1388" maximized="true" key="dock-window-3/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587629018334" />
+    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-4" timestamp="1587629940680">
+      <screen x="2560" y="-495" width="1440" height="2520" />
+    </state>
+    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-4/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587629940680" />
+    <state x="2560" y="-495" width="1456" height="1323" maximized="true" key="dock-window-5" timestamp="1587630805607">
+      <screen x="2560" y="-495" width="1440" height="2520" />
+    </state>
+    <state x="2560" y="-495" width="1456" height="1323" maximized="true" key="dock-window-5/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587630805607" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerParser.java</url>
+          <line>492</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -3,10 +3,10 @@ package AST;
 
 import Visitors.IVisitor;
 
-public class NumberLiteral extends ASTNode {
+public class NumberLiteralNode extends ASTNode {
     public double value;
 
-    public NumberLiteral(ASTNode parent, double value) {
+    public NumberLiteralNode(ASTNode parent, double value) {
         super(parent);
         this.value = value;
     }

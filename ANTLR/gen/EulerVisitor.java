@@ -16,6 +16,12 @@ public interface EulerVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProgram(EulerParser.ProgramContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link EulerParser#stmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStmt(EulerParser.StmtContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code idInit}
 	 * labeled alternative in {@link EulerParser#dcl}.
 	 * @param ctx the parse tree
@@ -43,12 +49,6 @@ public interface EulerVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitMtxAssign(EulerParser.MtxAssignContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EulerParser#stmt}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitStmt(EulerParser.StmtContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EulerParser#expr}.
 	 * @param ctx the parse tree
@@ -85,12 +85,6 @@ public interface EulerVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitStringstmt(EulerParser.StringstmtContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EulerParser#appendsting}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAppendsting(EulerParser.AppendstingContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EulerParser#valindex}.
 	 * @param ctx the parse tree
