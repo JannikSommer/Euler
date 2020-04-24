@@ -2,6 +2,7 @@ package AST;
 
 
 import Visitors.IVisitor;
+import symbolTable.typeDescriptors.NumberTypeDescriptor;
 
 public class NumberLiteralNode extends ASTNode {
     public double value;
@@ -9,6 +10,7 @@ public class NumberLiteralNode extends ASTNode {
     public NumberLiteralNode(ASTNode parent, double value) {
         super(parent);
         this.value = value;
+        type = new NumberTypeDescriptor();
     }
 
     @Override

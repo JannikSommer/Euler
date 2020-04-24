@@ -13,19 +13,21 @@ public class VectorExpressionNode extends ASTNode {
         getVectorElemtns(vecExpr);
     }
 
-    @Override
-    public void accept(IVisitor visitor) { visitor.visit(this); }
-
     public void getVectorElemtns(String vecExpr) {
         String delimiters = "[<,>]+";
         String[] tokens = vecExpr.split(delimiters);
         for (String str : tokens) {
-            try {
+            if(str.matches("\\d")) { // TODO: Check effeciency and if it should be more thorough.
                 double number = Double.parseDouble(str);
                 this.children.add(new NumberLiteralNode(this, number));
-            } catch (Exception e) {
+            } else {
                 this.children.add(new IdentificationNode(this, str));
             }
         }
+    }
+
+    @Override
+    public void accept(IVisitor visitor) {
+        visitor.visit(this);
     }
 }
