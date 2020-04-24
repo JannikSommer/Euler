@@ -70,17 +70,21 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/EulerLanguage/src/ANTLR" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.GraphGen">
     <configuration name="EulerCompiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="EulerCompiler" />
       <module name="ANTLR" />
@@ -88,8 +92,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GraphGen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GraphGen" />
+      <module name="ANTLR" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GraphGen" />
         <item itemvalue="Application.EulerCompiler" />
       </list>
     </recent_temporary>
@@ -120,34 +132,40 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="760" y="274" key="#Project_Structure/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587542560584" />
-    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser" timestamp="1587712051261">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="814" y="302" key="#com.intellij.ide.util.MemberChooser" timestamp="1587718270207">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587712051261" />
+    <state x="814" y="302" key="#com.intellij.ide.util.MemberChooser/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587718270207" />
     <state x="1063" y="594" width="433" height="218" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587623138723">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1063" y="594" width="433" height="218" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587623138723" />
-    <state x="986" y="441" key="FileChooserDialogImpl" timestamp="1587645744451">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="740" y="328" key="FileChooserDialogImpl" timestamp="1587726260018">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="986" y="441" key="FileChooserDialogImpl/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645744451" />
-    <state width="2517" height="497" key="GridCell.Tab.0.bottom" timestamp="1587711698512">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="740" y="328" key="FileChooserDialogImpl/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587726260018" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1587734702498">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="2517" height="497" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587711698512" />
-    <state width="2517" height="497" key="GridCell.Tab.0.center" timestamp="1587711698512">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587734702498" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1587734702497">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="2517" height="497" key="GridCell.Tab.0.center/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587711698512" />
-    <state width="2517" height="497" key="GridCell.Tab.0.left" timestamp="1587711698512">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587734702497" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1587734702497">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="2517" height="497" key="GridCell.Tab.0.left/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587711698512" />
-    <state width="2517" height="497" key="GridCell.Tab.0.right" timestamp="1587711698512">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587734702497" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1587734702498">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="2517" height="497" key="GridCell.Tab.0.right/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587711698512" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587734702498" />
     <state width="2517" height="324" key="GridCell.Tab.1.bottom" timestamp="1587674401876">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -168,14 +186,19 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="860" y="434" key="IDE.errors.dialog/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645228630" />
-    <state x="781" y="344" key="SettingsEditor" timestamp="1587713222406">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="586" y="191" key="SettingsEditor" timestamp="1587723404461">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="781" y="344" key="SettingsEditor/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587713222406" />
+    <state x="586" y="191" key="SettingsEditor/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587723404461" />
     <state x="668" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1587569224605">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="668" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587569224605" />
+    <state x="810" y="510" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1587718198255">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="810" y="510" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587718198255" />
     <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-1" timestamp="1587625551364">
       <screen x="2560" y="-495" width="1440" height="2520" />
     </state>
@@ -196,6 +219,10 @@
       <screen x="2560" y="-495" width="1440" height="2520" />
     </state>
     <state x="2560" y="-495" width="1456" height="1323" maximized="true" key="dock-window-5/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587630805607" />
+    <state x="342" y="141" key="new project wizard" timestamp="1587726272907">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="342" y="141" key="new project wizard/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587726272907" />
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1587710370403">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
