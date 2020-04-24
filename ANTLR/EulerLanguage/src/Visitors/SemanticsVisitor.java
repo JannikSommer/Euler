@@ -143,6 +143,16 @@ public class SemanticsVisitor implements IVisitor {
     }
 
     @Override
+    public void visit(SubscriptingAssignmentNode node) {
+
+    }
+
+    @Override
+    public void visit(SubscriptingNode node) {
+
+    }
+
+    @Override
     public void visit(SubtractionNode node) {
 
     }
