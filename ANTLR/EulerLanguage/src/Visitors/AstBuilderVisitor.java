@@ -70,14 +70,17 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     }
 
     public ASTNode visitAssignstmt(EulerParser.AssignstmtContext ctx, ASTNode parent) {
-        AssignmentNode node = new AssignmentNode(parent);
-        node.identifier = ctx.ID().getText();
-        ASTNode child = visitExpr(ctx.expr(), node);
-        node.children.add(child);
         if (ctx.valindex() != null) {
-            node.valIndex = ctx.valindex().getText();
-            return node;
+            ASTNode subsAssNode = new SubscribtingAssignmentNode(parent);
+            String str = ctx.valindex().getText();
+            subsAssNode.children.add(new IdentificationNode(subsAssNode, ctx.ID().getText()));
+            subsAssNode.children.add(new SubscribtingNode(subsAssNode, str));
+            return subsAssNode;
         } else {
+            AssignmentNode node = new AssignmentNode(parent);
+            node.identifier = ctx.ID().getText();
+            ASTNode child = visitExpr(ctx.expr(), node);
+            node.children.add(child);
             return node;
         }
     }
@@ -149,8 +152,11 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
         String id = ctx.ID().getText();
         if (ctx.MATRIX() != null) {
             String mtx = ctx.MATRIX().getText();
-            value = new MatrixDeclarationNode(parent, id, mtx);
-            return value;
+            MatrixDeclarationNode mtxdcl = new MatrixDeclarationNode(parent);
+            ASTNode node = new MatrixExpressionNode(mtxdcl, mtx);
+            mtxdcl.identifier = id;
+            mtxdcl.children.add(node);
+            return mtxdcl;
         }
         else if (ctx.VECTOR() != null) {
             String vec = ctx.VECTOR().getText();
@@ -221,9 +227,11 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     public ASTNode visitPrimeexpr(EulerParser.PrimeexprContext ctx, ASTNode parent) {
         if (ctx.ID().getText() != null) {
             if (ctx.valindex().getText() != null) {
-                String id = ctx.ID().getText();
-                String valindex = ctx.valindex().getText();
-                return new IdentificationNode(parent, id, valindex);
+                ASTNode subsAssNode = new SubscribtingAssignmentNode(parent);
+                String str = ctx.valindex().getText();
+                subsAssNode.children.add(new IdentificationNode(subsAssNode, ctx.ID().getText()));
+                subsAssNode.children.add(new SubscribtingNode(subsAssNode, str));
+                return subsAssNode;
             }
             String id = ctx.ID().getText();
             return new IdentificationNode(parent, id);

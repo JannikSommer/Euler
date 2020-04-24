@@ -2,50 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcf840de-b8e9-4031-9931-a873d99acf6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/MatrixExpressionNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/VectorExpressionNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/Grammar/Euler.g4" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/Grammar/Euler.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/Euler.interp" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/Euler.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/Euler.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/Euler.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerLexer.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/NumberDeclarationNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/NumberDeclarationNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/NumberLiteralNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/NumberLiteralNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/VectorDeclarationNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/VectorDeclarationNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/SubscribtingAssignmentNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/SubscribtingAssignmentNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EulerLanguage/src/Visitors/AstBuilderVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/Visitors/AstBuilderVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EulerLanguage/src/Visitors/IVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/Visitors/IVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EulerLanguage/src/kurt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/kurt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/Euler.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/Euler.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/Euler.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/Euler.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerLexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerLexer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerLexer.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$AddexprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$AddexprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$AriopContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$AriopContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$AssignstmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$AssignstmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$DclContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$DclContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$ElseifstmtsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$ElseifstmtsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$ElsestmtsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$ElsestmtsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$ExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$ExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$IfstmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$IfstmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$LogopContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$LogopContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$LogstmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$LogstmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$MulopContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$MulopContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$MultiexprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$MultiexprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$PrimeexprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$PrimeexprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$PrintstmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$PrintstmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$ProgramContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$ProgramContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$StmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$StmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$StringstmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$StringstmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$ValindexContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$ValindexContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$WhilestmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser$WhilestmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/AST/NumberDeclarationNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/AST/NumberDeclarationNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/Visitors/AstBuilderVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/Visitors/AstBuilderVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/kurt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/kurt.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +37,8 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/EulerLanguage/src/ANTLR" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RunManager">
@@ -120,10 +81,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="760" y="274" key="#Project_Structure/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587542560584" />
-    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser" timestamp="1587712051261">
+    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser" timestamp="1587725404706">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587712051261" />
+    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587725404706" />
     <state x="1063" y="594" width="433" height="218" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587623138723">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -132,22 +93,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="986" y="441" key="FileChooserDialogImpl/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645744451" />
-    <state width="2517" height="497" key="GridCell.Tab.0.bottom" timestamp="1587711698512">
+    <state width="2517" height="224" key="GridCell.Tab.0.bottom" timestamp="1587717823400">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="497" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587711698512" />
-    <state width="2517" height="497" key="GridCell.Tab.0.center" timestamp="1587711698512">
+    <state width="2517" height="224" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587717823400" />
+    <state width="2517" height="224" key="GridCell.Tab.0.center" timestamp="1587717823400">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="497" key="GridCell.Tab.0.center/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587711698512" />
-    <state width="2517" height="497" key="GridCell.Tab.0.left" timestamp="1587711698512">
+    <state width="2517" height="224" key="GridCell.Tab.0.center/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587717823400" />
+    <state width="2517" height="224" key="GridCell.Tab.0.left" timestamp="1587717823400">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="497" key="GridCell.Tab.0.left/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587711698512" />
-    <state width="2517" height="497" key="GridCell.Tab.0.right" timestamp="1587711698512">
+    <state width="2517" height="224" key="GridCell.Tab.0.left/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587717823400" />
+    <state width="2517" height="224" key="GridCell.Tab.0.right" timestamp="1587717823400">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="497" key="GridCell.Tab.0.right/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587711698512" />
+    <state width="2517" height="224" key="GridCell.Tab.0.right/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587717823400" />
     <state width="2517" height="324" key="GridCell.Tab.1.bottom" timestamp="1587674401876">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -168,18 +129,18 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="860" y="434" key="IDE.errors.dialog/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645228630" />
-    <state x="781" y="344" key="SettingsEditor" timestamp="1587713222406">
+    <state x="781" y="344" key="SettingsEditor" timestamp="1587716669664">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="781" y="344" key="SettingsEditor/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587713222406" />
+    <state x="781" y="344" key="SettingsEditor/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587716669664" />
     <state x="668" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1587569224605">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="668" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587569224605" />
-    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-1" timestamp="1587625551364">
+    <state x="2561" y="-515" width="1456" height="1388" maximized="true" key="dock-window-1" timestamp="1587727102207">
       <screen x="2560" y="-495" width="1440" height="2520" />
     </state>
-    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-1/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587625551364" />
+    <state x="2561" y="-515" width="1456" height="1388" maximized="true" key="dock-window-1/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587727102207" />
     <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-2" timestamp="1587628510189">
       <screen x="2560" y="-495" width="1440" height="2520" />
     </state>
