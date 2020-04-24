@@ -49,4 +49,6 @@ public interface IVisitor {
     void visit(VectorExpressionNode node);
 
     void visit(MatrixExpressionNode node);
+
+    void visit(SubscribtingNode node);
 }

@@ -70,6 +70,11 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     }
 
     public ASTNode visitAssignstmt(EulerParser.AssignstmtContext ctx, ASTNode parent) {
+        if (ctx.valindex() != null) {
+
+        } else {
+
+        }
         AssignmentNode node = new AssignmentNode(parent);
         node.identifier = ctx.ID().getText();
         ASTNode child = visitExpr(ctx.expr(), node);
@@ -149,8 +154,11 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
         String id = ctx.ID().getText();
         if (ctx.MATRIX() != null) {
             String mtx = ctx.MATRIX().getText();
-            value = new MatrixDeclarationNode(parent, id, mtx);
-            return value;
+            MatrixDeclarationNode mtxdcl = new MatrixDeclarationNode(parent);
+            ASTNode node = new MatrixExpressionNode(mtxdcl, mtx);
+            mtxdcl.identifier = id;
+            mtxdcl.children.add(node);
+            return mtxdcl;
         }
         else if (ctx.VECTOR() != null) {
             String vec = ctx.VECTOR().getText();
