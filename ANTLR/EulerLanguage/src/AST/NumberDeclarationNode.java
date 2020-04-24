@@ -17,6 +17,5 @@ public class NumberDeclarationNode extends ASTNode {
 
     @Override
     public void accept(IVisitor visitor) {
-        
     }
 }
