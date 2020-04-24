@@ -24,7 +24,7 @@ public class SemanticsVisitor implements IVisitor {
 
     @Override
     public void visit(AssignmentNode node) {
-        //node.identifier(new LHSSemanticsVisitor(symbolTable)); Should check the assignment name
+        node.children.get(0).accept(new LHSSemanticsVisitor(symbolTable));
         node.children.get(0).accept(this);
         if(node.type.assignable(node.children.get(0).type)) {
             node.type = node.children.get(0).type;

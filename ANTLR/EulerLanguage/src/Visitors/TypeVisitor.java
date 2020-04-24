@@ -13,7 +13,7 @@ public class TypeVisitor extends TopDeclVisitor {
 
     @Override
     public void visit(IdentificationNode node) {
-        Attributes attr = symbolTable.retrieveSymbol(node.identification);
+        Attributes attr = symbolTable.retrieveSymbol(((IdentificationNode)node.children.get(0)).name);
         if(attr != null && attr.kind == AttributeKind.typeAttributes) {
             node.type = ((TypeAttributes)attr).thisType;
             node.attributesRef = attr;
