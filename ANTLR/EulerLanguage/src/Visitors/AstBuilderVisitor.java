@@ -10,7 +10,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     @Override
     public ASTNode visitProgram(EulerParser.ProgramContext ctx) {
         ASTNode node = new ProgramNode(null);
-        StatementBlockNode stmtNode = new StatementBlockNode(node);
+        CodeBlockNode stmtNode = new CodeBlockNode(node);
         node.children.add(stmtNode);
         ctx.stmt().forEach(child -> {
             stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, stmtNode));
@@ -87,7 +87,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
     public ASTNode visitWhilestmt(EulerParser.WhilestmtContext ctx, ASTNode parent) {
         WhileNode node = new WhileNode(parent);
-        StatementBlockNode stmtNode = new StatementBlockNode(node);
+        CodeBlockNode stmtNode = new CodeBlockNode(node);
         node.children.add(visitLogstmt(ctx.logstmt(), node));
         ctx.stmt().forEach(child -> {
             stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));

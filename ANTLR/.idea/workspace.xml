@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcf840de-b8e9-4031-9931-a873d99acf6e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/Euler.interp" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/Euler.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerLexer.interp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EulerLanguage/src/EulerCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/EulerCompiler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EulerLanguage/src/Visitors/AstBuilderVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/Visitors/AstBuilderVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/Euler.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/Euler.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/AST/MatrixDeclarationNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/AST/MatrixDeclarationNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/AST/NumberLiteralNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/AST/NumberLiteralNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/AST/VectorDeclarationNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/AST/VectorDeclarationNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/EulerCompiler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/EulerCompiler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/Visitors/AstBuilderVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/Visitors/AstBuilderVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/Visitors/IVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/Visitors/IVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/kurt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/kurt.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
