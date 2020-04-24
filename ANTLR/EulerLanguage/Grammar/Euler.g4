@@ -14,9 +14,9 @@ stmt        :	expr SEMI
             ;
 
 dcl         :	ID
-            |	ID ASSIGN expr
-            |	ID ASSIGN VECTOR
-            |   ID ASSIGN MATRIX
+            |	'num' ID ASSIGN expr
+            |	'vec' ID ASSIGN VECTOR
+            |   'mtx' ID ASSIGN MATRIX
             ;
 
 expr        :	addexpr
