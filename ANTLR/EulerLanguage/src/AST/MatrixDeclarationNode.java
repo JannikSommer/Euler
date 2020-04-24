@@ -1,23 +1,24 @@
 package AST;
 
 import Visitors.IVisitor;
+import symbolTable.typeDescriptors.MatrixTypeDescriptor;
 
-public class MatrixDeclarationNode extends ASTNode {
-    public String identifier;
-    public String matrixExpression;
+public class MatrixDeclarationNode extends DeclarationNode {
 
     public MatrixDeclarationNode(ASTNode parent) {
         super(parent);
     }
 
-    public MatrixDeclarationNode(ASTNode parent, String id, String mtxExpr) {
-        super(parent);
-        this.identifier = id;
-        matrixExpression = mtxExpr;
+    public MatrixDeclarationNode(ASTNode parent, String name, String mtxExpr) {
+        super(parent, name);
+        children.add(new MatrixExpressionNode(this, mtxExpr));
+        type = new MatrixTypeDescriptor(children.get(0).children.size(),        // Number of rows
+                ((MatrixExpressionNode)children.get(0)).getNumberOfColumns());  // Number of columns
+        children.get(0).type = type;
     }
 
     @Override
     public void accept(IVisitor visitor) {
-
+        visitor.visit(this);
     }
 }

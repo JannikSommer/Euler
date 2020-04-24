@@ -3,29 +3,18 @@ package AST;
 import Visitors.*;
 
 public class DeclarationNode extends ASTNode {
-    public String identifier;
-    public String matrix;
-    public String vector;
-
     public DeclarationNode(ASTNode parentNode) {
         super(parentNode);
     }
 
-    public DeclarationNode(ASTNode parentNode, String id, ASTNode val) {
+    public DeclarationNode(ASTNode parentNode, String name) {
         this(parentNode);
-        identifier = id;
-        children.add(val);
+        children.add(new IdentificationNode(this, name));
     }
 
-    public DeclarationNode(ASTNode parentNode, String id, String value) {
-        this(parentNode);
-        identifier = id;
-        if (value.contains("{")) {
-            matrix = value;
-        }
-        else {
-            vector = value;
-        }
+    public DeclarationNode(ASTNode parentNode, String name, ASTNode expression) {
+        this(parentNode, name);
+        children.add(expression);
     }
 
     public void accept(IVisitor visitor) {

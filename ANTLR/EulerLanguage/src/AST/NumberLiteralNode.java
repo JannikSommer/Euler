@@ -1,6 +1,5 @@
 package AST;
 
-
 import Visitors.IVisitor;
 
 public class NumberLiteralNode extends ASTNode {
