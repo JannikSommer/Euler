@@ -71,18 +71,16 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
     public ASTNode visitAssignstmt(EulerParser.AssignstmtContext ctx, ASTNode parent) {
         if (ctx.valindex() != null) {
-
+            ASTNode subsAssNode = new SubscribtingAssignmentNode(parent);
+            String str = ctx.valindex().getText();
+            subsAssNode.children.add(new IdentificationNode(subsAssNode, ctx.ID().getText()));
+            subsAssNode.children.add(new SubscribtingNode(subsAssNode, str));
+            return subsAssNode;
         } else {
-
-        }
-        AssignmentNode node = new AssignmentNode(parent);
-        node.identifier = ctx.ID().getText();
-        ASTNode child = visitExpr(ctx.expr(), node);
-        node.children.add(child);
-        if (ctx.valindex() != null) {
-            node.valIndex = ctx.valindex().getText();
-            return node;
-        } else {
+            AssignmentNode node = new AssignmentNode(parent);
+            node.identifier = ctx.ID().getText();
+            ASTNode child = visitExpr(ctx.expr(), node);
+            node.children.add(child);
             return node;
         }
     }
@@ -229,9 +227,11 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     public ASTNode visitPrimeexpr(EulerParser.PrimeexprContext ctx, ASTNode parent) {
         if (ctx.ID().getText() != null) {
             if (ctx.valindex().getText() != null) {
-                String id = ctx.ID().getText();
-                String valindex = ctx.valindex().getText();
-                return new IdentificationNode(parent, id, valindex);
+                ASTNode subsAssNode = new SubscribtingAssignmentNode(parent);
+                String str = ctx.valindex().getText();
+                subsAssNode.children.add(new IdentificationNode(subsAssNode, ctx.ID().getText()));
+                subsAssNode.children.add(new SubscribtingNode(subsAssNode, str));
+                return subsAssNode;
             }
             String id = ctx.ID().getText();
             return new IdentificationNode(parent, id);

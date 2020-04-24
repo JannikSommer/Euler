@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcf840de-b8e9-4031-9931-a873d99acf6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/SubscribtingAssignmentNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/SubscribtingNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ANTLR.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ANTLR.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/MatrixDeclarationNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/MatrixDeclarationNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/SubscribtingAssignmentNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/SubscribtingAssignmentNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EulerLanguage/src/Visitors/AstBuilderVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/Visitors/AstBuilderVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EulerLanguage/src/Visitors/IVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/Visitors/IVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/kurt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/kurt.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,10 +137,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="668" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587569224605" />
-    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-1" timestamp="1587625551364">
+    <state x="2561" y="-515" width="1456" height="1388" maximized="true" key="dock-window-1" timestamp="1587727102207">
       <screen x="2560" y="-495" width="1440" height="2520" />
     </state>
-    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-1/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587625551364" />
+    <state x="2561" y="-515" width="1456" height="1388" maximized="true" key="dock-window-1/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587727102207" />
     <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-2" timestamp="1587628510189">
       <screen x="2560" y="-495" width="1440" height="2520" />
     </state>
