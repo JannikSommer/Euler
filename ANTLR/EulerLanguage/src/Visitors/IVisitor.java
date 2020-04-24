@@ -41,4 +41,12 @@ public interface IVisitor {
     public void visit(ValueIndexNode node);
 
     public void visit(WhileNode node);
+
+    public void visit(VectorDeclarationNode node);
+
+    public void visit(NumberLiteralNode node);
+
+    public void visit(VectorExpressionNode node);
+
+    public void visit(MatrixExpressionNode node);
 }
