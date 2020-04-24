@@ -83,12 +83,22 @@ public class SemanticsVisitor implements IVisitor {
     }
 
     @Override
+    public void visit(MatrixDeclarationNode node) {
+
+    }
+
+    @Override
     public void visit(ModuloNode node) {
 
     }
 
     @Override
     public void visit(MultiplicationNode node) {
+
+    }
+
+    @Override
+    public void visit(NumberDeclarationNode node) {
 
     }
 
@@ -129,6 +139,11 @@ public class SemanticsVisitor implements IVisitor {
 
     @Override
     public void visit(ValueIndexNode node) {
+
+    }
+
+    @Override
+    public void visit(VectorDeclarationNode node) {
 
     }
 

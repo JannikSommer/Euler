@@ -17,7 +17,7 @@ public class TopDeclVisitor extends SemanticsVisitor {
         ASTNode value = node.children.get(0);
         if(value != null) {
             value.accept(new SemanticsVisitor(symbolTable));
-            if(!node.initType.assignable(value.type)) {
+            if(!node.type.assignable(value.type)) {
                 // TODO: Add error. Initialization value is wrong type.
             }
         }
@@ -25,13 +25,12 @@ public class TopDeclVisitor extends SemanticsVisitor {
         // Check if variable is already declared in symbol table. Otherwise add it.
         if(symbolTable.declaredLocally(node.identifier)) {
             // TODO: Add Error. Variable already declared.
-            node.initType = new ErrorTypeDescriptor("Variable already declared.");
+            node.type = new ErrorTypeDescriptor("Variable already declared.");
             node.attributesRef =  null;
         } else {
-            node.initType = node.getDclType();
             VariableAttributes attr = new VariableAttributes();
             attr.kind = AttributeKind.variableAttributes;
-            attr.variableType = node.initType;
+            attr.variableType = node.type;
             node.attributesRef = attr;
             symbolTable.enterSymbol(node.identifier, attr);
         }

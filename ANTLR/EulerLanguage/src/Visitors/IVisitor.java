@@ -28,9 +28,13 @@ public interface IVisitor {
 
     public void visit(LogicExpressionNode node);
 
+    public void visit(MatrixDeclarationNode node);
+
     public void visit(ModuloNode node);
     
     public void visit(MultiplicationNode node);
+
+    public void visit(NumberDeclarationNode node);
 
     public void visit(NumberLiteralNode node);
 
@@ -45,6 +49,8 @@ public interface IVisitor {
     public void visit(SubtractionNode node);
     
     public void visit(ValueIndexNode node);
+
+    public void visit(VectorDeclarationNode node);
 
     public void visit(WhileNode node);
 }

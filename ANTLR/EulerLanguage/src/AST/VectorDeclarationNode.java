@@ -1,6 +1,7 @@
 package AST;
 
 import Visitors.IVisitor;
+import symbolTable.typeDescriptors.VectorTypeDescriptor;
 
 public class VectorDeclarationNode extends ASTNode {
     public String identifier;
@@ -10,10 +11,11 @@ public class VectorDeclarationNode extends ASTNode {
         super(parent);
         identifier = id;
         vectorExpression = vecExpr;
+        type = new VectorTypeDescriptor(/*TODO: length, elemenType*/);
     }
 
     @Override
     public void accept(IVisitor visitor) {
-
+        visitor.visit(this);
     }
 }
