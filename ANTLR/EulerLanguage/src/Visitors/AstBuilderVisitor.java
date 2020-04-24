@@ -3,8 +3,6 @@ import ANTLR.*;
 import AST.*;
 import java.lang.*;
 
-import java.util.ArrayList;
-
 public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
     @Override
@@ -71,10 +69,10 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
     public ASTNode visitAssignstmt(EulerParser.AssignstmtContext ctx, ASTNode parent) {
         if (ctx.valindex() != null) {
-            ASTNode subsAssNode = new SubscribtingAssignmentNode(parent);
+            ASTNode subsAssNode = new SubscriptingAssignmentNode(parent);
             String str = ctx.valindex().getText();
             subsAssNode.children.add(new IdentificationNode(subsAssNode, ctx.ID().getText()));
-            subsAssNode.children.add(new SubscribtingNode(subsAssNode, str));
+            subsAssNode.children.add(new SubscriptingNode(subsAssNode, str));
             return subsAssNode;
         } else {
             AssignmentNode node = new AssignmentNode(parent);
@@ -227,10 +225,10 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     public ASTNode visitPrimeexpr(EulerParser.PrimeexprContext ctx, ASTNode parent) {
         if (ctx.ID().getText() != null) {
             if (ctx.valindex().getText() != null) {
-                ASTNode subsAssNode = new SubscribtingAssignmentNode(parent);
+                ASTNode subsAssNode = new SubscriptingAssignmentNode(parent);
                 String str = ctx.valindex().getText();
                 subsAssNode.children.add(new IdentificationNode(subsAssNode, ctx.ID().getText()));
-                subsAssNode.children.add(new SubscribtingNode(subsAssNode, str));
+                subsAssNode.children.add(new SubscriptingNode(subsAssNode, str));
                 return subsAssNode;
             }
             String id = ctx.ID().getText();

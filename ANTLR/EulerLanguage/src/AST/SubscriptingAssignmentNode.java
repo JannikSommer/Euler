@@ -2,9 +2,9 @@ package AST;
 
 import Visitors.IVisitor;
 
-public class SubscribtingAssignmentNode extends ASTNode {
+public class SubscriptingAssignmentNode extends ASTNode {
 
-    public SubscribtingAssignmentNode(ASTNode parentNode) {
+    public SubscriptingAssignmentNode(ASTNode parentNode) {
         super(parentNode);
     }
 

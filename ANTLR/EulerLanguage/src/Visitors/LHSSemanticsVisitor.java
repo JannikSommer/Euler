@@ -1,6 +1,6 @@
 package Visitors;
 
-import AST.IdentificationNode;
+import AST.*;
 import symbolTable.SymbolTable;
 
 public class LHSSemanticsVisitor extends SemanticsVisitor {

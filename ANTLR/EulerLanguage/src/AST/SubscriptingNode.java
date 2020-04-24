@@ -2,10 +2,10 @@ package AST;
 
 import Visitors.IVisitor;
 
-public class SubscribtingNode extends ASTNode {
+public class SubscriptingNode extends ASTNode {
     public int[] index;
 
-    public SubscribtingNode(ASTNode parent, String str) {
+    public SubscriptingNode(ASTNode parent, String str) {
         super(parent);
         String delimiters = "[\\[\\]]+";
         String[] tokens = str.split(delimiters);
