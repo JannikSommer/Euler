@@ -1,10 +1,6 @@
 package Visitors;
 import ANTLR.*;
 import AST.*;
-import org.antlr.v4.runtime.*;
-import org.antlr.*;
-
-import java.util.*;
 import java.lang.*;
 
 import java.util.ArrayList;
@@ -139,7 +135,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     public ASTNode visitElseifstmts(EulerParser.ElseifstmtsContext ctx, ASTNode parent) {
         ElseIfStatementNode node = new ElseIfStatementNode(parent);
         StatementBlockNode stmtNode = new StatementBlockNode(node);
-        node.children.add(visitLogstmt(ctx.logstmt().get(0) , node));
+        node.children.add(visitLogstmt(ctx.logstmt(), node));
         ctx.stmt().forEach(child -> {
             stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
         });
@@ -153,18 +149,20 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
         String id = ctx.ID().getText();
         if (ctx.MATRIX() != null) {
             String mtx = ctx.MATRIX().getText();
-            value = new DeclarationNode(parent, id, mtx);
+            value = new MatrixDeclarationNode(parent, id, mtx);
             return value;
         }
         else if (ctx.VECTOR() != null) {
             String vec = ctx.MATRIX().getText();
-            value = new DeclarationNode(parent, id, vec);
+            value = new VectorDeclarationNode(parent, id, vec);
             return value;
         }
         else if (ctx.expr() != null) {
-            value = new AssignmentNode(parent);
-            value = visitExpr((ctx.expr()),value);
-            return value;
+            NumberDeclarationNode node = new NumberDeclarationNode(parent);
+            ASTNode child = visitExpr((ctx.expr()));
+            node.children.add(node);
+            node.identifier = id;
+            return node;
         }
         else {
             return new InitializationNode(parent, id);
@@ -214,7 +212,6 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             right = visitMultiexpr(ctx.multiexpr(), parent);
             return new ModuloNode(parent, left, right);
         }
-
         else return null;
     }
 

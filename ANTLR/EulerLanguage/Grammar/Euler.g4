@@ -13,10 +13,10 @@ stmt        :	expr SEMI
             |   printstmt SEMI
             ;
 
-dcl         :	ID                                  #idInit
-            |	ID ASSIGN expr                      #idAssign
-            |	ID ASSIGN VECTOR                    #vecAssign
-            |   ID ASSIGN MATRIX                    #mtxAssign
+dcl         :	ID
+            |	ID ASSIGN expr
+            |	ID ASSIGN VECTOR
+            |   ID ASSIGN MATRIX
             ;
 
 expr        :	addexpr
@@ -51,11 +51,11 @@ assignstmt  :	ID valindex? ASSIGN expr
             ;
 
 addexpr     :	multiexpr
-            |	multiexpr ariop addexpr
+            |	multiexpr op=('+'|'-') addexpr
             ;
 
 multiexpr   :	primeexpr
-            |	primeexpr mulop multiexpr
+            |	primeexpr op=('*' | '/' | '%') multiexpr
             ;
 
 primeexpr   :	ID valindex?

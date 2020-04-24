@@ -26,8 +26,8 @@ public class EulerCompiler {
         // ParseTree tree = parser.program();
         System.out.println(parser.program().getText());
 
-        // AstBuilderVisitor astBuilder = new AstBuilderVisitor();
-        //ASTNode node = astBuilder.visitProgram(parser.program());
+        AstBuilderVisitor astBuilder = new AstBuilderVisitor();
+        ASTNode node = astBuilder.visitProgram(parser.program());
 
 
     }

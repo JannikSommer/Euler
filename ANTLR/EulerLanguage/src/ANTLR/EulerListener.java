@@ -28,53 +28,15 @@ public interface EulerListener extends ParseTreeListener {
 	 */
 	void exitStmt(EulerParser.StmtContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code idInit}
-	 * labeled alternative in {@link EulerParser#dcl}.
+	 * Enter a parse tree produced by {@link EulerParser#dcl}.
 	 * @param ctx the parse tree
 	 */
-	void enterIdInit(EulerParser.IdInitContext ctx);
+	void enterDcl(EulerParser.DclContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code idInit}
-	 * labeled alternative in {@link EulerParser#dcl}.
+	 * Exit a parse tree produced by {@link EulerParser#dcl}.
 	 * @param ctx the parse tree
 	 */
-	void exitIdInit(EulerParser.IdInitContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code idAssign}
-	 * labeled alternative in {@link EulerParser#dcl}.
-	 * @param ctx the parse tree
-	 */
-	void enterIdAssign(EulerParser.IdAssignContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code idAssign}
-	 * labeled alternative in {@link EulerParser#dcl}.
-	 * @param ctx the parse tree
-	 */
-	void exitIdAssign(EulerParser.IdAssignContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code vecAssign}
-	 * labeled alternative in {@link EulerParser#dcl}.
-	 * @param ctx the parse tree
-	 */
-	void enterVecAssign(EulerParser.VecAssignContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code vecAssign}
-	 * labeled alternative in {@link EulerParser#dcl}.
-	 * @param ctx the parse tree
-	 */
-	void exitVecAssign(EulerParser.VecAssignContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code mtxAssign}
-	 * labeled alternative in {@link EulerParser#dcl}.
-	 * @param ctx the parse tree
-	 */
-	void enterMtxAssign(EulerParser.MtxAssignContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code mtxAssign}
-	 * labeled alternative in {@link EulerParser#dcl}.
-	 * @param ctx the parse tree
-	 */
-	void exitMtxAssign(EulerParser.MtxAssignContext ctx);
+	void exitDcl(EulerParser.DclContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EulerParser#expr}.
 	 * @param ctx the parse tree

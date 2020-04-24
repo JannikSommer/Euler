@@ -23,33 +23,11 @@ public interface EulerVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStmt(EulerParser.StmtContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code idInit}
-	 * labeled alternative in {@link EulerParser#dcl}.
+	 * Visit a parse tree produced by {@link EulerParser#dcl}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIdInit(EulerParser.IdInitContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code idAssign}
-	 * labeled alternative in {@link EulerParser#dcl}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitIdAssign(EulerParser.IdAssignContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code vecAssign}
-	 * labeled alternative in {@link EulerParser#dcl}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVecAssign(EulerParser.VecAssignContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code mtxAssign}
-	 * labeled alternative in {@link EulerParser#dcl}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMtxAssign(EulerParser.MtxAssignContext ctx);
+	T visitDcl(EulerParser.DclContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EulerParser#expr}.
 	 * @param ctx the parse tree
