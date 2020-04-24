@@ -154,13 +154,16 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
         }
         else if (ctx.VECTOR() != null) {
             String vec = ctx.MATRIX().getText();
-            value = new VectorDeclarationNode(parent, id, vec);
-            return value;
+            VectorDeclarationNode vecNode = new VectorDeclarationNode(parent);
+            ASTNode node = new VectorExpressionNode(vecNode, vec);
+            vecNode.identifier = id;
+            vecNode.children.add(node);
+            return vecNode;
         }
         else if (ctx.expr() != null) {
             NumberDeclarationNode node = new NumberDeclarationNode(parent);
             ASTNode child = visitExpr((ctx.expr()));
-            node.children.add(node);
+            node.children.add(child);
             node.identifier = id;
             return node;
         }

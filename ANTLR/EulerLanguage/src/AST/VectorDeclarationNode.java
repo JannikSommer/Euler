@@ -5,13 +5,16 @@ import symbolTable.typeDescriptors.VectorTypeDescriptor;
 
 public class VectorDeclarationNode extends ASTNode {
     public String identifier;
-    public String vectorExpression;
 
-    public VectorDeclarationNode(ASTNode parent, String id, String vecExpr) {
+    public VectorDeclarationNode(ASTNode parent) {
+        super(parent);
+    }
+
+    public VectorDeclarationNode(ASTNode parent, String id, ASTNode child) {
         super(parent);
         identifier = id;
-        vectorExpression = vecExpr;
         type = new VectorTypeDescriptor(/*TODO: length, elemenType*/);
+        this.children.add(child);
     }
 
     @Override
@@ -19,3 +22,4 @@ public class VectorDeclarationNode extends ASTNode {
         visitor.visit(this);
     }
 }
+
