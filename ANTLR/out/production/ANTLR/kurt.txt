@@ -1,14 +1,9 @@
-num a = 2;
-vec b = <1,2,3>;
-mtx c = {1,2;3,4};
-d = b[2];
+a = 2;
 while a < 100 do
     1 * 2;
     if a < 2 then
         a * 2;
-        else if a > 2 then
-        a * 3;
         else then
-        a * 4;
+        a * 3;
     end
 end

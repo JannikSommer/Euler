@@ -11,6 +11,10 @@ public class NumberLiteralNode extends ASTNode {
         this.value = value;
     }
 
+
+
     @Override
-    public void accept(IVisitor visitor) { visitor.visit(this); }
+    public void accept(IVisitor visitor) {
+
+    }
 }

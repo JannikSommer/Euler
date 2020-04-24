@@ -6,16 +6,14 @@ public class VectorDeclarationNode extends ASTNode {
     public String identifier;
     public String vectorExpression;
 
-    public VectorDeclarationNode(ASTNode parent) {
-        super(parent);
-    }
-
-    public VectorDeclarationNode(ASTNode parent, String id, ASTNode child) {
+    public VectorDeclarationNode(ASTNode parent, String id, String vecExpr) {
         super(parent);
         identifier = id;
-        this.children.add(child);
+        vectorExpression = vecExpr;
     }
 
     @Override
-    public void accept(IVisitor visitor) { visitor.visit(this); }
+    public void accept(IVisitor visitor) {
+
+    }
 }

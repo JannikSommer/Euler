@@ -5,6 +5,8 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
@@ -14,8 +16,9 @@ public class EulerCompiler {
 
     public static void main(String[] args) {
         CharStream input = null;
+        String InputFile = System.getProperty("user.dir") + "/EulerLanguage/src/kurt.txt";
         try {
-            input = CharStreams.fromFileName("C:/Users/janni/Documents/GitHub/P4---cEX/ANTLR/EulerLanguage/src/kurt.txt");
+            input = CharStreams.fromFileName(InputFile);
         }
         catch (IOException e) {
             e.printStackTrace();
