@@ -2,11 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcf840de-b8e9-4031-9931-a873d99acf6e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/SubscribtingAssignmentNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/SubscribtingAssignmentNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/Euler.interp" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/Euler.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/EulerCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/EulerCompiler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EulerLanguage/src/Visitors/AstBuilderVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/Visitors/AstBuilderVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/Visitors/IVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/Visitors/IVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/kurt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/kurt.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/Euler.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/Euler.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/AST/MatrixDeclarationNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/AST/MatrixDeclarationNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/AST/NumberLiteralNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/AST/NumberLiteralNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/AST/VectorDeclarationNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/AST/VectorDeclarationNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/EulerCompiler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/EulerCompiler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/Visitors/AstBuilderVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/Visitors/AstBuilderVisitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/Visitors/IVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/Visitors/IVisitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/kurt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/kurt.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,38 +103,38 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="986" y="441" key="FileChooserDialogImpl/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645744451" />
-    <state width="2517" height="224" key="GridCell.Tab.0.bottom" timestamp="1587717823400">
+    <state width="2517" height="392" key="GridCell.Tab.0.bottom" timestamp="1587729332239">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="224" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587717823400" />
-    <state width="2517" height="224" key="GridCell.Tab.0.center" timestamp="1587717823400">
+    <state width="2517" height="392" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587729332239" />
+    <state width="2517" height="392" key="GridCell.Tab.0.center" timestamp="1587729332239">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="224" key="GridCell.Tab.0.center/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587717823400" />
-    <state width="2517" height="224" key="GridCell.Tab.0.left" timestamp="1587717823400">
+    <state width="2517" height="392" key="GridCell.Tab.0.center/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587729332239" />
+    <state width="2517" height="392" key="GridCell.Tab.0.left" timestamp="1587729332239">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="224" key="GridCell.Tab.0.left/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587717823400" />
-    <state width="2517" height="224" key="GridCell.Tab.0.right" timestamp="1587717823400">
+    <state width="2517" height="392" key="GridCell.Tab.0.left/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587729332239" />
+    <state width="2517" height="392" key="GridCell.Tab.0.right" timestamp="1587729332239">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="224" key="GridCell.Tab.0.right/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587717823400" />
-    <state width="2517" height="324" key="GridCell.Tab.1.bottom" timestamp="1587674401876">
+    <state width="2517" height="392" key="GridCell.Tab.0.right/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587729332239" />
+    <state width="2517" height="371" key="GridCell.Tab.1.bottom" timestamp="1587729007841">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="324" key="GridCell.Tab.1.bottom/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587674401876" />
-    <state width="2517" height="324" key="GridCell.Tab.1.center" timestamp="1587674401876">
+    <state width="2517" height="371" key="GridCell.Tab.1.bottom/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587729007841" />
+    <state width="2517" height="371" key="GridCell.Tab.1.center" timestamp="1587729007841">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="324" key="GridCell.Tab.1.center/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587674401876" />
-    <state width="2517" height="324" key="GridCell.Tab.1.left" timestamp="1587674401876">
+    <state width="2517" height="371" key="GridCell.Tab.1.center/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587729007841" />
+    <state width="2517" height="371" key="GridCell.Tab.1.left" timestamp="1587729007841">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="324" key="GridCell.Tab.1.left/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587674401876" />
-    <state width="2517" height="324" key="GridCell.Tab.1.right" timestamp="1587674401876">
+    <state width="2517" height="371" key="GridCell.Tab.1.left/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587729007841" />
+    <state width="2517" height="371" key="GridCell.Tab.1.right" timestamp="1587729007841">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="324" key="GridCell.Tab.1.right/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587674401876" />
+    <state width="2517" height="371" key="GridCell.Tab.1.right/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587729007841" />
     <state x="860" y="434" key="IDE.errors.dialog" timestamp="1587645228630">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

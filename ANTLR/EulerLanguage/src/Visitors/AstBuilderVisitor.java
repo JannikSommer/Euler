@@ -11,10 +11,10 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     public ASTNode visitProgram(EulerParser.ProgramContext ctx) {
         ASTNode node = new ProgramNode(null);
         StatementBlockNode stmtNode = new StatementBlockNode(node);
-        ctx.stmt().forEach(child -> {
-            stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
-        });
         node.children.add(stmtNode);
+        ctx.stmt().forEach(child -> {
+            stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, stmtNode));
+        });
         return node;
     }
 

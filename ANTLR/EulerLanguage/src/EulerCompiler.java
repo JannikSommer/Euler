@@ -1,5 +1,6 @@
 import ANTLR.*;
 import AST.ASTNode;
+import AST.StatementBlockNode;
 import Visitors.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.CharStream;
@@ -24,12 +25,10 @@ public class EulerCompiler {
         EulerLexer lexer = new EulerLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         EulerParser parser = new EulerParser(tokens);
-        // ParseTree tree = parser.program();
-        System.out.println(parser.program().getText());
-
+        ParseTree tree = parser.program();
+        // System.out.println(tree.toStringTree(parser)); // print LISP-style tree
         AstBuilderVisitor astBuilder = new AstBuilderVisitor();
-        ASTNode node = astBuilder.visitProgram(parser.program());
-
+        ASTNode node = astBuilder.visit(tree);
 
     }
 }
