@@ -56,14 +56,14 @@ public class SemanticsVisitor implements IVisitor {
 
     @Override
     public void visit(IdentificationNode node) {
-        node.type = new ErrorTypeDescriptor("Placeholder");
-        node.attributesRef = null;
-        VariableAttributes attrRef = (VariableAttributes)symbolTable.retrieveSymbol(node.identification);
+        VariableAttributes attrRef = (VariableAttributes)symbolTable.retrieveSymbol(node.name);
         if(attrRef == null) {
             // TODO: Add error. this id has not been declared.
+            node.type = new ErrorTypeDescriptor("Id has not been declared.");
+            node.attributesRef = null;
         } else {
             node.attributesRef = attrRef;
-            node.type.kind = attrRef.variableType.kind; // TODO: More checking. Maybe
+            node.type.kind = attrRef.variableType.kind; // TODO: More checking. Maybe. Page 327
         }
     }
 
@@ -84,6 +84,11 @@ public class SemanticsVisitor implements IVisitor {
 
     @Override
     public void visit(MatrixDeclarationNode node) {
+
+    }
+
+    @Override
+    public void visit(MatrixExpressionNode node) {
 
     }
 
@@ -154,6 +159,11 @@ public class SemanticsVisitor implements IVisitor {
 
     @Override
     public void visit(WhileNode node) {
+
+    }
+
+    @Override
+    public void visit(ReferenceNode referenceNode) {
 
     }
 }

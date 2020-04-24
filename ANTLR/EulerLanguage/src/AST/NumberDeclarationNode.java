@@ -3,18 +3,16 @@ package AST;
 import Visitors.IVisitor;
 import symbolTable.typeDescriptors.NumberTypeDescriptor;
 
-public class NumberDeclarationNode extends ASTNode {
-    public String identifier;
+public class NumberDeclarationNode extends DeclarationNode {
 
     public NumberDeclarationNode(ASTNode parent) {
         super(parent);
     }
 
-    public NumberDeclarationNode(ASTNode parent, String id, ASTNode child) {
-        super(parent);
-        identifier = id;
-        children.add(child);
+    public NumberDeclarationNode(ASTNode parent, String name, ASTNode expression) {
+        super(parent, name, expression);
         type = new NumberTypeDescriptor();
+        children.get(0).type = type;
     }
 
     @Override

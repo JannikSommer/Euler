@@ -5,19 +5,16 @@ import symbolTable.attributes.*;
 import symbolTable.typeDescriptors.TypeDescriptor;
 
 public class IdentificationNode extends ASTNode {
-    public String identification;
-    public String index;
+    public String name;
     public Attributes attributesRef;
 
-    public IdentificationNode(ASTNode parent, String id, String index) {
+    public IdentificationNode(ASTNode parent) {
         super(parent);
-        identification = id;
-        this.index = index;
     }
 
-    public IdentificationNode(ASTNode parent, String id) {
-        super(parent);
-        identification = id;
+    public IdentificationNode(ASTNode parent, String name) {
+        this(parent);
+        this.name = name;
     }
 
     @Override

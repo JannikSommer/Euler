@@ -13,7 +13,7 @@ public class VectorExpressionNode extends ASTNode {
         getVectorElemtns(vecExpr);
     }
 
-    public void getVectorElemtns(String vecExpr) {
+    private void getVectorElemtns(String vecExpr) {
         String delimiters = "[<,>]+";
         String[] tokens = vecExpr.split(delimiters);
         for (String str : tokens) {

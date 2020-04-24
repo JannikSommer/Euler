@@ -5,8 +5,9 @@ public class MatrixTypeDescriptor extends TypeDescriptor{
     public int columns;
 
     public MatrixTypeDescriptor() {
+        super(TypeDescriptorKind.matrix);
         compatibleTypes = new TypeDescriptorKind[] {TypeDescriptorKind.matrix};
-        kind = TypeDescriptorKind.matrix;
+
     }
 
     public MatrixTypeDescriptor(int rows, int columns) {

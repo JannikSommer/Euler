@@ -13,4 +13,9 @@ public class LHSSemanticsVisitor extends SemanticsVisitor {
     public void visit(IdentificationNode node) {
         // Is it assignable
     }
+
+    @Override
+    public void visit(SubscriptingNode node) {
+
+    }
 }

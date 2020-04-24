@@ -4,6 +4,10 @@ public abstract class TypeDescriptor {
     public TypeDescriptorKind kind;
     public TypeDescriptorKind[] compatibleTypes;
 
+    public TypeDescriptor(TypeDescriptorKind kind) {
+        this.kind = kind;
+    }
+
     public boolean assignable(TypeDescriptorKind type) {
         for(int i = 0; i < compatibleTypes.length; i++) {
             if(kind == type) {
