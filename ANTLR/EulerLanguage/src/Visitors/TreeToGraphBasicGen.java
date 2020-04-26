@@ -1,12 +1,12 @@
 package Visitors;
 
-import AST.*;
+import AST.ASTNode;
 
-public class TreeGenVisitor {
+public class TreeToGraphBasicGen {
     private String TreeGenString = "";
     public String GraphName;
 
-    public TreeGenVisitor(String GraphName){
+    public TreeToGraphBasicGen(String GraphName){
         this.GraphName = GraphName;
     }
 

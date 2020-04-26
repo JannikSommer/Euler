@@ -5,6 +5,7 @@ import Visitors.IVisitor;
 public class IdentificationNode extends ASTNode {
     public String identification;
     public String index;
+    //TODO needs second index if matrix?
 
     public IdentificationNode(ASTNode parent, String id, String index) {
         super(parent);
@@ -17,8 +18,7 @@ public class IdentificationNode extends ASTNode {
         identification = id;
     }
 
-    @Override
     public void accept(IVisitor visitor) {
-
+        visitor.visit(this);
     }
 }

@@ -15,7 +15,7 @@ public class NumberDeclarationNode extends ASTNode {
         children.add(child);
     }
 
-    @Override
     public void accept(IVisitor visitor) {
+        visitor.visit(this);
     }
 }

@@ -1,8 +1,7 @@
 import ANTLR.EulerLexer;
 import ANTLR.EulerParser;
 import AST.ASTNode;
-import Visitors.AstBuilderVisitor;
-import Visitors.TreeGenVisitor;
+import Visitors.*;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -28,8 +27,8 @@ public class GraphGen {
         AstBuilderVisitor astBuilder = new AstBuilderVisitor();
         ASTNode node = astBuilder.visitProgram(parser.program());
 
-        TreeGenVisitor TreeGenerator = new TreeGenVisitor("Graph");
-        String Tree = TreeGenerator.Graph(node);
+        TreeToGraphGen TreeGenerator = new TreeToGraphGen("Graph");
+        String Tree = TreeGenerator.MakeGraph(node);
 
         System.out.println("\n" + Tree);
 

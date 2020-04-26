@@ -13,8 +13,9 @@ public class VectorExpressionNode extends ASTNode {
         getVectorElemtns(vecExpr);
     }
 
-    @Override
-    public void accept(IVisitor visitor) { visitor.visit(this); }
+    public void accept(IVisitor visitor) {
+        visitor.visit(this);
+    }
 
     public void getVectorElemtns(String vecExpr) {
         String delimiters = "[<,>]+";

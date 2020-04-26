@@ -11,8 +11,7 @@ public class StatementBlockNode extends ASTNode {
     }
 
 
-    @Override
     public void accept(IVisitor visitor) {
-
+        visitor.visit(this);
     }
 }
