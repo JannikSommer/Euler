@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 public class GraphGen {
     public static void main(String[] args) throws IOException {
         CharStream input = null;
-        String InputFile = System.getProperty("user.dir") + "/EulerLanguage/src/kurt.txt";
+        String InputFile = System.getProperty("user.dir") + "/src/kurt.txt";
         try {
             input = CharStreams.fromFileName(InputFile);
         }
@@ -32,7 +32,7 @@ public class GraphGen {
 
         System.out.println("\n" + Tree);
 
-        try (PrintWriter out = new PrintWriter(TreeGenerator.GraphName + ".dot")) {
+        try (PrintWriter out = new PrintWriter(TreeGenerator.GraphName + ".gz")) {
             out.println(Tree);
         }
     }
