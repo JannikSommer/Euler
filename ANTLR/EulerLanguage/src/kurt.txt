@@ -8,8 +8,11 @@ while a < 100 do
     if a < 2 then
         a * 2;
         else if a > 2 then
-        a * 3;
+            a * 3;
+        else if a == 2 then
+            a *1000;
         else then
-        a * 4;
+            a * 7;
     end
 end
+

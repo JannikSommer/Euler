@@ -14,14 +14,16 @@ public class VectorExpressionNode extends ASTNode {
     }
 
     private void getVectorElements(String vecExpr) {
-        String delimiters = "[<,> ]+";
+        String delimiters = "[<,>\n\t ]+";
         String[] tokens = vecExpr.split(delimiters);
         for (String str : tokens) {
             if(str.matches("\\d")) { // TODO: Check effeciency and if it should be more thorough.
                 double number = Double.parseDouble(str);
                 this.children.add(new NumberLiteralNode(this, number));
             } else {
-                this.children.add(new ReferenceNode(this, str));
+                if (!str.equals("")) {
+                    this.children.add(new ReferenceNode(this, str));
+                }
             }
         }
     }
