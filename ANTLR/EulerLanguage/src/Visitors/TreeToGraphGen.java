@@ -46,7 +46,7 @@ public class TreeToGraphGen implements IVisitor {
     @Override
     public void visit(AssignmentNode node) {
         String MyName = node.getClass().getSimpleName();
-        TreeGenString += "\t" + MyName + " [label=\"" + "Assign\n" + node.identifier;
+        TreeGenString += "\t" + MyName + " [label=\"Assign\n" + node.identifier;
 
         if(node.valIndex != null){
             TreeGenString += node.valIndex;
@@ -63,7 +63,7 @@ public class TreeToGraphGen implements IVisitor {
     @Override
     public void visit(DeclarationNode node) {
         String MyName = node.getClass().getSimpleName();
-        TreeGenString += "\t" + MyName + " [label=\"" + "DclNode\n= \"];\n";
+        TreeGenString += "\t" + MyName + " [label=\"DclNode\n= \"];\n";
 
         ConvertChildren(node.children, MyName);
     }
@@ -80,7 +80,7 @@ public class TreeToGraphGen implements IVisitor {
     @Override
     public void visit(IdentificationNode node) {
         String MyName = node.getClass().getSimpleName();
-        TreeGenString += "\t" + MyName + " [label=\"" + "IdNode\n" + node.name + "\"];\n";
+        TreeGenString += "\t" + MyName + " [label=\"IdNode\n" + node.name + "\"];\n";
 
         ConvertChildren(node.children, MyName);
     }
@@ -91,7 +91,7 @@ public class TreeToGraphGen implements IVisitor {
     @Override
     public void visit(InitializationNode node) {
         String MyName = node.getClass().getSimpleName();
-        TreeGenString += "\t" + MyName + " [label=\"" + "InitNode\n" + node.identifier + "\"];\n";
+        TreeGenString += "\t" + MyName + " [label=\"InitNode\n" + node.identifier + "\"];\n";
 
         ConvertChildren(node.children, MyName);
     }
@@ -99,7 +99,7 @@ public class TreeToGraphGen implements IVisitor {
     @Override
     public void visit(LogicExpressionNode node) {
         String MyName = node.getClass().getSimpleName();
-        TreeGenString += "\t" + MyName + " [label=\"" + "LogicExp\n" + node.operator + "\"];\n";
+        TreeGenString += "\t" + MyName + " [label=\"LogicExp\n" + node.operator + "\"];\n";
 
         ConvertChildren(node.children, MyName);
     }
@@ -116,7 +116,7 @@ public class TreeToGraphGen implements IVisitor {
     @Override
     public void visit(NumberDeclarationNode node) {
         String MyName = node.getClass().getSimpleName();
-        TreeGenString += "\t" + MyName + " [label=\"" + "NumDcl\n" + " =" + "\"];\n";
+        TreeGenString += "\t" + MyName + " [label=\"NumDcl\n" + " =" + "\"];\n";
 
         ConvertChildren(node.children, MyName);
     }
@@ -133,7 +133,7 @@ public class TreeToGraphGen implements IVisitor {
     @Override
     public void visit(StringNode node) {
         String MyName = node.getClass().getSimpleName();
-        TreeGenString += "\t" + MyName + " [label=\"" + "String\n\\\"" + node.string + "\\\"\"];\n";
+        TreeGenString += "\t" + MyName + " [label=\"String\n\\\"" + node.string + "\\\"\"];\n";
         ConvertChildren(node.children, MyName);
     }
 
@@ -179,7 +179,7 @@ public class TreeToGraphGen implements IVisitor {
     @Override
     public void visit(NumberLiteralNode node) {
         String MyName = node.getClass().getSimpleName();
-        TreeGenString += "\t" + MyName + " [label=\"" + "Num\n" + node.value + "\"];\n";
+        TreeGenString += "\t" + MyName + " [label=\"Num\n" + node.value + "\"];\n";
 
         ConvertChildren(node.children, MyName);
     }
