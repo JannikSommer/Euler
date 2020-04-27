@@ -133,6 +133,11 @@ public class SemanticsVisitor implements IVisitor {
     }
 
     @Override
+    public void visit(StringNode node) {
+
+    }
+
+    @Override
     public void visit(CodeBlockNode node) {
 
     }
