@@ -15,14 +15,16 @@ public class TreeToGraphBasicGen {
         TreeGenString = TreeGenString + "\t" + MyName + " [label=\"" + MyName + "\"];\n";
 
         for (ASTNode child : node.children) {
-            ConvertTree(child);
+            if(child != null){
+                ConvertTree(child);
 
-            String ChildName = child.getClass().getSimpleName();
-            TreeGenString = TreeGenString + "\t" + MyName + " -> " + ChildName + ";";
+                String ChildName = child.getClass().getSimpleName();
+                TreeGenString = TreeGenString + "\t" + MyName + " -> " + ChildName + ";";
+            }
         }
     }
 
-    public <T extends ASTNode> String Graph(T node){
+    public <T extends ASTNode> String MakeGraph(T node){
         String Graph = "digraph G{\n";
         ConvertTree(node);
         Graph = Graph + TreeGenString;
