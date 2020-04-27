@@ -169,7 +169,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
         }
         else if (ctx.expr() != null) {
             NumberDeclarationNode node = new NumberDeclarationNode(parent);
-            ASTNode child = visitExpr((ctx.expr()));
+            ASTNode child = visitExpr((ctx.expr()), node);
             node.children.add(new IdentificationNode(node, id));
             node.children.add(child);
             return node;
@@ -237,10 +237,10 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             String id = ctx.ID().getText();
             return new IdentificationNode(parent, id);
         }
-        else if (ctx.NUM().getText() != null) {
+        else if (ctx.NUM() != null) {
             return new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
         }
-        else if (ctx.LPAREN().getText() != null) {
+        else if (ctx.LPAREN() != null) {
             return visitAddexpr(ctx.addexpr(), parent);
         }
         else {
