@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 public class GraphGen {
     public static void main(String[] args) throws IOException {
         CharStream input = null;
-        String InputFile = System.getProperty("user.dir") + "/src/kurt.txt";
+        String InputFile = System.getProperty("user.dir") + "/EulerLanguage/src/kurt.txt";
         try {
             input = CharStreams.fromFileName(InputFile);
         }
