@@ -5,5 +5,6 @@ public enum TypeDescriptorKind {
     matrix,
     number,
     vector,
+    bool,
     other
 }

@@ -2,8 +2,7 @@ package AST;
 
 import Visitors.*;
 
-public class LogicExpressionNode extends ASTNode {
-
+public class LogicExpressionNode extends StatementNode {
     public String operator;
     public LogicExpressionNode(ASTNode parentNode) {
         super(parentNode);

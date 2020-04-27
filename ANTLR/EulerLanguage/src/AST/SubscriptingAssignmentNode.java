@@ -2,7 +2,7 @@ package AST;
 
 import Visitors.IVisitor;
 
-public class SubscriptingAssignmentNode extends ASTNode {
+public class SubscriptingAssignmentNode extends StatementNode {
 
     public SubscriptingAssignmentNode(ASTNode parentNode) {
         super(parentNode);

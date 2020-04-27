@@ -1,5 +1,5 @@
 import ANTLR.*;
-import AST.ASTNode;
+import AST.*;
 import Visitors.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.CharStream;
@@ -29,6 +29,8 @@ public class EulerCompiler {
         // System.out.println(tree.toStringTree(parser)); // print LISP-style tree
         AstBuilderVisitor astBuilder = new AstBuilderVisitor();
         ASTNode node = astBuilder.visit(tree);
-
+        if (node == null) {
+            node = new ProgramNode(null);
+        }
     }
 }
