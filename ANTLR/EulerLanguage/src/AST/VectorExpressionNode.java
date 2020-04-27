@@ -14,6 +14,7 @@ public class VectorExpressionNode extends ASTNode {
     }
 
     private void getVectorElemtns(String vecExpr) {
+
         String delimiters = "[<,>]+";
         String[] tokens = vecExpr.split(delimiters);
         for (String str : tokens) {

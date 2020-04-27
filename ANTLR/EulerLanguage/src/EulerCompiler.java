@@ -14,7 +14,7 @@ public class EulerCompiler {
 
     public static void main(String[] args) {
         CharStream input = null;
-        String InputFile = System.getProperty("user.dir") + "/EulerLanguage/src/kurt.txt";
+        String InputFile = System.getProperty("user.dir") + "/src/kurt.txt";
         try {
             input = CharStreams.fromFileName(InputFile);
         }
