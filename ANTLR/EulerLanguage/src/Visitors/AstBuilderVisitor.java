@@ -97,8 +97,11 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     public ASTNode visitLogstmt(EulerParser.LogstmtContext ctx, ASTNode parent) {
         LogicExpressionNode node = new LogicExpressionNode(parent);
         node.operator = ctx.logop().getText();
-        node.children.add(visitAddexpr(ctx.addexpr(0), node));
-        node.children.add(visitAddexpr(ctx.addexpr(1), node));
+        ctx.addexpr().forEach(child -> {
+            node.children.add(visitAddexpr((EulerParser.AddexprContext) child, node));
+        });
+        //node.children.add(visitAddexpr(ctx.addexpr(0), node));
+        //node.children.add(visitAddexpr(ctx.addexpr(1), node));
         return node;
     }
 
@@ -183,7 +186,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
     public ASTNode visitAddexpr(EulerParser.AddexprContext ctx, ASTNode parent) {
         ASTNode left, right;
-        if (ctx.op.getText() == null) {
+        if (ctx.op == null) {
             return visitMultiexpr(ctx.multiexpr(), parent);
         }
         else if (ctx.op.getText().contains("+")) {
@@ -201,7 +204,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
     public ASTNode visitMultiexpr(EulerParser.MultiexprContext ctx, ASTNode parent) {
         ASTNode left, right;
-        if (ctx.op.getText() == null) {
+        if (ctx.op == null) {
             return visitPrimeexpr(ctx.primeexpr(), parent);
         }
         else if (ctx.op.getText().contains("*")) {
@@ -223,8 +226,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     }
 
     public ASTNode visitPrimeexpr(EulerParser.PrimeexprContext ctx, ASTNode parent) {
-        if (ctx.ID().getText() != null) {
-            if (ctx.valindex().getText() != null) {
+        if (ctx.ID() != null) {
+            if (ctx.valindex() != null) {
                 ASTNode subsAssNode = new SubscriptingAssignmentNode(parent);
                 String str = ctx.valindex().getText();
                 subsAssNode.children.add(new IdentificationNode(subsAssNode, ctx.ID().getText()));
