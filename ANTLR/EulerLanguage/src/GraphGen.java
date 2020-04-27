@@ -5,6 +5,8 @@ import Visitors.*;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -21,11 +23,11 @@ public class GraphGen {
         EulerLexer lexer = new EulerLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         EulerParser parser = new EulerParser(tokens);
-        // ParseTree tree = parser.program();
+        ParseTree tree = parser.program();
         System.out.println(parser.program().getText());
 
         AstBuilderVisitor astBuilder = new AstBuilderVisitor();
-        ASTNode node = astBuilder.visitProgram(parser.program());
+        ASTNode node = astBuilder.visit(tree);
 
         TreeToGraphGen TreeGenerator = new TreeToGraphGen("Graph");
         String Tree = TreeGenerator.MakeGraph(node);
