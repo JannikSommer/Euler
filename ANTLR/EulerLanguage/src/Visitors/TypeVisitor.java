@@ -11,8 +11,8 @@ public class TypeVisitor extends TopDeclVisitor {
         super(symTable);
     }
 
-    @Override
-    public void visit(IdentificationNode node) {
+    /* @Override
+     public void visit(IdentificationNode node) {
         Attributes attr = symbolTable.retrieveSymbol(node.identification);
         if(attr != null && attr.kind == AttributeKind.typeAttributes) {
             node.type = ((TypeAttributes)attr).thisType;
@@ -23,4 +23,6 @@ public class TypeVisitor extends TopDeclVisitor {
             node.attributesRef = null;
         }
     }
+
+     */
 }
