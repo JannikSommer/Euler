@@ -3,24 +3,21 @@ package AST;
 import Visitors.*;
 
 public class AssignmentNode extends ASTNode {
-    public String identifier;
-    public String valIndex;
 
     public AssignmentNode(ASTNode parentNode) {
         super(parentNode);
     }
 
-    public AssignmentNode(ASTNode parentNode, String id, ASTNode val) {
+    public AssignmentNode(ASTNode parentNode, String id) {
         this(parentNode);
-        identifier = id;
-        children.add(val);
+        this.children.add(new IdentificationNode(this, id)) ;
+
     }
 
     public AssignmentNode(ASTNode parent, String id, String valIndex, ASTNode child) {
         super(parent);
-        identifier = id;
-        this.valIndex = valIndex;
-        children.add(child);
+        this.children.add(new IdentificationNode(this, id));
+        this.children.add(new SubscriptingNode(this, valIndex));
     }
 
 
