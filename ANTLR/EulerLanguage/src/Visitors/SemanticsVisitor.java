@@ -5,7 +5,7 @@ import symbolTable.SymbolTable;
 import symbolTable.attributes.*;
 import symbolTable.typeDescriptors.*;
 
-public class SemanticsVisitor implements IVisitor {
+public class SemanticsVisitor extends NodeVisitor {
     SymbolTable symbolTable;
 
     public SemanticsVisitor(SymbolTable symTable) {

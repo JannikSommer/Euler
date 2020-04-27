@@ -2,7 +2,7 @@ package AST;
 
 import Visitors.*;
 
-public class WhileNode extends ASTNode {
+public class WhileNode extends StatementNode {
     public WhileNode(ASTNode parentNode) {
         super(parentNode);
     }

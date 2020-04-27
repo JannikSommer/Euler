@@ -2,7 +2,7 @@ package AST;
 
 import Visitors.*;
 
-public class DeclarationNode extends ASTNode {
+public abstract class DeclarationNode extends StatementNode {
     public DeclarationNode(ASTNode parentNode) {
         super(parentNode);
     }

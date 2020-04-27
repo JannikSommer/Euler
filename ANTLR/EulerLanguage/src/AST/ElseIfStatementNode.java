@@ -2,7 +2,7 @@ package AST;
 
 import Visitors.*;
 
-public class ElseIfStatementNode extends ASTNode {
+public class ElseIfStatementNode extends StatementNode {
 
     public ElseIfStatementNode(ASTNode parentNode) {
         super(parentNode);

@@ -2,7 +2,7 @@ package AST;
 
 import Visitors.IVisitor;
 
-public class ReferenceNode extends ASTNode {
+public class ReferenceNode extends StatementNode {
 
     public ReferenceNode(ASTNode parent) {
         super(parent);

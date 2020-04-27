@@ -10,10 +10,10 @@ public class VectorExpressionNode extends ASTNode {
 
     public VectorExpressionNode(ASTNode parentNode, String vecExpr) {
         super(parentNode);
-        getVectorElemtns(vecExpr);
+        getVectorElements(vecExpr);
     }
 
-    private void getVectorElemtns(String vecExpr) {
+    private void getVectorElements(String vecExpr) {
         String delimiters = "[<,>]+";
         String[] tokens = vecExpr.split(delimiters);
         for (String str : tokens) {
@@ -21,7 +21,7 @@ public class VectorExpressionNode extends ASTNode {
                 double number = Double.parseDouble(str);
                 this.children.add(new NumberLiteralNode(this, number));
             } else {
-                this.children.add(new IdentificationNode(this, str));
+                this.children.add(new ReferenceNode(this, str));
             }
         }
     }
