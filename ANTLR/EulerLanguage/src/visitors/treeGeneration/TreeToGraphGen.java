@@ -1,6 +1,7 @@
-package Visitors;
+package visitors.treeGeneration;
 
 import AST.*;
+import visitors.IVisitor;
 
 import java.util.ArrayList;
 

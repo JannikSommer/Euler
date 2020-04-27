@@ -1,4 +1,4 @@
-package Visitors;
+package visitors;
 import ANTLR.*;
 import AST.*;
 import java.lang.*;

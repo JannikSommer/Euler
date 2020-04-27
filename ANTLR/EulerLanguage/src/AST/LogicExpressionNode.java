@@ -1,6 +1,6 @@
 package AST;
 
-import Visitors.*;
+import visitors.*;
 
 public class LogicExpressionNode extends StatementNode {
     public String operator;

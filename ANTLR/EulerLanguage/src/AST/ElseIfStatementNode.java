@@ -1,8 +1,8 @@
 package AST;
 
-import Visitors.*;
+import visitors.*;
 
-public class ElseIfStatementNode extends StatementNode {
+public class ElseIfStatementNode extends IfStatementNode {
 
     public ElseIfStatementNode(ASTNode parentNode) {
         super(parentNode);
@@ -15,6 +15,6 @@ public class ElseIfStatementNode extends StatementNode {
     }
 
     public void accept(IVisitor visitor) {
-        visitor.visit(this);
+        super.accept(visitor);
     }
 }

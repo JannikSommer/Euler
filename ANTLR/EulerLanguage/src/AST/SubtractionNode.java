@@ -1,6 +1,6 @@
 package AST;
 
-import Visitors.*;
+import visitors.*;
 
 public class SubtractionNode extends ASTNode {
     public SubtractionNode(ASTNode parentNode) {

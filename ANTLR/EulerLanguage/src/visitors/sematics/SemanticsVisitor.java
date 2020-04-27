@@ -1,6 +1,7 @@
-package Visitors;
+package visitors.sematics;
 
 import AST.*;
+import visitors.NodeVisitor;
 import symbolTable.SymbolTable;
 import symbolTable.attributes.*;
 import symbolTable.typeDescriptors.*;
@@ -10,6 +11,12 @@ public class SemanticsVisitor extends NodeVisitor {
 
     public SemanticsVisitor(SymbolTable symTable) {
         symbolTable = symTable;
+    }
+
+    public void checkBoolean(ASTNode node) {
+        if(node.type.kind != TypeDescriptorKind.bool && node.type.kind != TypeDescriptorKind.error) {
+            // TODO: Add error. Requires boolean type
+        }
     }
 
     @Override
@@ -46,12 +53,12 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(ElseIfStatementNode node) {
-
+        // Same behavior as IfStatementNode
     }
 
     @Override
     public void visit(ElseStatementNode node) {
-
+        visitChildren(node);
     }
 
     @Override
@@ -69,7 +76,8 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(IfStatementNode node) {
-
+        visitChildren(node);
+        checkBoolean(node.children.get(0));
     }
 
     @Override

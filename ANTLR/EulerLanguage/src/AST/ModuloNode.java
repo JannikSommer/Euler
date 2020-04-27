@@ -1,6 +1,6 @@
 package AST;
 
-import Visitors.*;
+import visitors.*;
 
 public class ModuloNode extends ASTNode {
     public ModuloNode(ASTNode parentNode) {
