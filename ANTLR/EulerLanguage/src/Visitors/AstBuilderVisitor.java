@@ -75,8 +75,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             subsAssNode.children.add(new SubscriptingNode(subsAssNode, str));
             return subsAssNode;
         } else {
-            AssignmentNode node = new AssignmentNode(parent);
-            node.identifier = ctx.ID().getText();
+            AssignmentNode node = new AssignmentNode(parent, ctx.ID().getText());
             ASTNode child = visitExpr(ctx.expr(), node);
             node.children.add(child);
             return node;
@@ -100,8 +99,6 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
         ctx.addexpr().forEach(child -> {
             node.children.add(visitAddexpr((EulerParser.AddexprContext) child, node));
         });
-        //node.children.add(visitAddexpr(ctx.addexpr(0), node));
-        //node.children.add(visitAddexpr(ctx.addexpr(1), node));
         return node;
     }
 
@@ -118,8 +115,6 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
         }
         return node;
     }
-
-
 
     public ASTNode visitElsestmts(EulerParser.ElsestmtsContext ctx, ASTNode parent) {
         ElseStatementNode node = new ElseStatementNode(parent);

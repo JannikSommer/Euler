@@ -1,7 +1,7 @@
 num a = 2 + 2;
 vec b = <1,2,3>;
 mtx c = {1,2;3,4};
-d = b[2];
+num d = b[2];
 b[1] = 0;
 while a < 100 do
     1 * 2;
