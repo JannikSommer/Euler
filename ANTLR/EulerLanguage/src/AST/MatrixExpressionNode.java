@@ -24,7 +24,9 @@ public class MatrixExpressionNode extends ASTNode {
         String delimiters = "[{;}]+";
         String[] tokens = mtxExpr.split(delimiters);
         for (String str : tokens) {
-            this.children.add(new VectorExpressionNode(this, str));
+            if (!str.equals("")) {
+                this.children.add(new VectorExpressionNode(this, str));
+            }
         }
     }
 

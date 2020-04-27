@@ -52,17 +52,7 @@ public class TreeToGraphGen implements IVisitor {
 
     @Override
     public void visit(AssignmentNode node) {
-        String MyName = node.getClass().getSimpleName() + nodeNum;
-        nodeNum++;
-        TreeGenString += "\t" + MyName + " [label=\"Assign\\n" + node.identifier;
-
-        if(node.valIndex != null){
-            TreeGenString += node.valIndex;
-        }
-
-        TreeGenString += " =\"];\n";
-
-        ConvertChildren(node.children, MyName);
+        DefaultConvert(node);
     }
 
     @Override
