@@ -17,7 +17,6 @@ public class IdentificationNode extends ASTNode {
         this.name = name;
     }
 
-    @Override
     public void accept(IVisitor visitor) {
         visitor.visit(this);
     }

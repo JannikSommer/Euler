@@ -133,6 +133,11 @@ public class SemanticsVisitor extends NodeVisitor {
     }
 
     @Override
+    public void visit(StringNode node) {
+
+    }
+
+    @Override
     public void visit(CodeBlockNode node) {
 
     }

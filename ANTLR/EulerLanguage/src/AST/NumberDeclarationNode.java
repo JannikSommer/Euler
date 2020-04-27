@@ -15,7 +15,6 @@ public class NumberDeclarationNode extends DeclarationNode {
         children.get(0).type = type;
     }
 
-    @Override
     public void accept(IVisitor visitor) {
         visitor.visit(this);
     }

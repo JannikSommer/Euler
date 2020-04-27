@@ -8,7 +8,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     @Override
     public ASTNode visitProgram(EulerParser.ProgramContext ctx) {
         ASTNode node = new ProgramNode(null);
-        StatementBlockNode stmtNode = new StatementBlockNode(node);
+        CodeBlockNode stmtNode = new CodeBlockNode(node);
         node.children.add(stmtNode);
         ctx.stmt().forEach(child -> {
             stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, stmtNode));
@@ -55,7 +55,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     public ASTNode visitStringstmt(EulerParser.StringstmtContext ctx, ASTNode parent) {
         if (ctx.ID() != null ) {
             if (ctx.valindex() != null) {
-                return new IdentificationNode(parent, ctx.ID().getText(), ctx.valindex().getText());
+                return null; //new IdentificationNode(parent, ctx.ID().getText(), ctx.valindex().getText());
             }
             return new IdentificationNode(parent, ctx.ID().getText());
         }
@@ -85,7 +85,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
     public ASTNode visitWhilestmt(EulerParser.WhilestmtContext ctx, ASTNode parent) {
         WhileNode node = new WhileNode(parent);
-        StatementBlockNode stmtNode = new StatementBlockNode(node);
+        CodeBlockNode stmtNode = new CodeBlockNode(node);
         node.children.add(visitLogstmt(ctx.logstmt(), node));
         ctx.stmt().forEach(child -> {
             stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
@@ -97,14 +97,17 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     public ASTNode visitLogstmt(EulerParser.LogstmtContext ctx, ASTNode parent) {
         LogicExpressionNode node = new LogicExpressionNode(parent);
         node.operator = ctx.logop().getText();
-        node.children.add(visitAddexpr(ctx.addexpr(0), node));
-        node.children.add(visitAddexpr(ctx.addexpr(1), node));
+        ctx.addexpr().forEach(child -> {
+            node.children.add(visitAddexpr((EulerParser.AddexprContext) child, node));
+        });
+        //node.children.add(visitAddexpr(ctx.addexpr(0), node));
+        //node.children.add(visitAddexpr(ctx.addexpr(1), node));
         return node;
     }
 
     public ASTNode visitIfstmt(EulerParser.IfstmtContext ctx, ASTNode parent) {
         IfStatementNode node = new IfStatementNode(parent);
-        StatementBlockNode stmtNode = new StatementBlockNode(node) ;
+        CodeBlockNode stmtNode = new CodeBlockNode(node) ;
         node.children.add(visitLogstmt(ctx.logstmt(), node));
         ctx.stmt().forEach(child -> {
             stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
@@ -125,7 +128,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 node.children.add(visitElseifstmts((EulerParser.ElseifstmtsContext) child, node));
             }
             else if (child.getClass().getSimpleName().equals("StmtContext")) {
-                StatementBlockNode stmtNode = new StatementBlockNode(node);
+                CodeBlockNode stmtNode = new CodeBlockNode(node);
                 stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
                 node.children.add(stmtNode);
             }
@@ -135,7 +138,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
     public ASTNode visitElseifstmts(EulerParser.ElseifstmtsContext ctx, ASTNode parent) {
         ElseIfStatementNode node = new ElseIfStatementNode(parent);
-        StatementBlockNode stmtNode = new StatementBlockNode(node);
+        CodeBlockNode stmtNode = new CodeBlockNode(node);
         node.children.add(visitLogstmt(ctx.logstmt(), node));
         ctx.stmt().forEach(child -> {
             stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
@@ -152,7 +155,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             String mtx = ctx.MATRIX().getText();
             MatrixDeclarationNode mtxdcl = new MatrixDeclarationNode(parent);
             ASTNode node = new MatrixExpressionNode(mtxdcl, mtx);
-            mtxdcl.identifier = id;
+            mtxdcl.children.add(new IdentificationNode(mtxdcl, id));
             mtxdcl.children.add(node);
             return mtxdcl;
         }
@@ -160,15 +163,15 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             String vec = ctx.VECTOR().getText();
             VectorDeclarationNode vecNode = new VectorDeclarationNode(parent);
             ASTNode node = new VectorExpressionNode(vecNode, vec);
-            vecNode.identifier = id;
+            vecNode.children.add(new IdentificationNode(vecNode, id));
             vecNode.children.add(node);
             return vecNode;
         }
         else if (ctx.expr() != null) {
             NumberDeclarationNode node = new NumberDeclarationNode(parent);
-            ASTNode child = visitExpr((ctx.expr()));
+            ASTNode child = visitExpr((ctx.expr()), node);
+            node.children.add(new IdentificationNode(node, id));
             node.children.add(child);
-            node.identifier = id;
             return node;
         }
         else {
@@ -183,7 +186,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
     public ASTNode visitAddexpr(EulerParser.AddexprContext ctx, ASTNode parent) {
         ASTNode left, right;
-        if (ctx.op.getText() == null) {
+        if (ctx.op == null) {
             return visitMultiexpr(ctx.multiexpr(), parent);
         }
         else if (ctx.op.getText().contains("+")) {
@@ -201,7 +204,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
     public ASTNode visitMultiexpr(EulerParser.MultiexprContext ctx, ASTNode parent) {
         ASTNode left, right;
-        if (ctx.op.getText() == null) {
+        if (ctx.op == null) {
             return visitPrimeexpr(ctx.primeexpr(), parent);
         }
         else if (ctx.op.getText().contains("*")) {
@@ -223,8 +226,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     }
 
     public ASTNode visitPrimeexpr(EulerParser.PrimeexprContext ctx, ASTNode parent) {
-        if (ctx.ID().getText() != null) {
-            if (ctx.valindex().getText() != null) {
+        if (ctx.ID() != null) {
+            if (ctx.valindex() != null) {
                 ASTNode subsAssNode = new SubscriptingAssignmentNode(parent);
                 String str = ctx.valindex().getText();
                 subsAssNode.children.add(new IdentificationNode(subsAssNode, ctx.ID().getText()));
@@ -234,10 +237,10 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             String id = ctx.ID().getText();
             return new IdentificationNode(parent, id);
         }
-        else if (ctx.NUM().getText() != null) {
+        else if (ctx.NUM() != null) {
             return new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
         }
-        else if (ctx.LPAREN().getText() != null) {
+        else if (ctx.LPAREN() != null) {
             return visitAddexpr(ctx.addexpr(), parent);
         }
         else {

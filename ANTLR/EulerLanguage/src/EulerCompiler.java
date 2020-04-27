@@ -1,6 +1,5 @@
 import ANTLR.*;
-import AST.ASTNode;
-import AST.StatementBlockNode;
+import AST.*;
 import Visitors.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.CharStream;
@@ -16,6 +15,7 @@ public class EulerCompiler {
     public static void main(String[] args) {
         CharStream input = null;
         String InputFile = System.getProperty("user.dir") + "/EulerLanguage/src/kurt.txt";
+        // String InputFile = System.getProperty("C:/Users/janni/Documents/GitHub/P4---cEX/ANTLR/EulerLanguage/src/kurt.txt");
         try {
             input = CharStreams.fromFileName(InputFile);
         }
@@ -29,6 +29,8 @@ public class EulerCompiler {
         // System.out.println(tree.toStringTree(parser)); // print LISP-style tree
         AstBuilderVisitor astBuilder = new AstBuilderVisitor();
         ASTNode node = astBuilder.visit(tree);
-
+        if (node == null) {
+            node = new ProgramNode(null);
+        }
     }
 }
