@@ -158,7 +158,23 @@ public class TreeToGraphGen implements IVisitor {
     public void visit(SubscriptingAssignmentNode node) {DefaultConvert(node);}
 
     @Override
-    public void visit(SubscriptingNode node) {DefaultConvert(node);}
+    public void visit(SubscriptingNode node) {
+        String MyName = node.getClass().getSimpleName() + nodeNum;
+        nodeNum++;
+        TreeGenString += "\t" + MyName + " [label=\"Subscript\\n";
+
+        if(node.index != null){
+            TreeGenString += "[" + node.index[0];
+            for(int x = 1; x < node.index.length; x++){
+                TreeGenString += "," + node.index[x];
+            }
+            TreeGenString += "]";
+        }
+
+        TreeGenString += "\"];\n";
+
+        ConvertChildren(node.children, MyName);
+    }
 
     @Override
     public void visit(SubtractionNode node) {DefaultConvert(node);}

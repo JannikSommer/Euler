@@ -23,6 +23,4 @@ public class TypeVisitor extends TopDeclVisitor {
             node.attributesRef = null;
         }
     }
-
-     */
 }
