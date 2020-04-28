@@ -1,6 +1,7 @@
 num a = 2 + 2 * 2;
 vec b = <1,2,3>;
 mtx c = {1,2;3,4};
+b[3] = 4;
 while a < 100 do
     1 * 2;
     if a < 2 then
