@@ -1,6 +1,7 @@
 package Visitors;
 
 import AST.*;
+import org.antlr.runtime.tree.Tree;
 
 import java.util.ArrayList;
 
@@ -147,21 +148,25 @@ public class TreeToGraphGen implements IVisitor {
 
     @Override
     public void visit(SubscriptingNode node) {
-        String MyName = node.getClass().getSimpleName() + nodeNum;
+         String MyName = node.getClass().getSimpleName() + nodeNum;
         nodeNum++;
         TreeGenString += "\t" + MyName + " [label=\"Subscript\\n";
+        String appendstr = "";
 
         if(node.index != null){
-            TreeGenString += "[" + node.index[0];
-            for(int x = 1; x < node.index.length; x++){
-                TreeGenString += "," + node.index[x];
+            for (int index: node.index) {
+                try {
+                    appendstr += "[" + index + "]";
+                } catch (Exception e) {
+                    // Do something
+                }
             }
-            TreeGenString += "]";
         }
-
+        TreeGenString += appendstr;
         TreeGenString += "\"];\n";
 
         ConvertChildren(node.children, MyName);
+
     }
 
     @Override

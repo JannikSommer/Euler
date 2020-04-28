@@ -2,20 +2,24 @@ package AST;
 
 import Visitors.IVisitor;
 
+import java.util.ArrayList;
+
 public class SubscriptingNode extends ASTNode {
-    public int[] index;
+
+    public ArrayList<Integer> index;
 
     public SubscriptingNode(ASTNode parent, String str) {
         super(parent);
-        String delimiters = "[\\[\\]]+";
+        String delimiters = "[\\[\\],]+";
         String[] tokens = str.split(delimiters);
-        index = new int[tokens.length];
-        int count = 0;
+        index = new ArrayList<>();
         for (String s: tokens) {
-            try {
-                index[count] = Integer.parseInt(s);
-            } catch (Exception e) {
-                // Do something
+            if (!str.equals("")) {
+                try {
+                    index.add(Integer.parseInt(s));
+                } catch (Exception e) {
+                    // Do something
+                }
             }
         }
     }
