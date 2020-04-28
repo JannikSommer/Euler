@@ -1,6 +1,6 @@
 package AST;
 
-import visitors.*;
+import Visitors.*;
 
 public class StringStatementNode extends StatementNode {
     public StringStatementNode(ASTNode parentNode) {

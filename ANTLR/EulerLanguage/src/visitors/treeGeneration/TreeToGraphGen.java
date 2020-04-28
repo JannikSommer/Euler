@@ -1,8 +1,8 @@
-package visitors.treeGeneration;
+package Visitors.treeGeneration;
 
 import AST.*;
 import org.antlr.runtime.tree.Tree;
-import visitors.IVisitor;
+import Visitors.IVisitor;
 
 import java.util.ArrayList;
 

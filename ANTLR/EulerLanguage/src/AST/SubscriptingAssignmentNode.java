@@ -1,6 +1,6 @@
 package AST;
 
-import visitors.IVisitor;
+import Visitors.IVisitor;
 
 public class SubscriptingAssignmentNode extends StatementNode {
 

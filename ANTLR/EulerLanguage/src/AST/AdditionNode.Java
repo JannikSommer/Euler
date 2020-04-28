@@ -1,6 +1,6 @@
 package AST;
 
-import visitors.*;
+import Visitors.*;
 
 public class AdditionNode extends BinaryExpressionNode {
     public AdditionNode(ASTNode parentNode) {

@@ -1,6 +1,6 @@
 package AST;
 
-import visitors.IVisitor;
+import Visitors.IVisitor;
 
 public class InitializationNode extends ASTNode {
     public String identifier;

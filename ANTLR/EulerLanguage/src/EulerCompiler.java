@@ -1,14 +1,14 @@
 import ANTLR.*;
 import AST.*;
 import symbolTable.SymbolTable;
-import visitors.*;
+import Visitors.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import visitors.semantics.ReachabilityVisitor;
-import visitors.semantics.SemanticsVisitor;
-import visitors.semantics.TopDeclVisitor;
+import Visitors.semantics.ReachabilityVisitor;
+import Visitors.semantics.SemanticsVisitor;
+import Visitors.semantics.TopDeclVisitor;
 
 import java.io.IOException;
 

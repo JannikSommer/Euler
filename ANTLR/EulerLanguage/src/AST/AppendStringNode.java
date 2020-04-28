@@ -1,6 +1,6 @@
 package AST;
 
-import visitors.*;
+import Visitors.*;
 
 public class AppendStringNode extends ASTNode {
     public AppendStringNode(ASTNode parentNode) {

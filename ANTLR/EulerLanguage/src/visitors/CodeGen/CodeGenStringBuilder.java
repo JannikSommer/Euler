@@ -1,4 +1,4 @@
-package visitors.CodeGen;
+package Visitors.CodeGen;
 
 public class CodeGenStringBuilder{
 
