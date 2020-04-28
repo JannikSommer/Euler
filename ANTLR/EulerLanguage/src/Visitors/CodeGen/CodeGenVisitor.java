@@ -27,11 +27,7 @@ public class CodeGenVisitor implements IVisitor {
 	}
 
     private void PreWork(){
-        CGSBuilder.AppendDirectives();
-        CGSBuilder.AppendStructures();
-        CGSBuilder.AppendSpace();
-        CGSBuilder.AppendPrototypes();
-        CGSBuilder.AppendSpace();
+        CGSBuilder.AppendHeader();
         CGSBuilder.AppendMain();
     }
 

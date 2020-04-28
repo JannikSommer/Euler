@@ -9,7 +9,7 @@ public class CodeGenTest {
         CodeGenVisitor _CodeGenVisitor = new CodeGenVisitor();
         
         try (PrintWriter out = new PrintWriter("test.txt")) {
-            System.out.println(_CodeGenVisitor.Test());
+            out.println(_CodeGenVisitor.Test());
         }
     }
 }
