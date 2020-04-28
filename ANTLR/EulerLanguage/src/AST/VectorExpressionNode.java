@@ -1,16 +1,16 @@
 package AST;
 
-import Visitors.IVisitor;
+import symbolTable.typeDescriptors.VectorTypeDescriptor;
+import visitors.IVisitor;
 import java.lang.*;
-import java.util.*;
-
-import java.util.ArrayList;
 
 public class VectorExpressionNode extends ASTNode {
 
     public VectorExpressionNode(ASTNode parentNode, String vecExpr) {
         super(parentNode);
         getVectorElements(vecExpr);
+        type = new VectorTypeDescriptor(children.get(0).children.size());
+        parent.type = type;
     }
 
     private void getVectorElements(String vecExpr) {

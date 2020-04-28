@@ -1,8 +1,7 @@
 package AST;
 
-import Visitors.IVisitor;
+import visitors.IVisitor;
 import symbolTable.attributes.*;
-import symbolTable.typeDescriptors.TypeDescriptor;
 
 public class IdentificationNode extends ASTNode {
     public String name;

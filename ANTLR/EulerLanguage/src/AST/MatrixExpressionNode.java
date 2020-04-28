@@ -1,13 +1,16 @@
 package AST;
 
-import Visitors.IVisitor;
 import symbolTable.typeDescriptors.MatrixTypeDescriptor;
+import visitors.IVisitor;
 
 public class MatrixExpressionNode extends ASTNode {
 
     public MatrixExpressionNode(ASTNode parent, String mtxExpr) {
         super(parent);
         getMatrixElements(mtxExpr);
+        type = new MatrixTypeDescriptor(children.size(),    // Number of rows
+                getNumberOfColumns());                      // Number of columns
+        parent.type = type;
     }
 
     public int getNumberOfColumns() {

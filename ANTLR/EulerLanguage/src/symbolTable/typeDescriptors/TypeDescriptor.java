@@ -8,7 +8,7 @@ public abstract class TypeDescriptor {
         this.kind = kind;
     }
 
-    public boolean assignable(TypeDescriptorKind type) {
+    public boolean isCompatible(TypeDescriptorKind type) {
         for(int i = 0; i < compatibleTypes.length; i++) {
             if(kind == type) {
                 return true;
@@ -17,7 +17,7 @@ public abstract class TypeDescriptor {
         return false;
     }
 
-    public boolean assignable(TypeDescriptor type) {
+    public boolean isCompatible(TypeDescriptor type) {
         for(int i = 0; i < compatibleTypes.length; i++) {
             if(kind == type.kind) {
                 return true;

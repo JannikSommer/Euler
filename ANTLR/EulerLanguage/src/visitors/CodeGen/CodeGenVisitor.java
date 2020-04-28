@@ -1,6 +1,6 @@
-package Visitors.CodeGen;
+package visitors.CodeGen;
 
-import Visitors.IVisitor;
+import visitors.IVisitor;
 import AST.*;
 
 
@@ -49,6 +49,11 @@ public class CodeGenVisitor implements IVisitor {
 
     }
 
+    @Override
+    public void visit(BinaryExpressionNode node) {
+
+    }
+
     public void visit(CodeBlockNode node){
 
     }
@@ -66,6 +71,11 @@ public class CodeGenVisitor implements IVisitor {
     }
 
     public void visit(ElseStatementNode node){
+
+    }
+
+    @Override
+    public void visit(ExpressionNode node) {
 
     }
 

@@ -1,14 +1,16 @@
 import ANTLR.*;
 import AST.*;
-import Visitors.*;
+import symbolTable.SymbolTable;
+import visitors.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import java.io.FileReader;
+import visitors.semantics.ReachabilityVisitor;
+import visitors.semantics.SemanticsVisitor;
+import visitors.semantics.TopDeclVisitor;
+
 import java.io.IOException;
-import java.io.StringReader;
-import java.nio.file.Paths;
 
 public class EulerCompiler {
 
@@ -32,5 +34,13 @@ public class EulerCompiler {
         if (node == null) {
             node = new ProgramNode(null);
         }
+
+        // --- Semantics ---
+        //SymbolTable symbolTable = new SymbolTable();
+        //node.accept(new SemanticsVisitor(symbolTable));
+        //node.accept(new TopDeclVisitor(symbolTable));
+        //node.accept(new ReachabilityVisitor(symbolTable));
+
+        int a = 1+1;
     }
 }

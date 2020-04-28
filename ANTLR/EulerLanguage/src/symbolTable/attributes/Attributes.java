@@ -6,7 +6,7 @@ public abstract class Attributes {
     public String name;
     public AttributeKind kind;
     public ArrayList<Attributes> level;
-    public Attributes var;
+    public Attributes var; // TODO: Redo
     public int depth;
 
     public Attributes() { }

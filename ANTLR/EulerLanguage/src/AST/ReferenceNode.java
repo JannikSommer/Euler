@@ -1,8 +1,8 @@
 package AST;
 
-import Visitors.IVisitor;
+import visitors.IVisitor;
 
-public class ReferenceNode extends StatementNode {
+public class ReferenceNode extends ExpressionNode {
 
     public ReferenceNode(ASTNode parent) {
         super(parent);
@@ -11,6 +11,11 @@ public class ReferenceNode extends StatementNode {
     public ReferenceNode(ASTNode parent, String name) {
         this(parent);
         children.add(new IdentificationNode(this, name));
+    }
+
+    @Override
+    public double calculateValue() {
+        return 0; // TODO: Find out what to put here
     }
 
     @Override

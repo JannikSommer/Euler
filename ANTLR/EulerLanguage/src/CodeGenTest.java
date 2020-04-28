@@ -1,4 +1,4 @@
-import Visitors.CodeGen.*;
+import visitors.CodeGen.*;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

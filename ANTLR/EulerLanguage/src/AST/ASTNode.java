@@ -1,6 +1,6 @@
 package AST;
 
-import Visitors.*;
+import visitors.*;
 import symbolTable.typeDescriptors.*;
 
 import java.util.*;
@@ -9,6 +9,8 @@ public abstract class ASTNode {
     public ASTNode parent;
     public ArrayList<ASTNode> children;
     public TypeDescriptor type;
+    public boolean isReachable;
+    public boolean terminatesNormally = true;
 
     public ASTNode(ASTNode parentNode) {
         parent = parentNode;
