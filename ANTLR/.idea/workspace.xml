@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcf840de-b8e9-4031-9931-a873d99acf6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/SubscriptingReferenceNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/AstBuilderVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/AstBuilderVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/CodeGen/CodeGenVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/CodeGen/CodeGenVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/IVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/IVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/ConstExprVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/ConstExprVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/SemanticsVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/SemanticsVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/treeGeneration/TreeToGraphGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/treeGeneration/TreeToGraphGen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph.gz" beforeDir="false" afterPath="$PROJECT_DIR$/Graph.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/kurt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/kurt.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
