@@ -10,6 +10,8 @@ public interface IVisitor {
 
     void visit(AssignmentNode node);
 
+    void visit(BinaryExpressionNode node);
+
     void visit(CodeBlockNode node);
 
     void visit(DeclarationNode node);
@@ -19,6 +21,8 @@ public interface IVisitor {
     void visit(ElseIfStatementNode node);
 
     void visit(ElseStatementNode node);
+
+    void visit(ExpressionNode node);
 
     void visit(IdentificationNode node);
 

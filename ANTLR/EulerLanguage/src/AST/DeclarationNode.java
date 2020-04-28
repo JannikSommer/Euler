@@ -5,6 +5,7 @@ import visitors.*;
 public abstract class DeclarationNode extends StatementNode {
     public DeclarationNode(ASTNode parentNode) {
         super(parentNode);
+        terminatesNormally = true;
     }
 
     public DeclarationNode(ASTNode parentNode, String name) {

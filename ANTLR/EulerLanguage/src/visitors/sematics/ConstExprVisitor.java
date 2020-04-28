@@ -2,23 +2,8 @@ package visitors.sematics;
 
 import AST.*;
 import visitors.NodeVisitor;
-import symbolTable.SymbolTable;
-import symbolTable.attributes.*;
-import symbolTable.typeDescriptors.*;
 
-public class SemanticsVisitor extends NodeVisitor {
-    SymbolTable symbolTable;
-
-    public SemanticsVisitor(SymbolTable symTable) {
-        symbolTable = symTable;
-    }
-
-    public void checkBoolean(ASTNode node) {
-        if(node.type.kind != TypeDescriptorKind.bool && node.type.kind != TypeDescriptorKind.error) {
-            // TODO: Add error. Requires boolean type
-        }
-    }
-
+public class ConstExprVisitor extends NodeVisitor {
     @Override
     public void visit(AdditionNode node) {
 
@@ -31,19 +16,14 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(AssignmentNode node) {
-        node.children.get(0).accept(new LHSSemanticsVisitor(symbolTable));
-        node.children.get(0).accept(this);
-        if(node.type.assignable(node.children.get(0).type)) {
-            node.type = node.children.get(0).type;
-        } else {
-            // TODO: Add error. Right hand side expression not assignable to left hand side.
-            node.type = new ErrorTypeDescriptor("Right hand side expression not assignable to left hand side");
-        }
+
     }
 
     @Override
     public void visit(BinaryExpressionNode node) {
-
+        if(node.children.get(0).getType().equals("NumberLiteralNode") && node.children.get(1).getType().equals("NumberLiteralNode")) {
+            node.exprValue = node.calculateValue();
+        }
     }
 
     @Override
@@ -53,7 +33,7 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(DeclarationNode node) {
-        
+
     }
 
     @Override
@@ -63,12 +43,12 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(ElseIfStatementNode node) {
-        // Same behavior as IfStatementNode
+
     }
 
     @Override
     public void visit(ElseStatementNode node) {
-        visitChildren(node);
+
     }
 
     @Override
@@ -78,21 +58,12 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(IdentificationNode node) {
-        VariableAttributes attrRef = (VariableAttributes)symbolTable.retrieveSymbol(node.name);
-        if(attrRef == null) {
-            // TODO: Add error. this id has not been declared.
-            node.type = new ErrorTypeDescriptor("Id has not been declared.");
-            node.attributesRef = null;
-        } else {
-            node.attributesRef = attrRef;
-            node.type.kind = attrRef.variableType.kind; // TODO: More checking. Maybe. Page 327
-        }
+
     }
 
     @Override
     public void visit(IfStatementNode node) {
-        visitChildren(node);
-        checkBoolean(node.children.get(0));
+
     }
 
     @Override
@@ -102,16 +73,11 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(LogicExpressionNode node) {
-
+        node.exprValue = node.calculateValue();
     }
 
     @Override
     public void visit(MatrixDeclarationNode node) {
-
-    }
-
-    @Override
-    public void visit(MatrixExpressionNode node) {
 
     }
 
@@ -132,11 +98,6 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(NumberLiteralNode node) {
-        node.type = new NumberTypeDescriptor();
-    }
-
-    @Override
-    public void visit(VectorExpressionNode node) {
 
     }
 
@@ -157,11 +118,6 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(StringNode node) {
-
-    }
-
-    @Override
-    public void visit(ReferenceNode referenceNode) {
 
     }
 
@@ -196,8 +152,22 @@ public class SemanticsVisitor extends NodeVisitor {
     }
 
     @Override
+    public void visit(VectorExpressionNode node) {
+
+    }
+
+    @Override
     public void visit(WhileNode node) {
-        visitChildren(node);
-        checkBoolean(node.children.get(0));
+
+    }
+
+    @Override
+    public void visit(ReferenceNode node) {
+
+    }
+
+    @Override
+    public void visit(MatrixExpressionNode node) {
+
     }
 }

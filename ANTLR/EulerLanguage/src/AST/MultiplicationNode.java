@@ -2,7 +2,7 @@ package AST;
 
 import visitors.*;
 
-public class MultiplicationNode extends ASTNode {
+public class MultiplicationNode extends BinaryExpressionNode {
     public MultiplicationNode(ASTNode parentNode) {
         super(parentNode);
     }
@@ -11,6 +11,11 @@ public class MultiplicationNode extends ASTNode {
         this(parentNode);
         children.add(leftOperand);
         children.add(rightOperand);
+    }
+
+    @Override
+    public double calculateValue() {
+        return ((ExpressionNode)children.get(0)).calculateValue() * ((ExpressionNode)children.get(1)).calculateValue();
     }
 
     public void accept(IVisitor visitor) {
