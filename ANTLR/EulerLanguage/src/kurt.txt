@@ -1,17 +1,16 @@
-number a = 2 + 2 * 2;
-vector b = <1,2,3>;
-matrix c = {1,2;3,4};
-number d = b[2];
-b[1,2] = 0;
+num a = 2 + 2 * 2;
+vec b = <1,2,3>;
+mtx c = {1,2;3,4};
+b[3] = 4;
 while a < 100 do
     1 * 2;
     if a < 2 then
         a * 2;
-        else if a > 2 then
-            a * 3;
-        else if a == 2 then
-            a *1000;
-        else then
-            a * 7;
+    else if a > 2 then
+        a * 3;
+    else if a == 2 then
+        a * 1000;
+    else then
+        a * 7;
     end
 end

@@ -60,6 +60,8 @@ public interface IVisitor {
 
     void visit(SubscriptingNode node);
 
+    void visit(SubscriptingReferenceNode node);
+
     void visit(SubtractionNode node);
     
     void visit(ValueIndexNode node);
@@ -69,6 +71,4 @@ public interface IVisitor {
     void visit(VectorExpressionNode node);
 
     void visit(WhileNode node);
-
-    void visit(SubscriptingReferenceNode node);
 }

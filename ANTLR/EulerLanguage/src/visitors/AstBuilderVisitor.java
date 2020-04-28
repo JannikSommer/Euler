@@ -72,8 +72,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             ASTNode subsAssNode = new SubscriptingAssignmentNode(parent);
             String str = ctx.valindex().getText();
             subsAssNode.children.add(new IdentificationNode(subsAssNode, ctx.ID().getText()));
-            subsAssNode.children.add(new SubscriptingNode(subsAssNode, str));
             subsAssNode.children.add(visitExpr(ctx.expr(),subsAssNode));
+            subsAssNode.children.add(new SubscriptingNode(subsAssNode, str));
             return subsAssNode;
         } else {
             AssignmentNode node = new AssignmentNode(parent, ctx.ID().getText());
