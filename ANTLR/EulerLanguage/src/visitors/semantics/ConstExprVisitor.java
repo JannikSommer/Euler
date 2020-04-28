@@ -173,4 +173,9 @@ public class ConstExprVisitor extends NodeVisitor {
     public void visit(MatrixExpressionNode node) {
 
     }
+
+    @Override
+    public void visit(SubscriptingReferenceNode node) {
+
+    }
 }

@@ -73,6 +73,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             String str = ctx.valindex().getText();
             subsAssNode.children.add(new IdentificationNode(subsAssNode, ctx.ID().getText()));
             subsAssNode.children.add(new SubscriptingNode(subsAssNode, str));
+            subsAssNode.children.add(visitExpr(ctx.expr(),subsAssNode));
             return subsAssNode;
         } else {
             AssignmentNode node = new AssignmentNode(parent, ctx.ID().getText());
@@ -223,7 +224,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     public ASTNode visitPrimeexpr(EulerParser.PrimeexprContext ctx, ASTNode parent) {
         if (ctx.ID() != null) {
             if (ctx.valindex() != null) {
-                ASTNode subsAssNode = new SubscriptingAssignmentNode(parent);
+                ASTNode subsAssNode = new SubscriptingReferenceNode(parent);
                 String str = ctx.valindex().getText();
                 subsAssNode.children.add(new IdentificationNode(subsAssNode, ctx.ID().getText()));
                 subsAssNode.children.add(new SubscriptingNode(subsAssNode, str));

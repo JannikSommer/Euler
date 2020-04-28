@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcf840de-b8e9-4031-9931-a873d99acf6e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/SubscriptingReferenceNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/NumberDeclarationNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/NumberDeclarationNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EulerLanguage/src/EulerCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/EulerCompiler.java" afterDir="false" />
@@ -49,7 +50,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
-  <component name="RunManager" selected="Application.EulerCompiler">
+  <component name="RunManager" selected="Application.GraphGen">
     <configuration name="EulerCompiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="EulerCompiler" />
       <module name="ANTLR" />
@@ -66,8 +67,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.EulerCompiler" />
         <item itemvalue="Application.GraphGen" />
+        <item itemvalue="Application.EulerCompiler" />
       </list>
     </recent_temporary>
   </component>
@@ -97,10 +98,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="760" y="274" key="#Project_Structure/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587542560584" />
-    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser" timestamp="1587970334337">
+    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser" timestamp="1588070827924">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587970334337" />
+    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588070827924" />
     <state x="814" y="302" key="#com.intellij.ide.util.MemberChooser/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587718270207" />
     <state x="1063" y="594" width="433" height="218" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587623138723">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -114,10 +115,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587970270266" />
-    <state x="740" y="328" key="FileChooserDialogImpl" timestamp="1587726260018">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="986" y="441" key="FileChooserDialogImpl" timestamp="1588070391973">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="986" y="441" key="FileChooserDialogImpl/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645744451" />
+    <state x="986" y="441" key="FileChooserDialogImpl/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588070391973" />
     <state x="740" y="328" key="FileChooserDialogImpl/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587726260018" />
     <state width="1860" height="348" key="GridCell.Tab.0.bottom" timestamp="1588074754455">
       <screen x="0" y="0" width="1920" height="1040" />
