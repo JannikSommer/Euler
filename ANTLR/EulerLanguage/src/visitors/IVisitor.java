@@ -69,4 +69,6 @@ public interface IVisitor {
     void visit(VectorExpressionNode node);
 
     void visit(WhileNode node);
+
+    void visit(SubscriptingReferenceNode node);
 }

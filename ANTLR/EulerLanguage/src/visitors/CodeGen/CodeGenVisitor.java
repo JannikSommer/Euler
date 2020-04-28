@@ -174,4 +174,8 @@ public class CodeGenVisitor implements IVisitor {
     public void visit(MatrixExpressionNode node){
 
     }
+
+    public void visit(SubscriptingReferenceNode node) {
+
+    }
 }

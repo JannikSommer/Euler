@@ -208,4 +208,7 @@ public class SemanticsVisitor extends NodeVisitor {
         checkBoolean(node.children.get(0));
         node.accept(new ReachabilityVisitor(symbolTable));
     }
+
+    @Override
+    public void visit(SubscriptingReferenceNode node) { visitChildren(node);}
 }

@@ -225,4 +225,7 @@ public class TreeToGraphGen implements IVisitor {
 
     @Override
     public void visit(MatrixExpressionNode node) {DefaultConvert(node);}
+
+    @Override
+    public void visit(SubscriptingReferenceNode node) {DefaultConvert(node);}
 }
