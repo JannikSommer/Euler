@@ -91,7 +91,7 @@ public class SemanticsVisitor extends NodeVisitor {
             node.attributesRef = null;
         } else {
             node.attributesRef = attrRef;
-            node.type.kind = attrRef.variableType.kind; // TODO: More checking. Maybe. Page 327
+            node.type = attrRef.variableType;      // TODO: More checking. Maybe. Page 327
         }
     }
 

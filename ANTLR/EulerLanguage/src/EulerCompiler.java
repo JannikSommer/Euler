@@ -36,8 +36,8 @@ public class EulerCompiler {
         }
 
         // --- Semantics ---
-        //SymbolTable symbolTable = new SymbolTable();
-        //node.accept(new SemanticsVisitor(symbolTable));
+        SymbolTable symbolTable = new SymbolTable();
+        node.accept(new SemanticsVisitor(symbolTable));
         //node.accept(new TopDeclVisitor(symbolTable));
         //node.accept(new ReachabilityVisitor(symbolTable));
 

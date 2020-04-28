@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="dcf840de-b8e9-4031-9931-a873d99acf6e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/MatrixExpressionNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/MatrixExpressionNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/NumberDeclarationNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/NumberDeclarationNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/EulerCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/EulerCompiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/kurt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/kurt.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/symbolTable/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/symbolTable/SymbolTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/ConstExprVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/ConstExprVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/ReachabilityVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/ReachabilityVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/SemanticsVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/SemanticsVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/TopDeclVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/TopDeclVisitor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,49 +119,49 @@
     </state>
     <state x="986" y="441" key="FileChooserDialogImpl/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645744451" />
     <state x="740" y="328" key="FileChooserDialogImpl/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587726260018" />
-    <state width="1860" height="348" key="GridCell.Tab.0.bottom" timestamp="1588069788718">
+    <state width="1860" height="348" key="GridCell.Tab.0.bottom" timestamp="1588074754455">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588069788718" />
+    <state width="1860" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074754455" />
     <state width="2517" height="392" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588056961056" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587734702498" />
-    <state width="1860" height="348" key="GridCell.Tab.0.center" timestamp="1588069788718">
+    <state width="1860" height="348" key="GridCell.Tab.0.center" timestamp="1588074754455">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588069788718" />
+    <state width="1860" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074754455" />
     <state width="2517" height="392" key="GridCell.Tab.0.center/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588056961056" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587734702497" />
-    <state width="1860" height="348" key="GridCell.Tab.0.left" timestamp="1588069788718">
+    <state width="1860" height="348" key="GridCell.Tab.0.left" timestamp="1588074754455">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588069788718" />
+    <state width="1860" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074754455" />
     <state width="2517" height="392" key="GridCell.Tab.0.left/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588056961056" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587734702497" />
-    <state width="1860" height="348" key="GridCell.Tab.0.right" timestamp="1588069788718">
+    <state width="1860" height="348" key="GridCell.Tab.0.right" timestamp="1588074754455">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588069788718" />
+    <state width="1860" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074754455" />
     <state width="2517" height="392" key="GridCell.Tab.0.right/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588056961056" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587734702498" />
-    <state width="1860" height="348" key="GridCell.Tab.1.bottom" timestamp="1588069788571">
+    <state width="1860" height="348" key="GridCell.Tab.1.bottom" timestamp="1588074754984">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588069788571" />
+    <state width="1860" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074754984" />
     <state width="2517" height="665" key="GridCell.Tab.1.bottom/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588056955659" />
-    <state width="1860" height="348" key="GridCell.Tab.1.center" timestamp="1588069788570">
+    <state width="1860" height="348" key="GridCell.Tab.1.center" timestamp="1588074754984">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588069788570" />
+    <state width="1860" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074754984" />
     <state width="2517" height="665" key="GridCell.Tab.1.center/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588056955659" />
-    <state width="1860" height="348" key="GridCell.Tab.1.left" timestamp="1588069788570">
+    <state width="1860" height="348" key="GridCell.Tab.1.left" timestamp="1588074754984">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588069788570" />
+    <state width="1860" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074754984" />
     <state width="2517" height="665" key="GridCell.Tab.1.left/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588056955659" />
-    <state width="1860" height="348" key="GridCell.Tab.1.right" timestamp="1588069788570">
+    <state width="1860" height="348" key="GridCell.Tab.1.right" timestamp="1588074754984">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588069788570" />
+    <state width="1860" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074754984" />
     <state width="2517" height="665" key="GridCell.Tab.1.right/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588056955659" />
     <state x="860" y="434" key="IDE.errors.dialog" timestamp="1587645228630">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -173,9 +180,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="810" y="510" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587718198255" />
-    <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-1" timestamp="1587980434486">
-      <screen x="2560" y="-495" width="1440" height="2520" />
+    <state x="515" y="248" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1588074756571">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="515" y="248" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588074756571" />
+    <state x="2091" y="-14" width="1555" height="643" maximized="true" key="dock-window-1" timestamp="1588071207848">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2091" y="-14" width="1555" height="643" maximized="true" key="dock-window-1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588071207848" />
     <state x="2561" y="-515" width="1456" height="1388" maximized="true" key="dock-window-1/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587980434486" />
     <state x="2560" y="-495" width="1456" height="1388" maximized="true" key="dock-window-2" timestamp="1587628510189">
       <screen x="2560" y="-495" width="1440" height="2520" />
@@ -197,18 +209,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="342" y="141" key="new project wizard/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587726272907" />
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1587710370403">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="707" y="234" width="672" height="504" key="search.everywhere.popup" timestamp="1588071540394">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="707" y="234" width="672" height="504" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588071540394" />
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587710370403" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/EulerLanguage/src/EulerCompiler.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/TopDeclVisitor.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="20" />
+          <line>19</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/ReachabilityVisitor.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/SemanticsVisitor.java</url>
+          <line>93</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -220,11 +248,6 @@
         <PinnedItemInfo typeName="ANTLR.EulerParser$LogstmtContext" fieldName="start" />
       </pinned-members>
     </pin-to-top-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="((java.util.ArrayList)((CodeBlockNode)((ArrayList)((ProgramNode)node).children).get(0)).children).get(1)" custom="AST.ProgramNode,java.util.ArrayList,AST.CodeBlockNode" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ANTLR$EulerCompiler.ic" NAME="EulerCompiler Coverage Results" MODIFIED="1588056868939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

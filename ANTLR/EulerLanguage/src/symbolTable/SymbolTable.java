@@ -10,7 +10,7 @@ import java.util.*;
 public class SymbolTable {
     private final Hashtable<String, Attributes> symbols = new Hashtable<>();
     private final ArrayList<ArrayList<Attributes>> scopes = new ArrayList<>();
-    private int depth = 0;
+    private int depth = -1;
 
     public SymbolTable() {
         // TODO: Find a better solution

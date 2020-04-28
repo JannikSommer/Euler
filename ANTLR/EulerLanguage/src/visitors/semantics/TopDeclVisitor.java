@@ -17,7 +17,6 @@ public class TopDeclVisitor extends SemanticsVisitor {
         ASTNode expression = node.children.get(1);
         if(expression != null) {
             expression.accept(new SemanticsVisitor(symbolTable));
-
             if(!node.type.isCompatible(expression.type)) {
                 // TODO: Add error. Initialization value is wrong type.
             }
@@ -31,7 +30,7 @@ public class TopDeclVisitor extends SemanticsVisitor {
         } else {
             VariableAttributes attr = new VariableAttributes();
             attr.kind = AttributeKind.variableAttributes;                                       // What type
-            attr.variableType = ((IdentificationNode)node.children.get(0)).type;                // Set type in attributes
+            attr.variableType = node.type;                                                      // Set type in attributes
             ((IdentificationNode)node.children.get(0)).attributesRef = attr;                    // Link attributes to node
             symbolTable.enterSymbol(((IdentificationNode)node.children.get(0)).name, attr);     // Define in symbol table
         }
