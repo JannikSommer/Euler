@@ -8,21 +8,12 @@ public class CodeGenVisitor implements IVisitor {
 
     private CodeGenStringBuilder CGSBuilder;
     private String currentString;
-
-    public String Test(){
-        CGSBuilder = new CodeGenStringBuilder();
-
-        PreWork(); 
-        PostWork();
-
-        return CGSBuilder.ReturnString();
-	}
     
-    public String GenerateCode(ProgramNode node){
+    public String GenerateCode(ASTNode node){
         CGSBuilder = new CodeGenStringBuilder();
 
         PreWork();
-        visit(node);
+        node.accept(this);
         PostWork();
         return CGSBuilder.ReturnString();
 	}
@@ -52,7 +43,12 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(AssignmentNode node){
-
+        currentString = "";
+        node.children.get(0).accept(this);
+        currentString += " = ";
+        node.children.get(1).accept(this);
+        currentString += ";";
+        CGSBuilder.AppendText(currentString);
     }
 
     @Override
@@ -68,8 +64,8 @@ public class CodeGenVisitor implements IVisitor {
     }
 
     @Override
-    public void visit(DeclarationNode node){
-
+    public void visit(DeclarationNode node) {
+        //Can't exist, do nothing
     }
 
     @Override
@@ -91,7 +87,7 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(ExpressionNode node) {
-
+        //Can't exist, do nothing
     }
 
     @Override
@@ -106,7 +102,7 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(InitializationNode node){
-
+        node.children.get(0).accept(this);
     }
 
     @Override
@@ -128,6 +124,7 @@ public class CodeGenVisitor implements IVisitor {
     
     @Override
     public void visit(MultiplicationNode node){
+        //TODO add vector and matrix handling
         node.children.get(0).accept(this);
         currentString += " * ";
         node.children.get(1).accept(this);
@@ -135,7 +132,7 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(NumberDeclarationNode node){
-        currentString = "";
+        currentString = "double ";
         node.children.get(0).accept(this); //IdentificationNode
         currentString += " = ";
         node.children.get(1).accept(this); //number or referance
@@ -175,12 +172,20 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(SubscriptingAssignmentNode node){
-
+        currentString = "";
+        node.children.get(0).accept(this);
+        node.children.get(1).accept(this);
+        currentString += " = ";
+        node.children.get(2).accept(this);
+        currentString += ";";
+        CGSBuilder.AppendText(currentString);
     }
 
     @Override
     public void visit(SubscriptingNode node){
-
+        for(int index : node.index){
+            currentString += "[" + index + "]";
+		}
     }
 
     @Override
@@ -192,7 +197,10 @@ public class CodeGenVisitor implements IVisitor {
     
     @Override
     public void visit(ValueIndexNode node){
-        
+        currentString += "[" + node.indexA + "]";
+        if(node.indexB != -1){
+            currentString += "[" + node.indexB + "]";
+		}
     }
 
     @Override
