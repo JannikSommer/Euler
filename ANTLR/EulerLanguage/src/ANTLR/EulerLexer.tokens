@@ -33,9 +33,9 @@ VECTOR=32
 STRING=33
 ID=34
 WHITESPACE=35
-'num'=1
-'vec'=2
-'mtx'=3
+'number'=1
+'vector'=2
+'matrix'=3
 '$'=4
 ';'=5
 '='=6
