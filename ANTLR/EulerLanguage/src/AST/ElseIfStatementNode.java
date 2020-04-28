@@ -15,6 +15,6 @@ public class ElseIfStatementNode extends IfStatementNode {
     }
 
     public void accept(IVisitor visitor) {
-        super.accept(visitor);
+        visitor.visit(this);
     }
 }

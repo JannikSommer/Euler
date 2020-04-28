@@ -57,6 +57,11 @@ public class TreeToGraphGen implements IVisitor {
     }
 
     @Override
+    public void visit(BinaryExpressionNode node) {
+        DefaultConvert(node);
+    }
+
+    @Override
     public void visit(CodeBlockNode node) {DefaultConvert(node);}
 
     @Override
@@ -76,6 +81,11 @@ public class TreeToGraphGen implements IVisitor {
 
     @Override
     public void visit(ElseStatementNode node) {DefaultConvert(node);}
+
+    @Override
+    public void visit(ExpressionNode node) {
+        DefaultConvert(node);
+    }
 
     @Override
     public void visit(IdentificationNode node) {

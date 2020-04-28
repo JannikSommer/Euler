@@ -34,6 +34,8 @@ public interface IVisitor {
 
     void visit(MatrixDeclarationNode node);
 
+    void visit(MatrixExpressionNode node);
+
     void visit(ModuloNode node);
     
     void visit(MultiplicationNode node);
@@ -44,11 +46,11 @@ public interface IVisitor {
 
     void visit(ParenthesesNode node);
 
-    // public void visit(CodeBlockNode node); //Maybe?
-
     void visit(PrintNode node);
 
     void visit(ProgramNode node);
+
+    void visit(ReferenceNode node);
 	
     void visit(StringNode node);
 
@@ -67,8 +69,4 @@ public interface IVisitor {
     void visit(VectorExpressionNode node);
 
     void visit(WhileNode node);
-
-    void visit(ReferenceNode node);
-    
-    void visit(MatrixExpressionNode node);
 }

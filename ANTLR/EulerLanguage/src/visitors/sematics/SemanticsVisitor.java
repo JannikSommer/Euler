@@ -21,12 +21,12 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(AdditionNode node) {
-
+        visitChildren(node);
     }
 
     @Override
     public void visit(AppendStringNode node) {
-
+        visitChildren(node);
     }
 
     @Override
@@ -43,37 +43,37 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(BinaryExpressionNode node) {
-
-    }
-
-    @Override
-    public void visit(CodeBlockNode node) {
-
-    }
-
-    @Override
-    public void visit(DeclarationNode node) {
-        
-    }
-
-    @Override
-    public void visit(DivisionNode node) {
-
-    }
-
-    @Override
-    public void visit(ElseIfStatementNode node) {
-        // Same behavior as IfStatementNode
-    }
-
-    @Override
-    public void visit(ElseStatementNode node) {
         visitChildren(node);
     }
 
     @Override
-    public void visit(ExpressionNode node) {
+    public void visit(CodeBlockNode node) {
+        node.accept(new ReachabilityVisitor(symbolTable));
+    }
 
+    @Override
+    public void visit(DeclarationNode node) {
+        node.accept(new TopDeclVisitor(symbolTable));
+    }
+
+    @Override
+    public void visit(DivisionNode node) {
+        visitChildren(node);
+    }
+
+    @Override
+    public void visit(ElseIfStatementNode node) {
+        visit((IfStatementNode)node);
+    }
+
+    @Override
+    public void visit(ElseStatementNode node) {
+        node.accept(new ReachabilityVisitor(symbolTable));
+    }
+
+    @Override
+    public void visit(ExpressionNode node) {
+        visitChildren(node);
     }
 
     @Override
@@ -93,41 +93,42 @@ public class SemanticsVisitor extends NodeVisitor {
     public void visit(IfStatementNode node) {
         visitChildren(node);
         checkBoolean(node.children.get(0));
+        node.accept(new ReachabilityVisitor(symbolTable));
     }
 
     @Override
     public void visit(InitializationNode node) {
-
+        visitChildren(node);
     }
 
     @Override
     public void visit(LogicExpressionNode node) {
-
+        visitChildren(node);
     }
 
     @Override
     public void visit(MatrixDeclarationNode node) {
-
+        visit((DeclarationNode)node);
     }
 
     @Override
     public void visit(MatrixExpressionNode node) {
-
+        visitChildren(node);
     }
 
     @Override
     public void visit(ModuloNode node) {
-
+        visitChildren(node);
     }
 
     @Override
     public void visit(MultiplicationNode node) {
-
+        visitChildren(node);
     }
 
     @Override
     public void visit(NumberDeclarationNode node) {
-
+        visit((DeclarationNode)node);
     }
 
     @Override
@@ -137,67 +138,68 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(VectorExpressionNode node) {
-
+        visitChildren(node);
     }
 
     @Override
     public void visit(ParenthesesNode node) {
-
+        visitChildren(node);
     }
 
     @Override
     public void visit(PrintNode node) {
-
+        visitChildren(node);
     }
 
     @Override
     public void visit(ProgramNode node) {
-
+        visitChildren(node);
     }
 
     @Override
     public void visit(StringNode node) {
-
+        visitChildren(node);
     }
 
     @Override
-    public void visit(ReferenceNode referenceNode) {
-
+    public void visit(ReferenceNode node) {
+        visitChildren(node);
     }
 
     @Override
     public void visit(StringStatementNode node) {
-
+        visitChildren(node);
     }
 
     @Override
     public void visit(SubscriptingAssignmentNode node) {
-
+        visitChildren(node);
     }
 
     @Override
     public void visit(SubscriptingNode node) {
-
+        visitChildren(node);
     }
 
     @Override
     public void visit(SubtractionNode node) {
-
+        visitChildren(node);
     }
 
     @Override
     public void visit(ValueIndexNode node) {
-
+        visitChildren(node);
     }
 
     @Override
     public void visit(VectorDeclarationNode node) {
-
+        visit((DeclarationNode)node);
     }
 
     @Override
     public void visit(WhileNode node) {
         visitChildren(node);
         checkBoolean(node.children.get(0));
+        node.accept(new ReachabilityVisitor(symbolTable));
     }
 }
