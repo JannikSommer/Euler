@@ -1,4 +1,4 @@
-package visitors.sematics;
+package visitors.semantics;
 
 import AST.*;
 import symbolTable.SymbolTable;
@@ -17,7 +17,8 @@ public class TopDeclVisitor extends SemanticsVisitor {
         ASTNode expression = node.children.get(1);
         if(expression != null) {
             expression.accept(new SemanticsVisitor(symbolTable));
-            if(!node.type.assignable(expression.type)) {
+
+            if(!node.type.isCompatible(expression.type)) {
                 // TODO: Add error. Initialization value is wrong type.
             }
         }

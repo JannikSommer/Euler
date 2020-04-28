@@ -1,5 +1,6 @@
 package AST;
 
+import symbolTable.typeDescriptors.NumberTypeDescriptor;
 import visitors.IVisitor;
 
 public class NumberLiteralNode extends ExpressionNode {
@@ -8,6 +9,7 @@ public class NumberLiteralNode extends ExpressionNode {
     public NumberLiteralNode(ASTNode parent, double value) {
         super(parent);
         this.value = value;
+        type = new NumberTypeDescriptor();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package visitors.sematics;
+package visitors.semantics;
 
 import AST.*;
 import visitors.NodeVisitor;

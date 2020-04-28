@@ -6,9 +6,9 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import visitors.sematics.ReachabilityVisitor;
-import visitors.sematics.SemanticsVisitor;
-import visitors.sematics.TopDeclVisitor;
+import visitors.semantics.ReachabilityVisitor;
+import visitors.semantics.SemanticsVisitor;
+import visitors.semantics.TopDeclVisitor;
 
 import java.io.IOException;
 
@@ -36,8 +36,11 @@ public class EulerCompiler {
         }
 
         // --- Semantics ---
-        SymbolTable symbolTable = new SymbolTable();
-        node.accept(new SemanticsVisitor(symbolTable));
+        //SymbolTable symbolTable = new SymbolTable();
+        //node.accept(new SemanticsVisitor(symbolTable));
+        //node.accept(new TopDeclVisitor(symbolTable));
+        //node.accept(new ReachabilityVisitor(symbolTable));
+
         int a = 1+1;
     }
 }

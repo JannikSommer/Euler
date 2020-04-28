@@ -1,4 +1,4 @@
-package visitors.sematics;
+package visitors.semantics;
 
 import AST.*;
 import visitors.NodeVisitor;
@@ -21,7 +21,7 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(AdditionNode node) {
-        visitChildren(node);
+        visit((BinaryExpressionNode)node);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class SemanticsVisitor extends NodeVisitor {
     public void visit(AssignmentNode node) {
         node.children.get(0).accept(new LHSSemanticsVisitor(symbolTable));
         node.children.get(0).accept(this);
-        if(node.type.assignable(node.children.get(0).type)) {
+        if(node.type.isCompatible(node.children.get(0).type)) {
             node.type = node.children.get(0).type;
         } else {
             // TODO: Add error. Right hand side expression not assignable to left hand side.
@@ -44,6 +44,12 @@ public class SemanticsVisitor extends NodeVisitor {
     @Override
     public void visit(BinaryExpressionNode node) {
         visitChildren(node);
+        if(!node.children.get(0).type.isCompatible(node.children.get(1).type)) {
+            //TODO: Add Error. Incompatible types
+            node.type = new ErrorTypeDescriptor("Incompatible types");
+        } else {
+            node.type = node.children.get(0).type; // Add more complexity later
+        }
     }
 
     @Override
@@ -58,7 +64,7 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(DivisionNode node) {
-        visitChildren(node);
+        visit((BinaryExpressionNode)node);
     }
 
     @Override
@@ -118,12 +124,12 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(ModuloNode node) {
-        visitChildren(node);
+        visit((BinaryExpressionNode)node);
     }
 
     @Override
     public void visit(MultiplicationNode node) {
-        visitChildren(node);
+        visit((BinaryExpressionNode)node);
     }
 
     @Override
@@ -183,7 +189,7 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(SubtractionNode node) {
-        visitChildren(node);
+        visit((BinaryExpressionNode)node);
     }
 
     @Override

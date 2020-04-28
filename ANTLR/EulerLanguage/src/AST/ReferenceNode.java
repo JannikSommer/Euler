@@ -15,7 +15,7 @@ public class ReferenceNode extends ExpressionNode {
 
     @Override
     public double calculateValue() {
-        return ((ExpressionNode)children.get(0)).calculateValue() / ((ExpressionNode)children.get(0)).calculateValue();
+        return 0; // TODO: Find out what to put here
     }
 
     @Override
