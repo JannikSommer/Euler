@@ -1,4 +1,4 @@
-package Visitors;
+package visitors;
 
 import AST.*;
 
@@ -10,6 +10,8 @@ public interface IVisitor {
 
     void visit(AssignmentNode node);
 
+    void visit(BinaryExpressionNode node);
+
     void visit(CodeBlockNode node);
 
     void visit(DeclarationNode node);
@@ -19,6 +21,8 @@ public interface IVisitor {
     void visit(ElseIfStatementNode node);
 
     void visit(ElseStatementNode node);
+
+    void visit(ExpressionNode node);
 
     void visit(IdentificationNode node);
 
@@ -30,6 +34,8 @@ public interface IVisitor {
 
     void visit(MatrixDeclarationNode node);
 
+    void visit(MatrixExpressionNode node);
+
     void visit(ModuloNode node);
     
     void visit(MultiplicationNode node);
@@ -40,11 +46,11 @@ public interface IVisitor {
 
     void visit(ParenthesesNode node);
 
-    // public void visit(CodeBlockNode node); //Maybe?
-
     void visit(PrintNode node);
 
     void visit(ProgramNode node);
+
+    void visit(ReferenceNode node);
 	
     void visit(StringNode node);
 
@@ -63,8 +69,4 @@ public interface IVisitor {
     void visit(VectorExpressionNode node);
 
     void visit(WhileNode node);
-
-    void visit(ReferenceNode node);
-    
-    void visit(MatrixExpressionNode node);
 }

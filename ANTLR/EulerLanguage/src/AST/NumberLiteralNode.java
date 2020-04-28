@@ -1,8 +1,8 @@
 package AST;
 
-import Visitors.IVisitor;
+import visitors.IVisitor;
 
-public class NumberLiteralNode extends ASTNode {
+public class NumberLiteralNode extends ExpressionNode {
     public double value;
 
     public NumberLiteralNode(ASTNode parent, double value) {
@@ -12,4 +12,9 @@ public class NumberLiteralNode extends ASTNode {
 
     @Override
     public void accept(IVisitor visitor) { visitor.visit(this); }
+
+    @Override
+    public double calculateValue() {
+        return value;
+    }
 }

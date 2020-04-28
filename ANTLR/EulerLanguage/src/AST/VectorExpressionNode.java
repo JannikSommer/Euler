@@ -1,10 +1,7 @@
 package AST;
 
-import Visitors.IVisitor;
+import visitors.IVisitor;
 import java.lang.*;
-import java.util.*;
-
-import java.util.ArrayList;
 
 public class VectorExpressionNode extends ASTNode {
 

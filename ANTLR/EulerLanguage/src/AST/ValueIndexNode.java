@@ -1,6 +1,6 @@
 package AST;
 
-import Visitors.*;
+import visitors.*;
 
 public class ValueIndexNode extends ASTNode {
     public String id;

@@ -1,8 +1,8 @@
 package AST;
 
-import Visitors.*;
+import visitors.*;
 
-public class ElseIfStatementNode extends StatementNode {
+public class ElseIfStatementNode extends IfStatementNode {
 
     public ElseIfStatementNode(ASTNode parentNode) {
         super(parentNode);

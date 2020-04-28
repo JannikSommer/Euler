@@ -1,8 +1,8 @@
 package AST;
 
-import Visitors.*;
+import visitors.*;
 
-public class SubtractionNode extends ASTNode {
+public class SubtractionNode extends BinaryExpressionNode {
     public SubtractionNode(ASTNode parentNode) {
         super(parentNode);
     }
@@ -12,7 +12,12 @@ public class SubtractionNode extends ASTNode {
         children.add(leftOperand);
         children.add(rightOperand);
     }
-    
+
+    @Override
+    public double calculateValue() {
+        return ((ExpressionNode)children.get(0)).calculateValue() - ((ExpressionNode)children.get(1)).calculateValue();
+    }
+
     public void accept(IVisitor visitor) {
         visitor.visit(this);
     }

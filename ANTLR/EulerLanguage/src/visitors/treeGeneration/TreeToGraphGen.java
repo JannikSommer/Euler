@@ -1,7 +1,8 @@
-package Visitors;
+package visitors.treeGeneration;
 
 import AST.*;
 import org.antlr.runtime.tree.Tree;
+import visitors.IVisitor;
 
 import java.util.ArrayList;
 
@@ -55,6 +56,11 @@ public class TreeToGraphGen implements IVisitor {
     public void visit(AssignmentNode node) {DefaultConvert(node);}
 
     @Override
+    public void visit(BinaryExpressionNode node) {
+        DefaultConvert(node);
+    }
+
+    @Override
     public void visit(CodeBlockNode node) {DefaultConvert(node);}
 
     @Override
@@ -74,6 +80,11 @@ public class TreeToGraphGen implements IVisitor {
 
     @Override
     public void visit(ElseStatementNode node) {DefaultConvert(node);}
+
+    @Override
+    public void visit(ExpressionNode node) {
+        DefaultConvert(node);
+    }
 
     @Override
     public void visit(IdentificationNode node) {
