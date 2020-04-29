@@ -77,6 +77,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
     public ASTNode visitAssignstmt(EulerParser.AssignstmtContext ctx, ASTNode parent) {
         try {
+            String id = ctx.ID().getText();
             if (ctx.valindex() != null) {
                 ASTNode subsAssNode = new SubscriptingAssignmentNode(parent);
                 String str = ctx.valindex().getText();
@@ -84,6 +85,20 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 subsAssNode.children.add(visitExpr(ctx.expr(), subsAssNode));
                 subsAssNode.children.add(new SubscriptingNode(subsAssNode, str));
                 return subsAssNode;
+            } else if (ctx.MATRIX() != null) {
+                String mtx = ctx.MATRIX().getText();
+                ASTNode mtxassign = new AssignmentNode(parent);
+                ASTNode node = new MatrixExpressionNode(mtxassign, mtx);
+                mtxassign.children.add(new IdentificationNode(mtxassign, id));
+                mtxassign.children.add(node);
+                return mtxassign;
+            } else if (ctx.VECTOR() != null) {
+                String vec = ctx.VECTOR().getText();
+                ASTNode vecNode = new AssignmentNode(parent);
+                ASTNode node = new VectorExpressionNode(vecNode, vec);
+                vecNode.children.add(new IdentificationNode(vecNode, id));
+                vecNode.children.add(node);
+                return vecNode;
             } else {
                 AssignmentNode node = new AssignmentNode(parent, ctx.ID().getText());
                 ASTNode child = visitExpr(ctx.expr(), node);
