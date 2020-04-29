@@ -1,4 +1,4 @@
-package Visitors;
+package visitors;
 
 import AST.*;
 

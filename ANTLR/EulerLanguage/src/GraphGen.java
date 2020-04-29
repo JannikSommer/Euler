@@ -1,12 +1,12 @@
 import ANTLR.EulerLexer;
 import ANTLR.EulerParser;
 import AST.ASTNode;
-import Visitors.*;
+import visitors.*;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
-import Visitors.treeGeneration.TreeToGraphGen;
+import visitors.treeGeneration.TreeToGraphGen;
 
 import java.io.IOException;
 import java.io.PrintWriter;

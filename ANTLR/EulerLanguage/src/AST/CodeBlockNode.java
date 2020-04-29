@@ -1,6 +1,6 @@
 package AST;
 
-import Visitors.*;
+import visitors.*;
 
 public class CodeBlockNode extends ASTNode {
     public boolean isReachable;

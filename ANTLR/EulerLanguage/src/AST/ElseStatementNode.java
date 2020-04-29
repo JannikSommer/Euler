@@ -1,6 +1,6 @@
 package AST;
 
-import Visitors.*;
+import visitors.*;
 
 public class ElseStatementNode extends StatementNode {
     public ElseStatementNode(ASTNode parentNode) {

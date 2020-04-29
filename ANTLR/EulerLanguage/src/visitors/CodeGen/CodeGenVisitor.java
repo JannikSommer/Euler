@@ -1,6 +1,6 @@
-package Visitors.CodeGen;
+package visitors.CodeGen;
 
-import Visitors.IVisitor;
+import visitors.IVisitor;
 import AST.*;
 
 

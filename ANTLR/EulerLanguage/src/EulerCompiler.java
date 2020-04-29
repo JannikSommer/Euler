@@ -1,7 +1,7 @@
 import ANTLR.*;
 import AST.*;
 import symbolTable.SymbolTable;
-import Visitors.*;
+import visitors.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
