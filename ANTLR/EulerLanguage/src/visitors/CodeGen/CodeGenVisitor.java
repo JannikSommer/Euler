@@ -1,5 +1,6 @@
 package visitors.CodeGen;
 
+import symbolTable.typeDescriptors.MatrixTypeDescriptor;
 import visitors.IVisitor;
 import AST.*;
 
@@ -179,10 +180,11 @@ public class CodeGenVisitor implements IVisitor {
     }
 
     private void MatrixAssignChildren(String ID, ArrayList<ASTNode> children) {
-        int IndexA = 0, IndexB = 0;
+        int IndexA = 0, IndexB;
 
         for(ASTNode Vector : children){
-            for(ASTNode child : children){
+            IndexB = 0;
+            for(ASTNode child : Vector.children){
                 currentString = ID + "[" + IndexA + "][" + IndexB + "] = ";
                 child.accept(this);
                 CGSBuilder.AppendText(currentString);
@@ -327,7 +329,8 @@ public class CodeGenVisitor implements IVisitor {
     
     @Override
     public void visit(MatrixExpressionNode node){
-        currentString += "CreateMatrix(" + node.children.get(0).children.size() + ", " + node.children.get(1).children.size() + ");";
+        MatrixTypeDescriptor TypeDescriptor = (MatrixTypeDescriptor)node.type;
+        currentString += "CreateMatrix(" + TypeDescriptor.rows + ", " + TypeDescriptor.columns + ");";
     }
 
     public void visit(SubscriptingReferenceNode node) {
