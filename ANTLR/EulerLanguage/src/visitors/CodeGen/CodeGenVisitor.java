@@ -53,7 +53,7 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(BinaryExpressionNode node) {
-
+        //Abstract class, do nothing
     }
 
     @Override
@@ -65,7 +65,7 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(DeclarationNode node) {
-        //Can't exist, do nothing
+        //Abstract class, do nothing
     }
 
     @Override
@@ -77,7 +77,7 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(ElseIfStatementNode node){
-
+        
     }
 
     @Override
@@ -87,7 +87,7 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(ExpressionNode node) {
-        //Can't exist, do nothing
+        //Abstract class, do nothing
     }
 
     @Override
@@ -112,7 +112,10 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(MatrixDeclarationNode node){
-
+        currentString = "";
+        node.children.get(0).accept(this);
+        currentString += " = ";
+        node.children.get(1).accept(this);
     }
 
     @Override
@@ -147,12 +150,15 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(ParenthesesNode node){
-
+        currentString += " (";
+        node.children.get(0).accept(this);
+        currentString += ") ";
     }
 
     @Override
     public void visit(PrintNode node){
-        
+        //TODO NOT DONE
+        currentString += "printf(\"\")";
     }
 
     @Override
@@ -205,12 +211,29 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(VectorDeclarationNode node){
-        
+        currentString = "Vector ";
+        node.children.get(0).accept(this);
+        currentString += " = ";
+        node.children.get(1).accept(this);
+
+        int index = 0;
+        for(ASTNode child : node.children.get(1).children){
+            node.children.get(0).accept(this);
+            currentString += ".elements[";
+            currentString += index;
+            currentString += "] = ";
+            //currentString += (NumberLiteralNode) child.value;
+            currentString += ";\n";
+            index++;
+        }
     }
 
     @Override
     public void visit(VectorExpressionNode node){
-        
+        currentString += "CreateVector(";
+        currentString += node.children.size();
+        currentString += ");";
+        currentString += "\n";
     }
 
     @Override
