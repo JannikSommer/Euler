@@ -10,12 +10,14 @@ public class ReachabilityVisitor extends SemanticsVisitor {
 
     @Override
     public void visit(CodeBlockNode node) {
+        symbolTable.openScope();
         node.children.get(0).isReachable = node.isReachable;
         visitChildren(node);
         for(int i = 1; i < node.children.size(); i++) {
             node.children.get(i).isReachable = node.children.get(i - 1).terminatesNormally;
         }
         node.terminatesNormally = node.children.get(node.children.size() - 1).terminatesNormally; // Block only terminates normally if last statement does too
+        symbolTable.closeScope();
     }
 
     @Override

@@ -22,6 +22,8 @@ public interface IVisitor {
 
     void visit(ElseStatementNode node);
 
+    void visit(ErrorNode node);
+
     void visit(ExpressionNode node);
 
     void visit(IdentificationNode node);
@@ -59,6 +61,8 @@ public interface IVisitor {
     void visit(SubscriptingAssignmentNode node);
 
     void visit(SubscriptingNode node);
+
+    void visit(SubscriptingReferenceNode node);
 
     void visit(SubtractionNode node);
     

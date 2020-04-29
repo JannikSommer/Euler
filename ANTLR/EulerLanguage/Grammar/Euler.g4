@@ -13,8 +13,7 @@ stmt        :	expr SEMI
             |   printstmt SEMI
             ;
 
-dcl         :	ID
-            |	'num' ID ASSIGN expr
+dcl         :	'num' ID ASSIGN expr
             |	'vec' ID ASSIGN VECTOR
             |   'mtx' ID ASSIGN MATRIX
             ;

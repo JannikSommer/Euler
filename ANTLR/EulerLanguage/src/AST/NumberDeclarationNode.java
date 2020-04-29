@@ -7,6 +7,7 @@ public class NumberDeclarationNode extends DeclarationNode {
 
     public NumberDeclarationNode(ASTNode parent) {
         super(parent);
+        type = new NumberTypeDescriptor();
     }
 
     public NumberDeclarationNode(ASTNode parent, String name, ASTNode expression) {

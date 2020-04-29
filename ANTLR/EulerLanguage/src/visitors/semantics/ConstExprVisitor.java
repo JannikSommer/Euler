@@ -21,6 +21,7 @@ public class ConstExprVisitor extends NodeVisitor {
 
     @Override
     public void visit(BinaryExpressionNode node) {
+        // TODO: Take a look at this again
         if(node.children.get(0).getType().equals("NumberLiteralNode") && node.children.get(1).getType().equals("NumberLiteralNode")) {
             node.exprValue = node.calculateValue();
         }
@@ -52,6 +53,11 @@ public class ConstExprVisitor extends NodeVisitor {
     }
 
     @Override
+    public void visit(ErrorNode node) {
+
+    }
+
+    @Override
     public void visit(ExpressionNode node) {
 
     }
@@ -73,7 +79,9 @@ public class ConstExprVisitor extends NodeVisitor {
 
     @Override
     public void visit(LogicExpressionNode node) {
-        node.exprValue = node.calculateValue();
+        if(node.children.get(0).getType().equals("NumberLiteralNode") && node.children.get(1).getType().equals("NumberLiteralNode")) {
+            node.exprValue = node.calculateValue();
+        }
     }
 
     @Override
@@ -168,6 +176,11 @@ public class ConstExprVisitor extends NodeVisitor {
 
     @Override
     public void visit(MatrixExpressionNode node) {
+
+    }
+
+    @Override
+    public void visit(SubscriptingReferenceNode node) {
 
     }
 }

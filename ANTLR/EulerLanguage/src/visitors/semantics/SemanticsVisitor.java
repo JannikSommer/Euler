@@ -1,7 +1,8 @@
 package Visitors.semantics;
 
 import AST.*;
-import Visitors.NodeVisitor;
+import org.antlr.v4.tool.Attribute;
+import visitors.NodeVisitor;
 import symbolTable.SymbolTable;
 import symbolTable.attributes.*;
 import symbolTable.typeDescriptors.*;
@@ -32,8 +33,8 @@ public class SemanticsVisitor extends NodeVisitor {
     @Override
     public void visit(AssignmentNode node) {
         node.children.get(0).accept(new LHSSemanticsVisitor(symbolTable));
-        node.children.get(0).accept(this);
-        if(node.type.isCompatible(node.children.get(0).type)) {
+        node.children.get(1).accept(this);
+        if(node.children.get(0).type.isCompatible(node.children.get(1).type)) {
             node.type = node.children.get(0).type;
         } else {
             // TODO: Add error. Right hand side expression not assignable to left hand side.
@@ -78,6 +79,9 @@ public class SemanticsVisitor extends NodeVisitor {
     }
 
     @Override
+    public void visit(ErrorNode node) {     }
+
+    @Override
     public void visit(ExpressionNode node) {
         visitChildren(node);
     }
@@ -91,7 +95,7 @@ public class SemanticsVisitor extends NodeVisitor {
             node.attributesRef = null;
         } else {
             node.attributesRef = attrRef;
-            node.type.kind = attrRef.variableType.kind; // TODO: More checking. Maybe. Page 327
+            node.type = attrRef.variableType;      // TODO: More checking. Maybe. Page 327
         }
     }
 
@@ -179,7 +183,33 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(SubscriptingAssignmentNode node) {
-        visitChildren(node);
+        visit((AssignmentNode)node);
+
+        // Does the index exist
+        VariableAttributes attrRef = (VariableAttributes)((IdentificationNode)node.children.get(0)).attributesRef;
+        SubscriptingNode subscript = (SubscriptingNode)node.children.get(2);
+        if(attrRef.variableType.kind == TypeDescriptorKind.vector || attrRef.variableType.kind == TypeDescriptorKind.matrix) {
+            if(subscript.index.size() == 1 && attrRef.variableType.kind == TypeDescriptorKind.vector) {
+                if(subscript.index.get(0) >= ((VectorTypeDescriptor)attrRef.variableType).length) {
+                    // TODO: Add error. Index out of bounds
+                    node.type = new ErrorTypeDescriptor("Out of bounds.");
+                }
+            } else if(subscript.index.size() == 2 && attrRef.variableType.kind == TypeDescriptorKind.matrix) {
+                if(subscript.index.get(0) >= ((MatrixTypeDescriptor)attrRef.variableType).rows) {
+                    // TODO: Add error. Index out of bounds the first one.
+                    node.type = new ErrorTypeDescriptor("Out of bounds.");
+                } else if(subscript.index.get(1) >= ((MatrixTypeDescriptor)attrRef.variableType).columns) {
+                    // TODO: Add error. Index out of bounds the second one
+                    node.type = new ErrorTypeDescriptor("Out of bounds.");
+                }
+            } else {
+                // TODO: Add error. Type does not support number of indexes
+                node.type = new ErrorTypeDescriptor("Type does not support number of indexes.");
+            }
+        } else {
+            // TODO: Add error. Type does not support subscript.
+            node.type = new ErrorTypeDescriptor("Type does not support subscript.");
+        }
     }
 
     @Override
@@ -208,4 +238,7 @@ public class SemanticsVisitor extends NodeVisitor {
         checkBoolean(node.children.get(0));
         node.accept(new ReachabilityVisitor(symbolTable));
     }
+
+    @Override
+    public void visit(SubscriptingReferenceNode node) { visitChildren(node);}
 }

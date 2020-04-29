@@ -89,6 +89,11 @@ public class CodeGenVisitor implements IVisitor {
     }
 
     @Override
+    public void visit(ErrorNode node) {
+
+    }
+
+    @Override
     public void visit(ExpressionNode node) {
         //Abstract class, do nothing
     }
@@ -254,6 +259,10 @@ public class CodeGenVisitor implements IVisitor {
     
     @Override
     public void visit(MatrixExpressionNode node){
+
+    }
+
+    public void visit(SubscriptingReferenceNode node) {
 
     }
 }
