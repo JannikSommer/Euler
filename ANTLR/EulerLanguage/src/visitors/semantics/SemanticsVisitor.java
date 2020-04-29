@@ -146,11 +146,6 @@ public class SemanticsVisitor extends NodeVisitor {
     }
 
     @Override
-    public void visit(VectorExpressionNode node) {
-        visitChildren(node);
-    }
-
-    @Override
     public void visit(ParenthesesNode node) {
         visitChildren(node);
     }
@@ -173,6 +168,7 @@ public class SemanticsVisitor extends NodeVisitor {
     @Override
     public void visit(ReferenceNode node) {
         visitChildren(node);
+        node.type = (node.children.get(0)).type;
     }
 
     @Override
@@ -183,32 +179,19 @@ public class SemanticsVisitor extends NodeVisitor {
     @Override
     public void visit(SubscriptingAssignmentNode node) {
         visit((AssignmentNode)node);
-
-        // Does the index exist
-        VariableAttributes attrRef = (VariableAttributes)((IdentificationNode)node.children.get(0)).attributesRef;
-        SubscriptingNode subscript = (SubscriptingNode)node.children.get(2);
-        if(attrRef.variableType.kind == TypeDescriptorKind.vector || attrRef.variableType.kind == TypeDescriptorKind.matrix) {
-            if(subscript.index.size() == 1 && attrRef.variableType.kind == TypeDescriptorKind.vector) {
-                if(subscript.index.get(0) >= ((VectorTypeDescriptor)attrRef.variableType).length) {
-                    node.type = new ErrorTypeDescriptor("Out of bounds", node);
-                }
-            } else if(subscript.index.size() == 2 && attrRef.variableType.kind == TypeDescriptorKind.matrix) {
-                if(subscript.index.get(0) >= ((MatrixTypeDescriptor)attrRef.variableType).rows) {
-                    node.type = new ErrorTypeDescriptor("Index 1 out of bounds", node);
-                } else if(subscript.index.get(1) >= ((MatrixTypeDescriptor)attrRef.variableType).columns) {
-                    node.type = new ErrorTypeDescriptor("Index 2 out of bounds", node);
-                }
-            } else {
-                node.type = new ErrorTypeDescriptor("Type does not support this number of indexes", node);
-            }
-        } else {
-            node.type = new ErrorTypeDescriptor("Type does not support subscript", node);
-        }
+        checkSubscript(node);
     }
 
     @Override
     public void visit(SubscriptingNode node) {
         visitChildren(node);
+    }
+
+    @Override
+    public void visit(SubscriptingReferenceNode node) {
+        visitChildren(node);
+        node.type = ((VariableAttributes)((IdentificationNode)node.children.get(0)).attributesRef).variableType;
+        checkSubscript(node);
     }
 
     @Override
@@ -227,6 +210,12 @@ public class SemanticsVisitor extends NodeVisitor {
     }
 
     @Override
+    public void visit(VectorExpressionNode node) {
+        visitChildren(node);
+
+    }
+
+    @Override
     public void visit(WhileNode node) {
         visitChildren(node);
         checkBoolean(node.children.get(0));
@@ -234,17 +223,37 @@ public class SemanticsVisitor extends NodeVisitor {
     }
 
     @Override
-    public void visit(SubscriptingReferenceNode node) { visitChildren(node);}
-
-    @Override
     public void visitChildren(ASTNode node) {
         if(node.children.size() != 0) {
             for ( ASTNode child : node.children ) {
-                if(!child.getType().equals("ErrorNode")) {
+                if(!child.getType().equals("ErrorNode")) { // If it has no type, it is not an errorNode. TODO:
                     child.accept(this);
                 }
             }
         }
     }
+
+    private void checkSubscript(ASTNode node) {
+        VariableAttributes attrRef = (VariableAttributes)((IdentificationNode)node.children.get(0)).attributesRef;
+        SubscriptingNode subscript = (SubscriptingNode)node.children.get(1);
+        if(attrRef.variableType.kind == TypeDescriptorKind.vector || attrRef.variableType.kind == TypeDescriptorKind.matrix) {
+            if(subscript.index.size() == 1 && attrRef.variableType.kind == TypeDescriptorKind.vector) {
+                if(subscript.index.get(0) >= ((VectorTypeDescriptor)attrRef.variableType).length) {
+                    node.type = new ErrorTypeDescriptor("Out of bounds", node);
+                }
+            } else if(subscript.index.size() == 2 && attrRef.variableType.kind == TypeDescriptorKind.matrix) {
+                if(subscript.index.get(0) >= ((MatrixTypeDescriptor)attrRef.variableType).rows) {
+                    node.type = new ErrorTypeDescriptor("Index 1 out of bounds", node);
+                } else if(subscript.index.get(1) >= ((MatrixTypeDescriptor)attrRef.variableType).columns) {
+                    node.type = new ErrorTypeDescriptor("Index 2 out of bounds", node);
+                }
+            } else {
+                node.type = new ErrorTypeDescriptor("Type does not support this number of indexes", node); // Possibly done in syntactic analysis
+            }
+        } else {
+            node.type = new ErrorTypeDescriptor("Type does not support subscript", node);
+        }
+    }
+
 
 }

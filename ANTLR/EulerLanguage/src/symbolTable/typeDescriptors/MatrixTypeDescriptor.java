@@ -3,6 +3,7 @@ package symbolTable.typeDescriptors;
 public class MatrixTypeDescriptor extends TypeDescriptor{
     public int rows;
     public int columns;
+    public TypeDescriptorKind elementType;
 
     public MatrixTypeDescriptor() {
         super(TypeDescriptorKind.matrix);
@@ -15,4 +16,10 @@ public class MatrixTypeDescriptor extends TypeDescriptor{
         this.rows = rows;
         this.columns = columns;
     }
+
+    public MatrixTypeDescriptor(int rows, int columns, TypeDescriptorKind elementType) {
+        this(rows, columns);
+        this.elementType = elementType;
+    }
+
 }

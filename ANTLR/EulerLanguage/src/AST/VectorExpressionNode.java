@@ -1,5 +1,6 @@
 package AST;
 
+import symbolTable.typeDescriptors.TypeDescriptorKind;
 import symbolTable.typeDescriptors.VectorTypeDescriptor;
 import visitors.IVisitor;
 import java.lang.*;

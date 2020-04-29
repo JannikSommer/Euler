@@ -2,6 +2,7 @@ package symbolTable.typeDescriptors;
 
 public class VectorTypeDescriptor extends TypeDescriptor {
     public int length;
+    public TypeDescriptorKind elementType;
 
     public VectorTypeDescriptor() {
         super(TypeDescriptorKind.vector);
@@ -11,5 +12,10 @@ public class VectorTypeDescriptor extends TypeDescriptor {
     public VectorTypeDescriptor(int length) {
         this();
         this.length = length;
+    }
+
+    public VectorTypeDescriptor(int length, TypeDescriptorKind elementType) {
+        this(length);
+        this.elementType = elementType;
     }
 }
