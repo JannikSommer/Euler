@@ -1,6 +1,6 @@
 package AST;
 
-import visitors.*;
+import Visitors.*;
 
 public class ModuloNode extends BinaryExpressionNode {
     public ModuloNode(ASTNode parentNode) {

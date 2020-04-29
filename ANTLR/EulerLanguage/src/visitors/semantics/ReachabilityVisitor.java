@@ -1,4 +1,4 @@
-package visitors.semantics;
+package Visitors.semantics;
 
 import AST.*;
 import symbolTable.SymbolTable;

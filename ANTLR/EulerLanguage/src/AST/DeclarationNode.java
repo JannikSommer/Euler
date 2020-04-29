@@ -1,6 +1,6 @@
 package AST;
 
-import visitors.*;
+import Visitors.*;
 
 public abstract class DeclarationNode extends StatementNode {
     public DeclarationNode(ASTNode parentNode) {

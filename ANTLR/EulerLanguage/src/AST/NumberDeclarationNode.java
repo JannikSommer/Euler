@@ -1,6 +1,6 @@
 package AST;
 
-import visitors.IVisitor;
+import Visitors.IVisitor;
 import symbolTable.typeDescriptors.NumberTypeDescriptor;
 
 public class NumberDeclarationNode extends DeclarationNode {

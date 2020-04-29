@@ -1,6 +1,6 @@
 package AST;
 
-import visitors.*;
+import Visitors.*;
 
 public class WhileNode extends StatementNode {
     public WhileNode(ASTNode parentNode) {

@@ -1,7 +1,7 @@
 package AST;
 
 import symbolTable.typeDescriptors.NumberTypeDescriptor;
-import visitors.IVisitor;
+import Visitors.IVisitor;
 
 public class NumberLiteralNode extends ExpressionNode {
     public double value;

@@ -1,7 +1,7 @@
 package AST;
 
 import symbolTable.typeDescriptors.VectorTypeDescriptor;
-import visitors.IVisitor;
+import Visitors.IVisitor;
 import java.lang.*;
 
 public class VectorExpressionNode extends ASTNode {

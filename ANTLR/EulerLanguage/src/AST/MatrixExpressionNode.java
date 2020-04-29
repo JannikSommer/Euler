@@ -1,7 +1,7 @@
 package AST;
 
 import symbolTable.typeDescriptors.MatrixTypeDescriptor;
-import visitors.IVisitor;
+import Visitors.IVisitor;
 
 public class MatrixExpressionNode extends ASTNode {
 

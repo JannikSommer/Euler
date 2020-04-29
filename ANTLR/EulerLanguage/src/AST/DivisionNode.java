@@ -1,6 +1,6 @@
 package AST;
 
-import visitors.*;
+import Visitors.*;
 
 public class DivisionNode extends BinaryExpressionNode {
     public DivisionNode(ASTNode parentNode) {

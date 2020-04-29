@@ -1,6 +1,6 @@
 package AST;
 
-import visitors.*;
+import Visitors.*;
 import symbolTable.typeDescriptors.BooleanTypeDescriptor;
 
 public class LogicExpressionNode extends ASTNode {
