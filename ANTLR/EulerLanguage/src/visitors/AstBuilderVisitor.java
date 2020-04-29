@@ -36,10 +36,10 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 case "PrintstmtContext":
                     return visitPrintstmt((EulerParser.PrintstmtContext) ctx.children.get(0), parent);
                 default:
-                    return new ErrorNode(parent, "Statement not valid!");
+                    return new ErrorNode(parent, "Invalid statement at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
             }
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Statement not valid!");
+            return new ErrorNode(parent, "Invalid statement at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -53,7 +53,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             });
             return node;
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Printstatement not valid");
+            return new ErrorNode(parent, "Invalid print at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -61,7 +61,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
         try {
             if (ctx.ID() != null) {
                 if (ctx.valindex() != null) {
-                    return new ErrorNode(parent, "String statement not valid!");
+                    return new ErrorNode(parent, "Invalid string at line" + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
                 }
                 return new IdentificationNode(parent, ctx.ID().getText());
             } else if (ctx.NUM() != null) {
@@ -70,9 +70,9 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 return new StringNode(parent, ctx.STRING().getText());
             }
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "String statement not valid!");
+            return new ErrorNode(parent, "Invalid string at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
-        return new ErrorNode(parent, "String statement not valid!");
+        return new ErrorNode(parent, "Invalid string at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
     }
 
     public ASTNode visitAssignstmt(EulerParser.AssignstmtContext ctx, ASTNode parent) {
@@ -91,7 +91,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 return node;
             }
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Assignement not valid");
+            return new ErrorNode(parent, "Invalid assignment at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -106,7 +106,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             node.children.add(stmtNode);
             return node;
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "While statement not valid!");
+            return new ErrorNode(parent, "Invalid while-statement at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -119,7 +119,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             });
             return node;
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Logic statement not valid!");
+            return new ErrorNode(parent, "Invalid boolean statement at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -137,7 +137,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             }
             return node;
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "If statement not valid!");
+            return new ErrorNode(parent, "Invalid if-statement at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -155,7 +155,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             });
             return node;
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Else-statement not valid!");
+            return new ErrorNode(parent, "Invalid else-statement at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -170,7 +170,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             node.children.add(stmtNode);
             return node;
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Else-if-statement not valid");
+            return new ErrorNode(parent, "Invalid else-if-statement at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -200,7 +200,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 return node;
             } else return new InitializationNode(parent, id);
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Declaration not valid");
+            return new ErrorNode(parent, "Invalid declaration at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -209,7 +209,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
         try {
             return visitAddexpr(ctx.addexpr(), parent);
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, e.toString());
+            return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -226,9 +226,9 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 left = visitMultiexpr(ctx.multiexpr(), parent);
                 right = visitAddexpr(ctx.addexpr(), parent);
                 return new SubtractionNode(parent, left, right);
-            } else return new ErrorNode(parent, "Expression not valid!");
+            } else return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Expression not valid!");
+            return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -249,9 +249,9 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 left = visitPrimeexpr(ctx.primeexpr(), parent);
                 right = visitMultiexpr(ctx.multiexpr(), parent);
                 return new ModuloNode(parent, left, right);
-            } else return new ErrorNode(parent, "Expression not valid");
+            } else return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Expression not valid!");
+            return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -271,9 +271,9 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 return new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
             } else if (ctx.LPAREN() != null) {
                 return visitAddexpr(ctx.addexpr(), parent);
-            } else return new ErrorNode(parent, "Expression not valid!");
+            } else return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Expression not valid!");
+            return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 }

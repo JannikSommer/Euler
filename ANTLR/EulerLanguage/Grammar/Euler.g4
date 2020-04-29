@@ -47,6 +47,8 @@ whilestmt   :	WHILE logstmt DO (stmt)+ END
             ;
 
 assignstmt  :	ID valindex? ASSIGN expr
+            |   ID ASSIGN VECTOR
+            |   ID ASSIGN MATRIX
             ;
 
 addexpr     :	multiexpr

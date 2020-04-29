@@ -1,1 +1,1 @@
-vector b = 2;
+vec b = 2;
