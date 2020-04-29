@@ -20,36 +20,41 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     }
 
     public ASTNode visitStmt(EulerParser.StmtContext ctx, ASTNode parent) {
-        String name = ctx.children.get(0).getClass().getSimpleName();
-        if (name.equals("ExprContext")) {
-            return visitExpr((EulerParser.ExprContext) ctx.children.get(0), parent);
+        try {
+            String name = ctx.children.get(0).getClass().getSimpleName();
+            switch (name) {
+                case "ExprContext":
+                    return visitExpr((EulerParser.ExprContext) ctx.children.get(0), parent);
+                case "DclContext":
+                    return visitDcl((EulerParser.DclContext) ctx.children.get(0), parent);
+                case "IfstmtContext":
+                    return visitIfstmt((EulerParser.IfstmtContext) ctx.children.get(0), parent);
+                case "WhilestmtContext":
+                    return visitWhilestmt((EulerParser.WhilestmtContext) ctx.children.get(0), parent);
+                case "AssignstmtContext":
+                    return visitAssignstmt((EulerParser.AssignstmtContext) ctx.children.get(0), parent);
+                case "PrintstmtContext":
+                    return visitPrintstmt((EulerParser.PrintstmtContext) ctx.children.get(0), parent);
+                default:
+                    return new ErrorNode(parent, "Statement not valid!");
+            }
+        } catch (NullPointerException e) {
+            return new ErrorNode(parent, "Statement not valid!");
         }
-        else if (name.equals("DclContext")) {
-            return visitDcl((EulerParser.DclContext) ctx.children.get(0), parent);
-        }
-        else if (name.equals("IfstmtContext")) {
-            return visitIfstmt((EulerParser.IfstmtContext) ctx.children.get(0), parent);
-        }
-        else if (name.equals("WhilestmtContext")) {
-            return visitWhilestmt((EulerParser.WhilestmtContext) ctx.children.get(0), parent);
-        }
-        else if (name.equals("AssignstmtContext")) {
-            return visitAssignstmt((EulerParser.AssignstmtContext) ctx.children.get(0), parent);
-        }
-        else if (name.equals("PrintstmtContext")) {
-            return visitPrintstmt((EulerParser.PrintstmtContext) ctx.children.get(0), parent);
-        }
-        else return new ErrorNode(parent, "Statement not valid!");
     }
 
     public ASTNode visitPrintstmt(EulerParser.PrintstmtContext ctx, ASTNode parent) {
-        PrintNode node = new PrintNode(parent);
-        ctx.children.forEach(child -> {
-            if (child.getClass().getSimpleName().equals("StringstmtContext")) {
-                node.children.add(visitStringstmt((EulerParser.StringstmtContext) child, parent));
-            }
-        });
-        return node;
+        try {
+            PrintNode node = new PrintNode(parent);
+            ctx.children.forEach(child -> {
+                if (child.getClass().getSimpleName().equals("StringstmtContext")) {
+                    node.children.add(visitStringstmt((EulerParser.StringstmtContext) child, parent));
+                }
+            });
+            return node;
+        } catch (NullPointerException e) {
+            return new ErrorNode(parent, "Printstatement not valid");
+        }
     }
 
     public ASTNode visitStringstmt(EulerParser.StringstmtContext ctx, ASTNode parent) {
@@ -91,14 +96,18 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     }
 
     public ASTNode visitWhilestmt(EulerParser.WhilestmtContext ctx, ASTNode parent) {
-        WhileNode node = new WhileNode(parent);
-        CodeBlockNode stmtNode = new CodeBlockNode(node);
-        node.children.add(visitLogstmt(ctx.logstmt(), node));
-        ctx.stmt().forEach(child -> {
-            stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
-        });
-        node.children.add(stmtNode);
-        return node;
+        try {
+            WhileNode node = new WhileNode(parent);
+            CodeBlockNode stmtNode = new CodeBlockNode(node);
+            node.children.add(visitLogstmt(ctx.logstmt(), node));
+            ctx.stmt().forEach(child -> {
+                stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
+            });
+            node.children.add(stmtNode);
+            return node;
+        } catch (NullPointerException e) {
+            return new ErrorNode(parent, "While statement not valid!");
+        }
     }
 
     public ASTNode visitLogstmt(EulerParser.LogstmtContext ctx, ASTNode parent) {
@@ -133,29 +142,36 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     }
 
     public ASTNode visitElsestmts(EulerParser.ElsestmtsContext ctx, ASTNode parent) {
-        ElseStatementNode node = new ElseStatementNode(parent);
-        ctx.children.forEach(child -> {
-            if (child.getClass().getSimpleName().equals("ElseifstmtsContext")) {
-                node.children.add(visitElseifstmts((EulerParser.ElseifstmtsContext) child, node));
-            }
-            else if (child.getClass().getSimpleName().equals("StmtContext")) {
-                CodeBlockNode stmtNode = new CodeBlockNode(node);
-                stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
-                node.children.add(stmtNode);
-            }
-        });
-        return node;
+        try {
+            ElseStatementNode node = new ElseStatementNode(parent);
+            ctx.children.forEach(child -> {
+                if (child.getClass().getSimpleName().equals("ElseifstmtsContext")) {
+                    node.children.add(visitElseifstmts((EulerParser.ElseifstmtsContext) child, node));
+                } else if (child.getClass().getSimpleName().equals("StmtContext")) {
+                    CodeBlockNode stmtNode = new CodeBlockNode(node);
+                    stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
+                    node.children.add(stmtNode);
+                }
+            });
+            return node;
+        } catch (NullPointerException e) {
+            return new ErrorNode(parent, "Else-statement not valid!");
+        }
     }
 
     public ASTNode visitElseifstmts(EulerParser.ElseifstmtsContext ctx, ASTNode parent) {
-        ElseIfStatementNode node = new ElseIfStatementNode(parent);
-        CodeBlockNode stmtNode = new CodeBlockNode(node);
-        node.children.add(visitLogstmt(ctx.logstmt(), node));
-        ctx.stmt().forEach(child -> {
-            stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
-        });
-        node.children.add(stmtNode);
-        return node;
+        try {
+            ElseIfStatementNode node = new ElseIfStatementNode(parent);
+            CodeBlockNode stmtNode = new CodeBlockNode(node);
+            node.children.add(visitLogstmt(ctx.logstmt(), node));
+            ctx.stmt().forEach(child -> {
+                stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
+            });
+            node.children.add(stmtNode);
+            return node;
+        } catch (NullPointerException e) {
+            return new ErrorNode(parent, "Else-if-statement not valid");
+        }
     }
 
 
@@ -190,7 +206,11 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
 
     public ASTNode visitExpr(EulerParser.ExprContext ctx, ASTNode parent) {
-        return visitAddexpr(ctx.addexpr(), parent);
+        try {
+            return visitAddexpr(ctx.addexpr(), parent);
+        } catch (NullPointerException e) {
+            return new ErrorNode(parent, e.toString());
+        }
     }
 
     public ASTNode visitAddexpr(EulerParser.AddexprContext ctx, ASTNode parent) {
