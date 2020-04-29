@@ -1,4 +1,4 @@
-package Visitors.semantics;
+package visitors.semantics;
 
 import AST.*;
 import org.antlr.v4.tool.Attribute;

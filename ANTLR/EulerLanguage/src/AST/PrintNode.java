@@ -1,6 +1,6 @@
 package AST;
 
-import Visitors.*;
+import visitors.*;
 
 public class PrintNode extends ASTNode {
     public PrintNode(ASTNode parentNode) {

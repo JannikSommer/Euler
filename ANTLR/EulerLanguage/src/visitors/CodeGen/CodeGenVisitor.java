@@ -1,14 +1,17 @@
-package Visitors.CodeGen;
+package visitors.CodeGen;
 
-import Visitors.IVisitor;
+import visitors.IVisitor;
 import AST.*;
+
+import java.util.ArrayList;
 
 
 public class CodeGenVisitor implements IVisitor {
 
     private CodeGenStringBuilder CGSBuilder;
     private String currentString;
-    private String[] DeclatedMatrices;
+    private ArrayList<String> DeclaredMatrices = new ArrayList<String>();
+    private ArrayList<String> DeclaredVectors = new ArrayList<String>();
 
     
     public String GenerateCode(ASTNode node){
@@ -26,7 +29,7 @@ public class CodeGenVisitor implements IVisitor {
     }
 
     private void PostWork(){
-        FreeVectorMatrices();
+        //FreeVectorMatrices();
         CGSBuilder.AppendCloseMain();
         CGSBuilder.AppendFunctions();
         CGSBuilder.AppendSpace();
@@ -219,16 +222,28 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(VectorDeclarationNode node){
-        currentString = "Vector ";
+        currentString = "";
         node.children.get(0).accept(this);
-        currentString += " = ";
+        String name = currentString;
+
+        if(DeclaredVectors.contains(name)){
+            ReplaceVector(name, node);  
+        } 
+        else {
+            DeclareNewVector(name, node);  
+		}
+    }
+    
+    private void ReplaceVector(String name, VectorDeclarationNode node) {
+        CGSBuilder.AppendText("FreeVector(&" + name + ")\n");
+
+        currentString = name + " = ";
         node.children.get(1).accept(this);
         CGSBuilder.AppendText(currentString);
 
         int index = 0;
         for(ASTNode child : node.children.get(1).children){
-            currentString = "";
-            node.children.get(0).accept(this);
+            currentString = name;
             currentString += ".elements[";
             currentString += index;
             currentString += "] = ";
@@ -239,6 +254,26 @@ public class CodeGenVisitor implements IVisitor {
         }
         CGSBuilder.AppendSpace();
     }
+
+    private void DeclareNewVector(String name, VectorDeclarationNode node){
+        currentString = "Vector " + name + " = ";
+        node.children.get(1).accept(this);
+        CGSBuilder.AppendText(currentString);
+
+        int index = 0;
+        for(ASTNode child : node.children.get(1).children){
+            currentString = name;
+            currentString += ".elements[";
+            currentString += index;
+            currentString += "] = ";
+            child.accept(this);
+            currentString += ";";
+            index++;
+            CGSBuilder.AppendText(currentString);
+        }
+        CGSBuilder.AppendSpace();
+	}
+    
 
     @Override
     public void visit(VectorExpressionNode node){

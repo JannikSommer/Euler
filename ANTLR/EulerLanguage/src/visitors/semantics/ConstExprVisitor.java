@@ -1,7 +1,7 @@
-package Visitors.semantics;
+package visitors.semantics;
 
 import AST.*;
-import Visitors.NodeVisitor;
+import visitors.NodeVisitor;
 
 public class ConstExprVisitor extends NodeVisitor {
     @Override
