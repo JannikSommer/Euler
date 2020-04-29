@@ -1,6 +1,6 @@
 package AST;
 
-import visitors.*;
+import visitors.IVisitor;
 import symbolTable.typeDescriptors.*;
 
 import java.util.*;

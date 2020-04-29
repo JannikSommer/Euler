@@ -150,7 +150,8 @@ public class TreeToGraphGen implements IVisitor {
     public void visit(StringNode node) {
         String MyName = node.getClass().getSimpleName() + nodeNum;
         nodeNum++;
-        TreeGenString += "\t" + MyName + " [label=\"String\\n\\\"" + node.string + "\\\"\"];\n";
+        String nodeString = node.string.substring(1, node.string.length() - 1);
+        TreeGenString += "\t" + MyName + " [label=\"String\\n\\\"" + nodeString + "\\\"\"];\n";
         ConvertChildren(node.children, MyName);
     }
 
