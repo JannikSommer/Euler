@@ -12,23 +12,13 @@ public class SymbolTable {
     private final ArrayList<ArrayList<Attributes>> scopes = new ArrayList<>();
     private int depth = -1;
 
-    public SymbolTable() {
-        // TODO: Find a better solution
-        TypeAttributes attr = new TypeAttributes();
-        attr.thisType = new NumberTypeDescriptor();
-    }
-
-    /*
-    public SymbolTable(ASTNode rootNode) {
-        processNode(rootNode);
-    }
-    */
+    public SymbolTable() {}
 
     public void enterSymbol(String name, Attributes attr) {
         Attributes oldSym = retrieveSymbol(name);
         /*
         if(oldSym != null && oldSym.depth == depth) {
-            // TODO: Add error. Duplicate declaration
+            // Add error. Duplicate declaration
         }
         */
 
@@ -86,7 +76,7 @@ public class SymbolTable {
                 enterSymbol(((DeclarationNode)node).identifier, node.getType());
             case "ReferenceNode":
                 if(retrieveSymbol( What node to use? ) == null) {
-                    // TODO: Add error. Undeclared variable
+                    //  Add error. Undeclared variable
                 }
         }
 

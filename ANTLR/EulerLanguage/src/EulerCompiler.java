@@ -6,9 +6,10 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import Visitors.semantics.ReachabilityVisitor;
-import Visitors.semantics.SemanticsVisitor;
-import Visitors.semantics.TopDeclVisitor;
+import visitors.semantics.ErrorVisitor;
+import visitors.semantics.ReachabilityVisitor;
+import visitors.semantics.SemanticsVisitor;
+import visitors.semantics.TopDeclVisitor;
 
 import java.io.IOException;
 
@@ -38,6 +39,7 @@ public class EulerCompiler {
         // --- Semantics ---
         SymbolTable symbolTable = new SymbolTable();
         node.accept(new SemanticsVisitor(symbolTable));
-        int a = 1+1;
+        node.accept(new ErrorVisitor());
+        // TODO: Need line number and line position in nodes for precise errors.
     }
 }

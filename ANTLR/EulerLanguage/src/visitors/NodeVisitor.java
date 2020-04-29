@@ -1,6 +1,7 @@
 package Visitors;
 
 import AST.*;
+import symbolTable.typeDescriptors.TypeDescriptorKind;
 
 public abstract class NodeVisitor implements IVisitor {
     public void visitChildren(ASTNode node) {

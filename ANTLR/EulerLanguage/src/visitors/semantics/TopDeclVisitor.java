@@ -18,14 +18,13 @@ public class TopDeclVisitor extends SemanticsVisitor {
         if(expression != null) {
             expression.accept(new SemanticsVisitor(symbolTable));
             if(!node.type.isCompatible(expression.type)) {
-                // TODO: Add error. Initialization value is wrong type.
+                node.type = new ErrorTypeDescriptor("Initialization value is wrong type.", node);
             }
         }
 
         // Check if variable is already declared in symbol table. Otherwise add it.
         if(symbolTable.declaredLocally(((IdentificationNode)node.children.get(0)).name)) {
-            // TODO: Add Error. Variable already declared.
-            node.type = new ErrorTypeDescriptor("Variable already declared.");
+            node.type = new ErrorTypeDescriptor("Variable already declared.", node);
             ((IdentificationNode)node.children.get(0)).attributesRef =  null;
         } else {
             VariableAttributes attr = new VariableAttributes();
