@@ -8,6 +8,8 @@ public class CodeGenVisitor implements IVisitor {
 
     private CodeGenStringBuilder CGSBuilder;
     private String currentString;
+    private String[] DeclatedMatrices;
+
     
     public String GenerateCode(ASTNode node){
         CGSBuilder = new CodeGenStringBuilder();
@@ -24,6 +26,7 @@ public class CodeGenVisitor implements IVisitor {
     }
 
     private void PostWork(){
+        FreeVectorMatrices();
         CGSBuilder.AppendCloseMain();
         CGSBuilder.AppendFunctions();
         CGSBuilder.AppendSpace();
@@ -215,17 +218,21 @@ public class CodeGenVisitor implements IVisitor {
         node.children.get(0).accept(this);
         currentString += " = ";
         node.children.get(1).accept(this);
+        CGSBuilder.AppendText(currentString);
 
         int index = 0;
         for(ASTNode child : node.children.get(1).children){
+            currentString = "";
             node.children.get(0).accept(this);
             currentString += ".elements[";
             currentString += index;
             currentString += "] = ";
-            //currentString += (NumberLiteralNode) child.value;
-            currentString += ";\n";
+            child.accept(this);
+            currentString += ";";
             index++;
+            CGSBuilder.AppendText(currentString);
         }
+        CGSBuilder.AppendSpace();
     }
 
     @Override
@@ -233,7 +240,6 @@ public class CodeGenVisitor implements IVisitor {
         currentString += "CreateVector(";
         currentString += node.children.size();
         currentString += ");";
-        currentString += "\n";
     }
 
     @Override
