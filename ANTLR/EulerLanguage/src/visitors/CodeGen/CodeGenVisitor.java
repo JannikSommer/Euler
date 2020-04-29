@@ -79,6 +79,11 @@ public class CodeGenVisitor implements IVisitor {
     }
 
     @Override
+    public void visit(ErrorNode node) {
+
+    }
+
+    @Override
     public void visit(ExpressionNode node) {
 
     }

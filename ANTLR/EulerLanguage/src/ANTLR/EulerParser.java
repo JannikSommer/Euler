@@ -39,10 +39,10 @@ public class EulerParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'number'", "'vector'", "'matrix'", "'$'", "';'", "'='", "'<'", 
-			"'>'", "'=='", "'!='", "'<='", "'>='", "'if'", "'then'", "'else'", "'end'", 
-			"'while'", "'do'", "'print'", "'+'", "'-'", "'*'", "'/'", "'%'", "'('", 
-			"')'", "'['", "']'", "','"
+			null, "'num'", "'vec'", "'mtx'", "'$'", "';'", "'='", "'<'", "'>'", "'=='", 
+			"'!='", "'<='", "'>='", "'if'", "'then'", "'else'", "'end'", "'while'", 
+			"'do'", "'print'", "'+'", "'-'", "'*'", "'/'", "'%'", "'('", "')'", "'['", 
+			"']'", "','"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();

@@ -82,6 +82,9 @@ public class TreeToGraphGen implements IVisitor {
     public void visit(ElseStatementNode node) {DefaultConvert(node);}
 
     @Override
+    public void visit(ErrorNode node) { DefaultConvert(node); }
+
+    @Override
     public void visit(ExpressionNode node) {
         DefaultConvert(node);
     }

@@ -79,6 +79,9 @@ public class SemanticsVisitor extends NodeVisitor {
     }
 
     @Override
+    public void visit(ErrorNode node) {     }
+
+    @Override
     public void visit(ExpressionNode node) {
         visitChildren(node);
     }

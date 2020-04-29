@@ -53,6 +53,11 @@ public class ConstExprVisitor extends NodeVisitor {
     }
 
     @Override
+    public void visit(ErrorNode node) {
+
+    }
+
+    @Override
     public void visit(ExpressionNode node) {
 
     }

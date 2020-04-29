@@ -22,6 +22,8 @@ public interface IVisitor {
 
     void visit(ElseStatementNode node);
 
+    void visit(ErrorNode node);
+
     void visit(ExpressionNode node);
 
     void visit(IdentificationNode node);
