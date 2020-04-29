@@ -16,7 +16,7 @@ public class SemanticsVisitor extends NodeVisitor {
 
     public void checkBoolean(ASTNode node) {
         if(node.type.kind != TypeDescriptorKind.bool && node.type.kind != TypeDescriptorKind.error) {
-            // TODO: Add error. Requires boolean type
+            node.type = new ErrorTypeDescriptor("Requires boolean type", node);
         }
     }
 
@@ -36,9 +36,10 @@ public class SemanticsVisitor extends NodeVisitor {
         node.children.get(1).accept(this);
         if(node.children.get(0).type.isCompatible(node.children.get(1).type)) {
             node.type = node.children.get(0).type;
+        } else if(node.children.get(0).type.kind == TypeDescriptorKind.error || node.children.get(1).type.kind == TypeDescriptorKind.error) {
+            // Do nothing. Error is described in children
         } else {
-            // TODO: Add error. Right hand side expression not assignable to left hand side.
-            node.type = new ErrorTypeDescriptor("Right hand side expression not assignable to left hand side");
+            node.type = new ErrorTypeDescriptor("Right hand side not compatible with left hand side", node);
         }
     }
 
@@ -46,8 +47,7 @@ public class SemanticsVisitor extends NodeVisitor {
     public void visit(BinaryExpressionNode node) {
         visitChildren(node);
         if(!node.children.get(0).type.isCompatible(node.children.get(1).type)) {
-            //TODO: Add Error. Incompatible types
-            node.type = new ErrorTypeDescriptor("Incompatible types");
+            node.type = new ErrorTypeDescriptor("Incompatible types", node);
         } else {
             node.type = node.children.get(0).type; // Add more complexity later
         }
@@ -90,8 +90,7 @@ public class SemanticsVisitor extends NodeVisitor {
     public void visit(IdentificationNode node) {
         VariableAttributes attrRef = (VariableAttributes)symbolTable.retrieveSymbol(node.name);
         if(attrRef == null) {
-            // TODO: Add error. this id has not been declared.
-            node.type = new ErrorTypeDescriptor("Id has not been declared.");
+            node.type = new ErrorTypeDescriptor("Variable has not been declared", node);
             node.attributesRef = null;
         } else {
             node.attributesRef = attrRef;
@@ -191,24 +190,19 @@ public class SemanticsVisitor extends NodeVisitor {
         if(attrRef.variableType.kind == TypeDescriptorKind.vector || attrRef.variableType.kind == TypeDescriptorKind.matrix) {
             if(subscript.index.size() == 1 && attrRef.variableType.kind == TypeDescriptorKind.vector) {
                 if(subscript.index.get(0) >= ((VectorTypeDescriptor)attrRef.variableType).length) {
-                    // TODO: Add error. Index out of bounds
-                    node.type = new ErrorTypeDescriptor("Out of bounds.");
+                    node.type = new ErrorTypeDescriptor("Out of bounds", node);
                 }
             } else if(subscript.index.size() == 2 && attrRef.variableType.kind == TypeDescriptorKind.matrix) {
                 if(subscript.index.get(0) >= ((MatrixTypeDescriptor)attrRef.variableType).rows) {
-                    // TODO: Add error. Index out of bounds the first one.
-                    node.type = new ErrorTypeDescriptor("Out of bounds.");
+                    node.type = new ErrorTypeDescriptor("Index 1 out of bounds", node);
                 } else if(subscript.index.get(1) >= ((MatrixTypeDescriptor)attrRef.variableType).columns) {
-                    // TODO: Add error. Index out of bounds the second one
-                    node.type = new ErrorTypeDescriptor("Out of bounds.");
+                    node.type = new ErrorTypeDescriptor("Index 2 out of bounds", node);
                 }
             } else {
-                // TODO: Add error. Type does not support number of indexes
-                node.type = new ErrorTypeDescriptor("Type does not support number of indexes.");
+                node.type = new ErrorTypeDescriptor("Type does not support this number of indexes", node);
             }
         } else {
-            // TODO: Add error. Type does not support subscript.
-            node.type = new ErrorTypeDescriptor("Type does not support subscript.");
+            node.type = new ErrorTypeDescriptor("Type does not support subscript", node);
         }
     }
 
@@ -241,4 +235,16 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(SubscriptingReferenceNode node) { visitChildren(node);}
+
+    @Override
+    public void visitChildren(ASTNode node) {
+        if(node.children.size() != 0) {
+            for ( ASTNode child : node.children ) {
+                if(!child.getType().equals("ErrorNode")) {
+                    child.accept(this);
+                }
+            }
+        }
+    }
+
 }
