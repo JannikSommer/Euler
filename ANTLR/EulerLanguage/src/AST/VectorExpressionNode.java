@@ -15,7 +15,7 @@ public class VectorExpressionNode extends ASTNode {
     }
 
     private void getVectorElements(String vecExpr) {
-        String delimiters = "[<,>\n\t ]+";
+        String delimiters = "[<,>\r\n\t ]+";
         String[] tokens = vecExpr.split(delimiters);
         for (String str : tokens) {
             if(str.matches("\\d")) { // TODO: Check effeciency and if it should be more thorough.

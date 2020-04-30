@@ -53,7 +53,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             });
             return node;
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Invalid print at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
+            return new ErrorNode(parent, "Invalid print-statement at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -106,7 +106,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 return node;
             }
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Invalid assignment at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
+            return new ErrorNode(parent, "Invalid assignment of variable " + ctx.ID().getText() + "at line " +
+                                              ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -215,7 +216,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 return node;
             } else return new InitializationNode(parent, id);
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Invalid declaration at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
+            return new ErrorNode(parent, "Invalid declaration of variable " + ctx.ID().getText() + "at line " +
+                                              ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -241,7 +243,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 left = visitMultiexpr(ctx.multiexpr(), parent);
                 right = visitAddexpr(ctx.addexpr(), parent);
                 return new SubtractionNode(parent, left, right);
-            } else return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
+            } else return new ErrorNode(parent, "Invalid operator at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
@@ -264,7 +266,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 left = visitPrimeexpr(ctx.primeexpr(), parent);
                 right = visitMultiexpr(ctx.multiexpr(), parent);
                 return new ModuloNode(parent, left, right);
-            } else return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
+            } else return new ErrorNode(parent, "Invalid operator at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
@@ -286,7 +288,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 return new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
             } else if (ctx.LPAREN() != null) {
                 return visitAddexpr(ctx.addexpr(), parent);
-            } else return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
+            } else return new ErrorNode(parent, "Invalid operator at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
