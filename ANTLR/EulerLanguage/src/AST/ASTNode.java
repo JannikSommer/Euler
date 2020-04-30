@@ -11,6 +11,8 @@ public abstract class ASTNode {
     public TypeDescriptor type;
     public boolean isReachable;
     public boolean terminatesNormally = true;
+    public int lineNumber;
+    public int charPosition;
 
     public ASTNode(ASTNode parentNode) {
         parent = parentNode;
