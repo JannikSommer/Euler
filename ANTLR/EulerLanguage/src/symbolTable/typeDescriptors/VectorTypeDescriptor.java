@@ -1,12 +1,16 @@
 package symbolTable.typeDescriptors;
 
-public class VectorTypeDescriptor extends TypeDescriptor {
+public class VectorTypeDescriptor extends CollectionTypeDescriptor {
     public int length;
-    public TypeDescriptorKind elementType;
 
     public VectorTypeDescriptor() {
         super(TypeDescriptorKind.vector);
         compatibleTypes = new TypeDescriptorKind[] {TypeDescriptorKind.vector};
+    }
+
+    @Override
+    public boolean isCompatible(TypeDescriptor type) {
+        return length == ((VectorTypeDescriptor) type).length && super.isCompatible(type);
     }
 
     public VectorTypeDescriptor(int length) {

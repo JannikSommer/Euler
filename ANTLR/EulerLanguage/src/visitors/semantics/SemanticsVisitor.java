@@ -7,6 +7,8 @@ import symbolTable.SymbolTable;
 import symbolTable.attributes.*;
 import symbolTable.typeDescriptors.*;
 
+import javax.lang.model.element.TypeParameterElement;
+
 public class SemanticsVisitor extends NodeVisitor {
     SymbolTable symbolTable;
 
@@ -35,11 +37,13 @@ public class SemanticsVisitor extends NodeVisitor {
         node.children.get(0).accept(new LHSSemanticsVisitor(symbolTable));
         node.children.get(1).accept(this);
         if(node.children.get(0).type.isCompatible(node.children.get(1).type)) {
-            node.type = node.children.get(0).type;
+            ((VariableAttributes)((IdentificationNode)node.children.get(0)).attributesRef).variableType = node.children.get(1).type;
+            node.type = node.children.get(1).type;
         } else if(node.children.get(0).type.kind == TypeDescriptorKind.error || node.children.get(1).type.kind == TypeDescriptorKind.error) {
             // Do nothing. Error is described in children
         } else {
-            node.type = new ErrorTypeDescriptor("Right hand side not compatible with left hand side", node);
+            node.type = new ErrorTypeDescriptor("'" + ((IdentificationNode)node.children.get(0)).name + "'" +
+                    " cannot be assigned value of type " + "'" + node.children.get(1).type.kind.toString() + "'", node);
         }
     }
 
@@ -90,7 +94,7 @@ public class SemanticsVisitor extends NodeVisitor {
     public void visit(IdentificationNode node) {
         VariableAttributes attrRef = (VariableAttributes)symbolTable.retrieveSymbol(node.name);
         if(attrRef == null) {
-            node.type = new ErrorTypeDescriptor("Variable has not been declared", node);
+            node.type = new ErrorTypeDescriptor("Variable " + "'" + node.name + "'" + " has not been declared", node);
             node.attributesRef = null;
         } else {
             node.attributesRef = attrRef;
@@ -123,6 +127,16 @@ public class SemanticsVisitor extends NodeVisitor {
     @Override
     public void visit(MatrixExpressionNode node) {
         visitChildren(node);
+        ((MatrixTypeDescriptor)node.type).elementType = node.children.get(0).children.get(0).type.kind;
+
+        for (ASTNode row : node.children) {
+            for (ASTNode element : row.children) {
+                if(element.type.kind != ((MatrixTypeDescriptor)node.type).elementType) {
+                    node.type = new ErrorTypeDescriptor("Matrix expression cannot contain multiple types.");
+                    break;
+                }
+            }
+        }
     }
 
     @Override
@@ -153,6 +167,13 @@ public class SemanticsVisitor extends NodeVisitor {
     @Override
     public void visit(PrintNode node) {
         visitChildren(node);
+        for (ASTNode child : node.children) {
+            if(child instanceof ReferenceNode || child instanceof SubscriptingReferenceNode) {
+                if(child.type.kind != TypeDescriptorKind.number) {
+                    child.type = new ErrorTypeDescriptor("Variable '" + ((IdentificationNode)child.children.get(0)).name + "' is not of printable type");
+                }
+            }
+        }
     }
 
     @Override
@@ -180,6 +201,7 @@ public class SemanticsVisitor extends NodeVisitor {
     public void visit(SubscriptingAssignmentNode node) {
         visit((AssignmentNode)node);
         checkSubscript(node);
+
     }
 
     @Override
@@ -190,7 +212,17 @@ public class SemanticsVisitor extends NodeVisitor {
     @Override
     public void visit(SubscriptingReferenceNode node) {
         visitChildren(node);
-        node.type = ((VariableAttributes)((IdentificationNode)node.children.get(0)).attributesRef).variableType;
+
+        // Sets the reference type to be that of the vector/matrix element type. TODO: Find a better way to do this
+        CollectionTypeDescriptor type = ((CollectionTypeDescriptor)((VariableAttributes)((IdentificationNode)node.children.get(0)).attributesRef).variableType);
+        if(type.elementType == TypeDescriptorKind.number) {
+            node.type = new NumberTypeDescriptor();
+        } else if(type.elementType == TypeDescriptorKind.vector) {
+            node.type = new VectorTypeDescriptor();
+        } else if(type.elementType == TypeDescriptorKind.matrix) {
+            node.type = new MatrixTypeDescriptor();
+        }
+
         checkSubscript(node);
     }
 
@@ -212,7 +244,15 @@ public class SemanticsVisitor extends NodeVisitor {
     @Override
     public void visit(VectorExpressionNode node) {
         visitChildren(node);
-
+        ((VectorTypeDescriptor)node.type).elementType = node.children.get(0).type.kind;
+        for (int i = 1; i < node.children.size(); i++) {
+            if(node.children.get(i).type == null || node.children.get(i).type.kind == TypeDescriptorKind.error) {
+                break;
+            } else if(node.children.get(i).type.kind != ((VectorTypeDescriptor)node.type).elementType) {
+                node.type = new ErrorTypeDescriptor("Vector expression cannot contain multiple types.");
+                break;
+            }
+        }
     }
 
     @Override
@@ -226,7 +266,7 @@ public class SemanticsVisitor extends NodeVisitor {
     public void visitChildren(ASTNode node) {
         if(node.children.size() != 0) {
             for ( ASTNode child : node.children ) {
-                if(!child.getType().equals("ErrorNode")) { // If it has no type, it is not an errorNode. TODO:
+                if(!child.getType().equals("ErrorNode")) { // If it has no type, it is not an errorNode. TODO: Make more efficient
                     child.accept(this);
                 }
             }
@@ -235,7 +275,8 @@ public class SemanticsVisitor extends NodeVisitor {
 
     private void checkSubscript(ASTNode node) {
         VariableAttributes attrRef = (VariableAttributes)((IdentificationNode)node.children.get(0)).attributesRef;
-        SubscriptingNode subscript = (SubscriptingNode)node.children.get(1);
+        SubscriptingNode subscript = node.children.get(1).getType().equals("SubscriptingNode") ? (SubscriptingNode) node.children.get(1) : (SubscriptingNode)node.children.get(2);
+
         if(attrRef.variableType.kind == TypeDescriptorKind.vector || attrRef.variableType.kind == TypeDescriptorKind.matrix) {
             if(subscript.index.size() == 1 && attrRef.variableType.kind == TypeDescriptorKind.vector) {
                 if(subscript.index.get(0) >= ((VectorTypeDescriptor)attrRef.variableType).length) {
@@ -248,7 +289,7 @@ public class SemanticsVisitor extends NodeVisitor {
                     node.type = new ErrorTypeDescriptor("Index 2 out of bounds", node);
                 }
             } else {
-                node.type = new ErrorTypeDescriptor("Type does not support this number of indexes", node); // Possibly done in syntactic analysis
+                node.type = new ErrorTypeDescriptor("Type does not support this number of indexes", node);
             }
         } else {
             node.type = new ErrorTypeDescriptor("Type does not support subscript", node);
