@@ -247,8 +247,50 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(PrintNode node){
+        currentString = "printf(\"";
+        ArrayList<String> IDs = new ArrayList<String>();
 
+        for(ASTNode child : node.children){
+            if(child instanceof StringNode){
+                child.accept(this);
+                currentString += " ";
+            }
+            else if(child instanceof ReferenceNode){
+                currentString += "%f ";
+                IdentificationNode IDNode = (IdentificationNode) child.children.get(0);
+                IDs.add(IDNode.name);
+            }
+            else if(child instanceof NumberLiteralNode){
+                child.accept(this);
+                currentString += " ";
+            }
+            else if(child instanceof SubscriptingReferenceNode){
+                currentString += "%f ";
+                IDs.add(GetIDandSubscript((SubscriptingReferenceNode)child));
+            }
+        }
+
+        currentString += "\" ";
+        for(String ID : IDs){
+            currentString += ", " + ID;  
+		}
+        currentString += ");";
+
+        CGSBuilder.AppendText(currentString);
+        CGSBuilder.AppendSpace();
     }
+
+    private String GetIDandSubscript(SubscriptingReferenceNode node){
+        IdentificationNode IDNode = (IdentificationNode)node.children.get(0);
+        String result = IDNode.name + ".elements";
+
+        SubscriptingNode SubScriptNode = (SubscriptingNode)node.children.get(1);
+        for(int index : SubScriptNode.index){
+            result += "[" + index + "]";
+		}
+
+        return result;
+	}
 
     @Override
     public void visit(ProgramNode node){
@@ -257,7 +299,7 @@ public class CodeGenVisitor implements IVisitor {
 	
     @Override
     public void visit(StringNode node){
-        
+        currentString += node.string.substring(1, node.string.length() - 1);
     }
 
     @Override
@@ -348,6 +390,6 @@ public class CodeGenVisitor implements IVisitor {
     }
 
     public void visit(SubscriptingReferenceNode node) {
-
+        
     }
 }
