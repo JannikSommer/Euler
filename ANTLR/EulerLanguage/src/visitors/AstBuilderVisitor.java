@@ -73,11 +73,20 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                     node.charPosition = ctx.getStart().getCharPositionInLine();
                     return node;
                 }
-                return new ReferenceNode(parent, ctx.ID().getText());
+                ASTNode node = new ReferenceNode(parent, ctx.ID().getText());
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             } else if (ctx.NUM() != null) {
-                return new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
+                ASTNode node = new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             } else if (ctx.STRING() != null) {
-                return new StringNode(parent, ctx.STRING().getText());
+                ASTNode node = new StringNode(parent, ctx.STRING().getText());
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             }
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid string at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
@@ -339,9 +348,15 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                     return node;
                 }
                 String id = ctx.ID().getText();
-                return new IdentificationNode(parent, id);
+                ASTNode node =  new IdentificationNode(parent, id);
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             } else if (ctx.NUM() != null) {
-                return new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
+                ASTNode node =  new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             } else if (ctx.LPAREN() != null) {
                 return visitAddexpr(ctx.addexpr(), parent);
             } else return new ErrorNode(parent, "Invalid operator at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
