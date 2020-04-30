@@ -1,14 +1,18 @@
 package symbolTable.typeDescriptors;
 
-public class MatrixTypeDescriptor extends TypeDescriptor{
+public class MatrixTypeDescriptor extends CollectionTypeDescriptor {
     public int rows;
     public int columns;
-    public TypeDescriptorKind elementType;
 
     public MatrixTypeDescriptor() {
         super(TypeDescriptorKind.matrix);
         compatibleTypes = new TypeDescriptorKind[] {TypeDescriptorKind.matrix};
 
+    }
+
+    @Override
+    public boolean isCompatible(TypeDescriptor type) {
+        return super.isCompatible(type) && rows == ((MatrixTypeDescriptor)type).columns && columns == ((MatrixTypeDescriptor)type).rows;
     }
 
     public MatrixTypeDescriptor(int rows, int columns) {

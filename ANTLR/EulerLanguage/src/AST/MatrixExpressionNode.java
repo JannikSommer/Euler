@@ -8,8 +8,8 @@ public class MatrixExpressionNode extends ASTNode {
     public MatrixExpressionNode(ASTNode parent, String mtxExpr) {
         super(parent);
         getMatrixElements(mtxExpr);
-        type = new MatrixTypeDescriptor(children.size(),    // Number of rows
-                getNumberOfColumns());                      // Number of columns
+        type = new MatrixTypeDescriptor(children.size(),        // Number of rows
+                                        getNumberOfColumns());  // Number of columns
         parent.type = type;
     }
 

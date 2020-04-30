@@ -4,6 +4,7 @@ import AST.*;
 import symbolTable.SymbolTable;
 import symbolTable.attributes.*;
 import symbolTable.typeDescriptors.ErrorTypeDescriptor;
+import symbolTable.typeDescriptors.TypeDescriptorKind;
 
 public class TopDeclVisitor extends SemanticsVisitor {
 
@@ -17,14 +18,16 @@ public class TopDeclVisitor extends SemanticsVisitor {
         ASTNode expression = node.children.get(1);
         if(expression != null) {
             expression.accept(new SemanticsVisitor(symbolTable));
-            if(!node.type.isCompatible(expression.type)) {
-                node.type = new ErrorTypeDescriptor("Initialization value is wrong type.", node);
+            if(expression.type.kind == TypeDescriptorKind.error) {
+                //node.type = expression.type;
+            } else if(!node.type.isCompatible(expression.type)) {
+                node.type = new ErrorTypeDescriptor("Initialization for "+ "'" + ((IdentificationNode)node.children.get(0)).name + "'" + " value is wrong type.", node);
             }
         }
 
         // Check if variable is already declared in symbol table. Otherwise add it.
         if(symbolTable.declaredLocally(((IdentificationNode)node.children.get(0)).name)) {
-            node.type = new ErrorTypeDescriptor("Variable already declared.", node);
+            node.type = new ErrorTypeDescriptor("Variable "+ "'" + ((IdentificationNode)node.children.get(0)).name + "'" + " already declared.", node);
             ((IdentificationNode)node.children.get(0)).attributesRef =  null;
         } else {
             VariableAttributes attr = new VariableAttributes();

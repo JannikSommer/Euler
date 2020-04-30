@@ -10,7 +10,6 @@ public class VectorExpressionNode extends ASTNode {
     public VectorExpressionNode(ASTNode parentNode, String vecExpr) {
         super(parentNode);
         getVectorElements(vecExpr);
-        type = new VectorTypeDescriptor(children.get(0).children.size());
         parent.type = type;
     }
 
@@ -18,7 +17,7 @@ public class VectorExpressionNode extends ASTNode {
         String delimiters = "[<,>\n\t ]+";
         String[] tokens = vecExpr.split(delimiters);
         for (String str : tokens) {
-            if(str.matches("\\d")) { // TODO: Check effeciency and if it should be more thorough.
+            if(str.matches("\\d")) { // TODO: Check efficiency and if it should be more thorough.
                 double number = Double.parseDouble(str);
                 this.children.add(new NumberLiteralNode(this, number));
             } else {
@@ -27,6 +26,8 @@ public class VectorExpressionNode extends ASTNode {
                 }
             }
         }
+
+        type = new VectorTypeDescriptor(children.size());
     }
 
     @Override
