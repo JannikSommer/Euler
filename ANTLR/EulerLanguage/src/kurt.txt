@@ -3,4 +3,3 @@ vec u = <5,2>;
 vec o = <1,2,3>;
 vec p = <1>;
 
-vec res = <
