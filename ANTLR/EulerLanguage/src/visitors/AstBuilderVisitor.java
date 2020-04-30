@@ -16,6 +16,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
         ctx.stmt().forEach(child -> {
             stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, stmtNode));
         });
+        node.lineNumber = ctx.getStart().getLine();
+        node.charPosition = ctx.getStart().getCharPositionInLine();
         return node;
     }
 
@@ -51,9 +53,11 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                     node.children.add(visitStringstmt((EulerParser.StringstmtContext) child, parent));
                 }
             });
+            node.lineNumber = ctx.getStart().getLine();
+            node.charPosition = ctx.getStart().getCharPositionInLine();
             return node;
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Invalid print at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
+            return new ErrorNode(parent, "Invalid print-statement at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -79,18 +83,22 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
         try {
             String id = ctx.ID().getText();
             if (ctx.valindex() != null) {
-                ASTNode subsAssNode = new SubscriptingAssignmentNode(parent);
+                ASTNode node = new SubscriptingAssignmentNode(parent);
                 String str = ctx.valindex().getText();
-                subsAssNode.children.add(new IdentificationNode(subsAssNode, ctx.ID().getText()));
-                subsAssNode.children.add(visitExpr(ctx.expr(), subsAssNode));
-                subsAssNode.children.add(new SubscriptingNode(subsAssNode, str));
-                return subsAssNode;
+                node.children.add(new IdentificationNode(node, ctx.ID().getText()));
+                node.children.add(visitExpr(ctx.expr(), node));
+                node.children.add(new SubscriptingNode(node, str));
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             } else if (ctx.MATRIX() != null) {
                 String mtx = ctx.MATRIX().getText();
                 ASTNode mtxassign = new AssignmentNode(parent);
                 ASTNode node = new MatrixExpressionNode(mtxassign, mtx);
                 mtxassign.children.add(new IdentificationNode(mtxassign, id));
                 mtxassign.children.add(node);
+                mtxassign.lineNumber = ctx.getStart().getLine();
+                mtxassign.charPosition = ctx.getStart().getCharPositionInLine();
                 return mtxassign;
             } else if (ctx.VECTOR() != null) {
                 String vec = ctx.VECTOR().getText();
@@ -98,15 +106,20 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 ASTNode node = new VectorExpressionNode(vecNode, vec);
                 vecNode.children.add(new IdentificationNode(vecNode, id));
                 vecNode.children.add(node);
+                vecNode.lineNumber = ctx.getStart().getLine();
+                vecNode.charPosition = ctx.getStart().getCharPositionInLine();
                 return vecNode;
             } else {
                 AssignmentNode node = new AssignmentNode(parent, ctx.ID().getText());
                 ASTNode child = visitExpr(ctx.expr(), node);
                 node.children.add(child);
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
                 return node;
             }
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Invalid assignment at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
+            return new ErrorNode(parent, "Invalid assignment of variable " + ctx.ID().getText() + "at line " +
+                                              ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -119,6 +132,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
             });
             node.children.add(stmtNode);
+            node.lineNumber = ctx.getStart().getLine();
+            node.charPosition = ctx.getStart().getCharPositionInLine();
             return node;
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid while-statement at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
@@ -132,6 +147,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             ctx.addexpr().forEach(child -> {
                 node.children.add(visitAddexpr((EulerParser.AddexprContext) child, node));
             });
+            node.lineNumber = ctx.getStart().getLine();
+            node.charPosition = ctx.getStart().getCharPositionInLine();
             return node;
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid boolean statement at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
@@ -150,6 +167,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             if (ctx.elsestmts() != null) {
                 node.children.add(visitElsestmts(ctx.elsestmts(), node));
             }
+            node.lineNumber = ctx.getStart().getLine();
+            node.charPosition = ctx.getStart().getCharPositionInLine();
             return node;
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid if-statement at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
@@ -168,6 +187,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                     node.children.add(stmtNode);
                 }
             });
+            node.lineNumber = ctx.getStart().getLine();
+            node.charPosition = ctx.getStart().getCharPositionInLine();
             return node;
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid else-statement at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
@@ -183,6 +204,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 stmtNode.children.add(visitStmt((EulerParser.StmtContext) child, node));
             });
             node.children.add(stmtNode);
+            node.lineNumber = ctx.getStart().getLine();
+            node.charPosition = ctx.getStart().getCharPositionInLine();
             return node;
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid else-if-statement at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
@@ -199,6 +222,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 ASTNode node = new MatrixExpressionNode(mtxdcl, mtx);
                 mtxdcl.children.add(new IdentificationNode(mtxdcl, id));
                 mtxdcl.children.add(node);
+                mtxdcl.lineNumber = ctx.getStart().getLine();
+                mtxdcl.charPosition = ctx.getStart().getCharPositionInLine();
                 return mtxdcl;
             } else if (ctx.VECTOR() != null) {
                 String vec = ctx.VECTOR().getText();
@@ -206,16 +231,21 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 ASTNode node = new VectorExpressionNode(vecNode, vec);
                 vecNode.children.add(new IdentificationNode(vecNode, id));
                 vecNode.children.add(node);
+                vecNode.lineNumber = ctx.getStart().getLine();
+                vecNode.charPosition = ctx.getStart().getCharPositionInLine();
                 return vecNode;
             } else if (ctx.expr() != null) {
                 NumberDeclarationNode node = new NumberDeclarationNode(parent);
                 ASTNode child = visitExpr((ctx.expr()), node);
                 node.children.add(new IdentificationNode(node, id));
                 node.children.add(child);
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
                 return node;
             } else return new InitializationNode(parent, id);
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Invalid declaration at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
+            return new ErrorNode(parent, "Invalid declaration of variable " + ctx.ID().getText() + "at line " +
+                                              ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
 
@@ -235,13 +265,21 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 return visitMultiexpr(ctx.multiexpr(), parent);
             } else if (ctx.op.getText().contains("+")) {
                 left = visitMultiexpr(ctx.multiexpr(), parent);
+                left.lineNumber = ctx.getStart().getLine();
+                left.charPosition = ctx.getStart().getCharPositionInLine();
                 right = visitAddexpr(ctx.addexpr(), parent);
+                right.lineNumber = ctx.getStart().getLine();
+                right.charPosition = ctx.getStart().getCharPositionInLine();
                 return new AdditionNode(parent, left, right);
             } else if (ctx.op.getText().contains("-")) {
                 left = visitMultiexpr(ctx.multiexpr(), parent);
+                left.lineNumber = ctx.getStart().getLine();
+                left.charPosition = ctx.getStart().getCharPositionInLine();
                 right = visitAddexpr(ctx.addexpr(), parent);
+                right.lineNumber = ctx.getStart().getLine();
+                right.charPosition = ctx.getStart().getCharPositionInLine();
                 return new SubtractionNode(parent, left, right);
-            } else return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
+            } else return new ErrorNode(parent, "Invalid operator at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
@@ -254,17 +292,29 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 return visitPrimeexpr(ctx.primeexpr(), parent);
             } else if (ctx.op.getText().contains("*")) {
                 left = visitPrimeexpr(ctx.primeexpr(), parent);
+                left.lineNumber = ctx.getStart().getLine();
+                left.charPosition = ctx.getStart().getCharPositionInLine();
                 right = visitMultiexpr(ctx.multiexpr(), parent);
+                right.lineNumber = ctx.getStart().getLine();
+                right.charPosition = ctx.getStart().getCharPositionInLine();
                 return new MultiplicationNode(parent, left, right);
             } else if (ctx.op.getText().contains("/")) {
                 left = visitPrimeexpr(ctx.primeexpr(), parent);
+                left.lineNumber = ctx.getStart().getLine();
+                left.charPosition = ctx.getStart().getCharPositionInLine();
                 right = visitMultiexpr(ctx.multiexpr(), parent);
+                right.lineNumber = ctx.getStart().getLine();
+                right.charPosition = ctx.getStart().getCharPositionInLine();
                 return new DivisionNode(parent, left, right);
             } else if (ctx.op.getText().contains("%")) {
                 left = visitPrimeexpr(ctx.primeexpr(), parent);
+                left.lineNumber = ctx.getStart().getLine();
+                left.charPosition = ctx.getStart().getCharPositionInLine();
                 right = visitMultiexpr(ctx.multiexpr(), parent);
+                right.lineNumber = ctx.getStart().getLine();
+                right.charPosition = ctx.getStart().getCharPositionInLine();
                 return new ModuloNode(parent, left, right);
-            } else return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
+            } else return new ErrorNode(parent, "Invalid operator at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
@@ -274,11 +324,13 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
         try {
             if (ctx.ID() != null) {
                 if (ctx.valindex() != null) {
-                    ASTNode subsAssNode = new SubscriptingReferenceNode(parent);
+                    ASTNode node = new SubscriptingReferenceNode(parent);
                     String str = ctx.valindex().getText();
-                    subsAssNode.children.add(new IdentificationNode(subsAssNode, ctx.ID().getText()));
-                    subsAssNode.children.add(new SubscriptingNode(subsAssNode, str));
-                    return subsAssNode;
+                    node.children.add(new IdentificationNode(node, ctx.ID().getText()));
+                    node.children.add(new SubscriptingNode(node, str));
+                    node.lineNumber = ctx.getStart().getLine();
+                    node.charPosition = ctx.getStart().getCharPositionInLine();
+                    return node;
                 }
                 String id = ctx.ID().getText();
                 return new IdentificationNode(parent, id);
@@ -286,7 +338,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 return new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
             } else if (ctx.LPAREN() != null) {
                 return visitAddexpr(ctx.addexpr(), parent);
-            } else return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
+            } else return new ErrorNode(parent, "Invalid operator at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
