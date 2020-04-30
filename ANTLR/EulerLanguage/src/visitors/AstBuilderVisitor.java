@@ -49,9 +49,9 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
         try {
             PrintNode node = new PrintNode(parent);
             ctx.children.forEach(child -> {
-                if (child.getClass().getSimpleName().equals("StringstmtContext")) {
-                    node.children.add(visitStringstmt((EulerParser.StringstmtContext) child, parent));
-                }
+                    if (child.getClass().getSimpleName().equals("StringstmtContext")) {
+                        node.children.add(visitStringstmt((EulerParser.StringstmtContext) child, parent));
+                    }
             });
             node.lineNumber = ctx.getStart().getLine();
             node.charPosition = ctx.getStart().getCharPositionInLine();
@@ -65,9 +65,15 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
         try {
             if (ctx.ID() != null) {
                 if (ctx.valindex() != null) {
-                    return new ErrorNode(parent, "Invalid string at line" + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
+                    ASTNode node = new SubscriptingReferenceNode(parent);
+                    String str = ctx.valindex().getText();
+                    node.children.add(new IdentificationNode(node, ctx.ID().getText()));
+                    node.children.add(new SubscriptingNode(node, str));
+                    node.lineNumber = ctx.getStart().getLine();
+                    node.charPosition = ctx.getStart().getCharPositionInLine();
+                    return node;
                 }
-                return new IdentificationNode(parent, ctx.ID().getText());
+                return new ReferenceNode(parent, ctx.ID().getText());
             } else if (ctx.NUM() != null) {
                 return new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
             } else if (ctx.STRING() != null) {
