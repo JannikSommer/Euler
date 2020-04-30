@@ -67,9 +67,16 @@ public class CodeGenStringBuilder{
     }
 
     public void AppendCloseMain(){
+        AskForInputBeforeClosing();
         AppendText("return EXIT_SUCCESS;");
         scopeIndentation--;
         AppendText("}");
+        AppendSpace();
+    }
+
+    private void AskForInputBeforeClosing(){
+        AppendText("printf(\"\\n\\n\");");
+        AppendText("scanf(\"%s\");");
         AppendSpace();
     }
 
@@ -173,7 +180,7 @@ public class CodeGenStringBuilder{
     }
 
     private void AppendMatrixVectorMultiplication(){
-        AppendText("Vector MatrixVectorMultiplication(Matrix matrix, Vectorvector){");
+        AppendText("Vector MatrixVectorMultiplication(Matrix matrix, Vector vector){");
         scopeIndentation++;
         AppendText("int i, j;");
         AppendText("Vector result = CreateVector(matrix.rows);");

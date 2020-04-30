@@ -31,11 +31,21 @@ public class CodeGenVisitor implements IVisitor {
     }
 
     private void PostWork(){
-        //TODO add FreeALLVectorsAndMatrices();
+        FreeALLVectorsAndMatrices();
         CGSBuilder.AppendCloseMain();
         CGSBuilder.AppendFunctions();
         CGSBuilder.AppendSpace();
-	}
+    }
+    
+    private void FreeALLVectorsAndMatrices(){
+        for(String vectorName : DeclaredVectors){
+            CGSBuilder.AppendText("FreeVector(&" + vectorName + ");");
+        }
+        for(String matrixName : DeclaredMatrices){
+            CGSBuilder.AppendText("FreeMatrix(&" + matrixName + ");");
+        }
+        CGSBuilder.AppendSpace();
+    }
     
     @Override
     public void visit(AdditionNode node){
@@ -74,7 +84,7 @@ public class CodeGenVisitor implements IVisitor {
         node.children.get(0).accept(this);
         String name = currentString;
 
-        CGSBuilder.AppendText("FreeVector(&" + name + ")\n");
+        CGSBuilder.AppendText("FreeVector(&" + name + ");");
 
         currentString = name + " = ";
         node.children.get(1).accept(this); // Create vector (VectorExpressionNode)
@@ -89,7 +99,7 @@ public class CodeGenVisitor implements IVisitor {
         node.children.get(0).accept(this);
         String name = currentString;
 
-        CGSBuilder.AppendText("FreeMatrix(&" + name + ")\n");
+        CGSBuilder.AppendText("FreeMatrix(&" + name + ");");
 
         currentString = name + " = ";
         node.children.get(1).accept(this); // Create vector (VectorExpressionNode)
@@ -165,7 +175,7 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(MatrixDeclarationNode node){
-        currentString = "";
+        currentString = "Matrix ";
         node.children.get(0).accept(this);
         currentString += " = ";
         node.children.get(1).accept(this);
@@ -184,13 +194,16 @@ public class CodeGenVisitor implements IVisitor {
 
         for(ASTNode Vector : children){
             IndexB = 0;
+            currentString = "";
             for(ASTNode child : Vector.children){
-                currentString = ID + "[" + IndexA + "][" + IndexB + "] = ";
+                currentString += ID + ".elements[" + IndexA + "][" + IndexB + "] = ";
                 child.accept(this);
-                CGSBuilder.AppendText(currentString);
+                currentString += "; ";
+
 
                 IndexB++;
             }
+            CGSBuilder.AppendText(currentString);
             IndexA++;
         }
     }
@@ -303,13 +316,14 @@ public class CodeGenVisitor implements IVisitor {
 
     private void VectorAssignChildren(String ID, ArrayList<ASTNode> children){
         int Index = 0;
+        currentString = "";
 
         for(ASTNode child : children){
-            currentString = ID + "[" + Index + "] = ";
+            currentString += ID + ".elements[" + Index + "] = ";
             child.accept(this);
-
-            CGSBuilder.AppendText(currentString);
+            currentString += "; ";
         }
+        CGSBuilder.AppendText(currentString);
     }
 
     @Override
