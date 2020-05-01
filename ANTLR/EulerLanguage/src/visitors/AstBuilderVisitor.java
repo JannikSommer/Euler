@@ -254,6 +254,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                     ASTNode node = visitExpr(ctx.expr(), mtxdcl);
                     mtxdcl.children.add(refnode);
                     mtxdcl.children.add(node);
+                    mtxdcl.lineNumber = ctx.getStart().getLine();
+                    mtxdcl.charPosition = ctx.getStart().getCharPositionInLine();
                     return mtxdcl;
                 }
                 String mtx = ctx.MATRIX().getText();
@@ -271,6 +273,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                     ASTNode node = visitExpr(ctx.expr(), vecNode);
                     vecNode.children.add(refnode);
                     vecNode.children.add(node);
+                    vecNode.lineNumber = ctx.getStart().getLine();
+                    vecNode.charPosition = ctx.getStart().getCharPositionInLine();
                     return vecNode;
                 }
                 String vec = ctx.VECTOR().getText();
