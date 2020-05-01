@@ -1,2 +1,29 @@
-vec p = <1>;
-vec o = 2 * p;
+num A = 1;
+vec u = <1,2>;
+mtx V = {1,2;2,3};
+num B = 3;
+
+if B > A then
+    while A < 10 do
+        A = A+1;
+    end
+end
+
+print "A is " + A;
+
+if 1 < 2 then
+    u = <3,4>;
+    print "u0 is 3 " + u[0];
+else if 1 > 2 then
+    A = 3;
+else if 3 > 2 then
+    A = 4;
+else then
+    A = 5;
+end
+
+print V[0,1] + " 2";
+print "A is " + A;
+
+A = B;
+print A;

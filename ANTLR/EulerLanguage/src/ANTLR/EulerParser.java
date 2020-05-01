@@ -40,7 +40,7 @@ public class EulerParser extends Parser {
 	private static String[] makeLiteralNames() {
 		return new String[] {
 			null, "'$'", "';'", "'='", "'<'", "'>'", "'=='", "'!='", "'<='", "'>='", 
-			"'if'", "'then'", "'else'", "'end'", "'while'", "'do'", "'number'", "'vec'", 
+			"'if'", "'then'", "'else'", "'end'", "'while'", "'do'", "'num'", "'vec'", 
 			"'mtx'", "'print'", "'+'", "'-'", "'*'", "'/'", "'%'", "'('", "')'", 
 			"'['", "']'", "','"
 		};
