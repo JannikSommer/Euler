@@ -231,7 +231,15 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     public ASTNode visitDcl(EulerParser.DclContext ctx, ASTNode parent) {
         try {
             String id = ctx.ID().getText();
-            if (ctx.MATRIX() != null) {
+            if (ctx.MTXKW() != null) {
+                if (ctx.expr() != null) {
+                    MatrixDeclarationNode mtxdcl = new MatrixDeclarationNode(parent);
+                    ASTNode refnode = new ReferenceNode(mtxdcl, id);
+                    ASTNode node = visitExpr(ctx.expr(), mtxdcl);
+                    mtxdcl.children.add(refnode);
+                    mtxdcl.children.add(node);
+                    return mtxdcl;
+                }
                 String mtx = ctx.MATRIX().getText();
                 MatrixDeclarationNode mtxdcl = new MatrixDeclarationNode(parent);
                 ASTNode node = new MatrixExpressionNode(mtxdcl, mtx);
@@ -240,7 +248,15 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 mtxdcl.lineNumber = ctx.getStart().getLine();
                 mtxdcl.charPosition = ctx.getStart().getCharPositionInLine();
                 return mtxdcl;
-            } else if (ctx.VECTOR() != null) {
+            } else if (ctx.VECKW() != null) {
+                if (ctx.expr() != null) {
+                    VectorDeclarationNode vecNode = new VectorDeclarationNode(parent);
+                    ASTNode refnode = new ReferenceNode(vecNode, id);
+                    ASTNode node = visitExpr(ctx.expr(), vecNode);
+                    vecNode.children.add(refnode);
+                    vecNode.children.add(node);
+                    return vecNode;
+                }
                 String vec = ctx.VECTOR().getText();
                 VectorDeclarationNode vecNode = new VectorDeclarationNode(parent);
                 ASTNode node = new VectorExpressionNode(vecNode, vec);

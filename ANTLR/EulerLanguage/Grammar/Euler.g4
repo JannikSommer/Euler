@@ -13,9 +13,9 @@ stmt        :	expr SEMI
             |   printstmt SEMI
             ;
 
-dcl         :	'num' ID ASSIGN expr
-            |	'vec' ID ASSIGN (VECTOR | expr)
-            |   'mtx' ID ASSIGN (MATRIX | expr)
+dcl         :	NUMKW ID ASSIGN expr
+            |	VECKW ID ASSIGN (VECTOR | expr)
+            |   MTXKW ID ASSIGN (MATRIX | expr)
             ;
 
 expr        :	addexpr
@@ -95,6 +95,9 @@ ELSE    : 'else';
 END     : 'end';
 WHILE   : 'while';
 DO      : 'do';
+NUMKW   : 'number';
+VECKW   : 'vec';
+MTXKW   : 'mtx';
 
 PRINT   : 'print';
 

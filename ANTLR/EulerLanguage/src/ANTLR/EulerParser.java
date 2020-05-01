@@ -17,9 +17,9 @@ public class EulerParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, DOLLAR=4, SEMI=5, ASSIGN=6, LT=7, BT=8, EQEQ=9, 
-		NOTEQ=10, LTEQ=11, BTEQ=12, IF=13, THEN=14, ELSE=15, END=16, WHILE=17, 
-		DO=18, PRINT=19, PLUS=20, MINUS=21, MULT=22, DIVID=23, MOD=24, LPAREN=25, 
+		DOLLAR=1, SEMI=2, ASSIGN=3, LT=4, BT=5, EQEQ=6, NOTEQ=7, LTEQ=8, BTEQ=9, 
+		IF=10, THEN=11, ELSE=12, END=13, WHILE=14, DO=15, NUMKW=16, VECKW=17, 
+		MTXKW=18, PRINT=19, PLUS=20, MINUS=21, MULT=22, DIVID=23, MOD=24, LPAREN=25, 
 		RPAREN=26, LSQBRACK=27, RSQBRACK=28, COMMA=29, NUM=30, MATRIX=31, VECTOR=32, 
 		STRING=33, ID=34, WHITESPACE=35, COMMENT1=36, COMMENT2=37;
 	public static final int
@@ -39,20 +39,20 @@ public class EulerParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'num'", "'vec'", "'mtx'", "'$'", "';'", "'='", "'<'", "'>'", "'=='", 
-			"'!='", "'<='", "'>='", "'if'", "'then'", "'else'", "'end'", "'while'", 
-			"'do'", "'print'", "'+'", "'-'", "'*'", "'/'", "'%'", "'('", "')'", "'['", 
-			"']'", "','"
+			null, "'$'", "';'", "'='", "'<'", "'>'", "'=='", "'!='", "'<='", "'>='", 
+			"'if'", "'then'", "'else'", "'end'", "'while'", "'do'", "'number'", "'vec'", 
+			"'mtx'", "'print'", "'+'", "'-'", "'*'", "'/'", "'%'", "'('", "')'", 
+			"'['", "']'", "','"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, "DOLLAR", "SEMI", "ASSIGN", "LT", "BT", "EQEQ", 
-			"NOTEQ", "LTEQ", "BTEQ", "IF", "THEN", "ELSE", "END", "WHILE", "DO", 
-			"PRINT", "PLUS", "MINUS", "MULT", "DIVID", "MOD", "LPAREN", "RPAREN", 
-			"LSQBRACK", "RSQBRACK", "COMMA", "NUM", "MATRIX", "VECTOR", "STRING", 
-			"ID", "WHITESPACE", "COMMENT1", "COMMENT2"
+			null, "DOLLAR", "SEMI", "ASSIGN", "LT", "BT", "EQEQ", "NOTEQ", "LTEQ", 
+			"BTEQ", "IF", "THEN", "ELSE", "END", "WHILE", "DO", "NUMKW", "VECKW", 
+			"MTXKW", "PRINT", "PLUS", "MINUS", "MULT", "DIVID", "MOD", "LPAREN", 
+			"RPAREN", "LSQBRACK", "RSQBRACK", "COMMA", "NUM", "MATRIX", "VECTOR", 
+			"STRING", "ID", "WHITESPACE", "COMMENT1", "COMMENT2"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -142,7 +142,7 @@ public class EulerParser extends Parser {
 			setState(41);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << IF) | (1L << WHILE) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IF) | (1L << WHILE) | (1L << NUMKW) | (1L << VECKW) | (1L << MTXKW) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0)) {
 				{
 				{
 				setState(38);
@@ -276,12 +276,15 @@ public class EulerParser extends Parser {
 	}
 
 	public static class DclContext extends ParserRuleContext {
+		public TerminalNode NUMKW() { return getToken(EulerParser.NUMKW, 0); }
 		public TerminalNode ID() { return getToken(EulerParser.ID, 0); }
 		public TerminalNode ASSIGN() { return getToken(EulerParser.ASSIGN, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
+		public TerminalNode VECKW() { return getToken(EulerParser.VECKW, 0); }
 		public TerminalNode VECTOR() { return getToken(EulerParser.VECTOR, 0); }
+		public TerminalNode MTXKW() { return getToken(EulerParser.MTXKW, 0); }
 		public TerminalNode MATRIX() { return getToken(EulerParser.MATRIX, 0); }
 		public DclContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -309,11 +312,11 @@ public class EulerParser extends Parser {
 			setState(78);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case T__0:
+			case NUMKW:
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(60);
-				match(T__0);
+				match(NUMKW);
 				setState(61);
 				match(ID);
 				setState(62);
@@ -322,11 +325,11 @@ public class EulerParser extends Parser {
 				expr();
 				}
 				break;
-			case T__1:
+			case VECKW:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(64);
-				match(T__1);
+				match(VECKW);
 				setState(65);
 				match(ID);
 				setState(66);
@@ -353,11 +356,11 @@ public class EulerParser extends Parser {
 				}
 				}
 				break;
-			case T__2:
+			case MTXKW:
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(71);
-				match(T__2);
+				match(MTXKW);
 				setState(72);
 				match(ID);
 				setState(73);
@@ -504,7 +507,7 @@ public class EulerParser extends Parser {
 				setState(88); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << IF) | (1L << WHILE) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IF) | (1L << WHILE) | (1L << NUMKW) | (1L << VECKW) | (1L << MTXKW) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0) );
 			setState(91);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
@@ -609,7 +612,7 @@ public class EulerParser extends Parser {
 					setState(106); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << IF) | (1L << WHILE) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0) );
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IF) | (1L << WHILE) | (1L << NUMKW) | (1L << VECKW) | (1L << MTXKW) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0) );
 				}
 				break;
 			case 2:
@@ -704,7 +707,7 @@ public class EulerParser extends Parser {
 				setState(122); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << IF) | (1L << WHILE) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IF) | (1L << WHILE) | (1L << NUMKW) | (1L << VECKW) | (1L << MTXKW) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -1016,7 +1019,7 @@ public class EulerParser extends Parser {
 				setState(162); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << IF) | (1L << WHILE) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IF) | (1L << WHILE) | (1L << NUMKW) | (1L << VECKW) | (1L << MTXKW) | (1L << PRINT) | (1L << LPAREN) | (1L << NUM) | (1L << ID))) != 0) );
 			setState(164);
 			match(END);
 			}
@@ -1608,26 +1611,26 @@ public class EulerParser extends Parser {
 		"\5\17\u00c3\n\17\3\20\3\20\5\20\u00c7\n\20\3\20\3\20\3\20\3\20\3\20\5"+
 		"\20\u00ce\n\20\3\21\3\21\3\21\3\21\3\22\3\22\3\23\3\23\3\24\3\24\3\24"+
 		"\2\2\25\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&\2\5\3\2\26\27\3\2"+
-		"\30\32\3\2\t\16\2\u00e6\2+\3\2\2\2\4<\3\2\2\2\6P\3\2\2\2\bR\3\2\2\2\n"+
+		"\30\32\3\2\6\13\2\u00e6\2+\3\2\2\2\4<\3\2\2\2\6P\3\2\2\2\bR\3\2\2\2\n"+
 		"T\3\2\2\2\fs\3\2\2\2\16u\3\2\2\2\20~\3\2\2\2\22\u008d\3\2\2\2\24\u009c"+
 		"\3\2\2\2\26\u009e\3\2\2\2\30\u00b4\3\2\2\2\32\u00bb\3\2\2\2\34\u00c2\3"+
 		"\2\2\2\36\u00cd\3\2\2\2 \u00cf\3\2\2\2\"\u00d3\3\2\2\2$\u00d5\3\2\2\2"+
 		"&\u00d7\3\2\2\2(*\5\4\3\2)(\3\2\2\2*-\3\2\2\2+)\3\2\2\2+,\3\2\2\2,\3\3"+
-		"\2\2\2-+\3\2\2\2./\5\b\5\2/\60\7\7\2\2\60=\3\2\2\2\61\62\5\6\4\2\62\63"+
-		"\7\7\2\2\63=\3\2\2\2\64=\5\n\6\2\65=\5\26\f\2\66\67\5\30\r\2\678\7\7\2"+
-		"\28=\3\2\2\29:\5\20\t\2:;\7\7\2\2;=\3\2\2\2<.\3\2\2\2<\61\3\2\2\2<\64"+
-		"\3\2\2\2<\65\3\2\2\2<\66\3\2\2\2<9\3\2\2\2=\5\3\2\2\2>?\7\3\2\2?@\7$\2"+
-		"\2@A\7\b\2\2AQ\5\b\5\2BC\7\4\2\2CD\7$\2\2DG\7\b\2\2EH\7\"\2\2FH\5\b\5"+
-		"\2GE\3\2\2\2GF\3\2\2\2HQ\3\2\2\2IJ\7\5\2\2JK\7$\2\2KN\7\b\2\2LO\7!\2\2"+
-		"MO\5\b\5\2NL\3\2\2\2NM\3\2\2\2OQ\3\2\2\2P>\3\2\2\2PB\3\2\2\2PI\3\2\2\2"+
-		"Q\7\3\2\2\2RS\5\32\16\2S\t\3\2\2\2TU\7\17\2\2UV\5 \21\2VX\7\20\2\2WY\5"+
-		"\4\3\2XW\3\2\2\2YZ\3\2\2\2ZX\3\2\2\2Z[\3\2\2\2[]\3\2\2\2\\^\5\f\7\2]\\"+
-		"\3\2\2\2]^\3\2\2\2^_\3\2\2\2_`\7\22\2\2`\13\3\2\2\2ac\5\16\b\2ba\3\2\2"+
-		"\2cf\3\2\2\2db\3\2\2\2de\3\2\2\2eg\3\2\2\2fd\3\2\2\2gh\7\21\2\2hj\7\20"+
-		"\2\2ik\5\4\3\2ji\3\2\2\2kl\3\2\2\2lj\3\2\2\2lm\3\2\2\2mt\3\2\2\2np\5\16"+
-		"\b\2on\3\2\2\2pq\3\2\2\2qo\3\2\2\2qr\3\2\2\2rt\3\2\2\2sd\3\2\2\2so\3\2"+
-		"\2\2t\r\3\2\2\2uv\7\21\2\2vw\7\17\2\2wx\5 \21\2xz\7\20\2\2y{\5\4\3\2z"+
-		"y\3\2\2\2{|\3\2\2\2|z\3\2\2\2|}\3\2\2\2}\17\3\2\2\2~\177\7\25\2\2\177"+
+		"\2\2\2-+\3\2\2\2./\5\b\5\2/\60\7\4\2\2\60=\3\2\2\2\61\62\5\6\4\2\62\63"+
+		"\7\4\2\2\63=\3\2\2\2\64=\5\n\6\2\65=\5\26\f\2\66\67\5\30\r\2\678\7\4\2"+
+		"\28=\3\2\2\29:\5\20\t\2:;\7\4\2\2;=\3\2\2\2<.\3\2\2\2<\61\3\2\2\2<\64"+
+		"\3\2\2\2<\65\3\2\2\2<\66\3\2\2\2<9\3\2\2\2=\5\3\2\2\2>?\7\22\2\2?@\7$"+
+		"\2\2@A\7\5\2\2AQ\5\b\5\2BC\7\23\2\2CD\7$\2\2DG\7\5\2\2EH\7\"\2\2FH\5\b"+
+		"\5\2GE\3\2\2\2GF\3\2\2\2HQ\3\2\2\2IJ\7\24\2\2JK\7$\2\2KN\7\5\2\2LO\7!"+
+		"\2\2MO\5\b\5\2NL\3\2\2\2NM\3\2\2\2OQ\3\2\2\2P>\3\2\2\2PB\3\2\2\2PI\3\2"+
+		"\2\2Q\7\3\2\2\2RS\5\32\16\2S\t\3\2\2\2TU\7\f\2\2UV\5 \21\2VX\7\r\2\2W"+
+		"Y\5\4\3\2XW\3\2\2\2YZ\3\2\2\2ZX\3\2\2\2Z[\3\2\2\2[]\3\2\2\2\\^\5\f\7\2"+
+		"]\\\3\2\2\2]^\3\2\2\2^_\3\2\2\2_`\7\17\2\2`\13\3\2\2\2ac\5\16\b\2ba\3"+
+		"\2\2\2cf\3\2\2\2db\3\2\2\2de\3\2\2\2eg\3\2\2\2fd\3\2\2\2gh\7\16\2\2hj"+
+		"\7\r\2\2ik\5\4\3\2ji\3\2\2\2kl\3\2\2\2lj\3\2\2\2lm\3\2\2\2mt\3\2\2\2n"+
+		"p\5\16\b\2on\3\2\2\2pq\3\2\2\2qo\3\2\2\2qr\3\2\2\2rt\3\2\2\2sd\3\2\2\2"+
+		"so\3\2\2\2t\r\3\2\2\2uv\7\16\2\2vw\7\f\2\2wx\5 \21\2xz\7\r\2\2y{\5\4\3"+
+		"\2zy\3\2\2\2{|\3\2\2\2|z\3\2\2\2|}\3\2\2\2}\17\3\2\2\2~\177\7\25\2\2\177"+
 		"\u0084\5\22\n\2\u0080\u0081\7\26\2\2\u0081\u0083\5\22\n\2\u0082\u0080"+
 		"\3\2\2\2\u0083\u0086\3\2\2\2\u0084\u0082\3\2\2\2\u0084\u0085\3\2\2\2\u0085"+
 		"\21\3\2\2\2\u0086\u0084\3\2\2\2\u0087\u008e\7#\2\2\u0088\u008e\7 \2\2"+
@@ -1638,13 +1641,13 @@ public class EulerParser extends Parser {
 		"\u0095\7\37\2\2\u0095\u0097\7 \2\2\u0096\u0094\3\2\2\2\u0097\u009a\3\2"+
 		"\2\2\u0098\u0096\3\2\2\2\u0098\u0099\3\2\2\2\u0099\u009b\3\2\2\2\u009a"+
 		"\u0098\3\2\2\2\u009b\u009d\7\36\2\2\u009c\u008f\3\2\2\2\u009c\u0092\3"+
-		"\2\2\2\u009d\25\3\2\2\2\u009e\u009f\7\23\2\2\u009f\u00a0\5 \21\2\u00a0"+
-		"\u00a2\7\24\2\2\u00a1\u00a3\5\4\3\2\u00a2\u00a1\3\2\2\2\u00a3\u00a4\3"+
+		"\2\2\2\u009d\25\3\2\2\2\u009e\u009f\7\20\2\2\u009f\u00a0\5 \21\2\u00a0"+
+		"\u00a2\7\21\2\2\u00a1\u00a3\5\4\3\2\u00a2\u00a1\3\2\2\2\u00a3\u00a4\3"+
 		"\2\2\2\u00a4\u00a2\3\2\2\2\u00a4\u00a5\3\2\2\2\u00a5\u00a6\3\2\2\2\u00a6"+
-		"\u00a7\7\22\2\2\u00a7\27\3\2\2\2\u00a8\u00aa\7$\2\2\u00a9\u00ab\5\24\13"+
+		"\u00a7\7\17\2\2\u00a7\27\3\2\2\2\u00a8\u00aa\7$\2\2\u00a9\u00ab\5\24\13"+
 		"\2\u00aa\u00a9\3\2\2\2\u00aa\u00ab\3\2\2\2\u00ab\u00ac\3\2\2\2\u00ac\u00ad"+
-		"\7\b\2\2\u00ad\u00b5\5\b\5\2\u00ae\u00af\7$\2\2\u00af\u00b0\7\b\2\2\u00b0"+
-		"\u00b5\7\"\2\2\u00b1\u00b2\7$\2\2\u00b2\u00b3\7\b\2\2\u00b3\u00b5\7!\2"+
+		"\7\5\2\2\u00ad\u00b5\5\b\5\2\u00ae\u00af\7$\2\2\u00af\u00b0\7\5\2\2\u00b0"+
+		"\u00b5\7\"\2\2\u00b1\u00b2\7$\2\2\u00b2\u00b3\7\5\2\2\u00b3\u00b5\7!\2"+
 		"\2\u00b4\u00a8\3\2\2\2\u00b4\u00ae\3\2\2\2\u00b4\u00b1\3\2\2\2\u00b5\31"+
 		"\3\2\2\2\u00b6\u00bc\5\34\17\2\u00b7\u00b8\5\34\17\2\u00b8\u00b9\t\2\2"+
 		"\2\u00b9\u00ba\5\32\16\2\u00ba\u00bc\3\2\2\2\u00bb\u00b6\3\2\2\2\u00bb"+
