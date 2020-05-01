@@ -2,12 +2,15 @@ import ANTLR.EulerLexer;
 import ANTLR.EulerParser;
 import AST.ASTNode;
 import AST.ProgramNode;
+import symbolTable.SymbolTable;
 import visitors.AstBuilderVisitor;
 import visitors.CodeGen.*;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+import visitors.semantics.ErrorVisitor;
+import visitors.semantics.SemanticsVisitor;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -32,6 +35,10 @@ public class CodeGenTest {
 
         AstBuilderVisitor astBuilder = new AstBuilderVisitor();
         ASTNode node = astBuilder.visit(tree);
+
+        SymbolTable symbolTable = new SymbolTable();
+        node.accept(new SemanticsVisitor(symbolTable));
+        node.accept(new ErrorVisitor());
 
         CodeGenVisitor _CodeGenVisitor = new CodeGenVisitor();
         

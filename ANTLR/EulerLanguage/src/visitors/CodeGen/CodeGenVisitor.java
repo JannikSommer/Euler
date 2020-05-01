@@ -337,7 +337,9 @@ public class CodeGenVisitor implements IVisitor {
 	
     @Override
     public void visit(StringNode node){
-        currentString += node.string.substring(1, node.string.length() - 1);
+        String string = node.string.substring(1, node.string.length() - 1);
+        string.replace("%", "%%");
+        currentString += string;
     }
 
     @Override
