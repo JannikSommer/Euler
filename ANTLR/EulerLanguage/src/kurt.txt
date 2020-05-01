@@ -13,6 +13,7 @@ print "A is " + A;
 
 if 1 < 2 then
     u = <3,4>;
+    V = {3,2;2,1};
     print "u[0] is 3 " + u[0];
 else if 1 > 2 then
     A = 3;
