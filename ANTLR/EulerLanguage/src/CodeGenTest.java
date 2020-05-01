@@ -34,10 +34,8 @@ public class CodeGenTest {
         ASTNode node = astBuilder.visit(tree);
 
         CodeGenVisitor _CodeGenVisitor = new CodeGenVisitor();
-
-        System.out.println(_CodeGenVisitor.GenerateCode(node));
         
-        try (PrintWriter out = new PrintWriter("test.txt")) {
+        try (PrintWriter out = new PrintWriter("test.c")) {
             out.println(_CodeGenVisitor.GenerateCode(node));
         }
     }
