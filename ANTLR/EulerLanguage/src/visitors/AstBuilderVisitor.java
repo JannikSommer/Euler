@@ -1,12 +1,28 @@
 package visitors;
 import ANTLR.*;
 import AST.*;
+import Listener.ErrorListener;
+import org.antlr.v4.runtime.ANTLRErrorListener;
+import org.antlr.v4.runtime.ConsoleErrorListener;
 import org.antlr.v4.runtime.tree.ErrorNodeImpl;
 import symbolTable.typeDescriptors.ErrorTypeDescriptor;
 
 import java.lang.*;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
+
+    private List<ANTLRErrorListener> _listeners = new CopyOnWriteArrayList<ANTLRErrorListener>() {
+        {
+            this.add(ConsoleErrorListener.INSTANCE);
+        }
+    };
+    private ErrorListener errorListener;
+
+    public void AddErrorListener(ErrorListener listener) {
+        errorListener = listener;
+    }
 
     @Override
     public ASTNode visitProgram(EulerParser.ProgramContext ctx) {

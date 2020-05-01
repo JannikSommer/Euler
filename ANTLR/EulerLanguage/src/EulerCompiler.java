@@ -35,12 +35,13 @@ public class EulerCompiler {
         parser.removeErrorListeners();
         parser.addErrorListener(ErrorListener.INSTANCE);
 
-
         ParseTree tree = parser.program();
 
         // System.out.println(tree.toStringTree(parser)); // print LISP-style tree
         AstBuilderVisitor astBuilder = new AstBuilderVisitor();
+        astBuilder.AddErrorListener(ErrorListener.INSTANCE);
         ASTNode node = astBuilder.visit(tree);
+
         if (node == null) {
             node = new ProgramNode(null);
         }

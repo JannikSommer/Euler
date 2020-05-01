@@ -95,7 +95,7 @@ ELSE    : 'else';
 END     : 'end';
 WHILE   : 'while';
 DO      : 'do';
-NUMKW   : 'number';
+NUMKW   : 'num';
 VECKW   : 'vec';
 MTXKW   : 'mtx';
 
