@@ -1,6 +1,6 @@
 package symbolTable.typeDescriptors;
 
-public class CollectionTypeDescriptor extends TypeDescriptor {
+public abstract class CollectionTypeDescriptor extends TypeDescriptor {
     public TypeDescriptorKind elementType;
 
     public CollectionTypeDescriptor(TypeDescriptorKind kind) {
@@ -11,4 +11,6 @@ public class CollectionTypeDescriptor extends TypeDescriptor {
         this(kind);
         this.elementType = elementType;
     }
+
+    public abstract TypeDescriptor getResultType(TypeDescriptor type, String Operator);
 }

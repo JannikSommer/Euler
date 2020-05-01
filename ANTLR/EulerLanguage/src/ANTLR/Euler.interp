@@ -15,7 +15,7 @@ null
 'end'
 'while'
 'do'
-'number'
+'num'
 'vec'
 'mtx'
 'print'
