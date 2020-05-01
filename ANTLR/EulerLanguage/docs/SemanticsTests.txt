@@ -1,0 +1,51 @@
+--- Assignments ---
+- Assigning undeclared variable gives error.
+- Assignment RHS must be the same type as assignment LHS.
+- Variables can be assigned to themselves.
+
+
+--- Assignments(Subscript) ---
+- Assignment RHS must be same type as vector/matrix element type.
+- Subscript must have the right number of indexes.
+- Subscript must not be out of bounds.
+- Subscript does not work on non-vectors and non-matrices.
+
+
+--- Declarations ---
+- Declarations must be initialized.
+- Declaration initialization(RHS) must be of same type as LHS.
+- Matrix with different row lengths.
+- Matrix declaration supports all types.
+- Matrix declaration with different types gives error.
+- Matrix with one element.
+- Vector declaration supports all types.
+- Vector declaration with different types gives error.
+- Vector with one element.
+- Number only accepts variables declared as number or number literals.
+
+
+--- Expressions(Matrices) ---
+
+
+
+--- Expressions(Numbers) ---
+
+
+
+--- Expressions(Vectors) ---
+- Only accepts vectors of same size and with the element-type "number".
+- Accepts scalar-vector multiplication [NOT YET]
+[TODO] Cannot assign expressions to vectors(possibly matrices too) in any other form than <1,2,3,...>;
+
+--- Printing ---
+- Only accepts references to numbers.
+- Can concatenate.
+- Accepts both text and numbers .
+- Accepts subscripting references.
+
+
+--- Reference(Subscript) ---
+- Represents element type and is type checked according to that.
+- Works for both matrices and vectors.
+- Subscript must not be out of bounds.
+- Subscript must have the right number of indexes.
