@@ -116,7 +116,7 @@ COMMA   :',';
 NUM     : [0-9]+('.'[0-9]+)? ;
 MATRIX  : '{' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID))* WHITESPACE* (';' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID))* WHITESPACE* )* WHITESPACE*'}';
 VECTOR  : '<' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID) WHITESPACE* )* WHITESPACE* '>';
-STRING  : '"'([a-zA-Z0-9_:\-<>#$&+/=?!.(),\\[\]* ]|'\\"'|'\\%')*'"';
+STRING  : '"'([a-zA-Z0-9_:\-<>%#$&+/=?!.(),\\[\]* ]|'\\"')*'"';
 ID      : [a-zA-Z0-9]* [a-zA-Z] [a-zA-Z0-9]*;
 
 WHITESPACE : [\r\n\t ]+ -> skip;
