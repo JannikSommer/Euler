@@ -14,8 +14,8 @@ stmt        :	expr SEMI
             ;
 
 dcl         :	'num' ID ASSIGN expr
-            |	'vec' ID ASSIGN VECTOR
-            |   'mtx' ID ASSIGN MATRIX
+            |	'vec' ID ASSIGN (VECTOR | expr)
+            |   'mtx' ID ASSIGN (MATRIX | expr)
             ;
 
 expr        :	addexpr
@@ -118,4 +118,4 @@ ID      : [a-zA-Z0-9]* [a-zA-Z] [a-zA-Z0-9]*;
 
 WHITESPACE : [\r\n\t ]+ -> skip;
 COMMENT1 : '/*' .*? '*/' -> skip;
-COMMENT2 : '//' ~[\r\n]* {in_line == 1}? -> skip;
+COMMENT2 : '//' ~[\r\n]* -> skip;
