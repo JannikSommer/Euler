@@ -9,7 +9,7 @@ public class ErrorTypeDescriptor extends TypeDescriptor {
     public ErrorTypeDescriptor(String message) {
         super(TypeDescriptorKind.error);
         this.message = message;
-        compatibleTypes = new TypeDescriptorKind[] {TypeDescriptorKind.error};
+        assignableTypes = new TypeDescriptorKind[] {TypeDescriptorKind.error};
     }
     
     public ErrorTypeDescriptor(String message, ASTNode reference) {
