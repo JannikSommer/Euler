@@ -10,20 +10,18 @@ public class VectorTypeDescriptor extends CollectionTypeDescriptor {
 
     @Override
     public boolean canCalculate(TypeDescriptor type, String operator) {
-        if(isAssignable(type)) {
-            if(type.kind == TypeDescriptorKind.number) {
-                return operator.equals("*");                                                        // Must be a valid operation
-            } else if(type.kind == TypeDescriptorKind.matrix) {
-                return length == ((MatrixTypeDescriptor)type).rows &&                               // The vector length must match the number of matrix rows
-                        elementType == TypeDescriptorKind.number &&                                 // Both the vector and the matrix may only contain numbers
-                        ((MatrixTypeDescriptor)type).elementType == TypeDescriptorKind.number
-                        && operator.equals("*");                                                    // Must be a valid operation
-            } else if(type.kind == TypeDescriptorKind.vector) {
-                return length == ((VectorTypeDescriptor) type).length &&                            // Must be same length
-                        elementType == TypeDescriptorKind.number &&                                 // Both vectors may only contain numbers
-                        ((VectorTypeDescriptor) type).elementType == TypeDescriptorKind.number &&
-                        (operator.equals("+") || operator.equals("-") || operator.equals("*"));     // Must be a valid operation
-            }
+        if(type.kind == TypeDescriptorKind.number) {
+            return operator.equals("*");                                                        // Must be a valid operation
+        } else if(type.kind == TypeDescriptorKind.matrix) {
+            return length == ((MatrixTypeDescriptor)type).rows &&                               // The vector length must match the number of matrix rows
+                    elementType == TypeDescriptorKind.number &&                                 // Both the vector and the matrix may only contain numbers
+                    ((MatrixTypeDescriptor)type).elementType == TypeDescriptorKind.number
+                    && operator.equals("*");                                                    // Must be a valid operation
+        } else if(type.kind == TypeDescriptorKind.vector) {
+            return length == ((VectorTypeDescriptor) type).length &&                            // Must be same length
+                    elementType == TypeDescriptorKind.number &&                                 // Both vectors may only contain numbers
+                    ((VectorTypeDescriptor) type).elementType == TypeDescriptorKind.number &&
+                    (operator.equals("+") || operator.equals("-") || operator.equals("*"));     // Must be a valid operation
         }
         return false;
     }

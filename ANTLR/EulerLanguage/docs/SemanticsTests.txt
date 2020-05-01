@@ -1,6 +1,7 @@
 ----- TODO -----
 - Fix type compatibility 
 - Move all error-messages into ErrorVisitor
+- Pass operator token to binaryExpressionsNodes
 
 
 ----- TESTS -----
@@ -12,7 +13,7 @@
 
 --- Assignments(Subscript) ---
 - Assignment RHS must be same type as vector/matrix element type.
-- Subscript must have the right number of indexes.
+- Subscript must have the correct number of indexes.
 - Subscript must not be out of bounds.
 - Subscript does not work on non-vectors and non-matrices.
 
@@ -54,4 +55,4 @@
 - Represents element type and is type checked according to that.
 - Works for both matrices and vectors.
 - Subscript must not be out of bounds.
-- Subscript must have the right number of indexes.
+- Subscript must have the correct number of indexes.

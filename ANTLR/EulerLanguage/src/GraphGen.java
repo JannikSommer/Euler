@@ -1,11 +1,14 @@
 import ANTLR.EulerLexer;
 import ANTLR.EulerParser;
 import AST.ASTNode;
+import symbolTable.SymbolTable;
 import visitors.*;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+import visitors.semantics.ErrorVisitor;
+import visitors.semantics.SemanticsVisitor;
 import visitors.treeGeneration.TreeToGraphGen;
 
 import java.io.IOException;
@@ -29,6 +32,10 @@ public class GraphGen {
 
         AstBuilderVisitor astBuilder = new AstBuilderVisitor();
         ASTNode node = astBuilder.visit(tree);
+
+        SymbolTable symbolTable = new SymbolTable();
+        node.accept(new SemanticsVisitor(symbolTable));
+        node.accept(new ErrorVisitor());
 
         TreeToGraphGen TreeGenerator = new TreeToGraphGen("Graph");
         String Tree = TreeGenerator.MakeGraph(node);

@@ -50,6 +50,5 @@ public class EulerCompiler {
         SymbolTable symbolTable = new SymbolTable();
         node.accept(new SemanticsVisitor(symbolTable));
         node.accept(new ErrorVisitor());
-        // TODO: Need line number and line position in nodes for precise errors.
     }
 }
