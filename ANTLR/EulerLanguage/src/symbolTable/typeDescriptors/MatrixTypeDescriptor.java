@@ -12,24 +12,22 @@ public class MatrixTypeDescriptor extends CollectionTypeDescriptor {
 
     @Override
     public boolean canCalculate(TypeDescriptor type, String operator) {
-        if(isAssignable(type)) {
-            if(type.kind == TypeDescriptorKind.number) {
-                return operator.equals("*");                                                            // Must be a valid operation
-            } else if(type.kind == TypeDescriptorKind.matrix) {
-                if(operator.equals("*")) {                                                              // Matrix multiplication
-                    return columns == ((MatrixTypeDescriptor)type).rows &&                              // Number of columns in matrix 1 must match number of rows in matrix 2
-                            elementType == TypeDescriptorKind.number &&                                 // Both matrices may only contain numbers
-                            ((MatrixTypeDescriptor)type).elementType == TypeDescriptorKind.number;
-                } else if(operator.equals("+") || operator.equals("-")) {                               // Matrix addition or subraction
-                    return columns == ((MatrixTypeDescriptor)type).columns &&                           // Number of columns in matrix 1 must match the number of columns in matrix 2
-                            rows == ((MatrixTypeDescriptor)type).rows &&                                // Number of rows in matrix 1 must match the number of rows in matrix 2
-                            elementType == TypeDescriptorKind.number &&                                 // Both the matrix and the vector may only contain numbers
-                            ((MatrixTypeDescriptor)type).elementType == TypeDescriptorKind.number;
-                }
-            } else if(type.kind == TypeDescriptorKind.vector) {
-                return columns == ((VectorTypeDescriptor)type).length &&                                // Number of matrix-columns must match the vector-length
-                        operator.equals("*");                                                           // Must be a valid operation
+        if(type.kind == TypeDescriptorKind.number) {
+            return operator.equals("*");                                                            // Must be a valid operation
+        } else if(type.kind == TypeDescriptorKind.matrix) {
+            if(operator.equals("*")) {                                                              // Matrix multiplication
+                return columns == ((MatrixTypeDescriptor)type).rows &&                              // Number of columns in matrix 1 must match number of rows in matrix 2
+                        elementType == TypeDescriptorKind.number &&                                 // Both matrices may only contain numbers
+                        ((MatrixTypeDescriptor)type).elementType == TypeDescriptorKind.number;
+            } else if(operator.equals("+") || operator.equals("-")) {                               // Matrix addition or subraction
+                return columns == ((MatrixTypeDescriptor)type).columns &&                           // Number of columns in matrix 1 must match the number of columns in matrix 2
+                        rows == ((MatrixTypeDescriptor)type).rows &&                                // Number of rows in matrix 1 must match the number of rows in matrix 2
+                        elementType == TypeDescriptorKind.number &&                                 // Both the matrix and the vector may only contain numbers
+                        ((MatrixTypeDescriptor)type).elementType == TypeDescriptorKind.number;
             }
+        } else if(type.kind == TypeDescriptorKind.vector) {
+            return columns == ((VectorTypeDescriptor)type).length &&                                // Number of matrix-columns must match the vector-length
+                    operator.equals("*");                                                           // Must be a valid operation
         }
         return false;
     }

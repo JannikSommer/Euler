@@ -18,7 +18,7 @@ public abstract class TypeDescriptor {
 
     public boolean isAssignable(TypeDescriptor type) {
         for(int i = 0; i < assignableTypes.length; i++) {
-            if(kind == type.kind) {
+            if(assignableTypes[i] == type.kind) {
                 return true;
             }
         }

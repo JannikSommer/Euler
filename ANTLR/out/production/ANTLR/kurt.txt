@@ -1,3 +1,8 @@
+
+vec p = <1>;
+vec o = 2 * p;
+
+/*
 num A = 1;
 vec u = <1,2>;
 mtx V = {1,2;2,3};
@@ -27,3 +32,4 @@ print "A is " + A;
 
 A = B;
 print A;
+*/
