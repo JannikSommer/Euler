@@ -1,3 +1,9 @@
+----- TODO -----
+- Fix type compatibility 
+- Move all error-messages into ErrorVisitor
+
+
+----- TESTS -----
 --- Assignments ---
 - Assigning undeclared variable gives error.
 - Assignment RHS must be the same type as assignment LHS.
@@ -35,7 +41,7 @@
 --- Expressions(Vectors) ---
 - Only accepts vectors of same size and with the element-type "number".
 - Accepts scalar-vector multiplication [NOT YET]
-[TODO] Cannot assign expressions to vectors(possibly matrices too) in any other form than <1,2,3,...>;
+
 
 --- Printing ---
 - Only accepts references to numbers.

@@ -5,21 +5,41 @@ public class VectorTypeDescriptor extends CollectionTypeDescriptor {
 
     public VectorTypeDescriptor() {
         super(TypeDescriptorKind.vector);
-        compatibleTypes = new TypeDescriptorKind[] {TypeDescriptorKind.vector, TypeDescriptorKind.number};
+        assignableTypes = new TypeDescriptorKind[] {TypeDescriptorKind.vector};
     }
 
     @Override
-    public boolean isCompatible(TypeDescriptor type) {
-        if(super.isCompatible(type)) {
+    public boolean canCalculate(TypeDescriptor type, String operator) {
+        if(isAssignable(type)) {
             if(type.kind == TypeDescriptorKind.number) {
-                return true;
-            } else if(type.kind == TypeDescriptorKind.vector) { // Vectors are only compatible if they are of same length and their elements are of the number type
-                return length == ((VectorTypeDescriptor) type).length &&
-                        elementType == TypeDescriptorKind.number &&
-                        ((VectorTypeDescriptor) type).elementType == TypeDescriptorKind.number;
+                return operator.equals("*");                                                        // Must be a valid operation
+            } else if(type.kind == TypeDescriptorKind.matrix) {
+                return length == ((MatrixTypeDescriptor)type).rows &&                               // The vector length must match the number of matrix rows
+                        elementType == TypeDescriptorKind.number &&                                 // Both the vector and the matrix may only contain numbers
+                        ((MatrixTypeDescriptor)type).elementType == TypeDescriptorKind.number
+                        && operator.equals("*");                                                    // Must be a valid operation
+            } else if(type.kind == TypeDescriptorKind.vector) {
+                return length == ((VectorTypeDescriptor) type).length &&                            // Must be same length
+                        elementType == TypeDescriptorKind.number &&                                 // Both vectors may only contain numbers
+                        ((VectorTypeDescriptor) type).elementType == TypeDescriptorKind.number &&
+                        (operator.equals("+") || operator.equals("-") || operator.equals("*"));     // Must be a valid operation
             }
         }
         return false;
+    }
+
+    @Override
+    public TypeDescriptor getResultType(TypeDescriptor type, String operator) {
+        if(canCalculate(type, operator)) {
+            if(type.kind == TypeDescriptorKind.number) {
+                return this;
+            } else if(type.kind == TypeDescriptorKind.matrix) {
+                return new VectorTypeDescriptor(((MatrixTypeDescriptor)type).columns, elementType);
+            } else if(type.kind == TypeDescriptorKind.vector) {
+                return this;
+            }
+        }
+        return null;
     }
 
     public VectorTypeDescriptor(int length) {
