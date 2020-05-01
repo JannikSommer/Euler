@@ -1,6 +1,7 @@
 package visitors.CodeGen;
 
 import symbolTable.typeDescriptors.MatrixTypeDescriptor;
+import symbolTable.typeDescriptors.TypeDescriptorKind;
 import visitors.IVisitor;
 import AST.*;
 
@@ -33,8 +34,8 @@ public class CodeGenVisitor implements IVisitor {
     private void PostWork(){
         FreeALLVectorsAndMatrices();
         CGSBuilder.AppendCloseMain();
-        CGSBuilder.AppendFunctions();
         CGSBuilder.AppendSpace();
+        CGSBuilder.AppendFunctions();
     }
     
     private void FreeALLVectorsAndMatrices(){
@@ -44,11 +45,11 @@ public class CodeGenVisitor implements IVisitor {
         for(String matrixName : DeclaredMatrices){
             CGSBuilder.AppendText("FreeMatrix(&" + matrixName + ");");
         }
-        CGSBuilder.AppendSpace();
     }
     
     @Override
     public void visit(AdditionNode node){
+        //TODO add vector and matrix handling
         node.children.get(0).accept(this);
         currentString += " + ";
         node.children.get(1).accept(this);
@@ -56,18 +57,23 @@ public class CodeGenVisitor implements IVisitor {
         
     @Override
     public void visit(AppendStringNode node){
-
+        //Never created, do nothing
     }
 
     @Override
     public void visit(AssignmentNode node){
-        if(node.children.get(1) instanceof NumberLiteralNode){
-            AssignNumber(node);  
-        } else if(node.children.get(1) instanceof VectorExpressionNode){
-            AssignVector(node);
-		} else if(node.children.get(1) instanceof MatrixExpressionNode){
-            AssignMatrix(node);
-		}
+        try {
+            if (node.type.kind == TypeDescriptorKind.number) {
+                AssignNumber(node);
+            } else if (node.type.kind == TypeDescriptorKind.vector) {
+                AssignVector(node);
+            } else if (node.type.kind == TypeDescriptorKind.matrix) {
+                AssignMatrix(node);
+            }
+        } catch (NullPointerException e){
+            System.out.println("node.type.kind is null");
+        }
+
     }
 
     private void AssignNumber(AssignmentNode node){
@@ -135,17 +141,37 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(ElseIfStatementNode node){
-        
+        currentString = "else if(";
+        node.children.get(0).accept(this);
+        currentString += "){";
+        CGSBuilder.AppendText(currentString);
+        CGSBuilder.IncreaseIndent();
+
+        node.children.get(1).accept(this);
+
+        CGSBuilder.DecreaseIndent();
+        CGSBuilder.AppendText("}");
     }
 
     @Override
     public void visit(ElseStatementNode node){
-
+        for(ASTNode child : node.children){
+            if(child instanceof ElseIfStatementNode){ // else if
+                child.accept(this);
+            }
+            else if(child instanceof CodeBlockNode){ //else
+                CGSBuilder.AppendText("else{");
+                CGSBuilder.IncreaseIndent();
+                child.accept(this);
+                CGSBuilder.DecreaseIndent();
+                CGSBuilder.AppendText("}");
+            }
+		}
     }
 
     @Override
     public void visit(ErrorNode node) {
-
+            //Error, do nothing
     }
 
     @Override
@@ -160,7 +186,22 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(IfStatementNode node){
+        CGSBuilder.AppendSpace();
+        currentString = "if(";
+        node.children.get(0).accept(this);
+        currentString += "){";
+        CGSBuilder.AppendText(currentString);
 
+        CGSBuilder.IncreaseIndent();
+    
+        node.children.get(1).accept(this);
+
+        CGSBuilder.DecreaseIndent();
+        CGSBuilder.AppendText("}");
+    
+        if(node.children.size() == 3){
+            node.children.get(2).accept(this);
+        }
     }
 
     @Override
@@ -170,7 +211,9 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(LogicExpressionNode node){
-
+        node.children.get(0).accept(this);
+        currentString += node.operator;
+        node.children.get(1).accept(this);
     }
 
     @Override
@@ -199,8 +242,6 @@ public class CodeGenVisitor implements IVisitor {
                 currentString += ID + ".elements[" + IndexA + "][" + IndexB + "] = ";
                 child.accept(this);
                 currentString += "; ";
-
-
                 IndexB++;
             }
             CGSBuilder.AppendText(currentString);
@@ -253,24 +294,22 @@ public class CodeGenVisitor implements IVisitor {
         for(ASTNode child : node.children){
             if(child instanceof StringNode){
                 child.accept(this);
-                currentString += " ";
             }
             else if(child instanceof ReferenceNode){
-                currentString += "%f ";
+                currentString += "%0.2f";
                 IdentificationNode IDNode = (IdentificationNode) child.children.get(0);
                 IDs.add(IDNode.name);
             }
             else if(child instanceof NumberLiteralNode){
                 child.accept(this);
-                currentString += " ";
             }
             else if(child instanceof SubscriptingReferenceNode){
-                currentString += "%f ";
+                currentString += "%0.2f";
                 IDs.add(GetIDandSubscript((SubscriptingReferenceNode)child));
             }
         }
 
-        currentString += "\" ";
+        currentString += "\\n\"";
         for(String ID : IDs){
             currentString += ", " + ID;  
 		}
@@ -288,7 +327,6 @@ public class CodeGenVisitor implements IVisitor {
         for(int index : SubScriptNode.index){
             result += "[" + index + "]";
 		}
-
         return result;
 	}
 
@@ -304,7 +342,7 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(StringStatementNode node){
-
+        //Never created, do nothing;
     }
 
     @Override
@@ -327,6 +365,7 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(SubtractionNode node){
+        //TODO add vector and matrix handling
         node.children.get(0).accept(this);
         currentString += " - ";
         node.children.get(1).accept(this);
@@ -375,12 +414,21 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(WhileNode node){
-        
+        currentString = "while(";
+        node.children.get(0).accept(this);
+        currentString += "){";
+        CGSBuilder.AppendText(currentString);
+        CGSBuilder.IncreaseIndent();
+
+        node.children.get(1).accept(this);
+
+        CGSBuilder.DecreaseIndent();
+        CGSBuilder.AppendText("}");
     }
 
     @Override
     public void visit(ReferenceNode node){
-
+        node.children.get(0).accept(this);
     }
     
     @Override
@@ -390,6 +438,8 @@ public class CodeGenVisitor implements IVisitor {
     }
 
     public void visit(SubscriptingReferenceNode node) {
-        
+        for(ASTNode child : node.children){
+            child.accept(this);  
+		}
     }
 }

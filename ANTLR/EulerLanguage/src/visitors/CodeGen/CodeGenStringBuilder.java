@@ -59,6 +59,8 @@ public class CodeGenStringBuilder{
         AppendText("void FreeMatrix(Matrix *matrix);");
         AppendText("Vector MatrixVectorMultiplication(Matrix matrix, Vector vector);");
         AppendText("Vector VectorAddition(Vector vectorA, Vector vectorB);");
+        AppendText("Matrix MatrixMatrixMultiplication(Matrix matrix, Matrix matrix2);");
+        AppendText("Matrix MatrixAddition(Matrix matrixA, Matrix matrixB);");
     }
 
     public void AppendMain(){
@@ -68,16 +70,16 @@ public class CodeGenStringBuilder{
 
     public void AppendCloseMain(){
         AskForInputBeforeClosing();
+        AppendSpace();
         AppendText("return EXIT_SUCCESS;");
         scopeIndentation--;
         AppendText("}");
-        AppendSpace();
     }
 
     private void AskForInputBeforeClosing(){
-        AppendText("printf(\"\\n\\n\");");
-        AppendText("scanf(\"%s\");");
         AppendSpace();
+        AppendText("printf(\"\\n\");");
+        AppendText("scanf(\"%s\");");
     }
 
     public void AppendText(String text){
@@ -120,8 +122,12 @@ public class CodeGenStringBuilder{
 
         AppendMatrixVectorMultiplication();
         AppendSpace();
-
+        
         AppendVectorAddition();
+
+        AppendMatrixMatrixMultiplication();
+
+
 	}
     
     private void AppendCreateMatrixFunc(){
@@ -209,6 +215,48 @@ public class CodeGenStringBuilder{
         AppendText("for(i = 0; i < vectorA.length; i++){");
         scopeIndentation++;
         AppendText("result.elements[i] = vectorA.elements[i] +vectorB.elements[i];");
+        scopeIndentation--;
+        AppendText("}");
+        AppendText("return result;");
+        scopeIndentation--;
+        AppendText("}");
+    }
+
+    private void AppendMatrixMatrixMultiplication(){
+        AppendText("Matrix MatrixMatrixMultiplication(Matrix matrix, Matrix matrix2){");
+        scopeIndentation++;
+        AppendText("int i, j, h;");
+        AppendText("double temp;");
+        AppendText("Matrix result = CreateMatrix(matrix.rows, matrix2.columns);");
+        AppendText("for (i = 0; i < matrix.rows; i++) {");
+        scopeIndentation++;
+        AppendText("for (j = 0; j < matrix2.columns; j++) {");
+        scopeIndentation++;
+        AppendText("for (h = 0; h < matrix2.rows; h++) {");
+        scopeIndentation++;
+        AppendText("temp = temp + matrix.elements[i][h]*matrix2.elements[h][j];");
+        scopeIndentation--;
+        AppendText("}");
+        AppendText("result.elements[i][j] = temp;");
+        AppendText("temp = 0;");
+        scopeIndentation--;
+        AppendText("}");
+        scopeIndentation--;
+        AppendText("}");
+        AppendText("return result;");
+        scopeIndentation--;
+        AppendText("}");
+    }
+
+    private void AppendMatrixAddition(){
+        AppendText("Matrix MatrixAddition(Matrix matrixA, Matrix matrixB){");
+        scopeIndentation++;
+        AppendText("int i, j;");
+        AppendText("Matrix result = CreateMatrix(matrixA.rows, matrixB.columns);");
+        AppendText("for(i = 0; i < matrixA.rows; i++){");
+        scopeIndentation++;
+        AppendText("for(j = 0; j < matrixA.columns; j++)");
+        AppendText("result.elements[i][j] = matrixA.elements[i][j] + matrixB.elements[i][j];");
         scopeIndentation--;
         AppendText("}");
         AppendText("return result;");
