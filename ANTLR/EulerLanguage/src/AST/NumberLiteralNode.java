@@ -6,6 +6,11 @@ import visitors.IVisitor;
 public class NumberLiteralNode extends ExpressionNode {
     public double value;
 
+    public NumberLiteralNode(ASTNode parent) {
+        super(parent);
+        type = new NumberTypeDescriptor();
+    }
+
     public NumberLiteralNode(ASTNode parent, double value) {
         super(parent);
         this.value = value;
