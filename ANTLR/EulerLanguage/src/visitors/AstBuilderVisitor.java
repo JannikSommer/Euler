@@ -250,7 +250,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             if (ctx.MTXKW() != null) {
                 if (ctx.expr() != null) {
                     MatrixDeclarationNode mtxdcl = new MatrixDeclarationNode(parent);
-                    ASTNode refnode = new ReferenceNode(mtxdcl, id);
+                    ASTNode refnode = new IdentificationNode(mtxdcl, id);
                     ASTNode node = visitExpr(ctx.expr(), mtxdcl);
                     mtxdcl.children.add(refnode);
                     mtxdcl.children.add(node);
@@ -267,7 +267,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             } else if (ctx.VECKW() != null) {
                 if (ctx.expr() != null) {
                     VectorDeclarationNode vecNode = new VectorDeclarationNode(parent);
-                    ASTNode refnode = new ReferenceNode(vecNode, id);
+                    ASTNode refnode = new IdentificationNode(vecNode, id);
                     ASTNode node = visitExpr(ctx.expr(), vecNode);
                     vecNode.children.add(refnode);
                     vecNode.children.add(node);
