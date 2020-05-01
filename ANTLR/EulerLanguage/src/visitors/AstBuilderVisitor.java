@@ -1,12 +1,28 @@
 package visitors;
 import ANTLR.*;
 import AST.*;
+import Listener.ErrorListener;
+import org.antlr.v4.runtime.ANTLRErrorListener;
+import org.antlr.v4.runtime.ConsoleErrorListener;
 import org.antlr.v4.runtime.tree.ErrorNodeImpl;
 import symbolTable.typeDescriptors.ErrorTypeDescriptor;
 
 import java.lang.*;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
+
+    private List<ANTLRErrorListener> _listeners = new CopyOnWriteArrayList<ANTLRErrorListener>() {
+        {
+            this.add(ConsoleErrorListener.INSTANCE);
+        }
+    };
+    private ErrorListener errorListener;
+
+    public void AddErrorListener(ErrorListener listener) {
+        errorListener = listener;
+    }
 
     @Override
     public ASTNode visitProgram(EulerParser.ProgramContext ctx) {
@@ -73,11 +89,20 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                     node.charPosition = ctx.getStart().getCharPositionInLine();
                     return node;
                 }
-                return new ReferenceNode(parent, ctx.ID().getText());
+                ASTNode node = new ReferenceNode(parent, ctx.ID().getText());
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             } else if (ctx.NUM() != null) {
-                return new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
+                ASTNode node = new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             } else if (ctx.STRING() != null) {
-                return new StringNode(parent, ctx.STRING().getText());
+                ASTNode node = new StringNode(parent, ctx.STRING().getText());
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             }
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid string at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
@@ -222,7 +247,15 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
     public ASTNode visitDcl(EulerParser.DclContext ctx, ASTNode parent) {
         try {
             String id = ctx.ID().getText();
-            if (ctx.MATRIX() != null) {
+            if (ctx.MTXKW() != null) {
+                if (ctx.expr() != null) {
+                    MatrixDeclarationNode mtxdcl = new MatrixDeclarationNode(parent);
+                    ASTNode refnode = new ReferenceNode(mtxdcl, id);
+                    ASTNode node = visitExpr(ctx.expr(), mtxdcl);
+                    mtxdcl.children.add(refnode);
+                    mtxdcl.children.add(node);
+                    return mtxdcl;
+                }
                 String mtx = ctx.MATRIX().getText();
                 MatrixDeclarationNode mtxdcl = new MatrixDeclarationNode(parent);
                 ASTNode node = new MatrixExpressionNode(mtxdcl, mtx);
@@ -231,7 +264,15 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 mtxdcl.lineNumber = ctx.getStart().getLine();
                 mtxdcl.charPosition = ctx.getStart().getCharPositionInLine();
                 return mtxdcl;
-            } else if (ctx.VECTOR() != null) {
+            } else if (ctx.VECKW() != null) {
+                if (ctx.expr() != null) {
+                    VectorDeclarationNode vecNode = new VectorDeclarationNode(parent);
+                    ASTNode refnode = new ReferenceNode(vecNode, id);
+                    ASTNode node = visitExpr(ctx.expr(), vecNode);
+                    vecNode.children.add(refnode);
+                    vecNode.children.add(node);
+                    return vecNode;
+                }
                 String vec = ctx.VECTOR().getText();
                 VectorDeclarationNode vecNode = new VectorDeclarationNode(parent);
                 ASTNode node = new VectorExpressionNode(vecNode, vec);
@@ -339,9 +380,15 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                     return node;
                 }
                 String id = ctx.ID().getText();
-                return new IdentificationNode(parent, id);
+                ASTNode node =  new IdentificationNode(parent, id);
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             } else if (ctx.NUM() != null) {
-                return new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
+                ASTNode node =  new NumberLiteralNode(parent, Double.parseDouble(ctx.NUM().getText()));
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             } else if (ctx.LPAREN() != null) {
                 return visitAddexpr(ctx.addexpr(), parent);
             } else return new ErrorNode(parent, "Invalid operator at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());

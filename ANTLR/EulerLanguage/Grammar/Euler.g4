@@ -13,9 +13,9 @@ stmt        :	expr SEMI
             |   printstmt SEMI
             ;
 
-dcl         :	'num' ID ASSIGN expr
-            |	'vec' ID ASSIGN VECTOR
-            |   'mtx' ID ASSIGN MATRIX
+dcl         :	NUMKW ID ASSIGN expr
+            |	VECKW ID ASSIGN (VECTOR | expr)
+            |   MTXKW ID ASSIGN (MATRIX | expr)
             ;
 
 expr        :	addexpr
@@ -95,6 +95,9 @@ ELSE    : 'else';
 END     : 'end';
 WHILE   : 'while';
 DO      : 'do';
+NUMKW   : 'num';
+VECKW   : 'vec';
+MTXKW   : 'mtx';
 
 PRINT   : 'print';
 
@@ -113,9 +116,9 @@ COMMA   :',';
 NUM     : [0-9]+('.'[0-9]+)? ;
 MATRIX  : '{' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID))* WHITESPACE* (';' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID))* WHITESPACE* )* WHITESPACE*'}';
 VECTOR  : '<' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID) WHITESPACE* )* WHITESPACE* '>';
-STRING  : '"'[a-zA-Z0-9_ ]*'"';
+STRING  : '"'[a-zA-Z0-9_: ]*'"';
 ID      : [a-zA-Z0-9]* [a-zA-Z] [a-zA-Z0-9]*;
 
 WHITESPACE : [\r\n\t ]+ -> skip;
 COMMENT1 : '/*' .*? '*/' -> skip;
-COMMENT2 : '//' ~[\r\n]* {in_line == 1}? -> skip;
+COMMENT2 : '//' ~[\r\n]* -> skip;

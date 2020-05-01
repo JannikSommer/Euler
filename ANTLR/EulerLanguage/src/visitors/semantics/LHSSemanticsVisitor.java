@@ -16,7 +16,8 @@ public class LHSSemanticsVisitor extends SemanticsVisitor {
         node.accept(new SemanticsVisitor(symbolTable));
         if(node.attributesRef != null) {
             if(node.attributesRef.kind != AttributeKind.variableAttributes) {
-                node.type = new ErrorTypeDescriptor("Variable is not assignable.", node);
+                node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + ", " +
+                        "" + " variable '" + node.name + "' is not assignable.", node);
                 node. attributesRef = null;
             }
         }

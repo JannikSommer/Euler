@@ -1,4 +1,4 @@
-// Generated from E:/GitHub/P4---cEX/ANTLR/EulerLanguage/Grammar\Euler.g4 by ANTLR 4.8
+// Generated from C:/Users/janni/Documents/GitHub/P4---cEX/ANTLR/EulerLanguage/Grammar\Euler.g4 by ANTLR 4.8
 package ANTLR;
 
 import org.antlr.v4.runtime.ParserRuleContext;

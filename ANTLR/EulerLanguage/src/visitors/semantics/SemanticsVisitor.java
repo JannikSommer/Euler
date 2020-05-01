@@ -1,13 +1,10 @@
 package visitors.semantics;
 
 import AST.*;
-import org.antlr.v4.tool.Attribute;
 import visitors.NodeVisitor;
 import symbolTable.SymbolTable;
 import symbolTable.attributes.*;
 import symbolTable.typeDescriptors.*;
-
-import javax.lang.model.element.TypeParameterElement;
 
 public class SemanticsVisitor extends NodeVisitor {
     SymbolTable symbolTable;
@@ -18,7 +15,8 @@ public class SemanticsVisitor extends NodeVisitor {
 
     public void checkBoolean(ASTNode node) {
         if(node.type.kind != TypeDescriptorKind.bool && node.type.kind != TypeDescriptorKind.error) {
-            node.type = new ErrorTypeDescriptor("Requires boolean type", node);
+            node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
+                    " condition must be a boolean expression", node);
         }
     }
 
@@ -36,14 +34,15 @@ public class SemanticsVisitor extends NodeVisitor {
     public void visit(AssignmentNode node) {
         node.children.get(0).accept(new LHSSemanticsVisitor(symbolTable));
         node.children.get(1).accept(this);
-        if(node.children.get(0).type.isCompatible(node.children.get(1).type)) {
+        if(node.children.get(0).type.kind == node.children.get(1).type.kind) { // Are they assignable?
             ((VariableAttributes)((IdentificationNode)node.children.get(0)).attributesRef).variableType = node.children.get(1).type;
             node.type = node.children.get(1).type;
         } else if(node.children.get(0).type.kind == TypeDescriptorKind.error || node.children.get(1).type.kind == TypeDescriptorKind.error) {
             // Do nothing. Error is described in children
         } else {
-            node.type = new ErrorTypeDescriptor("'" + ((IdentificationNode)node.children.get(0)).name + "'" +
-                    " cannot be assigned value of type " + "'" + node.children.get(1).type.kind.toString() + "'", node);
+            node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," +  "'" +
+                    ((IdentificationNode)node.children.get(0)).name + "'" + " cannot be assigned value of type " + "'" +
+                    node.children.get(1).type.kind.toString() + "'", node);
         }
     }
 
@@ -51,7 +50,8 @@ public class SemanticsVisitor extends NodeVisitor {
     public void visit(BinaryExpressionNode node) {
         visitChildren(node);
         if(!node.children.get(0).type.isCompatible(node.children.get(1).type)) {
-            node.type = new ErrorTypeDescriptor("Incompatible types", node);
+            node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
+                    " incompatible types", node);
         } else {
             node.type = node.children.get(0).type; // Add more complexity later
         }
@@ -94,7 +94,8 @@ public class SemanticsVisitor extends NodeVisitor {
     public void visit(IdentificationNode node) {
         VariableAttributes attrRef = (VariableAttributes)symbolTable.retrieveSymbol(node.name);
         if(attrRef == null) {
-            node.type = new ErrorTypeDescriptor("Variable " + "'" + node.name + "'" + " has not been declared", node);
+            node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
+                    " variable " + "'" + node.name + "'" + " has not been declared", node);
             node.attributesRef = null;
         } else {
             node.attributesRef = attrRef;
@@ -132,7 +133,8 @@ public class SemanticsVisitor extends NodeVisitor {
         for (ASTNode row : node.children) {
             for (ASTNode element : row.children) {
                 if(element.type.kind != ((MatrixTypeDescriptor)node.type).elementType) {
-                    node.type = new ErrorTypeDescriptor("Matrix expression cannot contain multiple types.");
+                    node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
+                            " matrix-expression can not contain multiple types.");
                     break;
                 }
             }
@@ -170,7 +172,12 @@ public class SemanticsVisitor extends NodeVisitor {
         for (ASTNode child : node.children) {
             if(child instanceof ReferenceNode || child instanceof SubscriptingReferenceNode) {
                 if(child.type.kind != TypeDescriptorKind.number) {
-                    child.type = new ErrorTypeDescriptor("Variable '" + ((IdentificationNode)child.children.get(0)).name + "' is not of printable type");
+                    if(child.type.kind == TypeDescriptorKind.error) {
+
+                    } else {
+                        child.type = new ErrorTypeDescriptor("at line " + child.lineNumber + ":" + child.charPosition +
+                                "," + "'" + ((IdentificationNode)child.children.get(0)).name + " ' is not of printable type");
+                    }
                 }
             }
         }
@@ -249,7 +256,8 @@ public class SemanticsVisitor extends NodeVisitor {
             if(node.children.get(i).type == null || node.children.get(i).type.kind == TypeDescriptorKind.error) {
                 break;
             } else if(node.children.get(i).type.kind != ((VectorTypeDescriptor)node.type).elementType) {
-                node.type = new ErrorTypeDescriptor("Vector expression cannot contain multiple types.");
+                node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
+                        " vector-expression can not contain multiple types.");
                 break;
             }
         }
@@ -280,19 +288,24 @@ public class SemanticsVisitor extends NodeVisitor {
         if(attrRef.variableType.kind == TypeDescriptorKind.vector || attrRef.variableType.kind == TypeDescriptorKind.matrix) {
             if(subscript.index.size() == 1 && attrRef.variableType.kind == TypeDescriptorKind.vector) {
                 if(subscript.index.get(0) >= ((VectorTypeDescriptor)attrRef.variableType).length) {
-                    node.type = new ErrorTypeDescriptor("Out of bounds", node);
+                    node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
+                            " index out of bounds", node);
                 }
             } else if(subscript.index.size() == 2 && attrRef.variableType.kind == TypeDescriptorKind.matrix) {
                 if(subscript.index.get(0) >= ((MatrixTypeDescriptor)attrRef.variableType).rows) {
-                    node.type = new ErrorTypeDescriptor("Index 1 out of bounds", node);
+                    node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
+                            " index 1 out of bounds", node);
                 } else if(subscript.index.get(1) >= ((MatrixTypeDescriptor)attrRef.variableType).columns) {
-                    node.type = new ErrorTypeDescriptor("Index 2 out of bounds", node);
+                    node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
+                            " index 2 out of bounds", node);
                 }
             } else {
-                node.type = new ErrorTypeDescriptor("Type does not support this number of indexes", node);
+                node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
+                        " type does not support this number of indexes", node);
             }
         } else {
-            node.type = new ErrorTypeDescriptor("Type does not support subscript", node);
+            node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
+                    " type does not support subscript", node);
         }
     }
 
