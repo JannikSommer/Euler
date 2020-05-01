@@ -11,6 +11,7 @@ public class DivisionNode extends BinaryExpressionNode {
         this(parentNode);
         children.add(leftOperand);
         children.add(rightOperand);
+        this.operator = "/";
     }
 
     @Override
