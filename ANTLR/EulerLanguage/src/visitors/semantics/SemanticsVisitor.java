@@ -155,16 +155,23 @@ public class SemanticsVisitor extends NodeVisitor {
         visitChildren(node);
 
         // Set the element-type of the matrix to the first elements type
-        ((MatrixTypeDescriptor)node.type).elementType = node.children.get(0).children.get(0).type.kind;
+        TypeDescriptorKind elementType = ((MatrixTypeDescriptor) node.type).elementType;
+        elementType = node.children.get(0).children.get(0).type.kind;
 
         // Check all elements if they are the same type as all elements must be the same
         for (ASTNode row : node.children) {
             for (ASTNode element : row.children) {
-                if(element.type.kind != ((MatrixTypeDescriptor)node.type).elementType) {
-                    node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
-                            " matrix-expression can not contain multiple types.");
-                    break;
+                if(!(element.type instanceof ErrorTypeDescriptor)) {
+                    if (element.type.kind != elementType) {
+                        node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," +
+                                " matrix-expression can not contain multiple types.");
+                        break;
+                    }
                 }
+            }
+
+            if(node.type.kind == TypeDescriptorKind.error) {
+                break;
             }
         }
     }
