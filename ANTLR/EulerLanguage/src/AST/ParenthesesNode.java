@@ -4,9 +4,8 @@ import visitors.IVisitor;
 
 public class ParenthesesNode extends ExpressionNode {
 
-    public ParenthesesNode(ASTNode parent, ASTNode child) {
+    public ParenthesesNode(ASTNode parent) {
         super(parent);
-        children.add(child);
     }
 
     @Override
