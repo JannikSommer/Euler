@@ -39,6 +39,7 @@ public class CodeGenVisitor implements IVisitor {
     }
     
     private void FreeALLVectorsAndMatrices(){
+        CGSBuilder.AppendSpace();
         for(String vectorName : DeclaredVectors){
             CGSBuilder.AppendText("FreeVector(&" + vectorName + ");");
         }
@@ -116,12 +117,14 @@ public class CodeGenVisitor implements IVisitor {
             VectorAssignChildren(name, node.children.get(1).children);
             CGSBuilder.AppendSpace();
         } else{
-            CGSBuilder.AppendText("FreeVector(&" + name + ");");
+            CGSBuilder.AppendText("num = (int*)&" + name + ";");
 
             currentString = name + " = ";
             node.children.get(1).accept(this);
             currentString += ";";
             CGSBuilder.AppendText(currentString);
+
+            CGSBuilder.AppendText("FreeVector((Vector*)num);");
 		}
     }
 
@@ -140,12 +143,14 @@ public class CodeGenVisitor implements IVisitor {
             MatrixAssignChildren(name, node.children.get(1).children);
             CGSBuilder.AppendSpace();
         } else{
-            CGSBuilder.AppendText("FreeMatrix(&" + name + ");");
+            CGSBuilder.AppendText("num = (int*)&" + name + ";");
 
             currentString = name + " = ";
             node.children.get(1).accept(this); // Create vector (VectorExpressionNode)
             currentString += ";";
             CGSBuilder.AppendText(currentString);
+
+            CGSBuilder.AppendText("FreeMatrix((Matrix*)num);");
 		}
     }
 
@@ -313,49 +318,49 @@ public class CodeGenVisitor implements IVisitor {
             node.children.get(0).accept(this);
             currentString += ", ";
             node.children.get(1).accept(this);
-            currentString += ") ";
+            currentString += ")";
 		} else if(LeftChildKind == TypeDescriptorKind.vector && RightChildKind == TypeDescriptorKind.matrix){ //vector*matrix
             currentString += "VectorMatrixMultiplication(";
             node.children.get(0).accept(this);
             currentString += ", ";
             node.children.get(1).accept(this);
-            currentString += ") ";
+            currentString += ")";
         } else if(LeftChildKind == TypeDescriptorKind.matrix && RightChildKind == TypeDescriptorKind.vector){ //matrix*vector
             currentString += "MatrixVectorMultiplication(";
             node.children.get(0).accept(this);
             currentString += ", ";
             node.children.get(1).accept(this);
-            currentString += ") ";
+            currentString += ")";
         } else if(LeftChildKind == TypeDescriptorKind.vector && RightChildKind == TypeDescriptorKind.vector){ //vector*vector (dot product)
             currentString += "DotProduct(";
             node.children.get(0).accept(this);
             currentString += ", ";
             node.children.get(1).accept(this);
-            currentString += ") ";
+            currentString += ")";
         } else if(LeftChildKind == TypeDescriptorKind.vector && RightChildKind == TypeDescriptorKind.number){ //vector*number
             currentString += "VectorScalar(";
             node.children.get(0).accept(this);
             currentString += ", ";
             node.children.get(1).accept(this);
-            currentString += ") ";
+            currentString += ")";
         } else if(LeftChildKind == TypeDescriptorKind.number && RightChildKind == TypeDescriptorKind.vector){ //number*vector (inverted)
             currentString += "VectorScalar(";
             node.children.get(1).accept(this);
             currentString += ", ";
             node.children.get(0).accept(this);
-            currentString += ") ";
+            currentString += ")";
         } else if(LeftChildKind == TypeDescriptorKind.matrix && RightChildKind == TypeDescriptorKind.number){ //matrix*number
             currentString += "MatrixScalar(";
             node.children.get(0).accept(this);
             currentString += ", ";
             node.children.get(1).accept(this);
-            currentString += ") ";
+            currentString += ")";
         } else if(LeftChildKind == TypeDescriptorKind.number && RightChildKind == TypeDescriptorKind.matrix){ //number*matrix (inverted)
             currentString += "MatrixScalar(";
             node.children.get(1).accept(this);
             currentString += ", ";
             node.children.get(0).accept(this);
-            currentString += ") ";
+            currentString += ")";
         } 
     }
 
@@ -376,9 +381,9 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(ParenthesesNode node){
-        currentString += " (";
+        currentString += "(";
         node.children.get(0).accept(this);
-        currentString += ") ";
+        currentString += ")";
     }
 
     @Override
@@ -474,13 +479,13 @@ public class CodeGenVisitor implements IVisitor {
             node.children.get(0).accept(this);
             currentString += ", ";
             node.children.get(1).accept(this);
-            currentString += ") ";
+            currentString += ")";
 		} else if(LeftChildKind == TypeDescriptorKind.vector && RightChildKind == TypeDescriptorKind.vector){ //vector-vector
             currentString += "VectorSubtraction(";
             node.children.get(0).accept(this);
             currentString += ", ";
             node.children.get(1).accept(this);
-            currentString += ") ";
+            currentString += ")";
 		}
     }
     
