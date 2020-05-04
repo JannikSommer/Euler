@@ -11,7 +11,7 @@ if 1 < 2 then
  // Code
 end
 
-if 2 < 1 then
+if v < 1 then   // Produces error (not boolean expression)
  // Code
 end
 
@@ -20,7 +20,7 @@ if 1 > 2 then
  // Code
 end
 
-if 2 > 1 then
+if v > 1 then   // Produces error (not boolean expression)
  // Code
 end
 
@@ -30,7 +30,7 @@ if 1 == 2 then
  // Code
 end
 
-if 2 == 1 then
+if v == 1 then  // Produces error (not boolean expression)
  // Code
 end
 
@@ -39,7 +39,7 @@ if 1 != 2 then
  // Code
 end
 
-if 2 != 1 then
+if v != 1 then  // Produces error (not boolean expression)
  // Code
 end
 
@@ -49,7 +49,7 @@ if 1 <= 2 then
  // Code
 end
 
-if 2 <= 1 then
+if v <= 1 then  // Produces error (not boolean expression)
  // Code
 end
 
@@ -59,6 +59,36 @@ if 1 >= 2 then
  // Code
 end
 
-if 2 >= 1 then
+if v >= 1 then  // Produces error (not boolean expression)
  // Code
+end
+
+/* If-else statements */
+if 1 < 2 then
+    // Code
+else then
+    // Code
+end
+
+if 5 < 3 then
+    // Code
+else if 3 < 4 then
+    // Code
+end
+
+if 5 < 3 then
+    // Code
+else if v < 4 then // Produces error (not boolean expression)
+    // Code
+end
+
+
+/* While loops */
+
+while 1 < 2 do
+    // code
+end
+
+while v < 2 do  // Should produce error
+    // code
 end
