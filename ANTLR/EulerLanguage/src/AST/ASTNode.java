@@ -10,7 +10,7 @@ public abstract class ASTNode {
     public ArrayList<ASTNode> children;
     public TypeDescriptor type;
     public boolean isReachable;
-    public boolean terminatesNormally = true;
+    public boolean terminatesNormally;
     public int lineNumber;
     public int charPosition;
 

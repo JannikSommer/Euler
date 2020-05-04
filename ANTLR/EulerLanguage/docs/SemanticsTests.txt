@@ -1,8 +1,8 @@
 ----- TODO -----
-- Fix type compatibility 
 - Move all error-messages into ErrorVisitor
-- Pass operator token to binaryExpressionsNodes
 - Optimize symbol table id's
+- Specify error message for incompatible vector/matrix types. I.E. why they are incompatible.
+- Must not divide by 0
 
 
 ----- TESTS -----
@@ -33,16 +33,30 @@
 
 
 --- Expressions(Matrices) ---
-
+- Matrix addition and subtraction only accepts matrices of equal sizes.
+- Matrix multiplication accepts only matrices for which matrix ones number of columns is equal to matrix twos number of rows.
+- Matrix multiplication produces a matrix that is equal to matrix ones number of rows and matrix twos number of columns.
 
 
 --- Expressions(Numbers) ---
-
+- Addition, division, modulo, multiplication and subtraction only accepts number-types
+  (unless its scalar-vector/matrix multiplication, in which case it would return either a vector or a matrix).
+- Works with number-literals and references.
 
 
 --- Expressions(Vectors) ---
 - Only accepts vectors of same size and with the element-type "number" for vector-vector operations
-- Accepts scalar-vector multiplication [NOT YET]
+- Accepts scalar-vector multiplication ( returns a vector type)
+- Vector-vector addition, subtraction and multiplication only accepts vector of equal lengths
+
+
+--- Expression (Matrix-vector and vector-matrix) ---
+- Vector-matrix multiplication accepts only compatible vectors and matrices (vector length must be equal to matrix row number)
+- Matrix-vector multiplication only accepts compatible vectors and matrices (vector length must be equal to matrix column number)
+
+
+--- Iteration statements ---
+
 
 
 --- Printing ---
@@ -57,3 +71,6 @@
 - Works for both matrices and vectors.
 - Subscript must not be out of bounds.
 - Subscript must have the correct number of indexes.
+
+
+--- Selection statements ---

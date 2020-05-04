@@ -1,43 +1,94 @@
-num n = 5;
-mtx m1 = <1,2;3,4;5,6>;
-mtx m2 = <1,2,3;4,5,6>;
-vec v1 = <1,2>;
-vec v2 = <3,4>;
-vec v3 = <5,6,7>;
-vec v4 = <v1,v2>;
-vec v5 = <m1,m2>;
-
-/* Scalar vector multiplication */
-
-// Num literals and vec references
-vec vecRes = 10 * v1;
-vecRes = v1 * 10;
-
-// num references and vec references
-vecRes = n * v1;
-vecRes = v1 * n;
+num a = 10;
+num b = 5;
+num res = 0;
+vec v = <1,2>;
+mtx m = {1,2;3,4};
 
 
-/* Vector-vector operations */
+/* If-statement */
+// Less than
+if 1 < 2 then
+ // Code
+end
 
-// Vector-vector addition
-vecRes = v1 + v2;
-vecRes = v1 + v3;  // Should produce error (Wrong size)
+if v < 1 then   // Produces error (not boolean expression)
+ // Code
+end
 
-// Vector-vector subtraction
-vecRes = v1 - v2;
-vecRes = v1 - v3;  // Should produce error (Wrong size)
+// Greater than
+if 1 > 2 then
+ // Code
+end
 
-// Vector-vector multiplication
-vecRes = v1 * v2;
-vecRes = v1 * v3;  // Should produce error (Wrong size)
+if v > 1 then   // Produces error (not boolean expression)
+ // Code
+end
 
-/* Vector-matrix and matrix-vector operations */
 
-// Vector-matrix multiplication
-vecRes = v1 * m1;
-vecRes = v1 * m2; // Should produce error (Wrong size)
+// Equal
+if 1 == 2 then
+ // Code
+end
 
-// Matrix-vector multiplication
-vecRes = m1 * v3;
-vecRes = m2 * v3;
+if v == 1 then  // Produces error (not boolean expression)
+ // Code
+end
+
+// Not equal
+if 1 != 2 then
+ // Code
+end
+
+if v != 1 then  // Produces error (not boolean expression)
+ // Code
+end
+
+
+// Less than equal
+if 1 <= 2 then
+ // Code
+end
+
+if v <= 1 then  // Produces error (not boolean expression)
+ // Code
+end
+
+
+// Greater than equal
+if 1 >= 2 then
+ // Code
+end
+
+if v >= 1 then  // Produces error (not boolean expression)
+ // Code
+end
+
+/* If-else statements */
+if 1 < 2 then
+    // Code
+else then
+    // Code
+end
+
+if 5 < 3 then
+    // Code
+else if 3 < 4 then
+    // Code
+end
+
+if 5 < 3 then
+    // Code
+else if v < 4 then // Produces error (not boolean expression)
+    // Code
+end
+
+
+/* While loops */
+
+while 1 < 2 do
+    // code
+end
+
+while v < 2 do  // Should produce error
+    // code
+end

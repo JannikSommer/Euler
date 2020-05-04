@@ -6,7 +6,7 @@ import visitors.NodeVisitor;
 public class ConstExprVisitor extends NodeVisitor {
     @Override
     public void visit(AdditionNode node) {
-
+        visit((ExpressionNode)node);
     }
 
     @Override
@@ -21,10 +21,7 @@ public class ConstExprVisitor extends NodeVisitor {
 
     @Override
     public void visit(BinaryExpressionNode node) {
-        // TODO: Take a look at this again
-        if(node.children.get(0).getType().equals("NumberLiteralNode") && node.children.get(1).getType().equals("NumberLiteralNode")) {
-            node.exprValue = node.calculateValue();
-        }
+        visit((ExpressionNode)node);
     }
 
     @Override
@@ -39,7 +36,7 @@ public class ConstExprVisitor extends NodeVisitor {
 
     @Override
     public void visit(DivisionNode node) {
-
+        visit((ExpressionNode)node);
     }
 
     @Override
@@ -59,7 +56,15 @@ public class ConstExprVisitor extends NodeVisitor {
 
     @Override
     public void visit(ExpressionNode node) {
-
+        for (ASTNode child :node.children) {
+            child.accept(this);
+            if(child instanceof ExpressionNode) {
+                node.constantExpression = ((ExpressionNode) child).constantExpression;
+                if(!((ExpressionNode) child).constantExpression) {
+                    break;
+                }
+            }
+        }
     }
 
     @Override
@@ -79,9 +84,7 @@ public class ConstExprVisitor extends NodeVisitor {
 
     @Override
     public void visit(LogicExpressionNode node) {
-        if(node.children.get(0).getType().equals("NumberLiteralNode") && node.children.get(1).getType().equals("NumberLiteralNode")) {
-            node.exprValue = node.calculateValue();
-        }
+        visit((ExpressionNode)node);
     }
 
     @Override
@@ -91,12 +94,12 @@ public class ConstExprVisitor extends NodeVisitor {
 
     @Override
     public void visit(ModuloNode node) {
-
+        visit((ExpressionNode)node);
     }
 
     @Override
     public void visit(MultiplicationNode node) {
-
+        visit((ExpressionNode)node);
     }
 
     @Override
@@ -106,12 +109,12 @@ public class ConstExprVisitor extends NodeVisitor {
 
     @Override
     public void visit(NumberLiteralNode node) {
-
+        node.constantExpression = true;
     }
 
     @Override
     public void visit(ParenthesesNode node) {
-
+        visit((ExpressionNode)node);
     }
 
     @Override

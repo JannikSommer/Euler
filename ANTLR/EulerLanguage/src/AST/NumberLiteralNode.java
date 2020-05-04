@@ -12,16 +12,10 @@ public class NumberLiteralNode extends ExpressionNode {
     }
 
     public NumberLiteralNode(ASTNode parent, double value) {
-        super(parent);
+        this(parent);
         this.value = value;
-        type = new NumberTypeDescriptor();
     }
 
     @Override
     public void accept(IVisitor visitor) { visitor.visit(this); }
-
-    @Override
-    public double calculateValue() {
-        return value;
-    }
 }

@@ -11,9 +11,9 @@ public class NumberTypeDescriptor extends TypeDescriptor {
         if(type.kind == TypeDescriptorKind.number) {
             return true;
         } else if(type.kind == TypeDescriptorKind.matrix) {
-            return operator.equals("+") || operator.equals("-") || operator.equals("*");
+            return operator.equals("*");
         } else if(type.kind == TypeDescriptorKind.vector) {
-            return operator.equals("+") || operator.equals("-") || operator.equals("*");
+            return operator.equals("*");
         }
         return false;
     }

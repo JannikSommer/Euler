@@ -1,0 +1,63 @@
+num n = 5;
+mtx m1 = {1,2;3,4;5,6};
+mtx m2 = {1,2,3;4,5,6};
+mtx m3 = {6,5;4,3;2,1};
+vec v1 = <1,2>;
+vec v2 = <3,4>;
+vec v3 = <5,6,7>;
+vec v4 = <v1,v2>;
+vec v5 = <m1,m2>;
+
+/* Scalar vector multiplication */
+
+// Num literals and vec references
+vec vecRes = 10 * v1;
+vecRes = v1 * 10;
+n =  1 * v1;
+
+// num references and vec references
+vecRes = n * v1;
+vecRes = v1 * n;
+
+
+/* Vector-vector operations */
+
+// Vector-vector addition
+vecRes = v1 + v2;
+vecRes = v1 + v3;  // Should produce error (Wrong size)
+
+// Vector-vector subtraction
+vecRes = v1 - v2;
+vecRes = v1 - v3;  // Should produce error (Wrong size)
+
+// Vector-vector multiplication
+vecRes = v1 * v2;
+vecRes = v1 * v3;  // Should produce error (Wrong size)
+
+/* Vector-matrix and matrix-vector operations */
+
+// Vector-matrix multiplication
+vecRes = v1 * m1; // Should produce error (Wrong size)
+vecRes = v1 * m2;
+
+// Matrix-vector multiplication
+vecRes = m1 * v3; // Should produce error (Wrong size)
+vecRes = m2 * v3;
+
+
+/* Matrix-matrix operations */
+
+// Matrix-matrix addition
+mtx mtxRes = m1 + m3;
+mtxRes = m1 + m2; // Should produce error (Wrong size)
+
+// Matrix-matrix subtraction
+mtxRes = m1 - m3;
+mtxRes = m1 - m2; // Should produce error (Wrong Size);
+
+// Matrix-matrix multiplication
+mtxRes = m1 * m2;
+mtxRes = m2 * m1;
+mtxRes = m1 * m3; // Should produce error (Wrong size)
+
+

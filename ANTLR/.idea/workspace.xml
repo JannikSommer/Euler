@@ -20,11 +20,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcf840de-b8e9-4031-9931-a873d99acf6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/EulerLanguage/docs/testfiles/LinearAlgebra.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EulerLanguage/docs/testfiles/Arithmetic.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EulerLanguage/docs/testfiles/ControlStatements" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/Grammar/Euler.g4" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/Grammar/Euler.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EulerLanguage/docs/SemanticsTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/docs/SemanticsTests.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/docs/testfiles/LinearAlgebra.txt" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/docs/testfiles/LinearAlgebra.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/Euler.interp" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/Euler.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerBaseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerBaseVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/ANTLR/EulerVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/ASTNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/ASTNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/AdditionNode.Java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/AdditionNode.Java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/AssignmentNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/AssignmentNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/CodeBlockNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/CodeBlockNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/DivisionNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/DivisionNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/ExpressionNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/ExpressionNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/LogicExpressionNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/LogicExpressionNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/ModuloNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/ModuloNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/MultiplicationNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/MultiplicationNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/NumberLiteralNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/NumberLiteralNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/ParenthesesNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/ParenthesesNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/ReferenceNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/ReferenceNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/SubscriptingReferenceNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/SubscriptingReferenceNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/AST/SubtractionNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/AST/SubtractionNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EulerLanguage/src/kurt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/kurt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph.gz" beforeDir="false" afterPath="$PROJECT_DIR$/Graph.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/symbolTable/typeDescriptors/BooleanTypeDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/symbolTable/typeDescriptors/BooleanTypeDescriptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/symbolTable/typeDescriptors/NumberTypeDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/symbolTable/typeDescriptors/NumberTypeDescriptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/symbolTable/typeDescriptors/VectorTypeDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/symbolTable/typeDescriptors/VectorTypeDescriptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/AstBuilderVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/AstBuilderVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/ConstExprVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/ConstExprVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/ReachabilityVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/ReachabilityVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/SemanticsVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/SemanticsVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/Euler.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/Euler.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/ANTLR/EulerLexer.interp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ANTLR/kurt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ANTLR/kurt.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,11 +92,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/EulerLanguage/src" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Application.EulerCompiler">
     <configuration name="EulerCompiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -124,10 +160,15 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="760" y="274" key="#Project_Structure/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587542560584" />
-    <state x="814" y="302" key="#com.intellij.ide.util.MemberChooser" timestamp="1588145691300">
+    <state x="717" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588582762108">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="717" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588582762108" />
+    <state x="814" y="302" key="#com.intellij.ide.util.MemberChooser" timestamp="1588580684416">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="814" y="302" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588145691300" />
+    <state x="814" y="302" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588580684416" />
     <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588143607427" />
     <state x="814" y="302" key="#com.intellij.ide.util.MemberChooser/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587718270207" />
     <state x="1063" y="594" width="433" height="218" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1588144367655">
@@ -142,63 +183,81 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587970270266" />
-    <state x="986" y="441" key="FileChooserDialogImpl" timestamp="1588162995637">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="706" y="374" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1588582311412">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="706" y="374" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1588582311412" />
+    <state width="400" height="466" key="DebuggerActiveHint" timestamp="1588585532850">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="400" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1588585532850" />
+    <state x="740" y="328" key="FileChooserDialogImpl" timestamp="1588578254489">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="328" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588578254489" />
     <state x="986" y="441" key="FileChooserDialogImpl/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588162995637" />
     <state x="740" y="328" key="FileChooserDialogImpl/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587726260018" />
-    <state width="1877" height="268" key="GridCell.Tab.0.bottom" timestamp="1588340490490">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1588587569628">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="268" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588340490490" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588587569628" />
     <state width="2517" height="546" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588332938743" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587734702498" />
-    <state width="1877" height="268" key="GridCell.Tab.0.center" timestamp="1588340490490">
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1588587569627">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="268" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588340490490" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588587569627" />
     <state width="2517" height="546" key="GridCell.Tab.0.center/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588332938742" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587734702497" />
-    <state width="1877" height="268" key="GridCell.Tab.0.left" timestamp="1588340490490">
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1588587569627">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="268" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588340490490" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588587569627" />
     <state width="2517" height="546" key="GridCell.Tab.0.left/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588332938742" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587734702497" />
-    <state width="1877" height="268" key="GridCell.Tab.0.right" timestamp="1588340490490">
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1588587569628">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="268" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588340490490" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588587569628" />
     <state width="2517" height="546" key="GridCell.Tab.0.right/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588332938742" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587734702498" />
-    <state width="1877" height="268" key="GridCell.Tab.1.bottom" timestamp="1588340490491">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1588585682673">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="268" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588340490491" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588585682673" />
     <state width="2517" height="593" key="GridCell.Tab.1.bottom/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588246471799" />
-    <state width="1877" height="268" key="GridCell.Tab.1.center" timestamp="1588340490491">
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1588585682673">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="268" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588340490491" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588585682673" />
     <state width="2517" height="593" key="GridCell.Tab.1.center/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588246471799" />
-    <state width="1877" height="268" key="GridCell.Tab.1.left" timestamp="1588340490490">
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1588585682673">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="268" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588340490490" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588585682673" />
     <state width="2517" height="593" key="GridCell.Tab.1.left/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588246471799" />
-    <state width="1877" height="268" key="GridCell.Tab.1.right" timestamp="1588340490491">
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1588585682673">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="268" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588340490491" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588585682673" />
     <state width="2517" height="593" key="GridCell.Tab.1.right/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588246471799" />
     <state x="860" y="434" key="IDE.errors.dialog" timestamp="1587645228630">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="860" y="434" key="IDE.errors.dialog/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645228630" />
-    <state x="586" y="188" key="SettingsEditor" timestamp="1588321118506">
+    <state x="586" y="188" key="SettingsEditor" timestamp="1588578190520">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="586" y="188" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588321118506" />
+    <state x="586" y="188" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588578190520" />
     <state x="781" y="344" key="SettingsEditor/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587980434073" />
     <state x="586" y="191" key="SettingsEditor/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587723404461" />
     <state x="668" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1587569224605">
@@ -209,10 +268,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="810" y="510" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587718198255" />
-    <state x="515" y="248" width="1045" height="630" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1588331604744">
+    <state x="515" y="248" width="1045" height="630" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1588344999565">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="515" y="248" width="1045" height="630" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588331604744" />
+    <state x="515" y="248" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1588344999565" />
     <state x="1913" y="0" width="974" height="1047" key="dock-window-1" timestamp="1588340490548">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -245,17 +305,28 @@
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587710370403" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/EulerLanguage/src/EulerCompiler.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo typeName="AST.ProgramNode" fieldName="type" />
         <PinnedItemInfo typeName="org.antlr.v4.runtime.misc.Pair" fieldName="a" />
         <PinnedItemInfo typeName="AST.SubscriptingNode" fieldName="index" />
+        <PinnedItemInfo typeName="AST.ProgramNode" fieldName="children" />
         <PinnedItemInfo typeName="ANTLR.EulerParser$LogstmtContext" fieldName="start" />
       </pinned-members>
     </pin-to-top-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="parent" />
+        <watch expression="((ProgramNode)node).children" custom="AST.ProgramNode" />
       </configuration>
     </watches-manager>
   </component>

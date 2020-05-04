@@ -1,0 +1,64 @@
+num a = 10;
+num b = 5;
+num res = 0;
+vec v = <1,2>;
+mtx m = {1,2;3,4};
+
+
+/* If-statement */
+// Less than
+if 1 < 2 then
+ // Code
+end
+
+if 2 < 1 then
+ // Code
+end
+
+// Greater than
+if 1 > 2 then
+ // Code
+end
+
+if 2 > 1 then
+ // Code
+end
+
+
+// Equal
+if 1 == 2 then
+ // Code
+end
+
+if 2 == 1 then
+ // Code
+end
+
+// Not equal
+if 1 != 2 then
+ // Code
+end
+
+if 2 != 1 then
+ // Code
+end
+
+
+// Less than equal
+if 1 <= 2 then
+ // Code
+end
+
+if 2 <= 1 then
+ // Code
+end
+
+
+// Greater than equal
+if 1 >= 2 then
+ // Code
+end
+
+if 2 >= 1 then
+ // Code
+end

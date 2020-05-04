@@ -14,7 +14,10 @@ public class SemanticsVisitor extends NodeVisitor {
     }
 
     public void checkBoolean(ASTNode node) {
-        if(node.type.kind != TypeDescriptorKind.bool && node.type.kind != TypeDescriptorKind.error) {
+        if(node.type.kind == TypeDescriptorKind.error) {
+            // Dont check if node already contains an error.
+        }else if(node.children.get(0).type.kind != TypeDescriptorKind.number ||
+                node.children.get(1).type.kind != TypeDescriptorKind.number) {
             node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
                     " condition must be a boolean expression", node);
         }
@@ -40,11 +43,11 @@ public class SemanticsVisitor extends NodeVisitor {
         expression.accept(this);
 
         // Check if the expression can be assigned to th variable
-        if(id.type.isAssignable(expression.type)) {
+        if(id.type.kind == TypeDescriptorKind.error || expression.type.kind == TypeDescriptorKind.error) {
+            // If the children already contain errors don't add another one. They are more specific.
+        } else if(id.type.isAssignable(expression.type)) {
             ((VariableAttributes)id.attributesRef).variableType = expression.type;
             node.type = expression.type;
-        } else if(id.type.kind == TypeDescriptorKind.error || expression.type.kind == TypeDescriptorKind.error) {
-            // If the children already contain errors don't add another one. They are more specific.
         } else {
             node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," +  "'" +
                     id.name + "'" + " cannot be assigned value of type " + "'" +
@@ -125,9 +128,6 @@ public class SemanticsVisitor extends NodeVisitor {
         // Do semantic-analysis of children
         visitChildren(node);
 
-        // Confirm that the specified condition is indeed a boolean-expression
-        checkBoolean(node.children.get(0));
-
         // Do reachability analysis on if-statement
         node.accept(new ReachabilityVisitor(symbolTable));
     }
@@ -140,6 +140,8 @@ public class SemanticsVisitor extends NodeVisitor {
     @Override
     public void visit(LogicExpressionNode node) {
         visitChildren(node);
+        checkBoolean(node);
+        node.accept(new ConstExprVisitor());
     }
 
     @Override
@@ -190,6 +192,7 @@ public class SemanticsVisitor extends NodeVisitor {
     @Override
     public void visit(ParenthesesNode node) {
         visitChildren(node);
+        node.type = node.children.get(0).type;
     }
 
     @Override
@@ -214,6 +217,8 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(ProgramNode node) {
+        node.isReachable = true;
+        node.children.get(0).isReachable = true;
         visitChildren(node);
     }
 

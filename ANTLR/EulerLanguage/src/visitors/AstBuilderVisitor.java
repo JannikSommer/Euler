@@ -321,7 +321,12 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 right = visitAddexpr(ctx.addexpr(), parent);
                 right.lineNumber = ctx.getStart().getLine();
                 right.charPosition = ctx.getStart().getCharPositionInLine();
-                return new AdditionNode(parent, left, right);
+
+                // TODO: Double check
+                ASTNode node = new AdditionNode(parent, left, right);
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             } else if (ctx.op.getText().contains("-")) {
                 left = visitMultiexpr(ctx.multiexpr(), parent);
                 left.lineNumber = ctx.getStart().getLine();
@@ -329,7 +334,12 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 right = visitAddexpr(ctx.addexpr(), parent);
                 right.lineNumber = ctx.getStart().getLine();
                 right.charPosition = ctx.getStart().getCharPositionInLine();
-                return new SubtractionNode(parent, left, right);
+
+                // TODO: Double check
+                ASTNode node = new SubtractionNode(parent, left, right);
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             } else return new ErrorNode(parent, "Invalid operator at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
@@ -348,7 +358,12 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 right = visitMultiexpr(ctx.multiexpr(), parent);
                 right.lineNumber = ctx.getStart().getLine();
                 right.charPosition = ctx.getStart().getCharPositionInLine();
-                return new MultiplicationNode(parent, left, right);
+
+                // TODO: Double check
+                ASTNode node = new MultiplicationNode(parent, left, right);
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             } else if (ctx.op.getText().contains("/")) {
                 left = visitPrimeexpr(ctx.primeexpr(), parent);
                 left.lineNumber = ctx.getStart().getLine();
@@ -356,7 +371,12 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 right = visitMultiexpr(ctx.multiexpr(), parent);
                 right.lineNumber = ctx.getStart().getLine();
                 right.charPosition = ctx.getStart().getCharPositionInLine();
-                return new DivisionNode(parent, left, right);
+
+                // TODO: Double check
+                ASTNode node = new DivisionNode(parent, left, right);
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             } else if (ctx.op.getText().contains("%")) {
                 left = visitPrimeexpr(ctx.primeexpr(), parent);
                 left.lineNumber = ctx.getStart().getLine();
@@ -364,7 +384,12 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 right = visitMultiexpr(ctx.multiexpr(), parent);
                 right.lineNumber = ctx.getStart().getLine();
                 right.charPosition = ctx.getStart().getCharPositionInLine();
-                return new ModuloNode(parent, left, right);
+
+                // TODO: Double check
+                ASTNode node = new ModuloNode(parent, left, right);
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                return node;
             } else return new ErrorNode(parent, "Invalid operator at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());

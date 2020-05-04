@@ -1,0 +1,41 @@
+num a = 10;
+num b = 5;
+num res = 0;
+vec v = <1,2>;
+mtx m = {1,2;3,4};
+
+
+// Addition
+res = a + 5;
+res = a + b;
+res = b + a;
+res = a + v; // Should produce error (incompatible types for operator)
+res = a + m; // Should produce error (incompatible types for operator)
+
+// Subtraction
+res = a - 5;
+res = a - b;
+res = b - a;
+res = a - v; // Should produce error (incompatible types for operator)
+res = a - m; // Should produce error (incompatible types for operator)
+
+// Modulo
+res = a % 5;
+res = a % b;
+res = b % a;
+res = a % v; // Should produce error (incompatible types for operator)
+res = a % m; // Should produce error (incompatible types for operator)
+
+// Division
+res = a / 5;
+res = a / b;
+res = b / a;
+res = a / v; // Should produce error (incompatible types for operator)
+res = a / m; // Should produce error (incompatible types for operator)
+
+// Multiplication
+res = a * 5;
+res = a * b;
+res = b * a;
+res = a * v; // Should produce error (returns vector)
+res = a * m; // Should produce error (returns matrix)

@@ -3,9 +3,6 @@ package AST;
 import visitors.*;
 
 public class CodeBlockNode extends ASTNode {
-    public boolean isReachable;
-    public boolean terminatesNormally;
-
     public CodeBlockNode(ASTNode parent) {
         super(parent);
     }

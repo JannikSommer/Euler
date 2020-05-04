@@ -6,6 +6,7 @@ public class AssignmentNode extends ASTNode {
 
     public AssignmentNode(ASTNode parentNode) {
         super(parentNode);
+        terminatesNormally = true;
     }
 
     public AssignmentNode(ASTNode parentNode, String id) {
@@ -15,7 +16,7 @@ public class AssignmentNode extends ASTNode {
     }
 
     public AssignmentNode(ASTNode parent, String id, String valIndex, ASTNode child) {
-        super(parent);
+        this(parent);
         this.children.add(new IdentificationNode(this, id));
         this.children.add(new SubscriptingNode(this, valIndex));
     }

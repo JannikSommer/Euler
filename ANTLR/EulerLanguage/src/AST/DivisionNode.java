@@ -14,10 +14,6 @@ public class DivisionNode extends BinaryExpressionNode {
         this.operator = "/";
     }
 
-    @Override
-    public double calculateValue() {
-        return ((ExpressionNode)children.get(0)).calculateValue() / ((ExpressionNode)children.get(1)).calculateValue();
-    }
 
     public void accept(IVisitor visitor) {
         visitor.visit(this);

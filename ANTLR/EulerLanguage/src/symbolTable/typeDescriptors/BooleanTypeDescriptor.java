@@ -6,4 +6,6 @@ public class BooleanTypeDescriptor extends TypeDescriptor{
         super(TypeDescriptorKind.bool);
         assignableTypes = new TypeDescriptorKind[] {TypeDescriptorKind.bool};
     }
+
+
 }

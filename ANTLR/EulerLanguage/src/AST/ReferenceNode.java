@@ -14,11 +14,6 @@ public class ReferenceNode extends ExpressionNode {
     }
 
     @Override
-    public double calculateValue() {
-        return 0; // TODO: Find out what to put here
-    }
-
-    @Override
     public void accept(IVisitor visitor) {
         visitor.visit(this);
     }

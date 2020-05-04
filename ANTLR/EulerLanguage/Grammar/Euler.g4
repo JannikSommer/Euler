@@ -21,14 +21,14 @@ dcl         :	NUMKW ID ASSIGN expr
 expr        :	addexpr
             ;
 
-ifstmt      :	IF logstmt THEN (stmt)+ elsestmts? END
+ifstmt      :	IF logstmt THEN (stmt)* elsestmts? END
             ;
 
-elsestmts   :	elseifstmts* ELSE THEN (stmt)+
+elsestmts   :	elseifstmts* ELSE THEN (stmt)*
             |   elseifstmts+
             ;
 
-elseifstmts :   ELSE IF logstmt THEN (stmt)+
+elseifstmts :   ELSE IF logstmt THEN (stmt)*
             ;
 
 printstmt   :   PRINT stringstmt (PLUS stringstmt)*
@@ -43,7 +43,7 @@ valindex    :   LSQBRACK NUM RSQBRACK
             |   LSQBRACK NUM (COMMA NUM)* RSQBRACK
             ;
 
-whilestmt   :	WHILE logstmt DO (stmt)+ END
+whilestmt   :	WHILE logstmt DO (stmt)* END
             ;
 
 assignstmt  :	ID valindex? ASSIGN expr
