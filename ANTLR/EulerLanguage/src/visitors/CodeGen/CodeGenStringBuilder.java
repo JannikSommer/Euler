@@ -61,6 +61,12 @@ public class CodeGenStringBuilder{
         AppendText("Vector VectorAddition(Vector vectorA, Vector vectorB);");
         AppendText("Matrix MatrixMatrixMultiplication(Matrix matrix, Matrix matrix2);");
         AppendText("Matrix MatrixAddition(Matrix matrixA, Matrix matrixB);");
+        AppendText("double DotProduct(Vector vector, Vector vector2);");
+        AppendText("Vector VectorMatrixMultiplication(Vector vector, Matrix matrix);");
+        AppendText("Vector CrossProduct(Vector vector, Vector vector2);");
+        AppendText("Matrix MatrixScalar(Matrix matrixA, double scalar);");
+        AppendText("Vector VectorScalar(Vector vector, double scalar);");
+        
     }
 
     public void AppendMain(){
@@ -108,10 +114,10 @@ public class CodeGenStringBuilder{
     }
 
     public void AppendFunctions(){
-        AppendCreateMatrixFunc();
+        AppendCreateMatrix();
         AppendSpace();
 
-        AppendCreateVectorFunc();
+        AppendCreateVector();
         AppendSpace();
 
         AppendFreeVector();
@@ -124,13 +130,30 @@ public class CodeGenStringBuilder{
         AppendSpace();
         
         AppendVectorAddition();
+        AppendSpace();
 
         AppendMatrixMatrixMultiplication();
+        AppendSpace();
 
+        AppendMatrixAddition();
+        AppendSpace();
 
+        AppendDotProduct();
+        AppendSpace();
+
+        AppendCrossProduct();
+        AppendSpace();
+
+        AppendVectorMatrixMultiplication();
+        AppendSpace();
+
+        AppendVectorScalar();
+        AppendSpace();
+
+        AppendMatrixScalar();
 	}
     
-    private void AppendCreateMatrixFunc(){
+    private void AppendCreateMatrix(){
         AppendText("Matrix CreateMatrix(const int rows, const int columns) {");
         scopeIndentation++;
         AppendText("int i;");
@@ -150,7 +173,7 @@ public class CodeGenStringBuilder{
         AppendText("}");
     }
 
-    private void AppendCreateVectorFunc(){
+    private void AppendCreateVector(){
         AppendText("Vector CreateVector(const int length){");
         scopeIndentation++;
         AppendText("Vector result;");
@@ -257,6 +280,88 @@ public class CodeGenStringBuilder{
         scopeIndentation++;
         AppendText("for(j = 0; j < matrixA.columns; j++)");
         AppendText("result.elements[i][j] = matrixA.elements[i][j] + matrixB.elements[i][j];");
+        scopeIndentation--;
+        AppendText("}");
+        AppendText("return result;");
+        scopeIndentation--;
+        AppendText("}");
+    }
+
+    private void AppendCrossProduct(){
+        AppendText("Vector CrossProduct(Vector vector, Vector vector2){");
+        scopeIndentation++;
+        AppendText("Vector result = CreateVector(vector.length);");
+        AppendText("result.elements[0] = vector.elements[2] * vector2.elements[3] - vector2.elements[2] * vector.elements[3];");
+        AppendText("result.elements[1] = vector2.elements[1] * vector.elements[3] - vector.elements[1] * vector2.elements[3];");
+        AppendText("result.elements[2] = vector.elements[1] * vector2.elements[2] - vector2.elements[1] * vector.elements[2];");
+        AppendText("return result;");
+        scopeIndentation--;
+        AppendText("}");
+    }
+
+    private void AppendDotProduct(){
+        AppendText("double DotProduct(Vector vector, Vector vector2){");
+        scopeIndentation++;
+        AppendText("int i;");
+        AppendText("double result = 0.0;");
+        AppendSpace();
+        AppendText("for (i = 0; i < vector.length; i++){");
+        scopeIndentation++;
+        AppendText("result += vector.elements[i]*vector2.elements[i];");
+        scopeIndentation--;
+        AppendText("}");
+        AppendText("return result;");
+        scopeIndentation--;
+        AppendText("}");
+    }
+
+    private void AppendVectorMatrixMultiplication(){
+        AppendText("Vector VectorMatrixMultiplication(Vector vector, Matrix matrix){");
+        scopeIndentation++;
+        AppendText("int i, j;");
+        AppendText("Vector result = CreateVector(matrix.columns);");
+        AppendSpace();
+        AppendText("for(i = 0; i < matrix.rows; i++){");
+        scopeIndentation++;
+        AppendText("for(j = 0; j < matrix.columns; j++){");
+        scopeIndentation++;
+        AppendText("result.elements[i] += matrix.elements[j][i] *vector.elements[j];");
+        scopeIndentation--;
+        AppendText("}");
+        scopeIndentation--;
+        AppendText("}");
+        AppendSpace();
+        AppendText("return result;");
+        scopeIndentation--;
+        AppendText("}");
+    }
+
+    private void AppendVectorScalar(){
+        AppendText("Vector VectorScalar(Vector vector, double scalar){");
+        scopeIndentation++;
+        AppendText("int i;");
+        AppendText("Vector result = CreateVector(vector.length);");
+        AppendText("for(i = 0; i < vector.length; i++){");
+        scopeIndentation++;
+        AppendText("result.elements[i] = vector.elements[i] * scalar;");
+        scopeIndentation--;
+        AppendText("}");
+        AppendText("return result;");
+        scopeIndentation--;
+        AppendText("}");
+    }
+
+    private void AppendMatrixScalar(){
+        AppendText("Matrix MatrixScalar(Matrix matrixA, double scalar){");
+        scopeIndentation++;
+        AppendText("int i, j;");
+        AppendText("Matrix result = CreateMatrix(matrixA.rows, matrixA.columns);");
+        AppendText("for(i = 0; i < matrixA.rows; i++){");
+        scopeIndentation++;
+        AppendText("for(j = 0; j < matrixA.columns; j++)");
+        scopeIndentation++;
+        AppendText("result.elements[i][j] = matrixA.elements[i][j] * scalar;");
+        scopeIndentation--;
         scopeIndentation--;
         AppendText("}");
         AppendText("return result;");
