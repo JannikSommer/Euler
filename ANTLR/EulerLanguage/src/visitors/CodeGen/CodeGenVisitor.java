@@ -49,10 +49,26 @@ public class CodeGenVisitor implements IVisitor {
     
     @Override
     public void visit(AdditionNode node){
-        //TODO add vector and matrix handling
-        node.children.get(0).accept(this);
-        currentString += " + ";
-        node.children.get(1).accept(this);
+        TypeDescriptorKind LeftChildKind = node.children.get(0).type.kind;
+        TypeDescriptorKind RightChildKind = node.children.get(1).type.kind;
+
+        if(LeftChildKind == TypeDescriptorKind.number && RightChildKind == TypeDescriptorKind.number){ //number+number
+            node.children.get(0).accept(this);
+            currentString += " + ";
+            node.children.get(1).accept(this);
+        } else if(LeftChildKind == TypeDescriptorKind.matrix && RightChildKind == TypeDescriptorKind.matrix){ //matrix+matrix
+            currentString += "MatrixAddition(";
+            node.children.get(0).accept(this);
+            currentString += ", ";
+            node.children.get(1).accept(this);
+            currentString += ") ";
+		} else if(LeftChildKind == TypeDescriptorKind.vector && RightChildKind == TypeDescriptorKind.vector){ //vector+vector
+            currentString += "VectorAddition(";
+            node.children.get(0).accept(this);
+            currentString += ", ";
+            node.children.get(1).accept(this);
+            currentString += ") ";
+		}
     }
         
     @Override
@@ -89,30 +105,48 @@ public class CodeGenVisitor implements IVisitor {
         currentString = "";
         node.children.get(0).accept(this);
         String name = currentString;
+        
+        if(node.children.get(1) instanceof VectorExpressionNode){
+            CGSBuilder.AppendText("FreeVector(&" + name + ");");
 
-        CGSBuilder.AppendText("FreeVector(&" + name + ");");
+            currentString = name + " = ";
+            node.children.get(1).accept(this); // Create vector (VectorExpressionNode)
+            CGSBuilder.AppendText(currentString);
 
-        currentString = name + " = ";
-        node.children.get(1).accept(this); // Create vector (VectorExpressionNode)
-        CGSBuilder.AppendText(currentString);
+            VectorAssignChildren(name, node.children.get(1).children);
+            CGSBuilder.AppendSpace();
+        } else{
+            CGSBuilder.AppendText("FreeVector(&" + name + ");");
 
-        VectorAssignChildren(name, node.children.get(1).children);
-        CGSBuilder.AppendSpace();
+            currentString = name + " = ";
+            node.children.get(1).accept(this);
+            currentString += ";";
+            CGSBuilder.AppendText(currentString);
+		}
     }
 
     private void AssignMatrix(AssignmentNode node) {
         currentString = "";
         node.children.get(0).accept(this);
         String name = currentString;
+        
+        if(node.children.get(1) instanceof MatrixExpressionNode){
+            CGSBuilder.AppendText("FreeMatrix(&" + name + ");");
 
-        CGSBuilder.AppendText("FreeMatrix(&" + name + ");");
+            currentString = name + " = ";
+            node.children.get(1).accept(this); // Create vector (VectorExpressionNode)
+            CGSBuilder.AppendText(currentString);
 
-        currentString = name + " = ";
-        node.children.get(1).accept(this); // Create vector (VectorExpressionNode)
-        CGSBuilder.AppendText(currentString);
+            MatrixAssignChildren(name, node.children.get(1).children);
+            CGSBuilder.AppendSpace();
+        } else{
+            CGSBuilder.AppendText("FreeMatrix(&" + name + ");");
 
-        MatrixAssignChildren(name, node.children.get(1).children);
-        CGSBuilder.AppendSpace();
+            currentString = name + " = ";
+            node.children.get(1).accept(this); // Create vector (VectorExpressionNode)
+            currentString += ";";
+            CGSBuilder.AppendText(currentString);
+		}
     }
 
     @Override
@@ -218,18 +252,27 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(MatrixDeclarationNode node){
-        currentString = "Matrix ";
-        node.children.get(0).accept(this);
-        currentString += " = ";
-        node.children.get(1).accept(this);
-        CGSBuilder.AppendText(currentString);
+        if(node.children.get(1) instanceof MatrixExpressionNode){
+            currentString = "Matrix ";
+            node.children.get(0).accept(this);
+            currentString += " = ";
+            node.children.get(1).accept(this);
+            CGSBuilder.AppendText(currentString);
 
-        currentString = "";
-        node.children.get(0).accept(this); //currentString = ID
-        DeclaredMatrices.add(currentString);
+            currentString = "";
+            node.children.get(0).accept(this); //currentString = ID
+            DeclaredMatrices.add(currentString);
 
-        MatrixAssignChildren(currentString, node.children.get(1).children);
-        CGSBuilder.AppendSpace();
+            MatrixAssignChildren(currentString, node.children.get(1).children);
+            CGSBuilder.AppendSpace();
+        } else{
+            currentString = "Matrix ";
+            node.children.get(0).accept(this);
+            currentString += " = ";
+            node.children.get(1).accept(this);
+            currentString += ";";
+            CGSBuilder.AppendText(currentString);
+		}
     }
 
     private void MatrixAssignChildren(String ID, ArrayList<ASTNode> children) {
@@ -258,10 +301,62 @@ public class CodeGenVisitor implements IVisitor {
     
     @Override
     public void visit(MultiplicationNode node){
-        //TODO add vector and matrix handling
-        node.children.get(0).accept(this);
-        currentString += " * ";
-        node.children.get(1).accept(this);
+        TypeDescriptorKind LeftChildKind = node.children.get(0).type.kind;
+        TypeDescriptorKind RightChildKind = node.children.get(1).type.kind;
+
+        if(LeftChildKind == TypeDescriptorKind.number && RightChildKind == TypeDescriptorKind.number){ //number*number
+            node.children.get(0).accept(this);
+            currentString += " * ";
+            node.children.get(1).accept(this);
+		} else if(LeftChildKind == TypeDescriptorKind.matrix && RightChildKind == TypeDescriptorKind.matrix){ //matrix*matrix
+            currentString += "MatrixMatrixMultiplication(";
+            node.children.get(0).accept(this);
+            currentString += ", ";
+            node.children.get(1).accept(this);
+            currentString += ") ";
+		} else if(LeftChildKind == TypeDescriptorKind.vector && RightChildKind == TypeDescriptorKind.matrix){ //vector*matrix
+            currentString += "VectorMatrixMultiplication(";
+            node.children.get(0).accept(this);
+            currentString += ", ";
+            node.children.get(1).accept(this);
+            currentString += ") ";
+        } else if(LeftChildKind == TypeDescriptorKind.matrix && RightChildKind == TypeDescriptorKind.vector){ //matrix*vector
+            currentString += "MatrixVectorMultiplication(";
+            node.children.get(0).accept(this);
+            currentString += ", ";
+            node.children.get(1).accept(this);
+            currentString += ") ";
+        } else if(LeftChildKind == TypeDescriptorKind.vector && RightChildKind == TypeDescriptorKind.vector){ //vector*vector (dot product)
+            currentString += "DotProduct(";
+            node.children.get(0).accept(this);
+            currentString += ", ";
+            node.children.get(1).accept(this);
+            currentString += ") ";
+        } else if(LeftChildKind == TypeDescriptorKind.vector && RightChildKind == TypeDescriptorKind.number){ //vector*number
+            currentString += "VectorScalar(";
+            node.children.get(0).accept(this);
+            currentString += ", ";
+            node.children.get(1).accept(this);
+            currentString += ") ";
+        } else if(LeftChildKind == TypeDescriptorKind.number && RightChildKind == TypeDescriptorKind.vector){ //number*vector (inverted)
+            currentString += "VectorScalar(";
+            node.children.get(1).accept(this);
+            currentString += ", ";
+            node.children.get(0).accept(this);
+            currentString += ") ";
+        } else if(LeftChildKind == TypeDescriptorKind.matrix && RightChildKind == TypeDescriptorKind.number){ //matrix*number
+            currentString += "MatrixScalar(";
+            node.children.get(0).accept(this);
+            currentString += ", ";
+            node.children.get(1).accept(this);
+            currentString += ") ";
+        } else if(LeftChildKind == TypeDescriptorKind.number && RightChildKind == TypeDescriptorKind.matrix){ //number*matrix (inverted)
+            currentString += "MatrixScalar(";
+            node.children.get(1).accept(this);
+            currentString += ", ";
+            node.children.get(0).accept(this);
+            currentString += ") ";
+        } 
     }
 
     @Override
@@ -337,7 +432,9 @@ public class CodeGenVisitor implements IVisitor {
 	
     @Override
     public void visit(StringNode node){
-        currentString += node.string.substring(1, node.string.length() - 1);
+        String string = node.string.substring(1, node.string.length() - 1);
+        string = string.replace("%", "%%");
+        currentString += string;
     }
 
     @Override
@@ -365,10 +462,26 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(SubtractionNode node){
-        //TODO add vector and matrix handling
-        node.children.get(0).accept(this);
-        currentString += " - ";
-        node.children.get(1).accept(this);
+        TypeDescriptorKind LeftChildKind = node.children.get(0).type.kind;
+        TypeDescriptorKind RightChildKind = node.children.get(1).type.kind;
+
+        if(LeftChildKind == TypeDescriptorKind.number && RightChildKind == TypeDescriptorKind.number){ //number-number
+            node.children.get(0).accept(this);
+            currentString += " - ";
+            node.children.get(1).accept(this);
+        } else if(LeftChildKind == TypeDescriptorKind.matrix && RightChildKind == TypeDescriptorKind.matrix){ //matrix-matrix
+            currentString += "MatrixSubtraction(";
+            node.children.get(0).accept(this);
+            currentString += ", ";
+            node.children.get(1).accept(this);
+            currentString += ") ";
+		} else if(LeftChildKind == TypeDescriptorKind.vector && RightChildKind == TypeDescriptorKind.vector){ //vector-vector
+            currentString += "VectorSubtraction(";
+            node.children.get(0).accept(this);
+            currentString += ", ";
+            node.children.get(1).accept(this);
+            currentString += ") ";
+		}
     }
     
     @Override
@@ -381,18 +494,27 @@ public class CodeGenVisitor implements IVisitor {
 
     @Override
     public void visit(VectorDeclarationNode node){
-        currentString = "Vector ";
-        node.children.get(0).accept(this);
-        currentString += " = ";
-        node.children.get(1).accept(this); // Create vector (VectorExpressionNode)
-        CGSBuilder.AppendText(currentString);
+        if(node.children.get(1) instanceof VectorExpressionNode){
+            currentString = "Vector ";
+            node.children.get(0).accept(this);
+            currentString += " = ";
+            node.children.get(1).accept(this); // Create vector (VectorExpressionNode)
+            CGSBuilder.AppendText(currentString);
 
-        currentString = "";
-        node.children.get(0).accept(this); //currentString = ID
-        DeclaredVectors.add(currentString);
+            currentString = "";
+            node.children.get(0).accept(this); //currentString = ID
+            DeclaredVectors.add(currentString);
 
-        VectorAssignChildren(currentString, node.children.get(1).children);
-        CGSBuilder.AppendSpace();
+            VectorAssignChildren(currentString, node.children.get(1).children);
+            CGSBuilder.AppendSpace();
+        } else{
+            currentString = "Vector ";
+            node.children.get(0).accept(this);
+            currentString += " = ";
+            node.children.get(1).accept(this);
+            currentString += ";";
+            CGSBuilder.AppendText(currentString);
+		}
     }
 
     private void VectorAssignChildren(String ID, ArrayList<ASTNode> children){
@@ -403,6 +525,7 @@ public class CodeGenVisitor implements IVisitor {
             currentString += ID + ".elements[" + Index + "] = ";
             child.accept(this);
             currentString += "; ";
+            Index++;
         }
         CGSBuilder.AppendText(currentString);
     }

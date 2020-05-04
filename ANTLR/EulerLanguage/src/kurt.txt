@@ -1,94 +1,18 @@
-num a = 10;
-num b = 5;
-num res = 0;
-vec v = <1,2>;
-mtx m = {1,2;3,4};
+num i = 0;
+mtx a = {0.95, 0; 0, 1};
 
+num index = 0;
+mtx A = {0.95, 0; 0, 1};
+vec x = <12, 0>;
+mtx B = {1.1, 5};
+vec u = <1>;
 
-/* If-statement */
-// Less than
-if 1 < 2 then
- // Code
-end
-
-if v < 1 then   // Produces error (not boolean expression)
- // Code
-end
-
-// Greater than
-if 1 > 2 then
- // Code
-end
-
-if v > 1 then   // Produces error (not boolean expression)
- // Code
-end
-
-
-// Equal
-if 1 == 2 then
- // Code
-end
-
-if v == 1 then  // Produces error (not boolean expression)
- // Code
-end
-
-// Not equal
-if 1 != 2 then
- // Code
-end
-
-if v != 1 then  // Produces error (not boolean expression)
- // Code
-end
-
-
-// Less than equal
-if 1 <= 2 then
- // Code
-end
-
-if v <= 1 then  // Produces error (not boolean expression)
- // Code
-end
-
-
-// Greater than equal
-if 1 >= 2 then
- // Code
-end
-
-if v >= 1 then  // Produces error (not boolean expression)
- // Code
-end
-
-/* If-else statements */
-if 1 < 2 then
-    // Code
-else then
-    // Code
-end
-
-if 5 < 3 then
-    // Code
-else if 3 < 4 then
-    // Code
-end
-
-if 5 < 3 then
-    // Code
-else if v < 4 then // Produces error (not boolean expression)
-    // Code
-end
-
-
-/* While loops */
-
-while 1 < 2 do
-    // code
-end
-
-while v < 2 do  // Should produce error
-    // code
+while index < 50 do
+    if x[0] < 20 then
+        u = <1>;
+    else if x[0] > 20 then
+        u = <0>;
+    end
+    x = A*x*(B*u);
+    print "temp: " + x[0] + "price: " + x[1];
 end

@@ -419,7 +419,14 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 node.charPosition = ctx.getStart().getCharPositionInLine();
                 return node;
             } else if (ctx.LPAREN() != null) {
-                return visitAddexpr(ctx.addexpr(), parent);
+                ASTNode node = new ParenthesesNode(parent);
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
+                ASTNode childNode = visitAddexpr(ctx.addexpr(), node);
+                childNode.lineNumber = ctx.getStart().getLine();
+                childNode.charPosition = ctx.getStart().getCharPositionInLine();
+                node.children.add(childNode);
+                return node;
             } else return new ErrorNode(parent, "Invalid operator at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         } catch (NullPointerException e) {
             return new ErrorNode(parent, "Invalid expression at line " + ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());

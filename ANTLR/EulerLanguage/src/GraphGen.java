@@ -33,10 +33,6 @@ public class GraphGen {
         AstBuilderVisitor astBuilder = new AstBuilderVisitor();
         ASTNode node = astBuilder.visit(tree);
 
-        SymbolTable symbolTable = new SymbolTable();
-        node.accept(new SemanticsVisitor(symbolTable));
-        node.accept(new ErrorVisitor());
-
         TreeToGraphGen TreeGenerator = new TreeToGraphGen("Graph");
         String Tree = TreeGenerator.MakeGraph(node);
 
