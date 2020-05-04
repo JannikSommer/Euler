@@ -409,7 +409,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                     return node;
                 }
                 String id = ctx.ID().getText();
-                ASTNode node =  new IdentificationNode(parent, id);
+                ASTNode node =  new ReferenceNode(parent, id);
                 node.lineNumber = ctx.getStart().getLine();
                 node.charPosition = ctx.getStart().getCharPositionInLine();
                 return node;
