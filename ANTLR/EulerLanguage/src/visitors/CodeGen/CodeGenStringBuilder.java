@@ -66,7 +66,8 @@ public class CodeGenStringBuilder{
         AppendText("Vector CrossProduct(Vector vector, Vector vector2);");
         AppendText("Matrix MatrixScalar(Matrix matrixA, double scalar);");
         AppendText("Vector VectorScalar(Vector vector, double scalar);");
-        
+        AppendText("Vector VectorSubtraction(Vector vectorA, Vector vectorB);");
+        AppendText("Matrix MatrixSubtraction(Matrix matrixA, Matrix matrixB);");
     }
 
     public void AppendMain(){
@@ -151,6 +152,13 @@ public class CodeGenStringBuilder{
         AppendSpace();
 
         AppendMatrixScalar();
+        AppendSpace();
+
+        AppendVectorSubtraction();
+        AppendSpace();
+
+        AppendMatrixSubtraction();
+
 	}
     
     private void AppendCreateMatrix(){
@@ -362,6 +370,38 @@ public class CodeGenStringBuilder{
         scopeIndentation++;
         AppendText("result.elements[i][j] = matrixA.elements[i][j] * scalar;");
         scopeIndentation--;
+        scopeIndentation--;
+        AppendText("}");
+        AppendText("return result;");
+        scopeIndentation--;
+        AppendText("}");
+    }
+
+    private void AppendMatrixSubtraction(){
+        AppendText("Matrix MatrixSubtraction(Matrix matrixA, Matrix matrixB){");
+        scopeIndentation++;
+        AppendText("int i, j;");
+        AppendText("Matrix result = CreateMatrix(matrixA.rows, matrixB.columns);");
+        AppendText("for(i = 0; i < matrixA.rows; i++){");
+        scopeIndentation++;
+        AppendText("for(j = 0; j < matrixA.columns; j++)");
+        AppendText("result.elements[i][j] = matrixA.elements[i][j] - matrixB.elements[i][j];");
+        scopeIndentation--;
+        AppendText("}");
+        AppendText("return result;");
+        scopeIndentation--;
+        AppendText("}");
+    }
+
+    private void AppendVectorSubtraction(){
+        AppendText("Vector VectorSubtraction(Vector vectorA, Vector vectorB){");
+        scopeIndentation++;
+        AppendText("int i;");
+        AppendText("Vector result = CreateVector(vectorA.length);");
+        AppendSpace();
+        AppendText("for(i = 0; i < vectorA.length; i++){");
+        scopeIndentation++;
+        AppendText("result.elements[i] = vectorA.elements[i] - vectorB.elements[i];");
         scopeIndentation--;
         AppendText("}");
         AppendText("return result;");
