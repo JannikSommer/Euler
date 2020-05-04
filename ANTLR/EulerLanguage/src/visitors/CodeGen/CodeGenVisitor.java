@@ -88,7 +88,7 @@ public class CodeGenVisitor implements IVisitor {
                 AssignMatrix(node);
             }
         } catch (NullPointerException e){
-            System.out.println("node.type.kind is null");
+            System.out.println("Error in CodeGenVisitor.visit(AssignmentNode node): node.type.kind is null");
         }
 
     }
@@ -461,7 +461,7 @@ public class CodeGenVisitor implements IVisitor {
     @Override
     public void visit(SubscriptingNode node){
         for(int index : node.index){
-            currentString += "[" + index + "]";
+            currentString += ".elements[" + index + "]";
 		}
     }
 
