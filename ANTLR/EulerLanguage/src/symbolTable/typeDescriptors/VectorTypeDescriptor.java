@@ -34,7 +34,11 @@ public class VectorTypeDescriptor extends CollectionTypeDescriptor {
             } else if(type.kind == TypeDescriptorKind.matrix) {
                 return new VectorTypeDescriptor(((MatrixTypeDescriptor)type).columns, elementType);
             } else if(type.kind == TypeDescriptorKind.vector) {
-                return new NumberTypeDescriptor();
+                if(operator.equals("*")) {
+                    return new NumberTypeDescriptor();
+                } else if(operator.equals("+") || operator.equals("-")) {
+                    return this;
+                }
             }
         }
         return null;

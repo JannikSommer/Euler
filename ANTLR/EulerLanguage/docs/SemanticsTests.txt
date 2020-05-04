@@ -56,7 +56,8 @@
 
 
 --- Iteration statements ---
-
+- Checks for correct boolean expression
+- Can have an empty body
 
 
 --- Printing ---
@@ -74,3 +75,7 @@
 
 
 --- Selection statements ---
+- Works for all (allowed) logical operators
+- Checks for boolean expressions for conditions and reports an error otherwise
+- Can have an empty body
+- Produces else-if chains with condition checking

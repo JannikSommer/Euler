@@ -10,6 +10,6 @@ while index < 50 do
     else if x[0] > 20 then
         u = <0>;
     end
-    x = A*x*(B*u);
+    x = (x * A) + (u * B);
     print "temp: " + x[0] + "price: " + x[1];
 end

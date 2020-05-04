@@ -174,6 +174,8 @@ public class SemanticsVisitor extends NodeVisitor {
                 break;
             }
         }
+
+        ((MatrixTypeDescriptor) node.type).elementType = elementType;
     }
 
     @Override
