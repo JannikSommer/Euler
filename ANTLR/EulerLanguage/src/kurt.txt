@@ -1,8 +1,10 @@
 num index = 0;
 mtx A = {0.95, 0; 0, 1};
 vec x = <12, 0>;
-mtx B = {1.1, 5};
+mtx B = {1.1; 5};
 vec u = <1>;
+vec Ax = <0>;
+vec Bu = <0>;
 
 while index < 50 do
     if x[0] < 20 then
@@ -10,6 +12,14 @@ while index < 50 do
     else if x[0] > 20 then
         u = <0>;
     end
-    x = (x * A) + (u * B);
-    print "temp: " + x[0] + "price: " + x[1];
+    Ax = A * x;
+    Bu = B * u;
+
+    print "Ax[0]: " + Ax[0] + ", Ax[1]: " + Ax[1];
+    print "Bu[0]: " + Bu[0] + ", Bu[1]: " + Bu[1];
+
+    x = Ax + Bu;
+    index = index + 1;
+
+    print index + ": temp: " + x[0] + ", price: " + x[1] + "\n";
 end
