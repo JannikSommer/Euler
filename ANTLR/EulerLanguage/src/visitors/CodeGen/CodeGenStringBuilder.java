@@ -16,17 +16,27 @@ public class CodeGenStringBuilder{
     public void AppendHeader(){
         AppendDirectives();
         AppendSpace();
+        //AppendDefines();
+        AppendSpace();
         AppendStructures();
         AppendSpace();
         AppendPrototypes();
         AppendSpace();
 	}
 
+	private void AppendDefines(){
+        AppendText("#define malloc(x) GC_malloc(x)");
+        AppendText("#define calloc(n,x) GC_malloc((n)*(x))");
+        AppendText("#define realloc(p,x) GC_realloc((p),(x))");
+        AppendText("#define free(x) (x) = NULL");
+    }
+
     private void AppendDirectives(){
         AppendComment("Include directives:");
         AppendSpace();
         AppendText("#include <stdio.h>");
         AppendText("#include <stdlib.h>");
+        AppendText("#include \"gc.h\"");
     }
 
     private void AppendStructures(){
@@ -87,7 +97,7 @@ public class CodeGenStringBuilder{
     private void AskForInputBeforeClosing(){
         AppendSpace();
         AppendText("printf(\"\\n\");");
-        AppendText("scanf(\"%s\");");
+        AppendText("getchar();");
     }
 
     public void AppendText(String text){

@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "gc.h"
+
 
 /* Struct Declarations */
 
@@ -44,40 +46,60 @@ int main(int argc, char *argv[]){
 	Vector x = CreateVector(2);
 	x.elements[0] = 12.0; x.elements[1] = 0.0; 
 
-	Matrix B = CreateMatrix(1, 2);
-	B.elements[0][0] = 1.1; B.elements[0][1] = 5.0; 
+	Matrix B = CreateMatrix(2, 1);
+	B.elements[0][0] = 1.1; 
+	B.elements[1][0] = 5.0; 
 
 	Vector u = CreateVector(1);
 	u.elements[0] = 1.0; 
 
+	Vector Ax = CreateVector(1);
+	Ax.elements[0] = 0.0; 
+
+	Vector Bu = CreateVector(1);
+	Bu.elements[0] = 0.0; 
+
 	while(index<50.0){
 
-		if(x[0]<20.0){
+		if(x.elements[0]<20.0){
 			FreeVector(&u);
 			u = CreateVector(1);
 			u.elements[0] = 1.0; 
 
 		}
-		else if(x[0]>20.0){
+		else if(x.elements[0]>20.0){
 			FreeVector(&u);
 			u = CreateVector(1);
 			u.elements[0] = 0.0; 
 
 		}
-		num = (int*)&x;
-		x = VectorAddition((VectorMatrixMultiplication(x, A)), (VectorMatrixMultiplication(u, B))) ;
+		num = (int*)&Ax;
+		Ax = MatrixVectorMultiplication(A, x);
 		FreeVector((Vector*)num);
-		printf("temp: %0.2fprice: %0.2f\n", x.elements[0], x.elements[1]);
+		num = (int*)&Bu;
+		Bu = MatrixVectorMultiplication(B, u);
+		FreeVector((Vector*)num);
+		printf("Ax[0]: %0.2f, Ax[1]: %0.2f\n", Ax.elements[0], Ax.elements[1]);
+
+		printf("Bu[0]: %0.2f, Bu[1]: %0.2f\n", Bu.elements[0], Bu.elements[1]);
+
+		num = (int*)&x;
+		x = VectorAddition(Ax, Bu) ;
+		FreeVector((Vector*)num);
+		index = index + 1.0;
+		printf("%0.2f: temp: %0.2f, price: %0.2f\n\n", index, x.elements[0], x.elements[1]);
 
 	}
 
 	FreeVector(&x);
 	FreeVector(&u);
+	FreeVector(&Ax);
+	FreeVector(&Bu);
 	FreeMatrix(&A);
 	FreeMatrix(&B);
 
 	printf("\n");
-	scanf("%s");
+	getchar();
 
 	return EXIT_SUCCESS;
 }
