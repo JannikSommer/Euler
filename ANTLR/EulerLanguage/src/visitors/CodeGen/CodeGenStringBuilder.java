@@ -17,7 +17,7 @@ public class CodeGenStringBuilder{
         AppendDirectives();
         AppendSpace();
         //AppendDefines();
-        AppendSpace();
+        //AppendSpace();
         AppendStructures();
         AppendSpace();
         AppendPrototypes();
@@ -65,8 +65,8 @@ public class CodeGenStringBuilder{
         AppendSpace();
         AppendText("Matrix CreateMatrix(const int rows, const int columns);");
         AppendText("Vector CreateVector(const int length);");
-        AppendText("void FreeVector(Vector *vector);");
-        AppendText("void FreeMatrix(Matrix *matrix);");
+        //AppendText("void FreeVector(Vector *vector);");
+        //AppendText("void FreeMatrix(Matrix *matrix);");
         AppendText("Vector MatrixVectorMultiplication(Matrix matrix, Vector vector);");
         AppendText("Vector VectorAddition(Vector vectorA, Vector vectorB);");
         AppendText("Matrix MatrixMatrixMultiplication(Matrix matrix, Matrix matrix2);");
@@ -132,11 +132,11 @@ public class CodeGenStringBuilder{
         AppendCreateVector();
         AppendSpace();
 
-        AppendFreeVector();
-        AppendSpace();
+        //AppendFreeVector(); //for now
+        //AppendSpace();
 
-        AppendFreeMatrix();
-        AppendSpace();
+        //AppendFreeMatrix(); //for now
+        //AppendSpace();
 
         AppendMatrixVectorMultiplication();
         AppendSpace();
@@ -179,11 +179,11 @@ public class CodeGenStringBuilder{
         AppendText("Matrix result;");
         AppendText("result.rows = rows;");
         AppendText("result.columns = columns;");
-        AppendText("result.elements = (double**) calloc(rows ,sizeof(double*));");
+        AppendText("result.elements = (double**) GC_malloc(rows *sizeof(double*));");
         AppendSpace();
         AppendText("for(i = 0; i < rows; i++){");
         scopeIndentation++;
-        AppendText("result.elements[i] = calloc(columns ,sizeof(double));");
+        AppendText("result.elements[i] = GC_malloc(columns *sizeof(double));");
         scopeIndentation--;
         AppendText("}");
         AppendSpace();
@@ -197,7 +197,7 @@ public class CodeGenStringBuilder{
         scopeIndentation++;
         AppendText("Vector result;");
         AppendText("result.length = length;");
-        AppendText("result.elements = (double*) calloc(length ,sizeof(double));");
+        AppendText("result.elements = (double*) GC_malloc(length *sizeof(double));");
         AppendSpace();
         AppendText("return result;");
         scopeIndentation--;

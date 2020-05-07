@@ -32,7 +32,7 @@ public class CodeGenVisitor implements IVisitor {
     }
 
     private void PostWork(){
-        FreeALLVectorsAndMatrices();
+        //FreeALLVectorsAndMatrices();
         CGSBuilder.AppendCloseMain();
         CGSBuilder.AppendSpace();
         CGSBuilder.AppendFunctions();
@@ -108,7 +108,7 @@ public class CodeGenVisitor implements IVisitor {
         String name = currentString;
         
         if(node.children.get(1) instanceof VectorExpressionNode){
-            CGSBuilder.AppendText("FreeVector(&" + name + ");");
+            //CGSBuilder.AppendText("FreeVector(&" + name + ");");
 
             currentString = name + " = ";
             node.children.get(1).accept(this); // Create vector (VectorExpressionNode)
@@ -124,7 +124,7 @@ public class CodeGenVisitor implements IVisitor {
             currentString += ";";
             CGSBuilder.AppendText(currentString);
 
-            CGSBuilder.AppendText("FreeVector((Vector*)num);");
+            //CGSBuilder.AppendText("FreeVector((Vector*)num);");
 		}
     }
 
@@ -134,7 +134,7 @@ public class CodeGenVisitor implements IVisitor {
         String name = currentString;
         
         if(node.children.get(1) instanceof MatrixExpressionNode){
-            CGSBuilder.AppendText("FreeMatrix(&" + name + ");");
+            //CGSBuilder.AppendText("FreeMatrix(&" + name + ");");
 
             currentString = name + " = ";
             node.children.get(1).accept(this); // Create vector (VectorExpressionNode)
@@ -150,7 +150,7 @@ public class CodeGenVisitor implements IVisitor {
             currentString += ";";
             CGSBuilder.AppendText(currentString);
 
-            CGSBuilder.AppendText("FreeMatrix((Matrix*)num);");
+            //CGSBuilder.AppendText("FreeMatrix((Matrix*)num);");
 		}
     }
 
