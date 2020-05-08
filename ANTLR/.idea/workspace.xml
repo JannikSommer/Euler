@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Euler:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,10 +25,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcf840de-b8e9-4031-9931-a873d99acf6e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Euler_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EulerLanguage/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/CodeGen/CodeGenStringBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/CodeGen/CodeGenStringBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph.gz" beforeDir="false" afterPath="$PROJECT_DIR$/Graph.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/test.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/ErrorVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/semantics/ErrorVisitor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,10 +60,11 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/EulerLanguage/src/kurt.txt" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -143,6 +150,10 @@
     <state x="814" y="302" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588580684416" />
     <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1588143607427" />
     <state x="814" y="302" key="#com.intellij.ide.util.MemberChooser/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587718270207" />
+    <state x="836" y="404" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1588930020774">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="836" y="404" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588930020774" />
     <state x="1063" y="594" width="433" height="218" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1588144367655">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -229,11 +240,11 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="860" y="434" key="IDE.errors.dialog/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645228630" />
-    <state x="586" y="188" key="SettingsEditor" timestamp="1588616842820">
+    <state x="586" y="188" key="SettingsEditor" timestamp="1588930508650">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="586" y="188" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588321118506" />
-    <state x="586" y="188" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588616842820" />
+    <state x="586" y="188" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588930508650" />
     <state x="781" y="344" key="SettingsEditor/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587980434073" />
     <state x="586" y="191" key="SettingsEditor/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587723404461" />
     <state x="668" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1587569224605">
@@ -274,6 +285,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="342" y="141" key="new project wizard/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587726272907" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1588922014270">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588922014270" />
     <state x="707" y="234" width="672" height="504" key="search.everywhere.popup" timestamp="1588616778329">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

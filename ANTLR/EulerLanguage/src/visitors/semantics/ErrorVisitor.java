@@ -5,7 +5,12 @@ import symbolTable.typeDescriptors.ErrorTypeDescriptor;
 import symbolTable.typeDescriptors.TypeDescriptorKind;
 import visitors.NodeVisitor;
 
+import java.util.ArrayList;
+
 public class ErrorVisitor extends NodeVisitor {
+
+    public ArrayList<String> errors = new ArrayList<>();
+
     @Override
     public void visit(AdditionNode node) {
         GenericPrint(node);
@@ -183,7 +188,7 @@ public class ErrorVisitor extends NodeVisitor {
 
     private void GenericPrint(ASTNode node) {
         if(node.type != null && node.type.kind == TypeDescriptorKind.error) {
-            printError((ErrorTypeDescriptor) node.type);
+            saveError((ErrorTypeDescriptor) node.type);
         } else {
             visitChildren(node);
         }
@@ -193,7 +198,17 @@ public class ErrorVisitor extends NodeVisitor {
         return node.type != null && node.type.kind == TypeDescriptorKind.error;
     }
 
-    private void printError(ErrorTypeDescriptor error) {
-        System.out.println(error.message);
+    public void printErrors(){
+        for (String message : errors) {
+            System.out.println(message);
+        }
+    }
+
+    public boolean hasErrors() {
+        return errors.size() != 0;
+    }
+
+    private void saveError(ErrorTypeDescriptor error) {
+        errors.add(error.message);
     }
 }
