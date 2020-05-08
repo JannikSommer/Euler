@@ -117,7 +117,7 @@ public class CodeGenVisitor implements IVisitor {
             VectorAssignChildren(name, node.children.get(1).children);
             CGSBuilder.AppendSpace();
         } else{
-            CGSBuilder.AppendText("num = (int*)&" + name + ";");
+            //CGSBuilder.AppendText("num = (int*)&" + name + ";");
 
             currentString = name + " = ";
             node.children.get(1).accept(this);
@@ -143,7 +143,7 @@ public class CodeGenVisitor implements IVisitor {
             MatrixAssignChildren(name, node.children.get(1).children);
             CGSBuilder.AppendSpace();
         } else{
-            CGSBuilder.AppendText("num = (int*)&" + name + ";");
+            //CGSBuilder.AppendText("num = (int*)&" + name + ";");
 
             currentString = name + " = ";
             node.children.get(1).accept(this); // Create vector (VectorExpressionNode)

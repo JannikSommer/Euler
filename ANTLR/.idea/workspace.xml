@@ -21,9 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dcf840de-b8e9-4031-9931-a873d99acf6e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/CodeGen/CodeGenStringBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/CodeGen/CodeGenStringBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EulerLanguage/src/visitors/CodeGen/CodeGenVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/EulerLanguage/src/visitors/CodeGen/CodeGenVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.c" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
