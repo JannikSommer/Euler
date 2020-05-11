@@ -23,9 +23,7 @@ public class main {
     private enum CompilerArgs {
         inputFile,
         outputFile,
-        outputFileFlag,
-        outputCsourceFlag,
-        optimizeLevelFlag
+        outputFileFlag
     }
 
 
@@ -40,7 +38,7 @@ public class main {
             if(compilationParameters != null) {
                 ASTNode DST = analyzeCode(compilationParameters.get(CompilerArgs.inputFile));
                 generateCode(DST, compilationParameters);
-                compileBinary(compilationParameters);
+                //compileBinary(compilationParameters);
             }
         }
     }
@@ -60,12 +58,6 @@ public class main {
                     compilationParameters.put(CompilerArgs.inputFile, in);
                 }
             }
-            if(args[i].equals("-s") || args[i].equals("-S")) {
-                compilationParameters.put(CompilerArgs.outputCsourceFlag, args[i]);
-            }
-            if(args[i].equals("-O1") ||args[i].equals("-O2") || args[i].equals("-O3") || args[i].equals("-Os")) {
-                compilationParameters.put(CompilerArgs.optimizeLevelFlag, args[i]);
-            }
             if(args[i].equals("-o")) {
                 compilationParameters.put(CompilerArgs.outputFileFlag, args[i]);
                 compilationParameters.put(CompilerArgs.outputFile, parsePath(args[i + 1]));
@@ -76,11 +68,11 @@ public class main {
         return compilationParameters;
     }
 
-    private static String parsePath(String path) {  // TODO: Only works for windows
+    private static String parsePath(String path) {  // TODO: Only works for windows. I think.
         if(path.contains(":")) {
-            return path.replace('\\', '/');
+            return path.replace('/', '\\');
         } else {
-            return System.getProperty("user.dir").replace('\\', '/') + "/" + path.replace('\\', '/');
+            return System.getProperty("user.dir") + "\\" + path.replace('/', '\\');
         }
     }
 
@@ -134,59 +126,6 @@ public class main {
             e.printStackTrace();
         }
     }
-
-    private static void compileBinary(Hashtable<CompilerArgs, String> compilerParams) {
-
-        int index = 0;
-        ArrayList<String> process = new ArrayList<String>();
-        process.add(getJarFolderPosition() + "/bin/gcc.exe");
-        if(compilerParams.get(CompilerArgs.optimizeLevelFlag) != null) {
-            process.add(compilerParams.get(CompilerArgs.optimizeLevelFlag));
-        }
-        process.add("-static");
-        process.add("-I" + getJarFolderPosition() + "/include");
-        process.add(compilerParams.get(CompilerArgs.inputFile).replace(".euler", "") + ".c");
-        process.add(getJarFolderPosition() + "/lib/libgc.a");
-        if(compilerParams.get(CompilerArgs.outputFileFlag) != null) {
-            process.add(compilerParams.get(CompilerArgs.outputFileFlag));
-            process.add(compilerParams.get(CompilerArgs.outputFile));
-        }
-
-        try {
-            for (String s : process) {
-                System.out.println(s);
-            }
-            new ProcessBuilder(process).start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static String getJarFolderPosition() {
-
-        String jarFile;
-        try {
-            jarFile = new File(main.class.getProtectionDomain().getCodeSource().getLocation()
-                    .toURI()).getPath();
-            return jarFile.substring(0, jarFile.lastIndexOf('\\')).replace('\\', '/');
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private static void keepCcode(Hashtable<CompilerArgs, String> compilerParams) {
-        if(compilerParams.get(CompilerArgs.outputCsourceFlag) == null) {
-            // Delete c-file
-            if(new File(compilerParams.get(CompilerArgs.outputFile) + ".c").delete()) {
-                // Deleted succesfully
-            }
-        } else {
-            // Move bswgc to output folder
-
-        }
-    }
-
 
     private static void noArgs() throws IOException {
         CharStream input = null;
