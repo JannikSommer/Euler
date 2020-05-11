@@ -34,11 +34,16 @@ public class main {
         if(args.length == 0) {
             noArgs();
         } else {
-            compilationParameters = parseArgs(args);
-            if(compilationParameters != null) {
-                ASTNode DST = analyzeCode(compilationParameters.get(CompilerArgs.inputFile));
-                generateCode(DST, compilationParameters);
-                //compileBinary(compilationParameters);
+            try {
+                compilationParameters = parseArgs(args);
+                if(compilationParameters != null) {
+                    ASTNode DST = analyzeCode(compilationParameters.get(CompilerArgs.inputFile));
+                    if(DST != null) {
+                        generateCode(DST, compilationParameters);
+                    }
+                }
+            } catch (Exception e) {
+
             }
         }
     }
