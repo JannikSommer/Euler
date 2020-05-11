@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Euler:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Euler_jar</output-path>
+    <root id="archive" name="ANTLR.jar">
+      <element id="module-output" name="ANTLR" />
+      <element id="library" level="project" name="org.jgrapht:jgrapht-core:1.4.0" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/EulerLanguage/antlr-intellij-plugin-v4/lib/ST4-4.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/EulerLanguage/antlr-intellij-plugin-v4/lib/antlr4-4.8-1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/EulerLanguage/antlr-intellij-plugin-v4/lib/javax.json-1.0.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/EulerLanguage/antlr-intellij-plugin-v4/lib/antlr-runtime-3.5.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/EulerLanguage/antlr-intellij-plugin-v4/lib/antlr4-runtime-4.8-1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/EulerLanguage/antlr-intellij-plugin-v4/lib/searchableOptions-1.14.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/EulerLanguage/antlr-intellij-plugin-v4/lib/intellij-plugin-v4-1.14.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/EulerLanguage/antlr-intellij-plugin-v4/lib/antlr4-intellij-adaptor-0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/EulerLanguage/antlr-intellij-plugin-v4/lib/org.abego.treelayout.core-1.0.3.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
