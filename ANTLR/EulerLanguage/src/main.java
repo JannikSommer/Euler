@@ -78,9 +78,9 @@ public class main {
 
     private static String parsePath(String path) {  // TODO: Only works for windows
         if(path.contains(":")) {
-            return path.replace('/', '\\');
+            return path.replace('\\', '/');
         } else {
-            return System.getProperty("user.dir") + "\\" + path.replace('/', '\\');
+            return System.getProperty("user.dir").replace('\\', '/') + "/" + path.replace('\\', '/');
         }
     }
 
@@ -138,22 +138,24 @@ public class main {
     private static void compileBinary(Hashtable<CompilerArgs, String> compilerParams) {
 
         int index = 0;
-        String[] process = new String[compilerParams.size() + 4];
-        process[index++] = getJarFolderPosition() + "bin\\gcc.exe";
+        ArrayList<String> process = new ArrayList<String>();
+        process.add(getJarFolderPosition() + "/bin/gcc.exe");
         if(compilerParams.get(CompilerArgs.optimizeLevelFlag) != null) {
-            process[index++] = compilerParams.get(CompilerArgs.optimizeLevelFlag);
+            process.add(compilerParams.get(CompilerArgs.optimizeLevelFlag));
         }
-        process[index++] = "-static";
-        process[index++] = "-I" + getJarFolderPosition() + "\\include";
-        process[index++] = compilerParams.get(CompilerArgs.inputFile) + ".c";
-        process[index++] = "-I" + getJarFolderPosition() + "\\lib\\libgc.a";
+        process.add("-static");
+        process.add("-I" + getJarFolderPosition() + "/include");
+        process.add(compilerParams.get(CompilerArgs.inputFile).replace(".euler", "") + ".c");
+        process.add(getJarFolderPosition() + "/lib/libgc.a");
         if(compilerParams.get(CompilerArgs.outputFileFlag) != null) {
-            process[index++] = compilerParams.get(CompilerArgs.outputFileFlag);
-            process[index++] = compilerParams.get(CompilerArgs.outputFile);
+            process.add(compilerParams.get(CompilerArgs.outputFileFlag));
+            process.add(compilerParams.get(CompilerArgs.outputFile));
         }
 
         try {
-            System.out.println(process[0]);
+            for (String s : process) {
+                System.out.println(s);
+            }
             new ProcessBuilder(process).start();
         } catch (IOException e) {
             e.printStackTrace();
@@ -166,7 +168,7 @@ public class main {
         try {
             jarFile = new File(main.class.getProtectionDomain().getCodeSource().getLocation()
                     .toURI()).getPath();
-            return jarFile.substring(0, jarFile.lastIndexOf('\\'));
+            return jarFile.substring(0, jarFile.lastIndexOf('\\')).replace('\\', '/');
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
