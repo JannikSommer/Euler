@@ -19,7 +19,7 @@ import java.net.URISyntaxException;
 import java.util.*;
 
 
-public class main {
+public class mainWindows {
     private enum CompilerArgs {
         inputFile,
         outputFile,
