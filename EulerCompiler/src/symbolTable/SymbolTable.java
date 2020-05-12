@@ -14,15 +14,14 @@ public class SymbolTable {
     public SymbolTable() {}
 
     public void enterSymbol(String name, Attributes attr) {
-        Attributes oldSym = retrieveSymbol(name);
-        attr.name = name;
-
         // Add to scope display
+        attr.name = name;
         attr.level = scopes.get(depth);
         attr.depth = depth;
         scopes.get(depth).add(attr);
 
         // Add to hashtable
+        Attributes oldSym = retrieveSymbol(name);
         if(oldSym == null) {
             symbols.put(attr.name, attr);;
         } else {
@@ -38,8 +37,8 @@ public class SymbolTable {
 
     public boolean declaredLocally(String name) {
         Attributes sym = retrieveSymbol(name);      // Retrieves the symbol
-        return sym != null && sym.depth == depth;   // If a symbol is found and is at the same nesting depth it has already been declared.
-    }
+        return sym != null && sym.depth == depth;   // If a symbol is found and is at the same (continued below)
+    }                                               // nesting depth it has already been declared.
 
     public void openScope() {
         depth++;
