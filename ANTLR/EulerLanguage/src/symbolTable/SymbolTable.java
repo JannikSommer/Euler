@@ -1,5 +1,6 @@
 package symbolTable;
 
+import org.w3c.dom.Attr;
 import symbolTable.attributes.Attributes;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -14,7 +15,6 @@ public class SymbolTable {
 
     public void enterSymbol(String name, Attributes attr) {
         Attributes oldSym = retrieveSymbol(name);
-
         attr.name = name;
 
         // Add to scope display
@@ -50,13 +50,15 @@ public class SymbolTable {
 
     public void closeScope() {
         Attributes prevSym;
-        for (int i = 0; i < scopes.get(depth).size(); i++) {        // Iterate through all symbols in this scope
-            prevSym = scopes.get(depth).get(i).var;                 // Get an earlier declaration with the same name
-            symbols.remove(scopes.get(depth).get(i).name);          // Remove the current symbol from the symbol table as it cannot be accessed outside the scope
-            if(prevSym != null) {                                   // If another declaration of same name was found
-                enterSymbol(prevSym.name, prevSym);                 // Add the symbol to the list
+        ArrayList<Attributes> currentScope = scopes.get(depth);
+        for (int i = 0; i < currentScope.size(); i++) {        // Iterate through all symbols in this scope
+            prevSym = currentScope.get(i).var;                 // Get an earlier declaration with the same name
+            symbols.remove(currentScope.get(i).name);          // Remove the current symbol from the symbol table as it cannot be accessed outside the scope
+            if(prevSym != null) {                              // If another declaration of same name was found
+                enterSymbol(prevSym.name, prevSym);            // Add the symbol to the list
             }
         }
+        scopes.remove(depth);
         depth--;
     }
 }
