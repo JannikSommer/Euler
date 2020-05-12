@@ -1,10 +1,8 @@
 package symbolTable;
 
-import AST.*;
-import symbolTable.attributes.*;
-import symbolTable.typeDescriptors.NumberTypeDescriptor;
-
-import java.util.*;
+import symbolTable.attributes.Attributes;
+import java.util.ArrayList;
+import java.util.Hashtable;
 
 
 public class SymbolTable {
@@ -16,11 +14,6 @@ public class SymbolTable {
 
     public void enterSymbol(String name, Attributes attr) {
         Attributes oldSym = retrieveSymbol(name);
-        /*
-        if(oldSym != null && oldSym.depth == depth) {
-            // Add error. Duplicate declaration
-        }
-        */
 
         attr.name = name;
 
@@ -44,51 +37,26 @@ public class SymbolTable {
     }
 
     public boolean declaredLocally(String name) {
-        Attributes sym = retrieveSymbol(name);
-        return sym != null && sym.depth == depth;
+        Attributes sym = retrieveSymbol(name);      // Retrieves the symbol
+        return sym != null && sym.depth == depth;   // If a symbol is found and is at the same nesting depth it has already been declared.
     }
 
     public void openScope() {
         depth++;
         if (scopes.size() - 1 < depth) {
-            scopes.add(new ArrayList<Attributes>());
+            scopes.add(new ArrayList<>());
         }
     }
 
     public void closeScope() {
-        Attributes prevSym = null;
-        for (int i = 0; i < scopes.get(depth).size(); i++) {
-            prevSym = scopes.get(depth).get(i).var;
-            symbols.remove(scopes.get(depth).get(i).name);
-            if(prevSym != null) {
-                symbols.put(prevSym.name, prevSym);
+        Attributes prevSym;
+        for (int i = 0; i < scopes.get(depth).size(); i++) {        // Iterate through all symbols in this scope
+            prevSym = scopes.get(depth).get(i).var;                 // Get an earlier declaration with the same name
+            symbols.remove(scopes.get(depth).get(i).name);          // Remove the current symbol from the symbol table as it cannot be accessed outside the scope
+            if(prevSym != null) {                                   // If another declaration of same name was found
+                enterSymbol(prevSym.name, prevSym);                 // Add the symbol to the list
             }
         }
         depth--;
     }
-
-    /*
-    private void processNode(ASTNode node) {
-        switch (node.getType()) {
-            case "CodeBlockNode":
-                openScope();
-            case "DeclarationNode":
-                enterSymbol(((DeclarationNode)node).identifier, node.getType());
-            case "ReferenceNode":
-                if(retrieveSymbol( What node to use? ) == null) {
-                    //  Add error. Undeclared variable
-                }
-        }
-
-        // Process children
-        for(int i = 0; i < node.children.size(); i++) {
-            processNode(node.children.get(i));
-        }
-        // Close scope
-        if(node.getType().equals("CodeBlockNode")) {
-            closeScope();
-        }
-    }
-    */
-
 }
