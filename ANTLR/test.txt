@@ -25,7 +25,7 @@ void FreeMatrix(Matrix *matrix);
 Vector MatrixVectorMultiplication(Matrix matrix, Vector vector);
 Vector VectorAddition(Vector vectorA, Vector vectorB);
 
-int main(int argc, char *argv[]){
+int mainWindows(int argc, char *argv[]){
 	double A = 1.0;
 	double B = 3.0;
 	A = B;
