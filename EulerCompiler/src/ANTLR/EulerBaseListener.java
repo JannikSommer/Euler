@@ -1,4 +1,4 @@
-// Generated from C:/Users/theml/Documents/GitHub/P4---cEX/ANTLR/EulerLanguage/Grammar\Euler.g4 by ANTLR 4.8
+// Generated from C:/Users/janni/Documents/GitHub/P4---cEX/EulerCompiler/Grammar\Euler.g4 by ANTLR 4.8
 package ANTLR;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -215,30 +215,6 @@ public class EulerBaseListener implements EulerListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitLogop(EulerParser.LogopContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterAriop(EulerParser.AriopContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitAriop(EulerParser.AriopContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterMulop(EulerParser.MulopContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitMulop(EulerParser.MulopContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

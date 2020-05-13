@@ -1,4 +1,4 @@
-// Generated from C:/Users/theml/Documents/GitHub/P4---cEX/ANTLR/EulerLanguage/Grammar\Euler.g4 by ANTLR 4.8
+// Generated from C:/Users/janni/Documents/GitHub/P4---cEX/EulerCompiler/Grammar\Euler.g4 by ANTLR 4.8
 package ANTLR;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -112,16 +112,4 @@ public interface EulerVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitLogop(EulerParser.LogopContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EulerParser#ariop}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAriop(EulerParser.AriopContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EulerParser#mulop}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMulop(EulerParser.MulopContext ctx);
 }
