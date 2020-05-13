@@ -16,14 +16,10 @@ public class MatrixTypeDescriptor extends CollectionTypeDescriptor {
             return operator.equals("*");                                                            // Must be a valid operation
         } else if(type.kind == TypeDescriptorKind.matrix) {
             if(operator.equals("*")) {                                                              // Matrix multiplication
-                return columns == ((MatrixTypeDescriptor)type).rows &&                              // Number of columns in matrix 1 must match number of rows in matrix 2
-                        elementType == TypeDescriptorKind.number &&                                 // Both matrices may only contain numbers
-                        ((MatrixTypeDescriptor)type).elementType == TypeDescriptorKind.number;
+                return columns == ((MatrixTypeDescriptor)type).rows;                                // Number of columns in matrix 1 must match number of rows in matrix 2
             } else if(operator.equals("+") || operator.equals("-")) {                               // Matrix addition or subraction
                 return columns == ((MatrixTypeDescriptor)type).columns &&                           // Number of columns in matrix 1 must match the number of columns in matrix 2
-                        rows == ((MatrixTypeDescriptor)type).rows &&                                // Number of rows in matrix 1 must match the number of rows in matrix 2
-                        elementType == TypeDescriptorKind.number &&                                 // Both the matrix and the vector may only contain numbers
-                        ((MatrixTypeDescriptor)type).elementType == TypeDescriptorKind.number;
+                        rows == ((MatrixTypeDescriptor)type).rows;                                  // Number of rows in matrix 1 must match the number of rows in matrix 2
             }
         } else if(type.kind == TypeDescriptorKind.vector) {
             return columns == ((VectorTypeDescriptor)type).length &&                                // Number of matrix-columns must match the vector-length
@@ -39,12 +35,12 @@ public class MatrixTypeDescriptor extends CollectionTypeDescriptor {
                 return this;
             } else if(type.kind == TypeDescriptorKind.matrix) {
                 if(operator.equals("*")) {
-                    return new MatrixTypeDescriptor(columns, ((MatrixTypeDescriptor)type).rows, elementType);
+                    return new MatrixTypeDescriptor(columns, ((MatrixTypeDescriptor)type).rows);
                 } else if(operator.equals("+") || operator.equals("-")) {
                     return this;
                 }
             } else if(type.kind == TypeDescriptorKind.vector) {
-                return new VectorTypeDescriptor(rows, elementType);
+                return new VectorTypeDescriptor(rows);
             }
         }
         return null;
@@ -55,10 +51,4 @@ public class MatrixTypeDescriptor extends CollectionTypeDescriptor {
         this.rows = rows;
         this.columns = columns;
     }
-
-    public MatrixTypeDescriptor(int rows, int columns, TypeDescriptorKind elementType) {
-        this(rows, columns);
-        this.elementType = elementType;
-    }
-
 }

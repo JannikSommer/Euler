@@ -27,7 +27,24 @@
   <component name="ChangeListManager">
     <list default="true" id="dcf840de-b8e9-4031-9931-a873d99acf6e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/symbolTable/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbolTable/SymbolTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/testfiles/Arithmetic.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/testfiles/Arithmetic.euler" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/testfiles/ControlStatements" beforeDir="false" afterPath="$PROJECT_DIR$/docs/testfiles/ControlStatements.euler" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/testfiles/LinearAlgebra.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/testfiles/LinearAlgebra.euler" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/euler_linux/euler.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/euler_linux/euler.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/euler_windows/euler.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/euler_windows/euler.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/MatrixDeclarationNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/MatrixDeclarationNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AST/SubscriptingReferenceNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/SubscriptingReferenceNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/CollectionTypeDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/CollectionTypeDescriptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/MatrixTypeDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/MatrixTypeDescriptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/TypeDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/TypeDescriptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/VectorTypeDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/VectorTypeDescriptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visitors/AstBuilderVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitors/AstBuilderVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visitors/semantics/ConstExprVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visitors/semantics/LHSSemanticsVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visitors/semantics/ReachabilityVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visitors/semantics/SemanticsVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitors/semantics/SemanticsVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visitors/semantics/TopDeclVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitors/semantics/TopDeclVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visitors/semantics/TypeVisitor.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,9 +199,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="685" y="106" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588067459669" />
-    <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587970270266">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="758" y="331" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589371419165">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="758" y="331" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589371419165" />
     <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587970270266" />
     <state x="706" y="374" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1588582311412">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -272,11 +290,11 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="860" y="434" key="IDE.errors.dialog/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587645228630" />
-    <state x="2506" y="188" width="916" height="708" key="SettingsEditor" timestamp="1589285724385">
+    <state x="2506" y="188" width="916" height="708" key="SettingsEditor" timestamp="1589368869358">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="586" y="188" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589190453721" />
-    <state x="2506" y="188" width="916" height="708" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1589285724385" />
+    <state x="2506" y="188" width="916" height="708" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1589368869358" />
     <state x="586" y="188" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588930508650" />
     <state x="781" y="344" key="SettingsEditor/0.0.2560.1400/2560.-495.1440.2520@0.0.2560.1400" timestamp="1587980434073" />
     <state x="586" y="191" key="SettingsEditor/1920.106.1600.860/0.0.1920.1040@0.0.1920.1040" timestamp="1587723404461" />

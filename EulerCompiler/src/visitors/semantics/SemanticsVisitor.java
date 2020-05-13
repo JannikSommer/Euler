@@ -39,8 +39,7 @@ public class SemanticsVisitor extends NodeVisitor {
         ASTNode expression = node.children.get(1);
 
         // Do Semantic-analysis on children
-        id.accept(new LHSSemanticsVisitor(symbolTable));
-        expression.accept(this);
+        visitChildren(node);
 
         // Check if the expression can be assigned to th variable
         if(id.type.kind == TypeDescriptorKind.error || expression.type.kind == TypeDescriptorKind.error) {
@@ -75,7 +74,9 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(CodeBlockNode node) {
-        node.accept(new ReachabilityVisitor(symbolTable));
+        symbolTable.openScope();
+        visitChildren(node);
+        symbolTable.closeScope();
     }
 
     @Override
@@ -95,7 +96,7 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(ElseStatementNode node) {
-        node.accept(new ReachabilityVisitor(symbolTable));
+        visitChildren(node);
     }
 
     @Override
@@ -127,9 +128,6 @@ public class SemanticsVisitor extends NodeVisitor {
     public void visit(IfStatementNode node) {
         // Do semantic-analysis of children
         visitChildren(node);
-
-        // Do reachability analysis on if-statement
-        node.accept(new ReachabilityVisitor(symbolTable));
     }
 
     @Override
@@ -141,7 +139,6 @@ public class SemanticsVisitor extends NodeVisitor {
     public void visit(LogicExpressionNode node) {
         visitChildren(node);
         checkBoolean(node);
-        node.accept(new ConstExprVisitor());
     }
 
     @Override
@@ -154,28 +151,22 @@ public class SemanticsVisitor extends NodeVisitor {
         // Do semantic-analysis of children
         visitChildren(node);
 
-        // Set the element-type of the matrix to the first elements type
-        TypeDescriptorKind elementType = ((MatrixTypeDescriptor) node.type).elementType;
-        elementType = node.children.get(0).children.get(0).type.kind;
-
-        // Check all elements if they are the same type as all elements must be the same
+        // Must only contain numbers
         for (ASTNode row : node.children) {
             for (ASTNode element : row.children) {
                 if(!(element.type instanceof ErrorTypeDescriptor)) {
-                    if (element.type.kind != elementType) {
+                    if (element.type.kind != TypeDescriptorKind.number) {
                         node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," +
-                                " matrix-expression can not contain multiple types.");
+                                " matrices cannot contain elements of type '" + element.type.kind.toString() + "'");
                         break;
                     }
                 }
             }
-
             if(node.type.kind == TypeDescriptorKind.error) {
                 break;
             }
         }
 
-        ((MatrixTypeDescriptor) node.type).elementType = elementType;
     }
 
     @Override
@@ -252,11 +243,25 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(SubscriptingAssignmentNode node) {
+        IdentificationNode id = (IdentificationNode)node.children.get(0);
+        ASTNode expression = node.children.get(1);
+
         // Do semantic-analysis of children
-        visit((AssignmentNode)node);
+        visitChildren(node);
 
         // Check subscript notation for errors
         checkSubscript(node);
+
+        // Check if expression and element are of same type
+        if(id.type.kind == TypeDescriptorKind.error || expression.type.kind == TypeDescriptorKind.error) {
+            // If the children already contain errors don't add another one. They are more specific.
+        } else if(expression.type.kind == TypeDescriptorKind.number) {
+            node.type = expression.type; // TODO: Might not be necessary
+        } else {
+            node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," +  "'" +
+                    id.name + ((SubscriptingNode)node.children.get(2)).index.toString() + "'" + " cannot be assigned value of type " + "'" +
+                    expression.type.kind.toString() + "'", node);
+        }
     }
 
     @Override
@@ -268,16 +273,6 @@ public class SemanticsVisitor extends NodeVisitor {
     public void visit(SubscriptingReferenceNode node) {
         // Do semantic-analysis of children
         visitChildren(node);
-
-        // Sets the reference type to be that of the vector/matrix element type. TODO: Find a better way to do this
-        CollectionTypeDescriptor type = ((CollectionTypeDescriptor)((VariableAttributes)((IdentificationNode)node.children.get(0)).attributesRef).variableType);
-        if(type.elementType == TypeDescriptorKind.number) {
-            node.type = new NumberTypeDescriptor();
-        } else if(type.elementType == TypeDescriptorKind.vector) {
-            node.type = new VectorTypeDescriptor();
-        } else if(type.elementType == TypeDescriptorKind.matrix) {
-            node.type = new MatrixTypeDescriptor();
-        }
 
         // Check subscript notation for errors
         checkSubscript(node);
@@ -303,16 +298,12 @@ public class SemanticsVisitor extends NodeVisitor {
         // Do semantic-analysis of children
         visitChildren(node);
 
-        // Set the element-type of the vectors to the first elements type
-        ((VectorTypeDescriptor)node.type).elementType = node.children.get(0).type.kind;
-
-        // Check all elements if they are the same type as all elements must be the same
-        for (int i = 1; i < node.children.size(); i++) {
-            if(node.children.get(i).type == null || node.children.get(i).type.kind == TypeDescriptorKind.error) {
-                // If the children already contain errors don't add another one. They are more specific.
-            } else if(node.children.get(i).type.kind != ((VectorTypeDescriptor)node.type).elementType) {
-                node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
-                        " vector-expression can not contain multiple types.");
+        for (ASTNode child : node.children) {
+            if(child.type.kind != TypeDescriptorKind.number) {
+                node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," +
+                        " vectors cannot contain elements of the type '" + child.type.kind.toString() + "'", node);
+            }
+            if(node.type.kind == TypeDescriptorKind.error) {
                 break;
             }
         }
@@ -325,9 +316,6 @@ public class SemanticsVisitor extends NodeVisitor {
 
         // Confirm that the specified condition is indeed a boolean-expression
         checkBoolean(node.children.get(0));
-
-        // Do reachability-analysis of while-loop
-        node.accept(new ReachabilityVisitor(symbolTable));
     }
 
     @Override

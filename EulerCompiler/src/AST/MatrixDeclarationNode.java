@@ -7,6 +7,7 @@ public class MatrixDeclarationNode extends DeclarationNode {
 
     public MatrixDeclarationNode(ASTNode parent) {
         super(parent);
+        type = new MatrixTypeDescriptor();
     }
 
     public MatrixDeclarationNode(ASTNode parent, String name, String mtxExpr) {
