@@ -52,7 +52,7 @@ assignstmt  :	ID valindex? ASSIGN expr
             ;
 
 addexpr     :	multiexpr
-            |	multiexpr op=('+'|'-') addexpr
+            |	multiexpr op=('+' | '-') addexpr
             ;
 
 multiexpr   :	primeexpr
@@ -70,18 +70,10 @@ logstmt     :   addexpr logop addexpr
 logop       :	op=(EQEQ | BT | LT | BTEQ | LTEQ | NOTEQ)
             ;
 
-ariop       :	op=('+'|'-')
-            ;
-
-mulop       :	op=('*' | '/' | '%')
-            ;
-
 // TOKENS
 
-DOLLAR  : '$' ;
 SEMI    : ';' ;
 ASSIGN  : '=' ;
-
 LT       :'<';
 BT       :'>';
 EQEQ     :'==';
@@ -98,10 +90,9 @@ DO      : 'do';
 NUMKW   : 'num';
 VECKW   : 'vec';
 MTXKW   : 'mtx';
-
 PRINT   : 'print';
 
-PLUS    : '+';
+PLUS    :'+';
 MINUS   :'-';
 MULT    :'*';
 DIVID   :'/';
@@ -117,7 +108,7 @@ NUM     : [0-9]+('.'[0-9]+)? ;
 MATRIX  : '{' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID))* WHITESPACE* (';' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID))* WHITESPACE* )* WHITESPACE*'}';
 VECTOR  : '<' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID) WHITESPACE* )* WHITESPACE* '>';
 STRING  : '"'([a-zA-Z0-9_:\-<>%#$&+/=?!.(),\\[\]* ]|'\\"')*'"';
-ID      : [a-zA-Z0-9]* [a-zA-Z] [a-zA-Z0-9]*;
+ID      : [a-zA-Z_-] [a-zA-Z0-9_-]*;
 
 WHITESPACE : [\r\n\t ]+ -> skip;
 COMMENT1 : '/*' .*? '*/' -> skip;

@@ -13,17 +13,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
 
-    private List<ANTLRErrorListener> _listeners = new CopyOnWriteArrayList<ANTLRErrorListener>() {
-        {
-            this.add(ConsoleErrorListener.INSTANCE);
-        }
-    };
-    private ErrorListener errorListener;
-
-    public void AddErrorListener(ErrorListener listener) {
-        errorListener = listener;
-    }
-
     @Override
     public ASTNode visitProgram(EulerParser.ProgramContext ctx) {
         ASTNode node = new ProgramNode(null);

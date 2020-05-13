@@ -1,4 +1,4 @@
-// Generated from C:/Users/theml/Documents/GitHub/P4---cEX/ANTLR/EulerLanguage/Grammar\Euler.g4 by ANTLR 4.8
+// Generated from C:/Users/janni/Documents/GitHub/P4---cEX/EulerCompiler/Grammar\Euler.g4 by ANTLR 4.8
 package ANTLR;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -177,24 +177,4 @@ public interface EulerListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitLogop(EulerParser.LogopContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EulerParser#ariop}.
-	 * @param ctx the parse tree
-	 */
-	void enterAriop(EulerParser.AriopContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EulerParser#ariop}.
-	 * @param ctx the parse tree
-	 */
-	void exitAriop(EulerParser.AriopContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EulerParser#mulop}.
-	 * @param ctx the parse tree
-	 */
-	void enterMulop(EulerParser.MulopContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EulerParser#mulop}.
-	 * @param ctx the parse tree
-	 */
-	void exitMulop(EulerParser.MulopContext ctx);
 }
