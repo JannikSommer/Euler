@@ -10,11 +10,11 @@ public class SubscriptingNode extends ASTNode {
 
     public SubscriptingNode(ASTNode parent, String str) {
         super(parent);
-        String delimiters = "[\\[\\],]+";
+        String delimiters = "[ \\[\\],]";
         String[] tokens = str.split(delimiters);
         index = new ArrayList<>();
         for (String s: tokens) {
-            if (!str.equals("")) {
+            if (!s.equals("")) {
                 try {
                     index.add(Integer.parseInt(s));
                 } catch (Exception e) {
