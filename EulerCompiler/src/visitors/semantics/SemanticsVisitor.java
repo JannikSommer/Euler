@@ -63,7 +63,9 @@ public class SemanticsVisitor extends NodeVisitor {
         visitChildren(node);
 
         // Check if operands can perform the specified operation
-        if(!leftOperand.type.canCalculate(rightOperand.type, node.operator)) {
+        if(leftOperand.type instanceof ErrorTypeDescriptor || rightOperand.type instanceof ErrorTypeDescriptor) {
+            // Already contains more specific error
+        } else if(!leftOperand.type.canCalculate(rightOperand.type, node.operator)) {
             node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
                     " incompatible types for '" + node.operator + "' operator", node);
         } else {

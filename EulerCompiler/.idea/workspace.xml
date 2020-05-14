@@ -27,24 +27,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dcf840de-b8e9-4031-9931-a873d99acf6e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/testfiles/Arithmetic.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/testfiles/Arithmetic.euler" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/testfiles/ControlStatements" beforeDir="false" afterPath="$PROJECT_DIR$/docs/testfiles/ControlStatements.euler" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/testfiles/LinearAlgebra.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/testfiles/LinearAlgebra.euler" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/euler_linux/euler.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/euler_linux/euler.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/euler_windows/euler.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/euler_windows/euler.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/MatrixDeclarationNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/MatrixDeclarationNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/SubscriptingReferenceNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/SubscriptingReferenceNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/CollectionTypeDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/CollectionTypeDescriptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/MatrixTypeDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/MatrixTypeDescriptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/TypeDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/TypeDescriptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/VectorTypeDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/VectorTypeDescriptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visitors/AstBuilderVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitors/AstBuilderVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visitors/semantics/ConstExprVisitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visitors/semantics/LHSSemanticsVisitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visitors/semantics/ReachabilityVisitor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/visitors/semantics/SemanticsVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitors/semantics/SemanticsVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visitors/semantics/TopDeclVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitors/semantics/TopDeclVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visitors/semantics/TypeVisitor.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
