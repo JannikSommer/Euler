@@ -294,7 +294,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 return node;
             } else return new InitializationNode(parent, id);
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Invalid declaration of variable " + ctx.ID().getText() + "at line " +
+            return new ErrorNode(parent, "Invalid variable declaration at line " +
                                               ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
