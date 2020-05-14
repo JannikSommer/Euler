@@ -105,9 +105,15 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
             if (ctx.valindex() != null) {
                 ASTNode node = new SubscriptingAssignmentNode(parent);
                 String str = ctx.valindex().getText();
-                node.children.add(new IdentificationNode(node, ctx.ID().getText()));
+                ASTNode idNode = new IdentificationNode(node, ctx.ID().getText());
+                ASTNode subscriptNode = new SubscriptingNode(node, str);
+                idNode.lineNumber = ctx.getStart().getLine();
+                idNode.charPosition = ctx.getStart().getCharPositionInLine();
+                subscriptNode.lineNumber = ctx.getStart().getLine();
+                subscriptNode.charPosition = ctx.getStart().getCharPositionInLine();
+                node.children.add(idNode);
                 node.children.add(visitExpr(ctx.expr(), node));
-                node.children.add(new SubscriptingNode(node, str));
+                node.children.add(subscriptNode);
                 node.lineNumber = ctx.getStart().getLine();
                 node.charPosition = ctx.getStart().getCharPositionInLine();
                 return node;
@@ -119,6 +125,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 mtxassign.children.add(node);
                 mtxassign.lineNumber = ctx.getStart().getLine();
                 mtxassign.charPosition = ctx.getStart().getCharPositionInLine();
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
                 return mtxassign;
             } else if (ctx.VECTOR() != null) {
                 String vec = ctx.VECTOR().getText();
@@ -128,6 +136,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 vecNode.children.add(node);
                 vecNode.lineNumber = ctx.getStart().getLine();
                 vecNode.charPosition = ctx.getStart().getCharPositionInLine();
+                node.lineNumber = ctx.getStart().getLine();
+                node.charPosition = ctx.getStart().getCharPositionInLine();
                 return vecNode;
             } else {
                 AssignmentNode node = new AssignmentNode(parent, ctx.ID().getText());
@@ -138,7 +148,7 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 return node;
             }
         } catch (NullPointerException e) {
-            return new ErrorNode(parent, "Invalid assignment of variable " + ctx.ID().getText() + "at line " +
+            return new ErrorNode(parent, "Invalid assignment of variable at line " +
                                               ctx.exception.getOffendingToken().getLine() + ":" + ctx.exception.getOffendingToken().getCharPositionInLine());
         }
     }
