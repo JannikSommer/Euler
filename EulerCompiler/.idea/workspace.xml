@@ -26,15 +26,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcf840de-b8e9-4031-9931-a873d99acf6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/EulerCompiler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GraphGen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/kurt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/testfiles/LinearAlgebra.euler" beforeDir="false" afterPath="$PROJECT_DIR$/docs/testfiles/LinearAlgebra.euler" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/euler_linux/euler.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/euler_linux/euler.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/euler_windows/euler.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/euler_windows/euler.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/NumberTypeDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbolTable/typeDescriptors/NumberTypeDescriptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visitors/semantics/TopDeclVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitors/semantics/TopDeclVisitor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

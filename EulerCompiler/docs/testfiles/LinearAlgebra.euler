@@ -11,7 +11,7 @@ vec v3 = <5,6,7>;
 // Num literals and vec references
 vec vecRes = 10 * v1;
 vecRes = v1 * 10;
-n =  1 * v1;       // Produces error (worng type)
+n =  1 * v1;       // Produces error (wrong type)
 
 // num references and vec references
 vecRes = n * v1;
