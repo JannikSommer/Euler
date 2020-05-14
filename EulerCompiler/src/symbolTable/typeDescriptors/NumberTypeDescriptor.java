@@ -21,7 +21,13 @@ public class NumberTypeDescriptor extends TypeDescriptor {
     @Override
     public TypeDescriptor getResultType(TypeDescriptor type, String operator) {
         if(canCalculate(type, operator)) {
-            return type;
+            if(type.kind == TypeDescriptorKind.number) {
+                return this;
+            } else if(type.kind == TypeDescriptorKind.matrix || type.kind == TypeDescriptorKind.vector) {
+                if (operator.equals("*")) {
+                    return type;
+                }
+            }
         }
         return null;
     }
