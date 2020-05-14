@@ -27,7 +27,7 @@ public class TopDeclVisitor extends SemanticsVisitor {
         } else {
             VariableAttributes attr = new VariableAttributes();
             attr.kind = AttributeKind.variableAttributes;                // What type
-            attr.variableType = node.type;                               // Set type in attributes
+            attr.variableType = expression.type;                         // Set type in attributes
             id.attributesRef = attr;                                     // Link attributes to node
             symbolTable.enterSymbol(id.name, attr);                      // Define in symbol table
         }

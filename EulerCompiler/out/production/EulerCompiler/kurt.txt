@@ -57,3 +57,5 @@ mtxRes = m1 - m2; // Should produce error (Wrong Size);
 mtxRes = m1 * m2;
 mtxRes = m2 * m1;
 mtxRes = m1 * m3; // Should produce error (Wrong size)
+
+
