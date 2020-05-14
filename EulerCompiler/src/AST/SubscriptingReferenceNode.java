@@ -7,7 +7,6 @@ public class SubscriptingReferenceNode extends ExpressionNode {
 
     public SubscriptingReferenceNode(ASTNode parent) {
         super(parent);
-        type = new NumberTypeDescriptor();
     }
 
     @Override

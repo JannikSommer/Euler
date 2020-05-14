@@ -247,15 +247,20 @@ public class SemanticsVisitor extends NodeVisitor {
     public void visit(SubscriptingAssignmentNode node) {
         IdentificationNode id = (IdentificationNode)node.children.get(0);
         ASTNode expression = node.children.get(1);
+        SubscriptingNode subscript = (SubscriptingNode) node.children.get(2);
 
         // Do semantic-analysis of children
         visitChildren(node);
 
         // Check subscript notation for errors
-        checkSubscript(node);
+        if(id.type.kind != TypeDescriptorKind.error) {
+            checkSubscript(node);
+        }
 
         // Check if expression and element are of same type
-        if(id.type.kind == TypeDescriptorKind.error || expression.type.kind == TypeDescriptorKind.error) {
+        if(node.type instanceof ErrorTypeDescriptor) {
+            // Already contains error
+        } else if(id.type.kind == TypeDescriptorKind.error || expression.type.kind == TypeDescriptorKind.error || subscript.type != null) {
             // If the children already contain errors don't add another one. They are more specific.
         } else if(expression.type.kind == TypeDescriptorKind.number) {
             node.type = expression.type; // TODO: Might not be necessary
@@ -275,6 +280,9 @@ public class SemanticsVisitor extends NodeVisitor {
     public void visit(SubscriptingReferenceNode node) {
         // Do semantic-analysis of children
         visitChildren(node);
+
+        // Set type as number
+        node.type = new NumberTypeDescriptor();
 
         // Check subscript notation for errors
         checkSubscript(node);
