@@ -1,9 +1,5 @@
-
-ANTLR/.idea/workspace.xml
-ANTLR/EulerCompiler/out/*
-ANTLR/out/*
+EulerCompiler/.idea/workspace.xml
+EulerCompiler/out/*
 *.class
-ANTLR/.idea/workspace.xml
-ANTLR/EulerLanguage/src/kurt.txt
-ANTLR/out/production/ANTLR/kurt.txt
-ANTLR/EulerLanguage/src/kurt.txt
+EulerCompiler/src/kurt.txt
+
