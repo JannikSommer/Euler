@@ -42,8 +42,10 @@ public class SemanticsVisitor extends NodeVisitor {
         visitChildren(node);
 
         // Check if the expression can be assigned to th variable
-        if(id.type.kind == TypeDescriptorKind.error || expression.type.kind == TypeDescriptorKind.error) {
-            // If the children already contain errors don't add another one. They are more specific.
+        if(id.type.kind == TypeDescriptorKind.error) {
+            node.type = id.type;
+        } else if(expression.type.kind == TypeDescriptorKind.error) {
+            node.type = expression.type;
         } else if(id.type.isAssignable(expression.type)) {
             ((VariableAttributes)id.attributesRef).variableType = expression.type;
             node.type = expression.type;
@@ -63,8 +65,10 @@ public class SemanticsVisitor extends NodeVisitor {
         visitChildren(node);
 
         // Check if operands can perform the specified operation
-        if(leftOperand.type instanceof ErrorTypeDescriptor || rightOperand.type instanceof ErrorTypeDescriptor) {
-            // Already contains more specific error
+        if(leftOperand.type.kind == TypeDescriptorKind.error) {
+            node.type = leftOperand.type;
+        } else if(rightOperand.type.kind == TypeDescriptorKind.error) {
+            node.type = rightOperand.type;
         } else if(!leftOperand.type.canCalculate(rightOperand.type, node.operator)) {
             node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
                     " incompatible types for '" + node.operator + "' operator", node);
@@ -219,8 +223,6 @@ public class SemanticsVisitor extends NodeVisitor {
 
     @Override
     public void visit(ProgramNode node) {
-        node.isReachable = true;
-        node.children.get(0).isReachable = true;
         visitChildren(node);
     }
 
