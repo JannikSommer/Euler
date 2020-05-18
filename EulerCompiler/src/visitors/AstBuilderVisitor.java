@@ -112,8 +112,8 @@ public class AstBuilderVisitor extends EulerBaseVisitor<ASTNode> {
                 subscriptNode.lineNumber = ctx.getStart().getLine();
                 subscriptNode.charPosition = ctx.getStart().getCharPositionInLine();
                 node.children.add(idNode);
-                node.children.add(visitExpr(ctx.expr(), node));
                 node.children.add(subscriptNode);
+                node.children.add(visitExpr(ctx.expr(), node));
                 node.lineNumber = ctx.getStart().getLine();
                 node.charPosition = ctx.getStart().getCharPositionInLine();
                 return node;
