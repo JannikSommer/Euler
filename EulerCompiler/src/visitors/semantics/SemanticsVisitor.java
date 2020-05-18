@@ -248,8 +248,8 @@ public class SemanticsVisitor extends NodeVisitor {
     @Override
     public void visit(SubscriptingAssignmentNode node) {
         IdentificationNode id = (IdentificationNode)node.children.get(0);
-        ASTNode expression = node.children.get(1);
-        SubscriptingNode subscript = (SubscriptingNode) node.children.get(2);
+        SubscriptingNode subscript = (SubscriptingNode) node.children.get(1);
+        ASTNode expression = node.children.get(2);
 
         // Do semantic-analysis of children
         visitChildren(node);
@@ -346,7 +346,7 @@ public class SemanticsVisitor extends NodeVisitor {
         // Get symbol-table data for the referenced variable
         VariableAttributes attrRef = (VariableAttributes)((IdentificationNode)node.children.get(0)).attributesRef;
         // Get reference to subscriptNode
-        SubscriptingNode subscript = node.children.get(1).getType().equals("SubscriptingNode") ? (SubscriptingNode) node.children.get(1) : (SubscriptingNode)node.children.get(2);
+        SubscriptingNode subscript = (SubscriptingNode) node.children.get(1);
 
         // TODO: Split and describe
         if(attrRef.variableType.kind == TypeDescriptorKind.vector || attrRef.variableType.kind == TypeDescriptorKind.matrix) {
