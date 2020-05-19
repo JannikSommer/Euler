@@ -104,11 +104,11 @@ LSQBRACK:'[';
 RSQBRACK:']';
 COMMA   :',';
 
-NUM     : [0-9]+('.'[0-9]+)? ;
+NUM     : [-]?[0-9]+('.'[0-9]+)? ;
 MATRIX  : '{' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID))* WHITESPACE* (';' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID))* WHITESPACE* )* WHITESPACE*'}';
 VECTOR  : '<' WHITESPACE* (NUM|ID) WHITESPACE* (',' WHITESPACE* (NUM|ID) WHITESPACE* )* WHITESPACE* '>';
 STRING  : '"'([a-zA-Z0-9_:\-<>%#$&+/=?!.(),\\[\]* ]|'\\"')*'"';
-ID      : [a-zA-Z_-] [a-zA-Z0-9_-]*;
+ID      : [a-zA-Z_] [a-zA-Z0-9_-]*;
 
 WHITESPACE : [\r\n\t ]+ -> skip;
 COMMENT1 : '/*' .*? '*/' -> skip;
