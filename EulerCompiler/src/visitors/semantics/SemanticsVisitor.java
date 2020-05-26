@@ -119,7 +119,7 @@ public class SemanticsVisitor extends NodeVisitor {
         VariableAttributes attrRef = (VariableAttributes)symbolTable.retrieveSymbol(node.name);
 
         // If no attributes are returned, the variable has not been declared
-        if(attrRef == null) {
+        if(attrRef == null) { // Happens when variable is in different scope
             node.type = new ErrorTypeDescriptor("at line " + node.lineNumber + ":" + node.charPosition + "," + 
                     " variable " + "'" + node.name + "'" + " has not been declared", node);
             node.attributesRef = null;

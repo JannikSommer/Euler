@@ -1,6 +1,5 @@
 package symbolTable;
 
-import org.w3c.dom.Attr;
 import symbolTable.attributes.Attributes;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -16,7 +15,6 @@ public class SymbolTable {
     public void enterSymbol(String name, Attributes attr) {
         // Add to scope display
         attr.name = name;
-        attr.level = scopes.get(depth);
         attr.depth = depth;
         scopes.get(depth).add(attr);
 
