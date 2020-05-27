@@ -82,8 +82,6 @@ public class CodeGenStringBuilder{
 
     public void AppendMain(){
         AppendText("int main(int argc, char *argv[]){");
-        scopeIndentation++;
-        AppendText("int* num;");
     }
 
     public void AppendCloseMain(){
