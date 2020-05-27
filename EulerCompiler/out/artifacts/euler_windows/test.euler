@@ -1,16 +1,23 @@
-mtx A = {0.95 , 0.00 ; 0.00 , 1.00};
-mtx B = {1.10 ; 5.00};
+mtx A = {-0.05 , 0.00 ; 0.00 , 0.00};
+mtx B = {3 ; 5.00};
 vec u = <0.00>;
 vec x = <12.00, 0.00>;
 num t = 0;
-
-while t < 50 do
-    if x[0] < 20.00 then
+num DeltaT = 1/60;
+// Comment
+while t < 24 do 
+    if x[0] < 20.00 then 
         u[0] = 1.00;
     else then
         u[0] = 0.00;
     end
-    x = A * x + B * u;
-    print "time:" + t + "temperature:" + x[0] + "cost:" + x[1];
-    t = t + 1;
+	
+    num i = 0;
+	
+	while i < 60 do
+        x = x + DeltaT * (A * x + B * u);
+    i = i + 1;
+    end
+    print "time: " + t + " ,  temperature: " + x[0] + " ,  cost: " + x[1];
+    t = t + 1; 
 end
