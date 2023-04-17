@@ -1,2 +1,2 @@
-# P4---cEX
-Github for development of a compiler of the Euler language
+# Euler
+Programming language Euler which is the project for 4th semster of the computer science degree from Aalborg University. 
